@@ -1,0 +1,117 @@
+.benefits {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0;
+  /* Base styles for the section */
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+.bottomRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background-color: rgba(255, 255, 255, 0.9); /* Light card background */
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background-color: #ffffff;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  border-color: rgba(240, 165, 0, 0.5);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background-color: rgba(9, 60, 114, 0.08); /* Darker icon bg for light theme */
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #093c72;
+  transition: all 0.3s ease;
+}
+
+.card:hover .iconContainer {
+  background-color: #093c72;
+  color: #ffffff;
+}
+
+.cardTitle {
+  color: #093c72; /* Dark blue title */
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0;
+  text-align: left;
+}
+
+.cardBody {
+  width: 100%;
+}
+
+.cardDescription {
+  color: #4b5563; /* Dark gray description */
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 1200px) {
+  .topRow, .bottomRow {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits {
+    padding: 80px 0;
+  }
+  
+  .topRow, .bottomRow {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 35px 25px;
+    min-height: auto;
+  }
+}

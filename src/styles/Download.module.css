@@ -1,0 +1,136 @@
+.download {
+  padding: 80px 40px;
+}
+
+.banner {
+  background: #093c72;
+  padding: 80px;
+  border-radius: 48px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  box-shadow: 0 40px 100px rgba(9, 60, 114, 0.3);
+}
+
+.content {
+  flex: 1;
+  z-index: 2;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: white;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 45px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.storeButtons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.storeCard {
+  background: white;
+  padding: 12px 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.storeCard:hover {
+  background: #f4a623;
+  transform: translateY(-5px);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  color: #093c72;
+  display: flex;
+  align-items: center;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardText span {
+  font-size: 0.75rem;
+  color: rgba(9, 60, 114, 0.6);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cardText strong {
+  font-size: 1.2rem;
+  color: #093c72;
+  font-weight: 800;
+}
+
+.mockupContainer {
+  flex: 0 0 400px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.appMockup {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 1200px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 40px;
+    gap: 40px;
+  }
+  
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .storeButtons {
+    justify-content: center;
+  }
+  
+  .mockupContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    padding: 40px 20px;
+    border-radius: 32px;
+  }
+  
+  .storeCard {
+    width: 100%;
+    justify-content: center;
+  }
+}

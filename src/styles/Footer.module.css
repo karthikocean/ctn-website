@@ -1,0 +1,235 @@
+.footer {
+  background: #062a52;
+  color: white;
+  padding: 40px 40px 5px 40px;
+  position: relative;
+  border-top: 4px solid var(--accent-gold);
+  margin: 0;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 60px;
+  align-items: stretch;
+  /* Critical for same height */
+  margin-bottom: 0px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 25px;
+}
+
+.logoIcon {
+  width: 35px;
+  height: 35px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-dark-navy);
+  font-size: 1.2rem;
+}
+
+.logoText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+}
+
+.logoText span {
+  color: var(--accent-gold);
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  background: var(--accent-gold);
+  color: var(--primary-dark-navy);
+  transform: translateY(-3px);
+}
+
+.colTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--accent-gold);
+}
+
+.links {
+  list-style: none;
+}
+
+.links li {
+  margin-bottom: 12px;
+}
+
+.links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.links a svg {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  transition: transform 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--accent-gold);
+}
+
+.links a:hover svg {
+  transform: translateX(3px);
+}
+
+.getAppContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.footerQr {
+  width: 70px;
+  height: 70px;
+  background: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.footerQr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.appBadges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 6px 9px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.badge:hover {
+  background: white;
+  color: var(--primary-dark-navy);
+}
+
+.contactInfo {
+  margin-top: auto;
+  /* Pushes contact info to bottom to match other columns */
+}
+
+.contactInfo p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contactIcon {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.address {
+  line-height: 1.5;
+}
+
+.address strong {
+  color: white;
+  font-weight: 600;
+}
+
+.bottomBar {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center; /* Centered content */
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.madeInIndia {
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

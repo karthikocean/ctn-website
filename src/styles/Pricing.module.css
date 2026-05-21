@@ -1,0 +1,173 @@
+.pricing {
+  background: white;
+  padding: 140px 0;
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.toggle {
+  width: 60px;
+  height: 30px;
+  background: var(--primary-dark-navy);
+  border-radius: 50px;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggleHandle {
+  width: 22px;
+  height: 22px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+}
+
+.activeToggle {
+  color: var(--primary-dark-navy);
+}
+
+.discountBadge {
+  background: var(--accent-gold);
+  color: var(--primary-dark-navy);
+  padding: 2px 8px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+.planCard {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 32px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.featured {
+  background: var(--gradient-navy);
+  z-index: 10;
+  border: none;
+  color: white;
+  box-shadow: 0 30px 60px rgba(9, 60, 114, 0.25);
+}
+
+.featured::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(240, 165, 0, 0.08), transparent 70%);
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+
+.cardHeader {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.planName {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.planTagline {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.featured .planTagline {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.period {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.featureList {
+  list-style: none;
+  margin-bottom: 40px;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.unavailable {
+  opacity: 0.4;
+}
+
+.checkIcon {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+}
+
+.xIcon {
+  color: #ff4d4d;
+  flex-shrink: 0;
+}
+
+.planBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .plansGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 50px;
+  }
+  
+  .featured {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,245 @@
+.about {
+  padding: 140px 0 0; 
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  color: #1f2937;
+}
+
+.shareSection {
+  position: relative;
+  padding: 140px 0;
+  overflow: hidden;
+  background-color: #051635;
+  color: #fff;
+  margin-top: 140px;
+}
+
+.shareContainer {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+}
+
+.aboutBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.aboutOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(5, 22, 53, 0.4) 0%, #051635 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.watermark {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  font-size: 30rem;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.02);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Stats Layout */
+.statsLayout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Image with Decorative Corners */
+.imageWrapper {
+  position: relative;
+  padding: 20px;
+  display: inline-block;
+}
+
+.cornerTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-top: 6px solid #F0A500;
+  border-left: 6px solid #F0A500;
+  z-index: -1;
+}
+
+.cornerBottomRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  border-bottom: 6px solid #F0A500;
+  border-right: 6px solid #F0A500;
+  z-index: -1;
+}
+
+.aboutImage {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+/* Editorial Content with Vertical Lines */
+.editorialContent {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.editorialText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4b5563; /* Back to dark text */
+  padding-left: 25px;
+  border-left: 4px solid #F0A500;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.editorialText:hover {
+  color: #093c72;
+}
+
+/* Moved Share Section styles to the top of the file for better scoping */
+
+.shareTitle {
+  font-size: 3.2rem; /* Scaled for desktop */
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.shareDescription {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 850px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+
+.shareGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; /* Better spacing for desktop */
+}
+
+.shareCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  padding: 40px 25px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.shareCard:hover {
+  transform: scale(1.05); /* Only zoom the card */
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #F0A500;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.shareCard span {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.iconBox {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 165, 0, 0.1) !important; /* Force brand highlight background */
+  color: #F0A500 !important;
+  transition: none; /* No movement for icon on hover as requested */
+}
+
+/* Removed iconBox hover rotation/scale */
+
+@media (max-width: 1200px) {
+  .statsLayout {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .statsLayout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  
+  .imageWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .editorialText {
+    text-align: left;
+  }
+
+  .shareGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 80px 0;
+  }
+
+  .shareTitle {
+    font-size: 2rem;
+  }
+
+  .shareGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cornerTopLeft, .cornerBottomRight {
+    width: 60px;
+    height: 60px;
+  }
+
+  .editorialText {
+    font-size: 1rem;
+    padding-left: 15px;
+  }
+}
