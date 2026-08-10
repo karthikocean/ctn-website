@@ -1,11 +1,54 @@
 .howItWorks {
   background: #051635;
   background: radial-gradient(circle at center, #0a1b3d 0%, #051635 100%);
-  padding: 140px 0;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
   color: #fff;
   font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   PREMIUM LABEL — DOT + LINE + TEXT
+   ============================================ */
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.sectionLabel::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
+}
+
+.sectionLabelWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionLabel .line {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+}
+
+.sectionLabel span {
+  color: #C8A951;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
 }
 
 .container {
@@ -23,7 +66,7 @@
 }
 
 .sectionTitle {
-  font-size: 3rem;
+  font-size: 36px;
   font-weight: 800;
   color: #fff;
   margin-bottom: 10px;
@@ -43,24 +86,21 @@
   margin: 0 auto;
 }
 
-/* MAIN COMPOSITION - Tighter Overlap */
+/* MAIN COMPOSITION */
 .mainComposition {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 600px;
   position: relative;
-  gap: -50px;
-  /* Pulling elements together */
 }
 
-/* Phone - Significantly tighter overlap */
 .leftArea {
   width: 400px;
   flex-shrink: 0;
   z-index: 20;
   margin-right: -240px;
-  /* Deep overlap to close the gap */
+  pointer-events: none;
 }
 
 .mockupImage {
@@ -69,10 +109,8 @@
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
 }
 
-/* Arc - Increased Size */
 .centerArea {
   width: 600px;
-  /* Increased from 500 */
   height: 600px;
   flex-shrink: 0;
   z-index: 10;
@@ -80,7 +118,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  right: 11%
+  right: 11%;
 }
 
 .arcSvg {
@@ -146,23 +184,39 @@
   fill: #fff;
 }
 
-/* Card - Balanced Proximity */
+/* Card */
 .rightArea {
   width: 550px;
   flex-shrink: 0;
   z-index: 20;
   margin-left: -50px;
-  /* Re-tightening card proximity */
 }
 
 .contentCard {
-  background: rgba(10, 27, 61, 0.9);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 40px;
-  padding: 55px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  /* Premium layered card */
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  /* subtle glass */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 2px rgba(212, 175, 55, 0.2);
+  /* gold accent */
   transition: all 0.3s ease;
+}
+
+/* Layered effect using pseudo-element */
+.contentCard::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(7, 42, 99, 0.6), rgba(11, 58, 134, 0.6));
+  z-index: -1;
+  filter: blur(12px);
 }
 
 .contentCard:hover .cardIconCircle {
@@ -175,8 +229,8 @@
 .cardTop {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-bottom: 30px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .cardIconCircle {
@@ -198,55 +252,364 @@
 }
 
 .cardStepNumber {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #f4a623;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .cardTitle {
   font-size: 1.5rem;
   font-weight: 800;
   color: #fff;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.5px;
-  white-space: nowrap; /* Force single line */
+  /* Removed white-space: nowrap — was causing overflow */
+  white-space: normal;
+  word-break: break-word;
+  margin-bottom: 6px;
 }
 
 .cardDescription {
   font-size: 1.2rem;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.75);
+  margin-top: 0;
 }
 
-/* Responsive */
+/* Infographic card styles */
+.infographicBody {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: linear-gradient(135deg, rgba(22, 58, 112, 0.55) 0%, rgba(10, 31, 68, 0.75) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 24px;
+  padding: 48px 36px 36px;
+  margin-top: 20px;
+  overflow: visible;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  gap: 24px;
+  transition: transform 0.4s ease;
+  transform-origin: center;
+}
+
+.infographicBody:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+/* Two‑column body layout */
+.cardBody {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  align-items: start;
+}
+
+.leftColumn {
+  width: 140px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* left align within column */
+  gap: 8px;
+  /* tighter vertical spacing */
+}
+
+/* Footer for icon (unused but kept) */
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+/* Premium floating icon card */
+.iconCard {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(145deg, #163A70 0%, #0A1F44 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(212, 175, 55, 0.15) inset;
+  position: relative;
+  margin-top: 0;
+}
+
+/* Subtle gold corner accent on icon card */
+.iconCard svg {
+  width: 44px;
+  height: 44px;
+}
+
+.infographicText {
+  margin-left: 70px;
+}
+
+.iconOverlay {
+  position: absolute;
+  top: calc(100% - 40px);
+  left: 20px;
+  transform: translate(-50%, -50%);
+  background: #072A63;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .infographicBody {
+    padding: 24px 16px;
+  }
+
+  .stepNumberLarge {
+    font-size: 3rem;
+  }
+
+  .infographicText {
+    margin-left: 0;
+  }
+
+  .iconOverlay {
+    top: auto;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.stepBadge {
+  position: absolute;
+  top: -18px;
+  left: 30px;
+  left: 24px;
+  background: linear-gradient(135deg, #0A1F44 0%, #163A70 100%);
+  color: #D4AF37;
+  padding: 5px 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(212, 175, 55, 0.2) inset;
+  z-index: 10;
+}
+
+.stepNumberLarge {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #D4AF37;
+  line-height: 1;
+  margin-top: 0;
+  /* align with title baseline */
+  margin-bottom: 0;
+  text-shadow: 0 0 16px rgba(212, 175, 55, 0.45), 0 2px 8px rgba(0, 0, 0, 0.4);
+  /* reduced glow by ~30% */
+  letter-spacing: -2px;
+}
+
+.rightColumn {
+  flex: 1;
+  padding-top: 0;
+  /* remove extra top space */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* tighter spacing between title and description (8-12px) */
+  align-items: flex-start;
+  /* left align heading and description */
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Large desktop — tighten */
 @media (max-width: 1350px) {
   .leftArea {
-    width: 300px;
-    margin-right: -80px;
+    width: 44px;
+    margin-right: -180px;
   }
 
   .centerArea {
-    width: 500px;
-    height: 500px;
+    width: 520px;
+    height: 44px;
   }
 
   .rightArea {
-    width: 500px;
-    margin-left: -50px;
+    width: 460px;
+    margin-left: -30px;
   }
 }
 
+/* TABLET — stack vertically */
 @media (max-width: 1100px) {
-  .mainComposition {
-    flex-direction: column;
-    gap: 60px;
+  .howItWorks {
+    padding: 60px 0;
   }
 
-  .leftArea,
-  .rightArea {
-    margin: 0;
+  .mainComposition {
+    flex-direction: column;
+    min-height: auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .leftArea {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .centerArea {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    right: 0;
+    order: -1;
+    /* Phone first on tablet */
+  }
+
+  .rightArea {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contentCard {
+    padding: 36px 28px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .howItWorks {
+    padding: 48px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .mainComposition {
+    flex-direction: column;
+    min-height: auto;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .leftArea {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .centerArea {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    right: 0;
+    order: -1;
+    /* Phone prominent at top */
+  }
+
+  .rightArea {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .contentCard {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .cardTop {
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .cardIconCircle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .cardDescription {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .howItWorks {
+    padding: 40px 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .contentCard {
+    padding: 24px 16px;
+  }
+
+  .cardIconCircle {
+    width: 56px;
+    height: 56px;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .centerArea {
+    max-width: 280px;
   }
 }

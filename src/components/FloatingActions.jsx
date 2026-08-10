@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUp, FiMessageCircle, FiX } from 'react-icons/fi';
+import { FiArrowUp, FiMessageCircle, FiSend } from 'react-icons/fi';
 import styles from '../styles/FloatingActions.module.css';
 
 const FloatingActions = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [showChatPopup, setShowChatPopup] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,67 +25,68 @@ const FloatingActions = () => {
 
   return (
     <div className={styles.fabContainer}>
+      {/* Scroll to Top Button */}
       <AnimatePresence>
         {showBackToTop && (
           <motion.button
             className={styles.backToTop}
             onClick={scrollToTop}
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            initial={{ opacity: 0, y: 15, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.8 }}
-            whileHover={{ y: -8, scale: 1.05 }}
+            exit={{ opacity: 0, y: 15, scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Scroll to top"
           >
             <div className={styles.iconGlow} />
-            <FiArrowUp size={26} strokeWidth={3} />
+            <FiArrowUp size={24} strokeWidth={3} />
           </motion.button>
         )}
       </AnimatePresence>
 
-      <div className={styles.chatWrapper}>
+      {/* Chatbot & Telegram Section */}
+      <div
+        className={styles.chatWrapper}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* On Hover text - slides in smoothly to the left */}
         <AnimatePresence>
-          {showChatPopup && (
+          {isHovered && (
             <motion.div
-              className={styles.chatHeader}
-              initial={{ opacity: 0, scale: 0.5, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.5, y: 20 }}
+              className={styles.tooltipBubble}
+              initial={{ opacity: 0, x: 20, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.9 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
             >
-              {/* Premium Curved Text "WE ARE HERE!" - 200px format for perfect alignment */}
-              <div className={styles.curvedTextContainer}>
-                <svg viewBox="0 0 200 100" className={styles.curvedSvg}>
-                  <path
-                    id="textCurve"
-                    d="M 20 80 A 80 80 0 0 1 180 80"
-                    fill="transparent"
-                  />
-                  <text className={styles.svgText}>
-                    <textPath xlinkHref="#textCurve" startOffset="50%" textAnchor="middle">
-                      WE ARE HERE!
-                    </textPath>
-                  </text>
-                </svg>
-
-                <button
-                  className={styles.closeBtn}
-                  onClick={() => setShowChatPopup(false)}
-                >
-                  <FiX size={14} />
-                </button>
+              <span className={styles.tooltipPulse} />
+              <div>
+                <strong className={styles.tooltipTitle}>
+                  Get Support
+                </strong>
               </div>
-
-              <div className={styles.wavingHand}>👋</div>
+              <span className={styles.tooltipArrow} />
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* Telegram/Send Icon (Small floating support indicator) */}
+        {/* <button 
+          className={styles.telegramBtn} 
+          aria-label="Support Telegram"
+          onClick={() => window.open('https://t.me/trustednetwork', '_blank')}
+        >
+          <FiSend size={18} className={styles.telegramIcon} />
+        </button> */}
+
+        {/* Main Chatbot Button */}
         <motion.button
           className={styles.chatBtn}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           animate={{
-            y: [0, -10, 0],
+            y: [0, -6, 0],
           }}
           transition={{
             y: {

@@ -1,0 +1,243 @@
+.whoWeAreSection {
+  background-color: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #06152B;
+}
+
+/* Desktop & Tablet: Grid Layout with Left Image and Right Header+Text */
+.whoWeAreLayout {
+  display: grid;
+  grid-template-areas:
+    "image header"
+    "image text";
+  grid-template-columns: 48% 52%;
+  gap: 20px 60px;
+  align-items: center;
+}
+
+.headerBlock {
+  grid-area: header;
+}
+
+.imageBlock {
+  grid-area: image;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.textBlock {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.whoWeAreImageWrapper {
+  position: relative;
+  padding: 24px;
+  display: inline-block;
+  width: 100%;
+  max-width: 520px;
+}
+
+.whoWeAreImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(6, 21, 43, 0.12);
+  display: block;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.whoWeAreImageWrapper:hover .whoWeAreImage {
+  transform: scale(1.02);
+  box-shadow: 0 30px 70px rgba(6, 21, 43, 0.18);
+}
+
+.cornerTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  border-top: 5px solid #F0A500;
+  border-left: 5px solid #F0A500;
+  border-top-left-radius: 12px;
+  z-index: 1;
+}
+
+.cornerBottomRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  border-bottom: 5px solid #F0A500;
+  border-right: 5px solid #F0A500;
+  border-bottom-right-radius: 12px;
+  z-index: 1;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #06152B;
+  margin: 0;
+}
+
+.whoWeAreParagraph {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #4b5563;
+  padding-left: 22px;
+  border-left: 4px solid #F0A500;
+  margin: 0;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.whoWeAreParagraph:hover {
+  color: #06152B;
+  border-color: #C8A951;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .whoWeAreSection {
+    padding: 85px 0;
+  }
+
+  .whoWeAreLayout {
+    gap: 16px 40px;
+  }
+}
+
+/* Responsive Tablet: KEEP LEFT IMAGE | RIGHT CONTENT (Side-by-Side) */
+@media (max-width: 1024px) {
+  .whoWeAreLayout {
+    grid-template-columns: 45% 55%;
+    gap: 16px 28px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .whoWeAreParagraph {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    padding-left: 16px;
+  }
+
+  .whoWeAreImageWrapper {
+    padding: 16px;
+  }
+
+  .cornerTopLeft,
+  .cornerBottomRight {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Mobile (<= 767px): Stacked Order: 1. Badge & Heading -> 2. Image -> 3. Content */
+@media (max-width: 767px) {
+  .whoWeAreSection {
+    padding: 60px 16px;
+  }
+
+  .whoWeAreLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .headerBlock {
+    order: 1;
+    text-align: left;
+  }
+
+  .imageBlock {
+    order: 2;
+  }
+
+  .textBlock {
+    order: 3;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .whoWeAreParagraph {
+    font-size: 0.98rem;
+    padding-left: 16px;
+  }
+
+  .whoWeAreImageWrapper {
+    padding: 12px;
+    max-width: 100%;
+  }
+
+  .cornerTopLeft,
+  .cornerBottomRight {
+    width: 50px;
+    height: 50px;
+    border-width: 3.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whoWeAreSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .whoWeAreParagraph {
+    font-size: 0.92rem;
+  }
+}
+
+

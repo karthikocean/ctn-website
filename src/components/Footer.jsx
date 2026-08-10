@@ -4,6 +4,7 @@ import { FiShield, FiLinkedin, FiTwitter, FiInstagram, FiFacebook, FiArrowRight,
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Footer.module.css';
 import qrCodeImg from '../assets/qr_code.png';
+import mainlogo from '../assets/mainlogo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,40 +15,50 @@ const Footer = () => {
         <div className={styles.footerGrid}>
           <div className={styles.col}>
             <Link to="/" className={styles.logo}>
-              <div className={styles.logoIcon}>
-                <FiShield />
-              </div>
-              <span className={styles.logoText}>Trusted<span> Network</span></span>
+              <img src={mainlogo} alt="Logo" className={styles.footerLogo} />
             </Link>
             <p className={styles.tagline}>
-              India's GST-verified business social networking platform. 
+              India's GST-verified business social networking platform.
               Connect, collaborate, and grow with confidence.
             </p>
             <div className={styles.socials}>
-              <a href="#"><FiLinkedin /></a>
-              <a href="#"><FiTwitter /></a>
-              <a href="#"><FiInstagram /></a>
-              <a href="#"><FiFacebook /></a>
+              <a
+                href="https://www.instagram.com/trustednetwork.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FiInstagram />
+              </a>
+
+              <a
+                href="https://www.facebook.com/profile.php?id=61593092252529"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FiFacebook />
+              </a>
             </div>
           </div>
 
           <div className={styles.col}>
             <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.links}>
-              <li><a href="#home"><FiArrowRight /> About Us</a></li>
-              <li><a href="#about"><FiArrowRight /> How It Works</a></li>
-              <li><a href="#how-it-works"><FiArrowRight /> Membership Plans</a></li>
-              <li><a href="#membership"><FiArrowRight /> Contact Us</a></li>
+              <li><a href="#home"><FiArrowRight /> Contact</a></li>
+              <li><a href="#about"><FiArrowRight /> Partner With Us</a></li>
+              <li><Link to="/events"><FiArrowRight /> Events</Link></li>
+              <li><a href="/blogs"><FiArrowRight /> Blogs</a></li>
             </ul>
           </div>
 
           <div className={styles.col}>
             <h4 className={styles.colTitle}>Resources</h4>
             <ul className={styles.links}>
-              <li><Link to="/privacy-policy"><FiArrowRight /> Events</Link></li>
-              <li><Link to="/terms"><FiArrowRight /> Blog</Link></li>
-              <li><Link to="/refund"><FiArrowRight /> Privacy Policy</Link></li>
-              <li><Link to="/community-guidelines"><FiArrowRight /> Terms & Conditions</Link></li>
+              <li><Link to="/privacy-policy"><FiArrowRight /> Privacy Policy</Link></li>
+              <li><Link to="/terms"><FiArrowRight /> Terms & Conditions</Link></li>
+              <li><Link to="/refund"><FiArrowRight /> Refund Policy</Link></li>
+              <li><Link to="/community-guidelines"><FiArrowRight /> Community Guidelines</Link></li>
             </ul>
           </div>
 
@@ -67,15 +78,15 @@ const Footer = () => {
               </div>
             </div>
 
-            <h4 className={styles.colTitle} style={{ marginBottom: '14px' }}>Contact Info</h4>
+            <h4 className={styles.colTitle} style={{ marginBottom: '14px', marginTop: '10px' }}>Contact Info</h4>
             <div className={styles.contactInfo}>
               <p>
-                <FiMail className={styles.contactIcon} /> 
-                support@trustednetwork.in
+                <FiMail className={styles.contactIcon} />
+                admin@trustednetwork.in
               </p>
               <p>
-                <FiPhone className={styles.contactIcon} /> 
-                +91 98765 43210
+                <FiPhone className={styles.contactIcon} />
+                +91 97911 52132
               </p>
             </div>
           </div>

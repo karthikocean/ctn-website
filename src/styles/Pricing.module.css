@@ -1,48 +1,74 @@
+/* ============================================
+   PRICING SECTION — CSS ARCHITECTURE
+   ============================================ */
+
+/* 1. Pricing Section */
 .pricing {
   background: white;
-  padding: 140px 0;
+  padding: 80px 0;
 }
 
-.toggleContainer {
+/* 2. Section Label */
+.sectionLabelWrapper {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 50px;
-  font-weight: 600;
-  color: var(--text-secondary);
 }
 
-.toggle {
-  width: 60px;
-  height: 30px;
-  background: var(--primary-dark-navy);
-  border-radius: 50px;
-  padding: 4px;
-  cursor: pointer;
-  position: relative;
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.toggleHandle {
-  width: 22px;
-  height: 22px;
-  background: var(--accent-gold);
+.sectionLabel::before {
+  content: "";
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
 }
 
-.activeToggle {
-  color: var(--primary-dark-navy);
+.labelLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
 }
 
-.discountBadge {
-  background: var(--accent-gold);
-  color: var(--primary-dark-navy);
-  padding: 2px 8px;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  margin-left: 5px;
+.sectionLabel span {
+  color: #C8A951;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
 }
 
+/* 3. Heading */
+.pricingTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary, #1a1a2e);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 4. Description */
+.pricingDescription {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #535658);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+/* 5. Plans Grid */
 .plansGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -50,20 +76,22 @@
   align-items: stretch;
 }
 
+/* 6. Plan Card */
 .planCard {
   background: white;
   padding: 50px 40px;
   border-radius: 32px;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
 }
 
+/* 7. Featured Card */
 .featured {
-  background: var(--gradient-navy);
+  background: var(--gradient-navy, linear-gradient(135deg, #06152B 0%, #0B2345 100%));
   z-index: 10;
   border: none;
   color: white;
@@ -82,21 +110,25 @@
   pointer-events: none;
 }
 
-
+/* 8. Card Header */
 .cardHeader {
   margin-bottom: 30px;
   text-align: center;
 }
 
+/* 9. Plan Name */
 .planName {
   font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
   margin-bottom: 10px;
   color: inherit;
 }
 
+/* 10. Plan Tagline */
 .planTagline {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #535658);
   margin-bottom: 25px;
 }
 
@@ -104,6 +136,7 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* 11. Price */
 .price {
   display: flex;
   align-items: baseline;
@@ -118,7 +151,7 @@
 
 .amount {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .period {
@@ -126,12 +159,15 @@
   opacity: 0.7;
 }
 
+/* 12. Feature List */
 .featureList {
   list-style: none;
-  margin-bottom: 40px;
+  padding: 0;
+  margin: 0 0 40px 0;
   flex-grow: 1;
 }
 
+/* 13. Feature Item */
 .featureItem {
   display: flex;
   align-items: center;
@@ -140,34 +176,144 @@
   font-size: 0.95rem;
 }
 
-.unavailable {
-  opacity: 0.4;
-}
-
+/* 14. Check Icon */
 .checkIcon {
-  color: var(--accent-gold);
+  color: var(--accent-gold, #C8A951);
   flex-shrink: 0;
 }
 
-.xIcon {
-  color: #ff4d4d;
-  flex-shrink: 0;
+/* 15. Card Footer */
+.cardFooter {
+  margin-top: auto;
 }
 
-.planBtn {
+/* 16. Button */
+.planButton {
   width: 100%;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--accent-gold, #C8A951);
+  border: 1px solid var(--accent-gold, #C8A951);
+  font-family: 'Inter', sans-serif;
 }
 
-@media (max-width: 1024px) {
+.featured .planButton {
+  background: var(--accent-gold, #C8A951);
+  color: #1a1a2e;
+  border: 1px solid var(--accent-gold, #C8A951);
+  box-shadow: 0 8px 25px -5px rgba(240, 165, 0, 0.4);
+}
+
+/* 17. Hover Effects */
+.planCard:hover {
+  transform: translateY(-10px);
+}
+
+.planButton:hover {
+  background: var(--accent-gold, #C8A951);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.featured .planButton:hover {
+  background: var(--accent-gold, #C8A951);
+  box-shadow: 0 0 20px rgba(200, 169, 81, 0.6);
+  transform: translateY(-2px);
+  color: #1a1a2e;
+}
+
+/* 18. Responsive Laptop */
+@media (max-width: 1200px) {
+  .plansGrid {
+    gap: 24px;
+  }
+}
+
+/* 19. Responsive Tablet */
+@media (max-width: 1100px) {
+  .pricing {
+    padding: 60px 0;
+  }
+
   .plansGrid {
     grid-template-columns: 1fr;
-    max-width: 500px;
+    max-width: 520px;
     margin: 0 auto;
-    gap: 50px;
+    gap: 32px;
   }
-  
-  .featured {
-    transform: scale(1);
+}
+
+/* 20. Responsive Mobile */
+@media (max-width: 768px) {
+  .sectionLabelWrapper {
+    justify-content: flex-start;
+  }
+
+  .sectionLabel {
+    justify-content: flex-start;
+  }
+
+  .plansGrid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .planCard {
+    padding: 36px 24px;
+    border-radius: 24px;
+  }
+
+  .planName {
+    font-size: 1.5rem;
+  }
+
+  .amount {
+    font-size: 2.5rem;
+  }
+
+  .featureItem {
+    font-size: 0.93rem;
+  }
+
+  .pricingDescription {
+    margin-bottom: 40px;
+  }
+}
+
+/* 21. Responsive Small Mobile */
+@media (max-width: 480px) {
+  .pricing {
+    padding: 40px 0;
+  }
+
+  .planCard {
+    padding: 28px 18px;
+  }
+
+  .planName {
+    font-size: 1.35rem;
+  }
+
+  .cardHeader {
+    margin-bottom: 24px;
+  }
+
+  .featureList {
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .pricing {
+    padding: 32px 0;
   }
 }

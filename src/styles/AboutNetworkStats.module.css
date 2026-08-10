@@ -1,0 +1,167 @@
+.statsSection {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.headerWrapper {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0;
+}
+
+.networkStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 45px 30px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  border-color: #C8A951;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.statNumber {
+  font-size: 52px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #C8A951;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  text-shadow: 0 0 20px rgba(200, 169, 81, 0.3);
+}
+
+.statLabel {
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .statsSection {
+    padding: 70px 0;
+  }
+
+  .statNumber {
+    font-size: 44px;
+  }
+
+  .networkStats {
+    gap: 24px;
+  }
+}
+
+/* Responsive Tablet */
+@media (max-width: 1024px) {
+  .networkStats {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .statsSection {
+    padding: 60px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .statCard {
+    padding: 35px 24px;
+  }
+
+  .statNumber {
+    font-size: 40px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .statsSection {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .statNumber {
+    font-size: 36px;
+  }
+
+  .statLabel {
+    font-size: 13px;
+  }
+}

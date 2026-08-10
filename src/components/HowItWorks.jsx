@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUserPlus, FiShield, FiEdit3, FiSearch, FiMessageCircle, FiTrendingUp } from 'react-icons/fi';
 import styles from '../styles/HowItWorks.module.css';
-import howItWorksSvg from '../assets/howtowork.svg';
+import registeryouraccount from '../assets/registeryouraccount.svg';
+import verifyyourbusiness from '../assets/verifyyourbusiness.svg';
+import completeyourprofile from '../assets/completeyourprofile.svg';
+import connectwithprofessionals from '../assets/connectwithprofessionals.svg';
+import sharebusinessactivities from '../assets/sharebusinessactivities.svg';
+import buildbusinessrelationships from '../assets/buildbusinessrelationships.svg';
 
 const steps = [
   {
@@ -11,7 +16,8 @@ const steps = [
     tag: "STEP 1",
     title: "Register Your Account",
     description: "Download the TN mobile application and register using your mobile number and email address with OTP verification.",
-    icon: <FiUserPlus size={32} />
+    icon: <FiUserPlus size={32} />,
+    image: registeryouraccount
   },
   {
     id: 2,
@@ -19,7 +25,8 @@ const steps = [
     tag: "STEP 2",
     title: "Verify Your Business",
     description: "Complete GST verification to activate your business profile inside the platform.",
-    icon: <FiShield size={32} />
+    icon: <FiShield size={32} />,
+    image: verifyyourbusiness
   },
   {
     id: 3,
@@ -27,7 +34,8 @@ const steps = [
     tag: "STEP 3",
     title: "Complete Your Profile",
     description: "Add your company details, services, networking interests, referrals required, and business information.",
-    icon: <FiEdit3 size={32} />
+    icon: <FiEdit3 size={32} />,
+    image: completeyourprofile
   },
   {
     id: 4,
@@ -35,7 +43,8 @@ const steps = [
     tag: "STEP 4",
     title: "Connect with Professionals",
     description: "Follow and connect with verified business owners relevant to your industry and interests.",
-    icon: <FiSearch size={32} />
+    icon: <FiSearch size={32} />,
+    image: connectwithprofessionals
   },
   {
     id: 5,
@@ -43,7 +52,8 @@ const steps = [
     tag: "STEP 5",
     title: "Share Business Activities",
     description: "Post your business requirements, recommendations, wins, opportunities, and professional updates.",
-    icon: <FiMessageCircle size={32} />
+    icon: <FiMessageCircle size={32} />,
+    image: sharebusinessactivities
   },
   {
     id: 6,
@@ -51,7 +61,8 @@ const steps = [
     tag: "STEP 6",
     title: "Build Business Relationships",
     description: "Conduct business discussions, exchange recommendations, and create trusted business opportunities.",
-    icon: <FiTrendingUp size={32} />
+    icon: <FiTrendingUp size={32} />,
+    image: buildbusinessrelationships
   }
 ];
 
@@ -86,6 +97,13 @@ const HowItWorks = () => {
 
   return (
     <section id="how-it-works" className={styles.howItWorks}>
+      {/* Premium Label */}
+      <div className={styles.sectionLabelWrapper}>
+        <div className={styles.sectionLabel}>
+          <div className={styles.line}></div>
+          <span>SIMPLE NETWORKING PROCESS</span>
+        </div>
+      </div>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>How Trusted Network Works</h2>
@@ -93,17 +111,21 @@ const HowItWorks = () => {
         </div>
 
         <div className={styles.mainComposition}>
-          
+
           {/* LEFT: Phone Area - Touching Arc */}
           <div className={styles.leftArea}>
-            <motion.img 
-              src={howItWorksSvg} 
-              alt="Trusted Network Illustration" 
-              className={styles.mockupImage}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeStep}
+                src={currentStepData.image}
+                alt={currentStepData.title}
+                className={styles.mockupImage}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+              />
+            </AnimatePresence>
           </div>
 
           {/* CENTER: Larger Arc Navigation */}
@@ -126,13 +148,13 @@ const HowItWorks = () => {
                 return (
                   <g key={step.id} onClick={() => setActiveStep(step.id)} style={{ cursor: 'pointer' }}>
                     {/* Dotted Connection to Focus */}
-                    <path 
+                    <path
                       d={`M 100,${pIcon.y} Q 200,${pIcon.y} ${pIcon.x},${pIcon.y}`}
                       className={styles.connectorLine}
                     />
 
                     {/* Larger Segment Arc */}
-                    <motion.path 
+                    <motion.path
                       d={describeSegment(300, 300, innerR, outerR, startAngle, endAngle)}
                       className={`${styles.segmentBase} ${activeStep === step.id ? styles.segmentActive : ''}`}
                       whileHover={{ fill: "rgba(244, 166, 35, 0.05)" }}
@@ -150,17 +172,17 @@ const HowItWorks = () => {
                     </foreignObject>
 
                     {/* Number Badge - Gold when active */}
-                    <circle 
-                      cx={pBadge.x} 
-                      cy={pBadge.y} 
-                      r="15" 
+                    <circle
+                      cx={pBadge.x}
+                      cy={pBadge.y}
+                      r="15"
                       className={`${styles.stepNumberCircle} ${activeStep === step.id ? styles.stepNumberActive : ''}`}
                     />
-                    <text 
-                      x={pBadge.x} 
-                      y={pBadge.y} 
-                      dominantBaseline="middle" 
-                      textAnchor="middle" 
+                    <text
+                      x={pBadge.x}
+                      y={pBadge.y}
+                      dominantBaseline="middle"
+                      textAnchor="middle"
                       className={`${styles.stepNumberText} ${activeStep === step.id ? styles.stepNumberTextActive : ''}`}
                     >
                       {step.number}
@@ -171,7 +193,7 @@ const HowItWorks = () => {
             </svg>
           </div>
 
-          {/* RIGHT: Refined Content Card */}
+          {/* RIGHT: Redesigned infographic cards */}
           <div className={styles.rightArea}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -180,21 +202,30 @@ const HowItWorks = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5 }}
-                className={styles.contentCard}
+                className={styles.infographicBody}
               >
-                <div className={styles.cardTop}>
-                  <div className={styles.cardIconCircle}>
-                    {currentStepData.icon}
-                  </div>
-                  <div className={styles.cardHeaderContent}>
-                    <div className={styles.cardStepNumber}>{currentStepData.tag}</div>
-                    <h3 className={styles.cardTitle}>{currentStepData.title}</h3>
-                  </div>
-                </div>
+                {/* STEP badge */}
+                <div className={styles.stepBadge}>STEP {currentStepData.number}</div>
 
-                <p className={styles.cardDescription}>
-                  {currentStepData.description}
-                </p>
+                {/* Two‑column layout */}
+                <div className={styles.cardBody}>
+        {/* Row 1: Number and Title */}
+        <div className={styles.leftColumn}>
+          <div className={styles.stepNumberLarge}>{currentStepData.number}</div>
+        </div>
+        <div className={styles.rightColumn}>
+          <h3 className={styles.cardTitle}>{currentStepData.title}</h3>
+        </div>
+        {/* Row 2: Icon and Description */}
+        <div className={styles.leftColumn}>
+          <div className={styles.iconCard}>{currentStepData.icon}</div>
+        </div>
+        <div className={styles.rightColumn}>
+          <p className={styles.cardDescription}>{currentStepData.description}</p>
+        </div>
+      </div>
+
+
               </motion.div>
             </AnimatePresence>
           </div>

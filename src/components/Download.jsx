@@ -7,9 +7,18 @@ import appMockup from '../assets/originalmobile.svg';
 const Download = () => {
   return (
     <section id="download" className={styles.download}>
+
       <div className="container">
+
         <div className={styles.banner}>
           <div className={styles.content}>
+            {/* Premium Label */}
+            <div className={styles.sectionLabelWrapper}>
+              <div className={styles.sectionLabel}>
+                <div className={styles.line}></div>
+                <span>JOIN THE TRUSTED NETWORK</span>
+              </div>
+            </div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

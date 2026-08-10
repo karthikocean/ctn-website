@@ -1,0 +1,211 @@
+.experienceSection {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Dashboard Concept Grid */
+.dashboardContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.panelCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 36px 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.panelCard:hover {
+  transform: translateY(-6px);
+  border-color: #F0A500;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(240, 165, 0, 0.15);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panelIcon {
+  font-size: 22px;
+  color: #F0A500;
+}
+
+.statusBadge {
+  font-size: 0.68rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+  letter-spacing: 1.5px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.25);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.panelTitle {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.panelDesc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .experienceSection {
+    padding: 85px 0;
+  }
+
+  .dashboardGrid {
+    gap: 20px;
+  }
+
+  .panelCard {
+    padding: 30px 24px;
+  }
+}
+
+/* Responsive Tablet: KEEP 2 Columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .dashboardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .panelCard {
+    padding: 28px 20px;
+  }
+
+  .panelTitle {
+    font-size: 18px;
+  }
+
+  .panelDesc {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile (<= 768px): Single Column */
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experienceSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+}

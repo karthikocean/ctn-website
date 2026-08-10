@@ -1,0 +1,39 @@
+.page {
+  background: #FFFFFF;
+  color: #0A2342;
+  min-height: 100vh;
+}
+
+.notFound {
+  padding: 80px 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #C8A951;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  background: #FFFFFF;
+  color: #0A2342;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 20px;
+  color: #0A2342;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #0A2342;
+}
+
+@media (max-width: 480px) {
+  .page {
+    overflow-x: hidden;
+  }
+}

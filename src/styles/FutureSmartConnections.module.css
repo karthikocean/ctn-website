@@ -1,0 +1,290 @@
+.connectionsSection {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Asymmetric Layout */
+.asymmetricLayout {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 50px;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* CSS Shape Network Graphic */
+.visualHub {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outerRing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(240, 165, 0, 0.35);
+}
+
+.innerRing {
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 169, 81, 0.25);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.centerNode {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0B2345 0%, #06152B 100%);
+  border: 2px solid #F0A500;
+  box-shadow: 0 0 25px rgba(240, 165, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.centerText {
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+  letter-spacing: 1px;
+}
+
+.orbitNode {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid #F0A500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  z-index: 4;
+}
+
+.orbit1 { top: 0; left: 50%; transform: translateX(-50%); }
+.orbit2 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.orbit3 { left: 0; top: 50%; transform: translateY(-50%); }
+.orbit4 { right: 0; top: 50%; transform: translateY(-50%); }
+
+/* Capabilities List */
+.capabilitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.capBlock {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #F0A500;
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.capBlock:hover {
+  transform: translateX(6px);
+  border-color: #F0A500;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.capIconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(240, 165, 0, 0.15);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.capIcon {
+  font-size: 22px;
+  color: #F0A500;
+}
+
+.capBody {
+  flex: 1;
+}
+
+.capHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.capNumber {
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+}
+
+.capTitle {
+  font-size: 19px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.capDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .connectionsSection {
+    padding: 85px 0;
+  }
+
+  .asymmetricLayout {
+    gap: 36px;
+  }
+}
+
+/* Responsive Tablet: Keep 2 Columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .asymmetricLayout {
+    grid-template-columns: 40% 60%;
+    gap: 24px;
+  }
+
+  .visualHub {
+    width: 260px;
+    height: 260px;
+  }
+
+  .capBlock {
+    padding: 20px 20px;
+  }
+
+  .capTitle {
+    font-size: 17px;
+  }
+
+  .capDesc {
+    font-size: 0.88rem;
+  }
+}
+
+/* Mobile (<= 768px): Single Column */
+@media (max-width: 768px) {
+  .connectionsSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .asymmetricLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .visualHub {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .connectionsSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+}

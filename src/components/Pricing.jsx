@@ -1,8 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FiCheck } from 'react-icons/fi';
-import SectionHeader from './Common/SectionHeader';
-import CTAButton from './Common/CTAButton';
 import styles from '../styles/Pricing.module.css';
 
 const Pricing = () => {
@@ -47,22 +44,25 @@ const Pricing = () => {
 
   return (
     <section id="pricing" className={styles.pricing}>
+      <div className={styles.sectionLabelWrapper}>
+        <div className={styles.sectionLabel}>
+          <div className={styles.labelLine}></div>
+          <span>BUSINESS GROWTH PLANS</span>
+        </div>
+      </div>
+
       <div className="container">
-        <SectionHeader
-          title="Choose Your Plan"
-          subtitle="Simple, transparent pricing for every business stage."
-        />
+        <h2 className={styles.pricingTitle}>Choose Your Plan</h2>
+
+        <p className={styles.pricingDescription}>
+          Simple, transparent pricing for every business stage.
+        </p>
 
         <div className={styles.plansGrid}>
-          {plans.map((plan, index) => (
-            <motion.div
-              key={index}
+          {plans.map((plan) => (
+            <div
+              key={plan.name}
               className={`${styles.planCard} ${plan.featured ? styles.featured : ''}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
             >
               <div className={styles.cardHeader}>
                 <h3 className={styles.planName}>{plan.name}</h3>
@@ -77,20 +77,18 @@ const Pricing = () => {
               <ul className={styles.featureList}>
                 {plan.features.map((feature, i) => (
                   <li key={i} className={styles.featureItem}>
-                    <FiCheck className={styles.checkIcon} /> {feature}
+                    <FiCheck className={styles.checkIcon} />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <div className={styles.cardFooter}>
-                <CTAButton
-                  variant={plan.featured ? 'primary' : 'join'}
-                  className={styles.planBtn}
-                >
+                <button className={styles.planButton}>
                   Get Started
-                </CTAButton>
+                </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -99,3 +97,4 @@ const Pricing = () => {
 };
 
 export default Pricing;
+

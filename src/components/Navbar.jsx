@@ -1,110 +1,170 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiShield, FiDownload } from 'react-icons/fi';
-import CTAButton from './Common/CTAButton';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { FaApple, FaGooglePlay } from 'react-icons/fa';
+import mainlogo from '../assets/mainlogo.svg';
 import styles from '../styles/Navbar.module.css';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+// Add effect to toggle a body class for pre-scroll styling on transparent home page
+const usePreScrollClass = (isTransparent) => {
+  useEffect(() => {
+    if (isTransparent) {
+      document.body.classList.add('preScroll');
+    } else {
+      document.body.classList.remove('preScroll');
+    }
+  }, [isTransparent]);
+};
 
+const Navbar = () => {
+  const location = useLocation();
+  const [isScrolledTop, setIsScrolledTop] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const isHomePage = location.pathname === '/';
+
+  // Scroll listener for Home page transparency
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolledTop(window.scrollY === 0);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  // Transparent ONLY on Home page when scrolled to top
+  const showTransparent = isHomePage && isScrolledTop;
+
+  // Apply body class based on transparency
+  usePreScrollClass(showTransparent);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Community', href: '#community' },
-    { name: 'Benefits', href: '#benefits' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Membership', href: '#pricing' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Future', href: '/future' },
+    { name: 'Membership Plans', href: '/membership-plans' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
-  const handleNavClick = (href) => {
-    setIsMobileMenuOpen(false);
-    if (location.pathname !== '/') {
-      window.location.href = '/' + href;
+  const isActiveLink = (href) => {
+    if (href === '/') {
+      return location.pathname === '/';
     }
+    if (href.startsWith('/') && !href.includes('#')) {
+      return (
+        location.pathname === href ||
+        (href === '/membership-plans' && (location.pathname === '/pricing' || location.pathname.includes('membership')))
+      );
+    }
+    return false;
   };
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
-      <div className={`container-fluid ${styles.navContainer}`}>
-        <Link to="/" className={styles.logo} onClick={() => window.scrollTo(0, 0)}>
-          <div className={styles.logoIcon}>
-            <FiShield />
-          </div>
-          <span className={styles.logoText}>Trusted<span> Network</span></span>
-        </Link>
+    <nav className={`${styles.navBar} ${showTransparent ? styles.transparent : ''}`}>
+      {/* LEFT — Logo */}
+      <Link to="/" className={styles.logoLink} onClick={() => window.scrollTo(0, 0)}>
+        <img src={mainlogo} alt="Trusted Network" className={styles.logoImg} />
+      </Link>
 
-        <ul className={styles.navLinks}>
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a 
-                href={link.href} 
-                className={styles.navLink}
-                onClick={() => handleNavClick(link.href)}
-              >
-                {link.name}
-              </a>
+      {/* CENTER — Nav Links */}
+      <ul className={styles.navLinksList}>
+        {navLinks.map((link) => {
+          const active = isActiveLink(link.href);
+          const isInternalRoute = link.href.startsWith('/') && !link.href.includes('#');
+
+          return (
+            <li key={link.name} className={styles.navLinkItem}>
+              {isInternalRoute ? (
+                <Link
+                  to={link.href}
+                  className={`${styles.navLinkAnchor} ${active ? styles.activeLink : ''}`}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  href={link.href}
+                  className={`${styles.navLinkAnchor} ${active ? styles.activeLink : ''}`}
+                >
+                  {link.name}
+                </a>
+              )}
             </li>
-          ))}
-        </ul>
+          );
+        })}
+      </ul>
 
-        <div className={styles.navActions}>
-          <CTAButton variant="join" className={styles.joinBtn}>
-            Join TN
-          </CTAButton>
-          <button 
-            className={styles.mobileMenuBtn}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <FiX /> : <FiMenu />}
-          </button>
+      {/* RIGHT — Store Buttons + Hamburger */}
+      <div className={styles.navRight}>
+        <div className={styles.storeButtons}>
+          <a href="#" className={styles.storeBtn}>
+            <FaApple className={styles.storeIcon} />
+            <span>App Store</span>
+          </a>
+          <a href="#" className={styles.storeBtn}>
+            <FaGooglePlay className={styles.storeIcon} />
+            <span>Google Play</span>
+          </a>
         </div>
+
+        <button
+          className={styles.hamburgerBtn}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? <FiX /> : <FiMenu />}
+        </button>
       </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            className={styles.mobileMenu}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-          >
-            <ul className={styles.mobileNavLinks}>
-              {navLinks.map((link) => (
+      {/* Mobile Drawer */}
+      {isMobileMenuOpen && (
+        <div className={styles.mobileDrawer}>
+          <ul className={styles.mobileNavList}>
+            {navLinks.map((link) => {
+              const active = isActiveLink(link.href);
+              const isInternalRoute = link.href.startsWith('/') && !link.href.includes('#');
+
+              return (
                 <li key={link.name}>
-                  <a 
-                    href={link.href} 
-                    onClick={() => handleNavClick(link.href)}
-                  >
-                    {link.name}
-                  </a>
+                  {isInternalRoute ? (
+                    <Link
+                      to={link.href}
+                      className={active ? styles.activeMobileLink : ''}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className={active ? styles.activeMobileLink : ''}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
-              ))}
-              <div className={styles.mobileActions}>
-                <CTAButton variant="primary" className={styles.mobileBtn}>
-                  Download App
-                </CTAButton>
-                <CTAButton variant="join" className={styles.mobileBtn}>
-                  Join TN
-                </CTAButton>
-              </div>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              );
+            })}
+          </ul>
+          <div className={styles.mobileStoreButtons}>
+            <a href="#" className={styles.mobileStoreBtn}>
+              <FaApple className={styles.storeIcon} />
+              <span>App Store</span>
+            </a>
+            <a href="#" className={styles.mobileStoreBtn}>
+              <FaGooglePlay className={styles.storeIcon} />
+              <span>Google Play</span>
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
 
 export default Navbar;
+
+

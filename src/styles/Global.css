@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap');
 
 :root {
-  --primary-dark-navy: #093c72;
+  --primary-dark-navy: #06152B;
+  --secondary-navy: #0B2345;
   --primary-blue: #044aa7;
   --mid-blue: #05438e;
-  --light-bg: #f8fafc;
+  --page-bg: #ECECF2;
   --neutral-gray: #535658;
-  --accent-gold: #f0a500;
+  --accent-gold: #C8A951;
   --white: #ffffff;
   --text-primary: #1a1a2e;
   --text-secondary: #535658;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.3);
   --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-  --gold-glow: 0 0 20px rgba(240, 165, 0, 0.4);
-  
-  --gradient-primary: linear-gradient(135deg, #093c72 0%, #044aa7 100%);
-  --gradient-navy: linear-gradient(135deg, #093c72 0%, #05438e 100%);
+  --gold-glow: 0 0 20px rgba(200, 169, 81, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  --gradient-navy: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
 }
 
 * {
@@ -27,19 +28,27 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--light-bg);
+  background-color: #ECECF2;
   color: var(--text-primary);
   overflow-x: hidden;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal overflow */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.1;
@@ -71,13 +80,14 @@ button {
 }
 
 section {
-  padding: 100px 0;
+  padding: 30px 0;
 }
 
 @media (max-width: 768px) {
   section {
     padding: 60px 0;
   }
+
   .container {
     padding: 0 1.5rem;
   }
@@ -89,7 +99,7 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--light-bg);
+  background: #ECECF2;
 }
 
 ::-webkit-scrollbar-thumb {

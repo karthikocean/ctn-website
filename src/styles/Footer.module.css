@@ -16,12 +16,25 @@
   margin-bottom: 0px;
 }
 
+.footerLogo {
+  width: 200px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.footerLogo:hover {
+  opacity: 1;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
 }
 
 .logoIcon {
@@ -63,6 +76,7 @@
 .socials {
   display: flex;
   gap: 15px;
+  padding-bottom: 25px;
 }
 
 .socials a {
@@ -171,7 +185,7 @@
 }
 
 .contactInfo {
-  margin-top: auto;
+  /* margin-top: auto; */
   /* Pushes contact info to bottom to match other columns */
 }
 
@@ -204,7 +218,8 @@
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
-  justify-content: center; /* Centered content */
+  justify-content: center;
+  /* Centered content */
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
@@ -215,21 +230,40 @@
   font-weight: 600;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .footerGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
 
   .bottomBar {
     flex-direction: column;
     gap: 10px;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 20px 5px 20px;
+  }
+
+  .colTitle {
+    font-size: 1rem;
+  }
+
+  .links a {
+    font-size: 0.85rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    min-width: 100px;
   }
 }

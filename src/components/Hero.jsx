@@ -1,113 +1,115 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiUsers, FiDownload, FiArrowRight } from 'react-icons/fi';
+import { FiUsers, FiDownload, FiArrowRight, FiStar } from 'react-icons/fi';
 import styles from '../styles/Hero.module.css';
+import Statistics from './Statistics';
+import { FiShield } from "react-icons/fi";
 
-// Importing the requested banner image
-import originalBanner from '../assets/originalbanner.svg';
+// Import images
+import heroBg from '../assets/heromainimg.svg';
+import womanImage from '../assets/ogherosection womenimage (1).svg';
 
 const Hero = () => {
   return (
-    <section id="home" className={styles.hero}>
-      {/* Background Effects */}
-      <div className={styles.bgGlow}></div>
-      <div className={styles.bgRings}>
-        <div className={styles.ring}></div>
-        <div className={styles.ring}></div>
-        <div className={styles.ring}></div>
-      </div>
+    <div className={styles.heroWrapper}>
+      <section
+        id="home"
+        className={styles.heroSection}
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        {/* Dark Overlay */}
+        <div className={styles.heroOverlay}></div>
 
-      {/* Subtle Animated Particles Effect */}
-      <div className={styles.particles}>
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className={styles.particle}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1.5, 0]
-            }}
-            transition={{
-              duration: 5 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 1.5
-            }}
-          />
-        ))}
-      </div>
+        {/* Main Content */}
+        <div className={styles.heroContent}>
 
-      <div className={`container ${styles.heroContainer}`}>
-        <div className={styles.heroLeft}>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className={styles.title}>
-              India’s Trusted Business Social 
-              <span className={styles.highlight}> Networking Platform</span>
-            </h1>
+          {/* LEFT Side */}
+          <div className={styles.heroLeft}>
 
-            <p className={styles.description}>
-              Connect with verified business owners, build meaningful relationships,
-              exchange recommendations, and grow your professional network.
-            </p>
-
-            <div className={styles.ctaGroup}>
-              <button className={styles.btnYellow}>
-                <FiUsers /> Join TN
-              </button>
-              <button className={styles.btnOutline}>
-                <FiDownload /> Download App
-              </button>
-              <button className={styles.btnBlue}>
-                <FiArrowRight /> Start Free Trial
-              </button>
-            </div>
-
-            <div className={styles.reviewSection}>
-              <div className={styles.initialsGroup}>
-                <div className={styles.initialCircle}>RK</div>
-                <div className={styles.initialCircle}>PM</div>
-                <div className={styles.initialCircle}>SJ</div>
-                <div className={styles.plusCircle}>+</div>
-              </div>
-              <div className={styles.reviewText}>
-                <strong className={styles.reviewMain}>Trusted by Business Owners Across India</strong>
-                <span className={styles.reviewSub}>100% GST-verified members. Zero fake profiles.</span>
+            {/* Premium Label */}
+            <div className={styles.sectionLabelWrapper}>
+              <div className={styles.sectionLabel}>
+                <div className={styles.line}></div>
+                <span>BUSINESS SOCIAL NETWORK</span>
               </div>
             </div>
-          </motion.div>
-        </div>
 
-        {/* RIGHT: Static Cinematic Section with requested Image */}
-        <div className={styles.heroRight}>
-          <div className={styles.visualWrapper}>
             <motion.div
-              className={styles.carouselItem}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1,
-                y: [0, -15, 0] // Maintained premium floating effect
-              }}
-              transition={{ 
-                duration: 0.8,
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-              }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <img 
-                src={originalBanner} 
-                alt="Trusted Network Platform" 
-                className={styles.cinematicImage} 
+              {/* Title */}
+              <h1 className={styles.heroTitle}>
+                India&apos;s Trusted Business<br></br>
+                <span className={styles.heroHighlight}> Social Networking Platform</span>
+              </h1>
+
+              {/* Description */}
+              <p className={styles.heroDescription}>
+                Connect with verified business owners, build meaningful relationships,
+                exchange recommendations, and grow your professional network.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className={styles.ctaButtonGroup}>
+                <button className={styles.ctaButton}>
+                  <FiUsers /> Join TN
+                </button>
+                {/* <button className={styles.ctaButton}>
+                  <FiDownload /> Download App
+                </button> */}
+                <button className={styles.ctaButton}>
+                  Start Free Trial <FiArrowRight />
+                </button>
+              </div>
+
+              {/* Trust / Review Section */}
+              <div className={styles.trustSection}>
+                <div className={styles.avatarStack}>
+                  <div className={styles.avatarCircle}>RK</div>
+                  <div className={styles.avatarCircle}>PM</div>
+                  <div className={styles.avatarCircle}>SJ</div>
+                  <div className={styles.avatarPlus}>+</div>
+                </div>
+                <div className={styles.trustText}>
+                  <strong className={styles.trustMain}>Trusted by 10,000+ Business Owners Across India</strong>
+                  <span className={styles.trustSub}>100% GST-verified members • Zero fake profiles</span>
+                </div>
+              </div>
+
+
+            </motion.div>
+          </div>
+
+          {/* RIGHT Side — Hero Image */}
+          <div className={styles.heroRight}>
+            <motion.div
+              className={styles.imageCard}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+
+              {/* Floating Badge */}
+              {/* <div className={styles.communityBadge}>
+                <FiShield />
+                <span>India's Trusted Business Community</span>
+              </div> */}
+
+              <img
+                src={womanImage}
+                alt="Trusted Network Platform"
+                className={styles.heroImage}
               />
             </motion.div>
           </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+      {/* Statistics Section */}
+      <Statistics />
+    </div>
   );
 };
 

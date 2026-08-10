@@ -1,0 +1,172 @@
+.growthSection {
+  background-color: #ffffff;
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+  color: #1f2937;
+}
+
+.headerWrapper {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.growthSteps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  position: relative;
+}
+
+.stepCard {
+  background: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 35px 25px;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stepCard:hover {
+  transform: translateY(-6px);
+  border-color: #F0A500;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.stepNumber {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #06152B;
+  background: #C8A951;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 15px rgba(200, 169, 81, 0.3);
+}
+
+.stepTitle {
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.stepText {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .growthSection {
+    padding: 70px 0;
+  }
+
+  .growthSteps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Responsive Tablet */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .growthSection {
+    padding: 60px 16px;
+  }
+
+  .growthSteps {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .stepCard {
+    padding: 30px 24px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .growthSection {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .stepTitle {
+    font-size: 17px;
+  }
+
+  .stepText {
+    font-size: 0.92rem;
+  }
+}

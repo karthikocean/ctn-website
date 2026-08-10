@@ -1,0 +1,323 @@
+/* Container & Layout */
+.contactSection {
+  background-color: #F7F9FC;
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contactLayout {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* White Info Card (Left Side ~38%) */
+.infoCard {
+  flex: 0 0 38%;
+  max-width: 38%;
+  background: #ffffff;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-radius: 24px;
+  padding: 44px 32px;
+  color: #06152B;
+  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 44px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.infoTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #06152B;
+  margin-bottom: 16px;
+}
+
+.infoDesc {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin-bottom: 36px;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: auto;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.iconWrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itemIcon {
+  font-size: 22px;
+  color: #F0A500;
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.itemLabel {
+  font-size: 0.78rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #C8A951;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.itemLink {
+  color: #06152B;
+  font-size: 1.02rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.itemLink:hover {
+  color: #F0A500;
+}
+
+.itemValue {
+  color: #06152B;
+  font-size: 1.02rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.itemSubValue {
+  font-size: 0.92rem;
+  color: #4b5563;
+  font-weight: 400;
+  margin-top: 2px;
+  white-space: normal;
+}
+
+/* Responsive Laptop (1025px - 1200px) */
+@media (max-width: 1200px) {
+  .contactSection {
+    padding: 75px 0;
+  }
+
+  .contactLayout {
+    gap: 24px;
+  }
+
+  .infoCard {
+    padding: 36px 24px;
+  }
+
+  .infoTitle {
+    font-size: 32px;
+  }
+
+  .itemLink,
+  .itemValue {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive Tablet (769px - 1024px): KEEP SIDE-BY-SIDE 2-COLUMN LAYOUT */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contactSection {
+    padding: 60px 0;
+  }
+
+  .contactLayout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .infoCard {
+    flex: 0 0 38%;
+    max-width: 38%;
+    padding: 30px 18px;
+    border-radius: 20px;
+  }
+
+  .infoTitle {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .infoDesc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .detailsList {
+    gap: 20px;
+  }
+
+  .detailItem {
+    gap: 12px;
+  }
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .itemIcon {
+    font-size: 18px;
+  }
+
+  .itemLabel {
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+  }
+
+  .itemLink,
+  .itemValue {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .itemSubValue {
+    font-size: 0.82rem;
+  }
+}
+
+/* Responsive Mobile (<= 768px): Single-column stacked layout */
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 45px 12px;
+  }
+
+  .contactLayout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .infoCard {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 16px;
+    border-radius: 20px;
+    box-sizing: border-box;
+  }
+
+  .infoTitle {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .infoDesc {
+    font-size: 0.96rem;
+    margin-bottom: 24px;
+  }
+
+  .detailsList {
+    gap: 22px;
+  }
+
+  .detailItem {
+    gap: 14px;
+  }
+
+  .iconWrapper {
+    width: 42px;
+    height: 42px;
+  }
+
+  .itemIcon {
+    font-size: 19px;
+  }
+
+  .itemLink {
+    white-space: nowrap;
+    font-size: clamp(0.82rem, 3.8vw, 0.98rem);
+    letter-spacing: -0.2px;
+  }
+
+  .itemValue {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 40px 10px;
+  }
+
+  .infoCard {
+    padding: 24px 14px;
+  }
+
+  .infoTitle {
+    font-size: 25px;
+  }
+
+  .itemLink {
+    white-space: nowrap;
+    font-size: clamp(0.78rem, 3.7vw, 0.92rem);
+    letter-spacing: -0.3px;
+  }
+}
