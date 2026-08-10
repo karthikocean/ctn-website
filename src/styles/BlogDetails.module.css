@@ -1,0 +1,87 @@
+.page {
+  background: #f5f7fa;
+}
+
+/* Hero Banner */
+.hero {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  position: relative;
+  font-size: 48px;
+  color: #ffffff;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Content Section */
+.content {
+  background: #ffffff;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #374151;
+}
+
+.articleTitle {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #0A2342;
+  text-align: center;
+}
+
+.articleBody {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Related Blogs */
+.related {
+  background: #f5f7fa;
+  padding: 60px 20px;
+}
+
+.relatedTitle {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #0A2342;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.notFound {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 20px;
+  color: #C8A951;
+  text-decoration: none;
+  font-weight: 600;
+}

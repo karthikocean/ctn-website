@@ -1,0 +1,101 @@
+/* Event Card Styling */
+/* Updated to meet premium business-event design */
+.card {
+  background: #ffffff; /* white background */
+  border-radius: 20px; /* updated to 20px */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fit correctly in the flex grid row */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  width: 100%;
+  height: 230px; /* fixed image height */
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.contentPanel {
+  background: #ffffff; /* white panel */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #051635; /* navy text */
+  line-height: 1.4;
+  min-height: 3.36rem; /* guarantee 2 lines of height for identical vertical alignment */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  align-items: flex-start; /* align items at top */
+  gap: 16px;
+  margin-top: 10px;
+  min-height: 2.8rem; /* reserve height for up to 2 lines of location text */
+}
+.date {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  white-space: nowrap; /* date never wraps */
+}
+
+.location {
+  display: flex;
+  align-items: flex-start; /* keep icon at top of text */
+  gap: 8px;
+}
+.icon {
+  margin-top: 3px; /* visually align with first line of text */
+  margin-right: 4px;
+  flex-shrink: 0;
+  font-size: 16px; /* slightly larger icon */
+  color: #D4AF37; /* gold */
+}
+
+.description {
+  font-size: 0.95rem;
+  color: rgba(5, 22, 53, 0.9);
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card:hover .description {
+  opacity: 1;
+  max-height: 60px; /* space for 2 lines */
+  margin-top: 12px;
+  transform: translateY(0);
+}
+

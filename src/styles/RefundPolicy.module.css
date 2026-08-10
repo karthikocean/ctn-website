@@ -1,0 +1,543 @@
+/* ==========================================================================
+   REFUND POLICY — Premium SaaS Design (Updated)
+   ========================================================================== */
+
+.page {
+  background-color: #ECECF2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Hero Banner ---- */
+.hero {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  padding: 140px 0 50px 0;
+  /* Padding matches solid navbar */
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #C8A951;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(200, 169, 81, 0.1) 0%, rgba(200, 169, 81, 0) 70%);
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #94A3B8;
+  margin-bottom: 12px;
+}
+
+.breadcrumbs a {
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #C8A951;
+}
+
+.breadcrumbSeparator {
+  color: #64748B;
+}
+
+.breadcrumbActive {
+  color: #C8A951;
+}
+
+.heroTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.heroSubtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #E2E8F0;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+/* ---- Main Content Grid ---- */
+.mainContent {
+  padding: 40px 0 80px 0;
+}
+
+.contentContainer {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.contentGrid {
+  display: block;
+  width: 100%;
+}
+
+.contentCard {
+  width: 100%;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* ---- Sticky Sidebar Navigation ---- */
+.sidebar {
+  position: sticky;
+  top: 110px;
+  /* Offset below navbar */
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(6, 21, 43, 0.04);
+  border: 1px solid rgba(6, 21, 43, 0.05);
+}
+
+.sidebarTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #C8A951;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarLink {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.sidebarLink:hover {
+  color: #06152B;
+  background-color: rgba(6, 21, 43, 0.04);
+}
+
+.sidebarActiveLink {
+  color: #06152B;
+  background-color: rgba(200, 169, 81, 0.12);
+  font-weight: 600;
+  border-left: 3px solid #C8A951;
+}
+
+/* ---- Main Content Card ---- */
+.contentCard {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px -5px rgba(6, 21, 43, 0.08);
+  border: 1px solid rgba(6, 21, 43, 0.05);
+}
+
+.metaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.lastUpdated {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.lastUpdatedSpan {
+  color: #06152B;
+  font-weight: 700;
+}
+
+.tnBadge {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C8A951;
+  background: rgba(200, 169, 81, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+/* ---- Legal Disclaimer Card ---- */
+.disclaimerCard {
+  background: rgba(6, 21, 43, 0.02);
+  border: 1px dashed rgba(6, 21, 43, 0.15);
+  border-left: 4px solid #C8A951;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.disclaimerIcon {
+  font-size: 1.35rem;
+  color: #C8A951;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.disclaimerContent h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 4px;
+}
+
+.disclaimerContent p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.disclaimerHighlight {
+  font-weight: 700;
+  color: #06152B;
+}
+
+/* ---- Policy Section Contents ---- */
+.clauseSection {
+  scroll-margin-top: 110px;
+  padding: 15px;
+}
+
+.clauseSection:last-child {
+  margin-bottom: 0;
+}
+
+.clauseTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clauseNumber {
+  color: #C8A951;
+  font-weight: 800;
+}
+
+.clauseText {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.clauseList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clauseListItem {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.55;
+  position: relative;
+  padding-left: 20px;
+}
+
+.clauseListItem::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #C8A951;
+}
+
+/* ---- Premium Contact Grid / Card Section ---- */
+.contactGridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(6, 21, 43, 0.02);
+  border: 1px solid rgba(6, 21, 43, 0.06);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+}
+
+.contactCard:hover {
+  background: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(6, 21, 43, 0.05);
+  border-color: rgba(200, 169, 81, 0.4);
+  transform: translateY(-2px);
+}
+
+.contactIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(200, 169, 81, 0.1);
+  color: #C8A951;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.contactValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #06152B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactValue:hover {
+  color: #C8A951;
+}
+
+/* ---- Footer Disclaimer Note ---- */
+.footerDisclaimerCard {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 40px;
+  color: #FFFFFF;
+  text-align: center;
+  border: 1px solid rgba(200, 169, 81, 0.2);
+  box-shadow: 0 4px 20px rgba(6, 21, 43, 0.15);
+}
+
+.footerDisclaimerText {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #E2E8F0;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.footerDisclaimerText strong {
+  color: #C8A951;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 130px 0 40px 0;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    /* Stack sidebar above content card */
+    gap: 24px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 18px;
+  }
+
+  .sidebarList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebarLink {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(6, 21, 43, 0.08);
+    background-color: #F8FAFC;
+  }
+
+  .sidebarActiveLink {
+    border-left: none;
+    border-bottom: 2px solid #C8A951;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 40px 0;
+    text-align: center;
+  }
+
+  .heroContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .breadcrumbs {
+    justify-content: center;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .contentCard {
+    padding: 24px;
+  }
+
+  .metaHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .disclaimerCard {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Horizontal scrollable navigation pill bar on mobile */
+  .sidebar {
+    padding: 12px;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    margin-bottom: 0;
+  }
+
+  .sidebarTitle {
+    display: none;
+    /* Hide Navigation title for clean mobile header */
+  }
+
+  .sidebarList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .sidebarList::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+  }
+
+  .sidebarLink {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.65rem;
+  }
+
+  .contentCard {
+    padding: 18px 14px;
+  }
+
+  .clauseTitle {
+    font-size: 1.15rem;
+  }
+
+  .clauseText,
+  .clauseListItem {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,245 @@
+.intelligenceSection {
+  background-color: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #06152B;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #06152B;
+  margin-bottom: 16px;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Intelligence Container & Graph Visual */
+.intelligenceContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.graphVisualHeader {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  border-radius: 20px;
+  padding: 30px 40px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.1);
+}
+
+.graphNodesWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 40px;
+}
+
+.graphBar1 { width: 8px; height: 18px; background: rgba(240, 165, 0, 0.5); border-radius: 4px; }
+.graphBar2 { width: 8px; height: 28px; background: rgba(240, 165, 0, 0.75); border-radius: 4px; }
+.graphBar3 { width: 8px; height: 38px; background: #F0A500; border-radius: 4px; box-shadow: 0 0 10px rgba(240, 165, 0, 0.6); }
+.graphBar4 { width: 8px; height: 26px; background: rgba(200, 169, 81, 0.8); border-radius: 4px; }
+.graphBar5 { width: 8px; height: 34px; background: #F0A500; border-radius: 4px; }
+
+.graphLabel {
+  font-size: 0.82rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #C8A951;
+  letter-spacing: 2px;
+}
+
+/* Insights Grid */
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.insightCard {
+  background: #F7F9FC;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 12px 30px rgba(6, 21, 43, 0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.insightCard:hover {
+  transform: translateY(-6px);
+  border-color: #F0A500;
+  box-shadow: 0 20px 45px rgba(6, 21, 43, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardIcon {
+  font-size: 22px;
+  color: #F0A500;
+}
+
+.indicatorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 10px rgba(240, 165, 0, 0.5);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 12px;
+}
+
+.cardDesc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .intelligenceSection {
+    padding: 85px 0;
+  }
+
+  .insightsGrid {
+    gap: 20px;
+  }
+
+  .insightCard {
+    padding: 30px 22px;
+  }
+}
+
+/* Responsive Tablet: KEEP 3 Columns or 2 Columns depending on space */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .insightsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .insightCard {
+    padding: 26px 18px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardDesc {
+    font-size: 0.88rem;
+  }
+}
+
+/* Responsive Mobile (<= 768px): Single Column */
+@media (max-width: 768px) {
+  .intelligenceSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .graphVisualHeader {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intelligenceSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+}

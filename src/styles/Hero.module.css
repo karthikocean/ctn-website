@@ -1,0 +1,583 @@
+/* ============================================
+   HERO SECTION — Premium Asymmetrical Split Design
+   ============================================ */
+
+.heroWrapper {
+  width: 100%;
+  background: #F5F7FA;
+}
+
+.heroSection {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 96px;
+  min-height: 600px;
+  border-radius: 0 0 40px 40px;
+  position: relative;
+
+  .heroSection {
+    overflow: visible;
+  }
+
+  display: flex;
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(6, 21, 43, 0.3);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 64px 60px;
+}
+
+/* ---- Dark Overlay ---- */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(353deg, rgb(0 8 30 / 55%) 89%, rgb(0 8 30) 35%, rgb(0 8 30 / 55%) 83%, #0b234500 100%);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* ---- Content Layout ---- */
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================================
+   PREMIUM LABEL — DOT + LINE + TEXT
+   ============================================ */
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.sectionLabel::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
+}
+
+.sectionLabelWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sectionLabel .line {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+}
+
+.sectionLabel span {
+  color: #C8A951;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+/* ---- Left Side ---- */
+.heroLeft {
+  flex: 0 0 58%;
+  max-width: 58%;
+  padding-right: 40px;
+  padding-left: 20px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.heroHighlight {
+  color: #C8A951;
+}
+
+.heroDescription {
+  font-size: 1.12rem;
+  color: #ffffff;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  max-width: 90%;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.95;
+}
+
+/* ---- CTA Buttons ---- */
+.ctaButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  background: rgba(6, 21, 43, 0.4);
+  color: #ffffff;
+  border: 1px solid #C8A951;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.ctaButton:hover {
+  background: #C8A951;
+  color: #06152B;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(200, 169, 81, 0.4);
+}
+
+/* ---- Trust Badge / Review Section ---- */
+.trustSection {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 10px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatarStack {
+  display: flex;
+  align-items: center;
+}
+
+.avatarCircle,
+.avatarPlus {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #06152B;
+  background: #0B2345;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  margin-left: -12px;
+}
+
+.avatarCircle:first-child {
+  margin-left: 0;
+}
+
+.avatarPlus {
+  background: #C8A951;
+  color: #06152B;
+  font-size: 1.1rem;
+}
+
+.trustText {
+  display: flex;
+  flex-direction: column;
+}
+
+.trustMain {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.trustSub {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  margin-top: 4px;
+}
+
+/* ---- Right Side — Hero Image ---- */
+/* Single authoritative definition — NO duplicates */
+.heroRight {
+  position: absolute;
+  right: 20px;
+  top: 130px;
+  display: flex;
+  z-index: 20;
+}
+
+/* Increase width for larger screens */
+@media (min-width: 1400px) {
+  .imageCard {
+    width: 400px;
+  }
+}
+
+.imageCard {
+  position: relative;
+  width: 350px;
+  height: 438px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #062B63 0%, #041D45 100%);
+  border: 1px solid rgba(212, 175, 55, 0.20);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  overflow: visible;
+}
+
+.imageCard img {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* right side image tag */
+.imageCard {
+  position: relative;
+}
+
+.communityBadge {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 22px;
+
+  background: linear-gradient(135deg,
+      rgba(200, 169, 81, 0.18),
+      rgba(200, 169, 81, 0.08));
+
+  border: 1px solid rgba(200, 169, 81, 0.45);
+  border-radius: 50px;
+
+  color: #D4AF37;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .3px;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 25px rgba(200, 169, 81, .18);
+}
+
+.communityBadge svg {
+  font-size: 16px;
+}
+
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #06152B;
+  color: #D4AF37;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  border-radius: 40px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* ============================================
+   PRE-SCROLL HERO CONTENT ADJUSTMENTS
+   ============================================ */
+:global(.preScroll) .heroSection {
+  padding-top: 128px;
+  padding-bottom: 74px;
+}
+
+:global(.preScroll) .heroLeft {
+  padding-left: 40px;
+}
+
+:global(.preScroll) .sectionLabel {
+  /* margin-bottom: 48px; */
+}
+
+:global(.preScroll) .heroTitle {
+  /* margin-bottom: 48px; */
+}
+
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   Single clean set — no duplicates
+   ============================================ */
+
+@media (max-width: 1400px) {
+  .imageCard {
+    width: 380px;
+    height: 580px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .heroSection {
+    padding: 50px 50px;
+  }
+
+  .heroLeft {
+    flex: 0 0 65%;
+    max-width: 65%;
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+
+  .imageCard {
+    width: 320px;
+    height: 520px;
+  }
+}
+
+/* ---- TABLET: stack layout (768px–991px) ---- */
+@media (max-width: 991px) {
+  .heroSection {
+    padding: 50px 40px 40px;
+    min-height: auto;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .heroLeft {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Remove absolute positioning — join the normal flow */
+  .heroRight {
+    position: relative;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .imageCard {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    aspect-ratio: 350 / 580;
+  }
+
+  .heroImage {
+    height: auto;
+  }
+
+  .heroTitle {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .heroDescription {
+    text-align: center;
+    max-width: 560px;
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+
+  .ctaButtonGroup {
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .trustSection {
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  :global(.preScroll) .heroSection {
+    padding-top: 92px !important;
+    padding-bottom: 50px;
+  }
+}
+
+/* ---- MOBILE (≤767px) ---- */
+@media (max-width: 767px) {
+  .heroSection {
+    padding: 40px 20px 32px;
+    border-radius: 0 0 28px 28px;
+    margin-bottom: 38px;
+  }
+
+  .heroContent {
+    gap: 30px;
+  }
+
+  .sectionLabel {
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 16px !important;
+  }
+
+  .sectionLabel span {
+    font-size: 0.78rem !important;
+    letter-spacing: 3px !important;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    max-width: 100%;
+  }
+
+  .ctaButtonGroup {
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .trustSection {
+    gap: 10px;
+  }
+
+  .imageWrapper {
+    max-width: 290px;
+  }
+
+  .heroImage {
+    border-radius: 20px;
+  }
+
+  :global(.preScroll) .heroSection {
+    padding-top: 75px !important;
+    padding-bottom: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroSection {
+    padding: 32px 16px 28px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+    line-height: 1.25;
+  }
+
+  .heroDescription {
+    font-size: 0.97rem;
+  }
+
+  .ctaButtonGroup {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .trustSection {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .imageWrapper {
+    max-width: 260px;
+  }
+
+  :global(.preScroll) .heroSection {
+    padding-top: 70px !important;
+    padding-bottom: 24px;
+  }
+}
+
+@media (max-width: 375px) {
+  .heroSection {
+    padding: 30px 14px 24px;
+  }
+
+  .heroTitle {
+    font-size: 1.65rem;
+  }
+
+  .heroDescription {
+    font-size: 0.93rem;
+  }
+
+  .imageWrapper {
+    max-width: 230px;
+  }
+
+  :global(.preScroll) .heroSection {
+    padding-top: 66px !important;
+    padding-bottom: 20px;
+  }
+}

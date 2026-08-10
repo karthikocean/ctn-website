@@ -1,0 +1,48 @@
+.sectionLabelWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* align left for hero */
+}
+
+.sectionLabel.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 20px;
+  justify-content: center; /* center cards when fewer than full row */
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.sectionLabel::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
+  flex-shrink: 0;
+}
+
+.sectionLabel .line {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+}
+
+.sectionLabel span {
+  color: #C8A951;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}

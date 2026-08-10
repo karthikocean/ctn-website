@@ -1,0 +1,255 @@
+.download {
+  width: 100%;
+  padding: 80px 0;
+  background: #051635;
+}
+
+.banner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  min-height: 500px;
+  box-shadow: none;
+  padding: 0 40px;
+}
+
+/* ============================================
+   PREMIUM LABEL — DOT + LINE + TEXT
+   ============================================ */
+
+.sectionLabelWrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.line {
+  width: 60px;
+  height: 2px;
+  background: #D4AF37;
+  border-radius: 20px;
+  position: relative;
+}
+
+.line::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #D4AF37;
+  border-radius: 50%;
+}
+
+.sectionLabel span {
+  color: #D4AF37;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  z-index: 2;
+}
+
+.title {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 45px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.storeButtons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.storeCard {
+  background: white;
+  padding: 12px 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  /* Removed min-width: 200px — was causing overflow on small screens */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.storeCard:hover {
+  background: #f4a623;
+  transform: translateY(-5px);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  color: #051635;
+  display: flex;
+  align-items: center;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardText span {
+  font-size: 0.75rem;
+  color: rgba(9, 60, 114, 0.6);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cardText strong {
+  font-size: 1.2rem;
+  color: #051635;
+  font-weight: 800;
+}
+
+/* KEY FIX: was flex: 0 0 500px — hard 500px width at all sizes */
+.mockupContainer {
+  flex: 0 0 auto;
+  width: 420px;
+  max-width: 420px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.appMockup {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+}
+
+/* ---- TABLET ---- */
+@media (max-width: 1200px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 40px;
+    gap: 48px;
+    min-height: auto;
+  }
+
+  .sectionLabelWrapper {
+    padding: 0 40px;
+    justify-content: center;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px;
+  }
+
+  .storeButtons {
+    justify-content: center;
+  }
+
+  .mockupContainer {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 767px) {
+  .download {
+    padding: 48px 0;
+  }
+
+  .banner {
+    padding: 0 20px;
+    gap: 36px;
+  }
+
+  .sectionLabelWrapper {
+    padding: 0 20px;
+    margin-bottom: 28px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .mockupContainer {
+    max-width: 260px;
+  }
+
+  .storeButtons {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .download {
+    padding: 40px 0;
+  }
+
+  .banner {
+    padding: 0 16px;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .storeButtons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .storeCard {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mockupContainer {
+    max-width: 220px;
+  }
+}

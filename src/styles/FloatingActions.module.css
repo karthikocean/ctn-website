@@ -1,0 +1,286 @@
+.fabContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 20px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.fabContainer>* {
+  pointer-events: auto;
+}
+
+/* --- SCROLL TO TOP --- */
+.backToTop {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #062a52 0%, #0a3d75 100%);
+  backdrop-filter: blur(12px);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.iconGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(244, 166, 35, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.backToTop:hover {
+  box-shadow: 0 15px 35px rgba(10, 61, 117, 0.5);
+  border-color: rgba(244, 166, 35, 0.3);
+  transform: translateY(-4px);
+}
+
+/* --- CHATBOT WIDGET SECTION --- */
+.chatWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+/* Hover text "WE ARE HERE!" on the left */
+.hoverText {
+  position: absolute;
+  right: 150px;
+  color: #31a9c7;
+  font-family: 'Inter', 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatWrapper:hover .hoverText {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Telegram / Send Icon Button */
+.telegramBtn {
+  width: 46px;
+  height: 46px;
+  background: rgba(6, 42, 82, 0.9);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(6, 42, 82, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.telegramBtn:hover {
+  background: #f4a623;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(244, 166, 35, 0.35);
+}
+
+.telegramIcon {
+  transform: rotate(-15deg) translate(1px, -1px);
+  transition: transform 0.3s ease;
+}
+
+.telegramBtn:hover .telegramIcon {
+  transform: rotate(-10deg) scale(1.1) translate(1px, -1px);
+}
+
+/* Main Chatbot Button */
+.chatBtn {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #f4a623 0%, #e67e22 100%);
+  color: white;
+  border: 3px solid #ffffff;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(244, 166, 35, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.btnGlow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(244, 166, 35, 0.2) 0%, transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.chatIcon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.notification {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff3b30;
+  color: white;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .fabContainer {
+    bottom: 20px;
+    right: 20px;
+    gap: 15px;
+  }
+
+  .chatBtn {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+  }
+
+  .telegramBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .backToTop {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+  }
+
+  .hoverText {
+    right: 125px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* On extremely small screens, suppress the hover text to avoid overlap */
+  .hoverText {
+    display: none;
+  }
+}
+
+/* ── Glass Bubble Tooltip ── */
+.tooltipBubble {
+  position: absolute;
+  right: 85px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0a1628;
+  border: 1.5px solid rgba(200, 160, 60, 0.5);
+  border-radius: 14px 14px 2px 14px;
+  padding: 10px 16px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(200, 160, 60, 0.1),
+    0 0 20px rgba(200, 160, 60, 0.08);
+}
+
+/* Pulse dot */
+.tooltipPulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C8A03C;
+  flex-shrink: 0;
+  animation: tooltipPulseAnim 1.5s ease-in-out infinite;
+}
+
+@keyframes tooltipPulseAnim {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+}
+
+/* Title text */
+.tooltipTitle {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #C8A03C;
+  font-family: 'Inter', 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+/* Subtitle text */
+.tooltipSub {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Inter', 'Outfit', sans-serif;
+  margin-top: 2px;
+}
+
+/* Arrow tail pointing right toward button */
+.tooltipArrow {
+  position: absolute;
+  right: -7px;
+  bottom: 12px;
+  width: 13px;
+  height: 13px;
+  background: #0a1628;
+  border-right: 1.5px solid rgba(200, 160, 60, 0.5);
+  border-top: 1.5px solid rgba(200, 160, 60, 0.5);
+  transform: rotate(45deg);
+}
+
+/* Hide tooltip on very small screens */
+@media (max-width: 480px) {
+  .tooltipBubble {
+    display: none;
+  }
+}

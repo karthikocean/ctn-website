@@ -1,0 +1,276 @@
+.impactSection {
+  position: relative;
+  width: 100%;
+  padding: 70px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.86);
+  z-index: 1;
+}
+
+.gridPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 24px;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/* SECTION HEADER */
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.sectionLabelWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionLabel::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.5);
+  flex-shrink: 0;
+}
+
+.sectionLabel .line {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+}
+
+.sectionLabel span {
+  color: #C8A951;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #06152B; /* dark navy */
+  margin-bottom: 20px;
+  letter-spacing: -0.8px;
+}
+
+.description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(6,21,43,0.75); /* dark navy with opacity */
+}
+
+/* CONTENT GRID (STATISTICS + STICKY IMAGE) */
+.contentGrid {
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Statistics Side */
+.statsContainer {
+  flex: 1;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+/* Statistic Item */
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.statIcon {
+  color: #C8A951;
+  font-size: 42px;
+  width: 42px;
+  height: 42px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.statNumber {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 750;
+  color: #06152B; /* dark navy */
+  line-height: 1.1;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.statLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #5F6B7A; /* label color */
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 550;
+}
+
+/* Sticky Image Side */
+.stickyContainer {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+.premiumImageCard {
+  position: sticky;
+  top: 120px;
+  background: linear-gradient(135deg, #06152B, #0B2F6B);
+  border-radius: 32px;
+  padding: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+}
+
+/* Floating Glow Effect behind image */
+.glowEffect {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 169, 81, 0.25) 0%, rgba(200, 169, 81, 0) 70%);
+  filter: blur(30px);
+  z-index: 1;
+  pointer-events: none;
+  animation: floatGlow 6s ease-in-out infinite alternate;
+}
+
+.imageWrapper {
+  position: relative;
+  z-index: 2;
+  width: 110%; /* Makes image overlap edges slightly */
+  display: flex;
+  justify-content: center;
+}
+
+.stickyImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.premiumImageCard:hover .stickyImage {
+  transform: scale(1.08) translateY(-4px);
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(-10px, -10px); }
+  100% { transform: translate(10px, 10px); }
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1199px) {
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contentGrid {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .stickyContainer {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .premiumImageCard {
+    position: relative;
+    top: 0;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+  .imageWrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .impactSection {
+    padding: 70px 0;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1.05rem;
+  }
+}

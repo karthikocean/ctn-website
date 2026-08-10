@@ -1,0 +1,368 @@
+.directionSection {
+  background-color: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #06152B;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 70px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #06152B;
+  margin-bottom: 16px;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Roadmap Canvas & Connector Path */
+.roadmapCanvas {
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+  min-height: 600px;
+}
+
+.svgConnector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Notes Grid (Staggered Layout) */
+.notesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Staggered Vertical Offsets for Pinned Notes */
+.cardStep1 {
+  grid-column: 1;
+  margin-top: 0;
+}
+
+.cardStep2 {
+  grid-column: 2;
+  margin-top: 80px;
+}
+
+.cardStep3 {
+  grid-column: 1;
+  margin-top: 40px;
+}
+
+.cardStep4 {
+  grid-column: 2;
+  margin-top: 120px;
+}
+
+/* COMMON PINNED NOTE CARD CLASS — EXACT EQUAL SIZE FOR ALL 4 CARDS */
+.pinnedNoteCard {
+  width: 100%;
+  max-width: 440px;
+  height: 220px;
+  min-height: 220px;
+  max-height: 220px;
+  background: #ffffff;
+  border: 1px solid rgba(6, 21, 43, 0.09);
+  border-top: 3px solid #F0A500;
+  border-radius: 18px;
+  padding: 30px 28px 24px;
+  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.06), 0 4px 10px rgba(0, 0, 0, 0.02);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.pinnedNoteCard:hover {
+  transform: translateY(-6px);
+  border-color: #F0A500;
+  box-shadow: 0 22px 50px rgba(6, 21, 43, 0.12);
+}
+
+/* CSS Push Pin Assembly */
+.pinWrapper {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.pinHead {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF0BA 0%, #F0A500 50%, #B37B00 100%);
+  box-shadow: 0 4px 8px rgba(6, 21, 43, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+.pinStem {
+  width: 2px;
+  height: 14px;
+  background: linear-gradient(180deg, #C8A951 0%, #8A6818 100%);
+  margin-top: -3px;
+  z-index: 1;
+  box-shadow: 1px 0 2px rgba(6, 21, 43, 0.2);
+}
+
+/* Blue Number + Icon Badge (Navy #06152B, Gold Number #F0A500, White Icon) */
+.numberBlock {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  border: 1px solid rgba(240, 165, 0, 0.35);
+  padding: 6px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 16px rgba(6, 21, 43, 0.15);
+  height: 38px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.numberDigit {
+  font-size: 1.3rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+  line-height: 1;
+}
+
+.stepIcon {
+  font-size: 17px;
+  color: #ffffff;
+}
+
+/* Note Content Alignment */
+.noteContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.noteTitle {
+  font-size: 21px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+}
+
+.noteDesc {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Responsive Laptop (1025px - 1200px) */
+@media (max-width: 1200px) {
+  .directionSection {
+    padding: 85px 0;
+  }
+
+  .notesGrid {
+    column-gap: 40px;
+  }
+
+  .pinnedNoteCard {
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+    padding: 28px 24px 22px;
+  }
+
+  .cardStep2 { margin-top: 70px; }
+  .cardStep3 { margin-top: 30px; }
+  .cardStep4 { margin-top: 100px; }
+}
+
+/* Responsive Tablet (769px - 1024px): Compressed 2-Column Staggered Layout with EQUAL CARDS */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 50px;
+  }
+
+  .roadmapCanvas {
+    min-height: 520px;
+  }
+
+  .notesGrid {
+    column-gap: 24px;
+    row-gap: 30px;
+  }
+
+  .cardStep1 { margin-top: 0; }
+  .cardStep2 { margin-top: 40px; }
+  .cardStep3 { margin-top: 20px; }
+  .cardStep4 { margin-top: 60px; }
+
+  .pinnedNoteCard {
+    width: 100%;
+    max-width: 100%;
+    height: 215px;
+    min-height: 215px;
+    max-height: 215px;
+    padding: 24px 20px 20px;
+  }
+
+  .noteTitle {
+    font-size: 19px;
+  }
+
+  .noteDesc {
+    font-size: 0.88rem;
+  }
+}
+
+/* Responsive Mobile (<= 768px): Vertical Pinned Roadmap Flow */
+@media (max-width: 768px) {
+  .directionSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .svgConnector {
+    display: none;
+  }
+
+  .roadmapCanvas {
+    min-height: auto;
+  }
+
+  .notesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+  }
+
+  .notesGrid::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, #F0A500 0%, #C8A951 50%, #F0A500 100%);
+    z-index: 1;
+  }
+
+  .cardStep1,
+  .cardStep2,
+  .cardStep3,
+  .cardStep4 {
+    margin: 0 0 0 20px !important;
+    width: calc(100% - 20px) !important;
+  }
+
+  .pinnedNoteCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 190px !important;
+    max-height: none !important;
+    padding: 24px 20px 20px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .directionSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 25px;
+  }
+
+  .pinnedNoteCard {
+    padding: 20px 16px 18px;
+    min-height: 180px !important;
+  }
+
+  .noteTitle {
+    font-size: 18px;
+  }
+}

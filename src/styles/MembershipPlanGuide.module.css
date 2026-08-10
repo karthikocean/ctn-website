@@ -1,0 +1,310 @@
+.guideSection {
+  background-color: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #06152B;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #06152B;
+  margin-bottom: 16px;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Journey Layout */
+.journeyContainer {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.connectingLine {
+  position: absolute;
+  top: 50%;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  background: linear-gradient(90deg, #F0A500 0%, #C8A951 50%, #F0A500 100%);
+  z-index: 1;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.stagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.stageCard {
+  background: #F7F9FC;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.05);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendedCard {
+  border: 2px solid #F0A500;
+  box-shadow: 0 20px 45px rgba(240, 165, 0, 0.15);
+  background: #ffffff;
+}
+
+.stageCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(6, 21, 43, 0.12);
+  border-color: #F0A500;
+}
+
+.recommendedBadge {
+  position: absolute;
+  top: -14px;
+  right: 24px;
+  background: linear-gradient(135deg, #F0A500 0%, #C8A951 100%);
+  color: #06152B;
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(240, 165, 0, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stageNumber {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+}
+
+.stageIconWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stageIcon {
+  font-size: 24px;
+  color: #F0A500;
+}
+
+.stageName {
+  font-size: 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.bestForBlock {
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.bestForLabel {
+  font-size: 0.82rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #C8A951;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.bestForText {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+.focusBlock {
+  padding-top: 14px;
+  border-top: 1px solid rgba(6, 21, 43, 0.08);
+}
+
+.focusLabel {
+  font-size: 0.82rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.focusText {
+  font-size: 0.96rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #06152B;
+  margin: 0;
+}
+
+/* Responsive Laptop */
+@media (max-width: 1200px) {
+  .guideSection {
+    padding: 85px 0;
+  }
+
+  .stagesGrid {
+    gap: 24px;
+  }
+
+  .stageCard {
+    padding: 34px 24px;
+  }
+}
+
+/* Responsive Tablet: Keep Horizontal (3 Columns) */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .stagesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .stageCard {
+    padding: 28px 18px;
+  }
+
+  .stageName {
+    font-size: 19px;
+  }
+
+  .bestForText {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile (<= 767px): Vertical Progression */
+@media (max-width: 768px) {
+  .guideSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .stagesGrid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 32px;
+  }
+
+  .connectingLine {
+    top: 4%;
+    bottom: 4%;
+    left: 50%;
+    right: auto;
+    width: 3px;
+    height: 92%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #F0A500 0%, #C8A951 50%, #F0A500 100%);
+  }
+
+  .stageCard {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .guideSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .stageName {
+    font-size: 18px;
+  }
+
+  .bestForText {
+    font-size: 0.9rem;
+  }
+}

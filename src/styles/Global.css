@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap');
+
+:root {
+  --primary-dark-navy: #06152B;
+  --secondary-navy: #0B2345;
+  --primary-blue: #044aa7;
+  --mid-blue: #05438e;
+  --page-bg: #ECECF2;
+  --neutral-gray: #535658;
+  --accent-gold: #C8A951;
+  --white: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #535658;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  --gold-glow: 0 0 20px rgba(200, 169, 81, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  --gradient-navy: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ECECF2;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 30px 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ECECF2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark-navy);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
