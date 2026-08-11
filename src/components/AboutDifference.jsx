@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiShield, FiMessageSquare, FiAward, FiTrendingUp } from 'react-icons/fi';
 import styles from '../styles/AboutDifference.module.css';
+import faviconImg from '../assets/favicon.png';
 
 const AboutDifference = () => {
   return (
@@ -19,10 +20,13 @@ const AboutDifference = () => {
 
         {/* DESKTOP & TABLET: Central Network Ecosystem Layout */}
         <div className={styles.ecosystemLayout}>
-          {/* Central Glowing Core Node */}
+          {/* Central Glowing Core Node with Favicon Logo */}
           <div className={styles.networkCore}>
-            <div className={styles.coreBadge}>TN</div>
-            <div className={styles.coreSubtitle}>TRUSTED NETWORK</div>
+            <img
+              src={faviconImg}
+              alt="Trusted Network"
+              className={styles.coreLogo}
+            />
           </div>
 
           {/* Top-Left: 01 Trusted Connections */}
@@ -132,4 +136,3 @@ const AboutDifference = () => {
 };
 
 export default AboutDifference;
-

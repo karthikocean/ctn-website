@@ -1,0 +1,258 @@
+.faqSection {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 55px;
+}
+
+/* Badge Style matching MembershipFAQ + Franchise System */
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.badgeLine {
+  width: 48px;
+  height: 1.5px;
+  background: rgba(200, 169, 81, 0.7);
+  flex-shrink: 0;
+}
+
+.sectionBadge span {
+  color: #C8A951;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+/* Centered Accordion Container */
+.accordionContainer {
+  max-width: 1050px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.accordionItem {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.itemOpen {
+  border-color: #F0A500;
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.questionButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.questionText {
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.45;
+}
+
+.toggleIconWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(240, 165, 0, 0.15);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.itemOpen .toggleIconWrapper {
+  background: #F0A500;
+  border-color: #F0A500;
+}
+
+.toggleIcon {
+  font-size: 18px;
+  color: #F0A500;
+}
+
+.itemOpen .toggleIcon {
+  color: #06152B;
+}
+
+.answerWrapper {
+  padding: 0 30px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.answerText {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 18px 0 0;
+}
+
+/* ==================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================== */
+
+@media (max-width: 1200px) {
+  .faqSection {
+    padding: 85px 0;
+  }
+
+  .accordionContainer {
+    max-width: 950px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .headerWrapper {
+    margin-bottom: 45px;
+  }
+
+  .questionButton {
+    padding: 20px 24px;
+  }
+
+  .answerWrapper {
+    padding: 0 24px 20px;
+  }
+
+  .questionText {
+    font-size: 1.02rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 60px 16px;
+  }
+
+  .headerWrapper {
+    text-align: left;
+    margin-bottom: 36px;
+  }
+
+  .sectionBadge {
+    justify-content: flex-start;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .sectionDescription {
+    font-size: 0.98rem;
+    text-align: left;
+  }
+
+  .questionButton {
+    padding: 18px 18px;
+  }
+
+  .questionText {
+    font-size: 0.98rem;
+  }
+
+  .answerWrapper {
+    padding: 0 18px 18px;
+  }
+
+  .answerText {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .faqSection {
+    padding: 45px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .questionButton {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .toggleIconWrapper {
+    width: 30px;
+    height: 30px;
+  }
+
+  .toggleIcon {
+    font-size: 15px;
+  }
+}

@@ -9,6 +9,7 @@ const CommonHero = ({ title }) => {
   const getRouteTitle = () => {
     if (title) return title;
     const path = location.pathname.toLowerCase();
+    if (path.includes('franchise')) return 'Franchise';
     if (path.includes('membership') || path.includes('pricing')) return 'Membership Plans';
     if (path.includes('about')) return 'About Us';
     if (path.includes('blog')) return 'Blogs';
@@ -37,6 +38,3 @@ const CommonHero = ({ title }) => {
 };
 
 export default CommonHero;
-
-
-

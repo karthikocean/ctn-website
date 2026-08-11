@@ -8,6 +8,7 @@ import Blogs from './pages/Blogs';
 import BlogDetails from './pages/BlogDetails';
 import Events from './pages/Events';
 import EventDetails from './pages/EventDetails';
+import Franchise from './pages/Franchise';
 import StubPage from './pages/StubPage';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -39,6 +40,8 @@ function App() {
         <Route path="/events" element={<Events />} />
 
         <Route path="/events/:id" element={<EventDetails />} />
+
+        <Route path="/franchise" element={<Franchise />} />
 
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 

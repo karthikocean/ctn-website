@@ -66,7 +66,7 @@
   min-height: 480px;
 }
 
-/* Central Glowing Core Node */
+/* Central Glowing Core Node with White Background */
 .networkCore {
   position: absolute;
   top: 50%;
@@ -75,77 +75,65 @@
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0B2345 0%, #06152B 100%);
+  background: #ffffff;
   border: 2px solid #F0A500;
-  box-shadow: 0 0 45px rgba(240, 165, 0, 0.35), inset 0 0 20px rgba(240, 165, 0, 0.2);
+  box-shadow: 0 0 45px rgba(240, 165, 0, 0.35), inset 0 0 20px rgba(240, 165, 0, 0.15);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 10;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-.coreBadge {
-  font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  color: #F0A500;
-  line-height: 1;
-  letter-spacing: 2px;
+.coreLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-.coreSubtitle {
-  font-size: 0.65rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  color: #C8A951;
-  letter-spacing: 1.5px;
-  margin-top: 4px;
-}
-
-/* Feature Glass Cards */
+/* Capability Cards */
 .featureCard {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #C8A951;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
-  padding: 35px 30px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .featureCard:hover {
-  transform: translateY(-8px);
-  border-left-color: #F0A500;
-  border-color: rgba(240, 165, 0, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 0 20px rgba(240, 165, 0, 0.15);
+  transform: translateY(-6px);
+  border-color: #F0A500;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(240, 165, 0, 0.2);
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .featureNumber {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   color: #F0A500;
 }
 
 .featureIconWrapper {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(240, 165, 0, 0.12);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(240, 165, 0, 0.15);
+  border: 1px solid rgba(240, 165, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,104 +145,75 @@
 }
 
 .featureTitle {
-  font-size: 18px;
+  font-size: 1.15rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
 }
 
 .featureText {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
   margin: 0;
 }
 
-/* Mobile Timeline Container (Hidden on Desktop) */
+/* Mobile Timeline (Hidden on Desktop) */
 .mobileTimeline {
   display: none;
 }
 
-/* Responsive Laptop */
-@media (max-width: 1200px) {
+/* ==================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================== */
+
+@media (max-width: 1024px) {
   .differenceSection {
     padding: 80px 0;
   }
 
   .ecosystemLayout {
-    gap: 30px;
-  }
-
-  .featureCard {
-    padding: 30px 24px;
-  }
-}
-
-/* Responsive Tablet */
-@media (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 32px;
+    gap: 28px;
+    min-height: 420px;
   }
 
   .networkCore {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
+    padding: 20px;
   }
 
-  .coreBadge {
-    font-size: 1.5rem;
-  }
-
-  .coreSubtitle {
-    font-size: 0.55rem;
-  }
-}
-
-/* Mobile (<= 767px): Switch from 4-card ecosystem layout to vertical connected timeline */
-@media (max-width: 767px) {
-  .differenceSection {
-    padding: 60px 16px;
-  }
-
-  .headerWrapper {
-    text-align: left;
-    margin-bottom: 36px;
-  }
-
-  .sectionBadge {
-    justify-content: flex-start;
+  .featureCard {
+    padding: 28px 24px;
   }
 
   .sectionTitle {
-    font-size: 28px;
-    text-align: left;
+    font-size: 30px;
   }
+}
 
+@media (max-width: 768px) {
   .ecosystemLayout {
     display: none;
   }
 
-
   .mobileTimeline {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
     position: relative;
-    max-width: 500px;
-    margin: 0 auto;
     padding-left: 20px;
   }
 
   .mobileLine {
     position: absolute;
-    top: 15px;
-    bottom: 15px;
+    top: 20px;
+    bottom: 20px;
     left: 36px;
     width: 2px;
-    background: linear-gradient(180deg, #F0A500 0%, #C8A951 100%);
-    z-index: 1;
+    background: linear-gradient(180deg, #F0A500 0%, rgba(240, 165, 0, 0.2) 100%);
   }
 
   .mobileItem {
@@ -272,9 +231,8 @@
     background: #06152B;
     border: 2px solid #F0A500;
     color: #F0A500;
-    font-size: 0.82rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
+    font-size: 0.85rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,44 +242,24 @@
 
   .mobileContent {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 3px solid #F0A500;
-    border-radius: 16px;
-    padding: 22px 20px;
-    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 20px;
+    flex: 1;
   }
 
   .mobileTitle {
-    font-size: 16px;
+    font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 8px;
+    margin: 0 0 8px 0;
   }
 
   .mobileText {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
   }
 }
-
-@media (max-width: 480px) {
-  .differenceSection {
-    padding: 45px 12px;
-  }
-
-  .sectionTitle {
-    font-size: 26px;
-  }
-
-  .mobileTimeline {
-    padding-left: 10px;
-  }
-
-  .mobileLine {
-    left: 26px;
-  }
-}
-

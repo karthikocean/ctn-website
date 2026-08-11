@@ -1,87 +1,58 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { blogs } from '../data/blogsData';
-import BlogCard from '../components/BlogCard';
-import ShowMoreButton from '../components/ShowMoreButton';
+import CommonHero from '../components/CommonHero';
+import BlogFeatured from '../components/BlogFeatured';
+import BlogPreviousPosts from '../components/BlogPreviousPosts';
+import BlogLoadMore from '../components/BlogLoadMore';
 import styles from '../styles/Blog.module.css';
-import heroImg from '../assets/hero_networking.png';
-import { FiChevronRight } from 'react-icons/fi';
 
-const CARDS_PER_ROW = 4;
-// Mobile‑only initial count (show 3 cards on ≤480px)
-const getInitialCount = () => (typeof window !== 'undefined' && window.innerWidth <= 480 ? 3 : CARDS_PER_ROW * 2);
-const INITIAL_COUNT = getInitialCount(); // 3 on mobile, 8 on larger screens
-const LOAD_MORE = CARDS_PER_ROW; // load a full row each click
-// Duplicate LOAD_MORE removed – original defined above
-
+const INITIAL_VISIBLE_ARCHIVE = 6;
+const LOAD_MORE_STEP = 3;
 
 const Blogs = () => {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
-  const handleShowMore = () => {
-    setVisibleCount((prev) =>
-      Math.min(prev + LOAD_MORE, blogs.length)
-    );
+  // Sort / select blogs: 
+  // 1st blog = Main Large Featured (LEFT)
+  // 2nd & 3rd blogs = Smaller Stacked Featured (RIGHT)
+  // 4th blog onwards = Blog Archive Grid
+  const featuredBlog = blogs[0];
+  const recentBlogs = blogs.slice(1, 3);
+  const archiveBlogs = blogs.slice(3);
+
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_ARCHIVE);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + LOAD_MORE_STEP, archiveBlogs.length));
   };
 
-  const visibleBlogs = blogs.slice(0, visibleCount);
-
-  const remainingBlogs = blogs.length - visibleCount;
-  const rowsComplete = visibleCount % CARDS_PER_ROW === 0;
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 480;
-  const shouldShowMore = (remainingBlogs > 0) && (isMobile || rowsComplete);
-
-  console.log("remainingBlogs:", remainingBlogs);
-  console.log("rowsComplete:", rowsComplete);
-  console.log("shouldShowMore:", shouldShowMore);
+  const visibleArchiveBlogs = archiveBlogs.slice(0, visibleCount);
+  const hasMore = visibleCount < archiveBlogs.length;
 
   return (
-    <div className={styles.page}>
-      {/* Hero Banner */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span>Legal</span>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span className={styles.breadcrumbActive}>Blogs</span>
-          </div>
-          <h1 className={styles.heroTitle}>Blogs</h1>
-          <p className={styles.heroSubtitle}>
-            Explore business insights, networking strategies, industry trends, success stories, and professional growth articles from the Trusted Network community.
-          </p>
-        </div>
-      </section>
+    <main className={styles.pageContainer}>
+      {/* Existing CommonHero Component */}
+      <CommonHero title="Blogs & Insights" />
 
-      {/* Blog Cards */}
-      <section
-        className={styles.gridSection}
-        id="blogs-list"
-      >
-        <div className={styles.grid}>
-          {visibleBlogs.map((b) => (
-            <BlogCard key={b.id} blog={b} />
-          ))}
-        </div>
+      {/* Asymmetrical Editorial Featured Section (Large Left + 2 Stacked Right) */}
+      {featuredBlog && (
+        <BlogFeatured featuredBlog={featuredBlog} recentBlogs={recentBlogs} />
+      )}
 
-        {shouldShowMore && (
-          <div
-            className={styles.showMoreWrapper}
-            style={{
-              marginTop: '40px',
-              marginBottom: '40px',
-              textAlign: 'center',
-            }}
-          >
-            <ShowMoreButton
-              onClick={handleShowMore}
-            />
-          </div>
-        )}
-      </section>
-    </div>
+      {/* Blog Archive Section */}
+      {archiveBlogs.length > 0 && (
+        <section className={styles.archiveSection}>
+          <BlogPreviousPosts blogs={visibleArchiveBlogs} />
+          {hasMore && (
+            <div className={styles.loadMoreContainer}>
+              <BlogLoadMore onClick={handleLoadMore} hasMore={hasMore} />
+            </div>
+          )}
+        </section>
+      )}
+    </main>
   );
 };
 
