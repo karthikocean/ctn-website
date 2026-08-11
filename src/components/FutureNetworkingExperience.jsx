@@ -1,38 +1,39 @@
 import React from 'react';
-import { FiSliders, FiUsers, FiCompass, FiAward } from 'react-icons/fi';
+import { FiSliders, FiUsers, FiMessageCircle, FiCompass } from 'react-icons/fi';
 import styles from '../styles/FutureNetworkingExperience.module.css';
 
 const FutureNetworkingExperience = () => {
-  const features = [
+  const capabilities = [
     {
-      id: 'feed',
-      title: 'Personalized Activity Stream',
-      desc: 'Custom feed tailored to your industry, business interests, and engagement goals.',
+      id: 'personalized',
+      title: 'Personalized Networking',
+      desc: 'Discover business connections and opportunities that are relevant to your business.',
       icon: FiSliders,
     },
     {
-      id: 'recommendations',
-      title: 'Contextual Member Matching',
-      desc: 'Algorithmic suggestions highlighting members looking for your specific expertise.',
+      id: 'connections',
+      title: 'Relevant Business Connections',
+      desc: 'Find the right business people based on category, location, expertise and requirements.',
       icon: FiUsers,
     },
     {
-      id: 'discovery',
-      title: 'Curated Opportunity Hub',
-      desc: 'Discover business leads, requirements, and collaborative projects in real time.',
-      icon: FiCompass,
+      id: 'interactions',
+      title: 'Meaningful Interactions',
+      desc: 'Build stronger relationships through relevant conversations, referrals and business activities.',
+      icon: FiMessageCircle,
     },
     {
-      id: 'reputation',
-      title: 'Verified Trust Scoring',
-      desc: 'Transparent trust signals and recommendation scores elevating your credibility.',
-      icon: FiAward,
+      id: 'opportunities',
+      title: 'Smarter Opportunities',
+      desc: 'Discover new business opportunities based on your network, interests and business needs.',
+      icon: FiCompass,
     },
   ];
 
   return (
     <section className={styles.experienceSection}>
       <div className="container">
+        {/* SECTION HEADER */}
         <div className={styles.headerWrapper}>
           <div className={styles.sectionBadge}>
             <div className={styles.badgeLine}></div>
@@ -40,34 +41,38 @@ const FutureNetworkingExperience = () => {
           </div>
 
           <h2 className={styles.sectionTitle}>
-            A More Personalized Networking Experience
+            A Smarter Way to Build Business Connections
           </h2>
 
           <p className={styles.sectionDescription}>
-            Designed to deliver relevant interactions, targeted recommendations, and high-value networking.
+            Trusted Network is evolving the way businesses connect. Discover relevant business owners, meaningful connections and new opportunities based on your business interests, needs and network.
           </p>
         </div>
 
-        {/* Dashboard Concept Grid */}
-        <div className={styles.dashboardContainer}>
-          <div className={styles.dashboardGrid}>
-            {features.map((item) => {
-              const IconComp = item.icon;
-              return (
-                <div key={item.id} className={styles.panelCard}>
-                  <div className={styles.panelHeader}>
-                    <div className={styles.iconWrapper}>
-                      <IconComp className={styles.panelIcon} />
-                    </div>
-                    <span className={styles.statusBadge}>FUTURE CONCEPT</span>
+        {/* 2x2 FEATURE CAPABILITY CARDS GRID */}
+        <div className={styles.cardsGrid}>
+          {capabilities.map((item) => {
+            const IconComp = item.icon;
+            return (
+              <div key={item.id} className={styles.capabilityCard}>
+                {/* Icon Wrapper on Left */}
+                <div className={styles.cardHeader}>
+                  <div className={styles.iconWrapper}>
+                    <IconComp className={styles.cardIcon} />
                   </div>
-
-                  <h3 className={styles.panelTitle}>{item.title}</h3>
-                  <p className={styles.panelDesc}>{item.desc}</p>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Card Content: Title & Description */}
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                  <p className={styles.cardDesc}>{item.desc}</p>
+                </div>
+
+                {/* Gold Decorative Accent Line */}
+                <div className={styles.goldBarAccent}></div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

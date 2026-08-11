@@ -1,6 +1,6 @@
 .directionSection {
   background-color: #ffffff;
-  padding: 100px 0;
+  padding: 35px 0;
   position: relative;
   overflow: hidden;
   color: #06152B;
@@ -227,7 +227,7 @@
 /* Responsive Laptop (1025px - 1200px) */
 @media (max-width: 1200px) {
   .directionSection {
-    padding: 85px 0;
+    padding: 35px 0;
   }
 
   .notesGrid {
@@ -246,14 +246,18 @@
   .cardStep4 { margin-top: 100px; }
 }
 
-/* Responsive Tablet (769px - 1024px): Compressed 2-Column Staggered Layout with EQUAL CARDS */
+/* Responsive Tablet (769px - 1024px): Compressed 2-Column Staggered Layout with Connecting Lines */
 @media (min-width: 769px) and (max-width: 1024px) {
+  .directionSection {
+    padding: 35px 0;
+  }
+
   .sectionTitle {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .headerWrapper {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
   }
 
   .roadmapCanvas {
@@ -288,18 +292,29 @@
   }
 }
 
-/* Responsive Mobile (<= 768px): Vertical Pinned Roadmap Flow */
+/* Responsive Mobile (<= 768px): Clean Single-Column Stack (Left Aligned) */
 @media (max-width: 768px) {
   .directionSection {
-    padding: 60px 16px;
+    padding: 35px 16px;
   }
 
   .headerWrapper {
-    margin-bottom: 40px;
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .sectionBadge {
+    justify-content: flex-start;
   }
 
   .sectionTitle {
-    font-size: 28px;
+    font-size: 26px;
+    text-align: left;
+  }
+
+  .sectionDescription {
+    text-align: left;
   }
 
   .svgConnector {
@@ -313,36 +328,30 @@
   .notesGrid {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     position: relative;
   }
 
   .notesGrid::before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    bottom: 20px;
-    left: 24px;
-    width: 2px;
-    background: linear-gradient(180deg, #F0A500 0%, #C8A951 50%, #F0A500 100%);
-    z-index: 1;
+    display: none;
   }
 
   .cardStep1,
   .cardStep2,
   .cardStep3,
   .cardStep4 {
-    margin: 0 0 0 20px !important;
-    width: calc(100% - 20px) !important;
+    margin: 0 !important;
+    width: 100% !important;
+    grid-column: auto;
   }
 
   .pinnedNoteCard {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    min-height: 190px !important;
+    min-height: 180px !important;
     max-height: none !important;
-    padding: 24px 20px 20px;
+    padding: 22px 18px;
     box-sizing: border-box;
     z-index: 2;
   }
@@ -350,19 +359,23 @@
 
 @media (max-width: 480px) {
   .directionSection {
-    padding: 45px 12px;
+    padding: 30px 12px;
   }
 
   .sectionTitle {
-    font-size: 25px;
+    font-size: 23px;
   }
 
   .pinnedNoteCard {
-    padding: 20px 16px 18px;
-    min-height: 180px !important;
+    padding: 18px 16px;
+    min-height: 170px !important;
   }
 
   .noteTitle {
-    font-size: 18px;
+    font-size: 17px;
+  }
+
+  .noteDesc {
+    font-size: 0.86rem;
   }
 }

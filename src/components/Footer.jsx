@@ -46,7 +46,7 @@ const Footer = () => {
             <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.links}>
               <li><a href="#home"><FiArrowRight /> Contact</a></li>
-              <li><a href="#about"><FiArrowRight /> Partner With Us</a></li>
+              <li><Link to="/franchise"><FiArrowRight /> Franchise</Link></li>
               <li><Link to="/events"><FiArrowRight /> Events</Link></li>
               <li><a href="/blogs"><FiArrowRight /> Blogs</a></li>
             </ul>

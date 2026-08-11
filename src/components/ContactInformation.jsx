@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiPhone, FiMail, FiClock } from 'react-icons/fi';
+import { FiPhone, FiMail, FiMapPin, FiClock } from 'react-icons/fi';
 import styles from '../styles/ContactInformation.module.css';
 
 const ContactInformation = () => {
@@ -17,6 +17,14 @@ const ContactInformation = () => {
       label: 'EMAIL',
       value: 'admin@trustednetwork.in',
       link: 'mailto:admin@trustednetwork.in',
+    },
+    {
+      id: 'location',
+      icon: FiMapPin,
+      label: 'LOCATION',
+      value: 'Trusted Network',
+      subValue: 'Coimbatore, Tamil Nadu, India',
+      link: null,
     },
     {
       id: 'hours',

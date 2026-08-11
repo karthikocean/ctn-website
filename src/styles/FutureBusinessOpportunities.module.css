@@ -1,6 +1,6 @@
 .opportunitiesSection {
   background-color: #ffffff;
-  padding: 100px 0;
+  padding: 35px 0;
   position: relative;
   overflow: hidden;
   color: #06152B;
@@ -9,14 +9,14 @@
 .headerWrapper {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 60px;
+  margin: 0 auto 44px;
 }
 
 .sectionBadge {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .sectionBadge::before {
@@ -30,7 +30,7 @@
 }
 
 .badgeLine {
-  width: 48px;
+  width: 44px;
   height: 1.5px;
   background: rgba(200, 169, 81, 0.7);
   flex-shrink: 0;
@@ -38,7 +38,7 @@
 
 .sectionBadge span {
   color: #C8A951;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -47,60 +47,112 @@
 }
 
 .sectionTitle {
-  font-size: 36px;
+  font-size: 34px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
   color: #06152B;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .sectionDescription {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   line-height: 1.65;
   color: #4b5563;
   margin: 0;
 }
 
-/* Connected Opportunity Map */
-.mapContainer {
+/* Interactive 2-Column Container */
+.interactiveContainer {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
   max-width: 1140px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
-.mapGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.nodeCard {
+/* Left Sidebar - Vertical Tabs */
+.stepsSidebar {
   background: #F7F9FC;
-  border: 1px solid rgba(6, 21, 43, 0.08);
+  border: 1px solid rgba(6, 21, 43, 0.09);
   border-radius: 20px;
-  padding: 36px 26px;
-  box-shadow: 0 12px 30px rgba(6, 21, 43, 0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarHeader {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(6, 21, 43, 0.07);
+}
+
+.sidebarTag {
+  font-size: 0.68rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #C8A951;
+}
+
+.tabsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   position: relative;
+  flex: 1;
 }
 
-.nodeCard:hover {
-  transform: translateY(-6px);
-  border-color: #F0A500;
-  box-shadow: 0 20px 45px rgba(6, 21, 43, 0.1);
+.timelineLine {
+  display: none;
 }
 
-.cardHeader {
+.tabButton {
+  background: #ffffff;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  gap: 16px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
-.iconWrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+.tabButton:hover {
+  border-color: rgba(240, 165, 0, 0.6);
+  transform: translateX(3px);
+}
+
+.activeTab {
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  border-color: #F0A500;
+  box-shadow: 0 8px 20px rgba(6, 21, 43, 0.2);
+}
+
+.tabLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.tabNum {
+  font-size: 0.92rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #F0A500;
+}
+
+.tabIconWrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: rgba(240, 165, 0, 0.12);
   border: 1px solid rgba(240, 165, 0, 0.3);
   display: flex;
@@ -108,93 +160,442 @@
   justify-content: center;
 }
 
-.nodeIcon {
-  font-size: 22px;
+.tabIcon {
+  font-size: 16px;
   color: #F0A500;
 }
 
-.goldConnectorDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #F0A500;
-  box-shadow: 0 0 10px rgba(240, 165, 0, 0.5);
+.tabRight {
+  flex: 1;
 }
 
-.nodeTitle {
-  font-size: 19px;
+.tabLabel {
+  font-size: 0.78rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   color: #06152B;
-  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
-.nodeDesc {
-  font-size: 0.94rem;
-  line-height: 1.6;
+.activeTab .tabLabel {
+  color: #ffffff;
+}
+
+.activeGlowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #F0A500;
+  box-shadow: 0 0 10px #F0A500;
+  flex-shrink: 0;
+}
+
+/* Right Side Content Panel */
+.contentPanel {
+  background: #ffffff;
+  border: 1px solid rgba(6, 21, 43, 0.1);
+  border-radius: 20px;
+  padding: 32px 36px;
+  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panelMetaBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(6, 21, 43, 0.08);
+}
+
+.howLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metaDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #F0A500;
+}
+
+.howLabel {
+  font-size: 0.74rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #06152B;
+  letter-spacing: 1px;
+}
+
+.stepBadge {
+  font-size: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #C8A951;
+  background: rgba(6, 21, 43, 0.05);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.panelBody {
+  margin-bottom: 28px;
+}
+
+.heroIconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.heroIcon {
+  font-size: 26px;
+  color: #F0A500;
+}
+
+.panelTitle {
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin-bottom: 14px;
+}
+
+.panelDesc {
+  font-size: 0.98rem;
+  line-height: 1.65;
   color: #4b5563;
-  margin: 0;
+  margin: 0 0 16px 0;
 }
 
-/* Responsive Laptop */
+.successBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1px solid rgba(240, 165, 0, 0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #06152B;
+  letter-spacing: 1px;
+}
+
+.successIcon {
+  color: #F0A500;
+  font-size: 16px;
+}
+
+/* Bottom Progression Ribbon */
+.flowFooter {
+  border-top: 1px solid rgba(6, 21, 43, 0.08);
+  padding-top: 18px;
+}
+
+.flowPillsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.flowPill {
+  background: #F7F9FC;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  color: #4b5563;
+  font-size: 0.74rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.activePill {
+  background: #06152B;
+  color: #F0A500;
+  border-color: #F0A500;
+  font-weight: 700;
+}
+
+.flowArrow {
+  color: #F0A500;
+  font-size: 14px;
+}
+
+/* ==================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================== */
+
 @media (max-width: 1200px) {
   .opportunitiesSection {
-    padding: 85px 0;
+    padding: 35px 0;
   }
 
-  .mapGrid {
-    gap: 18px;
-  }
-
-  .nodeCard {
-    padding: 28px 20px;
-  }
-}
-
-/* Responsive Tablet: KEEP 2x2 Grid */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 32px;
-  }
-
-  .mapGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .interactiveContainer {
+    grid-template-columns: 300px 1fr;
     gap: 20px;
   }
 
-  .nodeCard {
-    padding: 28px 22px;
+  .contentPanel {
+    padding: 26px 28px;
   }
 }
 
-/* Responsive Mobile (<= 768px): Single Column Flow */
-@media (max-width: 768px) {
+/* Tablet (769px - 1024px) - KEEP 2x2 TAB GRID + CONTENT PANEL BELOW */
+@media (min-width: 769px) and (max-width: 1024px) {
   .opportunitiesSection {
-    padding: 60px 16px;
-  }
-
-  .headerWrapper {
-    margin-bottom: 40px;
+    padding: 35px 0;
   }
 
   .sectionTitle {
     font-size: 28px;
   }
 
-  .mapGrid {
+  .interactiveContainer {
     grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 480px;
-    margin: 0 auto;
+  }
+
+  .stepsSidebar {
+    padding: 14px;
+  }
+
+  .sidebarHeader {
+    display: none;
+  }
+
+  .tabsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .tabButton {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .tabLeft {
+    gap: 8px;
+  }
+
+  .tabNum {
+    font-size: 0.85rem;
+  }
+
+  .tabIconWrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .tabIcon {
+    font-size: 15px;
+  }
+
+  .tabLabel {
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .contentPanel {
+    padding: 24px 28px;
+  }
+
+  .panelTitle {
+    font-size: 20px;
+  }
+
+  .panelDesc {
+    font-size: 0.9rem;
+  }
+
+  .flowPill {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+}
+
+/* Mobile (<= 768px): Left Aligned Header + Vertical 1-by-1 Tabs Stack + Content Panel */
+@media (max-width: 768px) {
+  .opportunitiesSection {
+    padding: 35px 16px;
+  }
+
+  .headerWrapper {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 24px;
+  }
+
+  .sectionBadge {
+    justify-content: flex-start;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .sectionDescription {
+    text-align: left;
+  }
+
+  .interactiveContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stepsSidebar {
+    padding: 14px;
+  }
+
+  .sidebarHeader {
+    display: block;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .tabsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .tabButton {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .tabButton:hover {
+    transform: none;
+  }
+
+  .tabLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .tabNum {
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: #F0A500;
+  }
+
+  .tabIconWrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .tabIcon {
+    font-size: 15px;
+  }
+
+  .tabLabel {
+    font-size: 0.76rem;
+    line-height: 1.3;
+    font-weight: 700;
+    word-break: normal;
+  }
+
+  .activeGlowDot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F0A500;
+    box-shadow: 0 0 10px #F0A500;
+    flex-shrink: 0;
+  }
+
+  .contentPanel {
+    padding: 22px 18px;
+  }
+
+  .panelMetaBar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .opportunitiesSection {
-    padding: 45px 12px;
+    padding: 30px 12px;
   }
 
   .sectionTitle {
-    font-size: 26px;
+    font-size: 22px;
+  }
+
+  .tabButton {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .tabIconWrapper {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .tabIcon {
+    font-size: 14px;
+  }
+
+  .tabNum {
+    font-size: 0.82rem;
+  }
+
+  .tabLabel {
+    font-size: 0.72rem;
+  }
+
+  .panelTitle {
+    font-size: 18px;
+  }
+
+  .panelDesc {
+    font-size: 0.88rem;
+  }
+
+  .flowPillsRow {
+    gap: 4px;
+  }
+
+  .flowPill {
+    font-size: 0.64rem;
+    padding: 3px 6px;
   }
 }

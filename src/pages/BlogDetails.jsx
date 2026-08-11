@@ -1,47 +1,64 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { FiArrowLeft, FiAlertCircle } from 'react-icons/fi';
 import { blogs } from '../data/blogsData';
+import BlogDetailsHeader from '../components/BlogDetailsHeader';
+import BlogDetailsContent from '../components/BlogDetailsContent';
+import RelatedBlogs from '../components/RelatedBlogs';
 import styles from '../styles/BlogDetails.module.css';
-import BlogCard from '../components/BlogCard';
 
 const BlogDetails = () => {
-  const { id } = useParams();
-  const blog = blogs.find((b) => b.id === id);
+  const { id, slug } = useParams();
+  const targetKey = slug || id;
+
+  // Find matching blog by slug or id
+  const blog = blogs.find((b) => b.slug === targetKey || b.id === targetKey);
+
+  // Scroll to top whenever URL route changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [targetKey]);
 
   if (!blog) {
     return (
-      <div className={styles.notFound}>
-        <h2>Blog Not Found</h2>
-        <Link to="/blogs" className={styles.backLink}>← Back to Blogs</Link>
+      <div className={styles.notFoundContainer}>
+        <div className="container">
+          <div className={styles.notFoundCard}>
+            <FiAlertCircle className={styles.notFoundIcon} />
+            <h1 className={styles.notFoundTitle}>Blog Article Not Found</h1>
+            <p className={styles.notFoundDesc}>
+              The business article you are looking for might have been moved, renamed, or is currently unavailable.
+            </p>
+            <Link to="/blogs" className={styles.backBtn}>
+              <FiArrowLeft />
+              <span>Back to All Blogs</span>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
 
+  // Get related blogs by specified relatedIds or matching category
+  const relatedBlogs = blogs.filter((b) => {
+    if (b.id === blog.id || b.slug === blog.slug) return false;
+    if (blog.relatedIds && blog.relatedIds.includes(b.id)) return true;
+    return b.category === blog.category;
+  });
+
   return (
-    <div className={styles.page}>
-      {/* Hero Banner – image only, no overlay text */}
-      <section className={styles.hero} style={{ backgroundImage: `url(${blog.image})` }}>
-        <div className={styles.overlay} />
-      </section>
+    <div className={styles.detailsPage}>
+      {/* Blog Details Header: Single Back Button, Breadcrumbs, Title, Meta & Hero Image */}
+      <BlogDetailsHeader blog={blog} />
 
-      {/* Content Section */}
-      <section className={styles.content}>
-        <div className={styles.container}>
-          <h2 className={styles.articleTitle}>{blog.title}</h2>
-          <div className={styles.articleBody} dangerouslySetInnerHTML={{ __html: blog.content.replace(/\n/g, '<br/>') }} />
-        </div>
-      </section>
+      {/* Article Content: Structured Headings, Quotes, Lists, Paragraphs */}
+      <BlogDetailsContent content={blog.content} />
 
-      {/* Related Blogs */}
-      <section className={styles.related}>
-        <h3 className={styles.relatedTitle}>Related Blogs</h3>
-        <div className={styles.relatedGrid}>
-          {blog.relatedIds.map((relId) => {
-            const rel = blogs.find((b) => b.id === relId);
-            return rel ? <BlogCard key={rel.id} blog={rel} /> : null;
-          })}
-        </div>
-      </section>
+      {/* Additional Article Visuals disabled per prompt requirement */}
+      {/* <BlogDetailsImages images={blog.additionalImages} title={blog.title} /> */}
+
+      {/* Related Blogs Carousel / Grid directly following Conclusion */}
+      <RelatedBlogs currentBlogId={blog.id} relatedBlogs={relatedBlogs} />
     </div>
   );
 };

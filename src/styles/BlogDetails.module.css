@@ -1,87 +1,84 @@
-.page {
-  background: #f5f7fa;
+.detailsPage {
+  background-color: #ffffff;
+  min-height: 100vh;
 }
 
-/* Hero Banner */
-.hero {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  background-size: cover;
-  background-position: center;
+/* Not Found Fallback */
+.notFoundContainer {
+  padding: 140px 0 80px;
+  background-color: #F5F7FA;
+  min-height: 70vh;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.title {
-  position: relative;
-  font-size: 48px;
-  color: #ffffff;
-  text-align: center;
-  z-index: 1;
-}
-
-/* Content Section */
-.content {
+.notFoundCard {
   background: #ffffff;
-  padding: 60px 20px;
-}
-
-.container {
-  max-width: 1200px;
+  border: 1px solid rgba(6, 21, 43, 0.1);
+  border-top: 4px solid #F0A500;
+  border-radius: 24px;
+  padding: 50px 36px;
+  max-width: 640px;
   margin: 0 auto;
-  color: #374151;
-}
-
-.articleTitle {
-  font-size: 48px;
-  margin-bottom: 30px;
-  color: #0A2342;
   text-align: center;
+  box-shadow: 0 20px 45px rgba(6, 21, 43, 0.08);
 }
 
-.articleBody {
-  font-size: 18px;
-  line-height: 1.8;
+.notFoundIcon {
+  font-size: 54px;
+  color: #F0A500;
+  margin-bottom: 16px;
 }
 
-/* Related Blogs */
-.related {
-  background: #f5f7fa;
-  padding: 60px 20px;
+.notFoundTitle {
+  font-size: 28px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin: 0 0 12px 0;
 }
 
-.relatedTitle {
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #0A2342;
+.notFoundDesc {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0 0 28px 0;
 }
 
-.relatedGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.notFound {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.backLink {
-  display: inline-block;
-  margin-top: 20px;
-  color: #C8A951;
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  color: #ffffff;
+  border: 1px solid rgba(240, 165, 0, 0.4);
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
-  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(6, 21, 43, 0.15);
+  transition: all 0.35s ease;
+}
+
+.backBtn:hover {
+  background: #F0A500;
+  color: #06152B;
+  border-color: #F0A500;
+  box-shadow: 0 12px 25px rgba(240, 165, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .notFoundContainer {
+    padding: 110px 16px 60px;
+  }
+
+  .notFoundCard {
+    padding: 36px 20px;
+  }
+
+  .notFoundTitle {
+    font-size: 24px;
+  }
 }
