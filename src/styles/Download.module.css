@@ -150,76 +150,191 @@
 .appMockup {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
 }
 
-/* ---- TABLET ---- */
-@media (max-width: 1200px) {
+/* ---- TABLET (768px - 1024px) ---- */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .download {
+    padding: 60px 0;
+  }
+
   .banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 60px 40px;
-    gap: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    gap: 32px;
     min-height: auto;
   }
 
-  .sectionLabelWrapper {
-    padding: 0 40px;
-    justify-content: center;
+  .content {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
   }
 
-  .content {
-    width: 100%;
+  .sectionLabelWrapper {
+    padding: 0;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 16px;
+    text-align: left;
   }
 
   .description {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 480px;
+    font-size: 0.98rem;
+    margin-bottom: 28px;
+    text-align: left;
+    max-width: 100%;
   }
 
   .storeButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 14px;
+    flex-wrap: nowrap;
+    max-width: 440px;
+  }
+
+  .storeCard {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    padding: 10px 16px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    height: 48px;
+  }
+
+  .cardIcon {
+    font-size: 1.4rem;
+  }
+
+  .cardText span {
+    font-size: 0.68rem;
+  }
+
+  .cardText strong {
+    font-size: 0.95rem;
   }
 
   .mockupContainer {
-    width: 100%;
-    max-width: 320px;
+    width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
   }
 }
 
-/* ---- MOBILE ---- */
+/* ---- MOBILE (< 768px) ---- */
 @media (max-width: 767px) {
   .download {
     padding: 48px 0;
   }
 
   .banner {
+    display: flex;
+    flex-direction: column;
     padding: 0 20px;
-    gap: 36px;
+    gap: 20px;
+    text-align: left;
   }
 
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Order 1: Badge */
   .sectionLabelWrapper {
-    padding: 0 20px;
-    margin-bottom: 28px;
-  }
-
-  .title {
-    font-size: 1.8rem;
+    order: 1;
+    padding: 0;
     margin-bottom: 16px;
+    justify-content: flex-start;
   }
 
+  /* Order 2: Heading */
+  .title {
+    order: 2;
+    font-size: 1.65rem;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  /* Order 3: Description */
   .description {
-    font-size: 1rem;
-    margin-bottom: 32px;
+    order: 3;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    text-align: left;
+    max-width: 100%;
   }
 
+  /* Order 4: App Mockup Image */
   .mockupContainer {
+    order: 4;
+    width: 100%;
     max-width: 260px;
+    margin: 0 auto 16px auto;
   }
 
+  /* Order 5: Store buttons wrapper */
   .storeButtons {
-    gap: 14px;
+    order: 5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  /* Order 5 inside storeButtons: Google Play */
+  .googlePlayCard {
+    order: 1;
+  }
+
+  /* Order 6 inside storeButtons: App Store */
+  .appStoreCard {
+    order: 2;
+  }
+
+  .storeCard {
+    width: 100%;
+    height: 48px;
+    flex: 1;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px 16px;
+  }
+
+  .cardIcon {
+    font-size: 1.35rem;
+  }
+
+  .cardText span {
+    font-size: 0.68rem;
+  }
+
+  .cardText strong {
+    font-size: 0.95rem;
+  }
+
+  .appMockup {
+    object-fit: contain;
+    max-height: 320px;
+    width: auto;
   }
 }
 
@@ -230,23 +345,11 @@
 
   .banner {
     padding: 0 16px;
-    gap: 28px;
+    gap: 16px;
   }
 
   .title {
-    font-size: 1.6rem;
-  }
-
-  .storeButtons {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .storeCard {
-    width: 100%;
-    justify-content: center;
+    font-size: 1.5rem;
   }
 
   .mockupContainer {

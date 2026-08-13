@@ -72,21 +72,18 @@
 /* Straight Horizontal Dotted Connector Line */
 .connectingLine {
   position: absolute;
-  top: 50%;
+  top: 42px;
   left: 12%;
   right: 12%;
   height: 2px;
   background: repeating-linear-gradient(90deg, #F0A500, #F0A500 6px, transparent 6px, transparent 14px);
   z-index: 1;
-  transform: translateY(-50%);
   pointer-events: none;
 }
 
-/* Pinboard Card / Note (Straight, no rotation) */
+/* Pinboard Card / Note (Solid background so connector line stays strictly behind card content) */
 .purposeCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #0A1C36;
   border: 1px solid rgba(200, 169, 81, 0.25);
   border-top: 3px solid #C8A951;
   border-radius: 16px;
@@ -214,7 +211,7 @@
 }
 
 /* Responsive Tablet: Keep Horizontal (3 columns) */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 768px) {
   .sectionTitle {
     font-size: 32px;
   }
@@ -240,57 +237,51 @@
   .connectingLine {
     left: 8%;
     right: 8%;
+    top: 38px;
   }
 }
 
-/* Mobile (<= 767px): Vertical Pinboard */
-@media (max-width: 768px) {
+/* Mobile (< 768px): Vertical stacked cards, hide line to prevent crossing card content */
+@media (max-width: 767px) {
   .purposeSection {
-    padding: 60px 16px;
-  }
-
-  .sectionTitle {
-    font-size: 28px;
-  }
-
-  .purposeBoard {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    margin: 0 auto;
-    gap: 32px;
-  }
-
-  .connectingLine {
-    top: 4%;
-    bottom: 4%;
-    left: 50%;
-    right: auto;
-    width: 2px;
-    height: 92%;
-    transform: translateX(-50%);
-    background: repeating-linear-gradient(180deg, #F0A500, #F0A500 6px, transparent 6px, transparent 14px);
-  }
-
-  .purposeCard {
-    padding: 36px 24px 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .purposeSection {
-    padding: 45px 12px;
+    padding: 50px 16px;
   }
 
   .sectionTitle {
     font-size: 26px;
   }
 
+  .purposeBoard {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 24px;
+  }
+
+  .connectingLine {
+    display: none;
+  }
+
+  .purposeCard {
+    padding: 32px 20px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .purposeSection {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
   .cardTitle {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .cardText {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 }
 
