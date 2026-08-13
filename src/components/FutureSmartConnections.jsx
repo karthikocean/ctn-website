@@ -1,109 +1,89 @@
 import React from 'react';
-import { FiLayers, FiUsers, FiCpu } from 'react-icons/fi';
-import tnImg from '../assets/tnimg.png';
+import { FiSearch, FiMessageSquare, FiTrendingUp } from 'react-icons/fi';
+import pushpinImg from '../assets/yellow_pushpin.webp';
 import styles from '../styles/FutureSmartConnections.module.css';
 
 const FutureSmartConnections = () => {
-  const capabilities = [
+  const cards = [
     {
-      number: '01',
-      title: 'Relevant Business Connections',
-      description: 'Discover businesses and professionals based on industry, category, expertise and networking interests.',
-      icon: FiLayers,
+      id: 'discover',
+      title: 'Discover',
+      description: 'Find relevant businesses and professionals based on your interests, needs, and business goals.',
+      icon: FiSearch,
+      cardClass: styles.cardRotateLeft,
     },
     {
-      number: '02',
-      title: 'Smarter Recommendations',
-      description: 'Find professionals whose experience, services or business needs are relevant to your networking goals.',
-      icon: FiUsers,
+      id: 'engage',
+      title: 'Engage',
+      description: 'Share updates, explore opportunities, interact with members, and start meaningful conversations.',
+      icon: FiMessageSquare,
+      cardClass: styles.cardRotateRight,
     },
     {
-      number: '03',
-      title: 'Opportunity Discovery',
-      description: 'In the future, intelligent recommendations can suggest potentially relevant connections, requirements and opportunities based on your activity and interests.',
-      icon: FiCpu,
-      isFutureTag: true,
+      id: 'build-relationships',
+      title: 'Build Relationships',
+      description: 'Turn valuable interactions into trusted professional relationships and future business opportunities.',
+      icon: FiTrendingUp,
+      cardClass: styles.cardRotateCenter,
     },
   ];
 
   return (
     <section className={styles.connectionsSection}>
       <div className="container">
-        <div className={styles.asymmetricLayout}>
-          {/* LEFT COLUMN: Decorative Image Showcase using tnimg.png */}
-          <div className={styles.imageColumn}>
-            <div className={styles.imageFrameOuter}>
-              <div className={styles.goldCornerTL}></div>
-              <div className={styles.goldCornerBR}></div>
-              <div className={styles.imageWrapper}>
-                <img
-                  src={tnImg}
-                  alt="Trusted Network Connections"
-                  className={styles.networkImage}
-                />
-              </div>
-              <div className={styles.imageBadge}>
-                <span className={styles.badgeDot}></span>
-                <span className={styles.badgeText}>FUTURE CONNECTION INTELLIGENCE</span>
-              </div>
-            </div>
+        {/* Header */}
+        <div className={styles.headerWrapper}>
+          <div className={styles.sectionBadge}>
+            <div className={styles.badgeLine}></div>
+            <span>NETWORKING SECTION</span>
           </div>
 
-          {/* RIGHT COLUMN: Badge, Heading, Description, 3 Content Cards */}
-          <div className={styles.contentColumn}>
-            <div className={styles.headerWrapper}>
-              <div className={styles.sectionBadge}>
-                <div className={styles.badgeLine}></div>
-                <span>SMARTER BUSINESS CONNECTIONS</span>
-              </div>
+          <h2 className={styles.sectionTitle}>
+            Smarter Networking
+          </h2>
 
-              <h2 className={styles.sectionTitle}>
-                Building More Relevant Business Connections
-              </h2>
+          <p className={styles.sectionDesc}>
+            Connect with verified business owners and turn initial discoveries into lasting professional partnerships.
+          </p>
+        </div>
 
-              <p className={styles.sectionDesc}>
-                Trusted Network can evolve towards a smarter networking experience where businesses discover relevant professionals and opportunities based on their business needs.
-              </p>
-            </div>
+        {/* Board Canvas with 3 Pinned Note Cards */}
+        <div className={styles.boardCanvas}>
+          {/* Desktop Only Connection Line (Hidden on Tablet & Mobile) */}
+          <div className={styles.desktopConnectionLine}>
+            <svg viewBox="0 0 900 120" fill="none" preserveAspectRatio="none" className={styles.svgLine}>
+              <path
+                d="M 150 60 Q 450 15 750 60"
+                stroke="#C8A951"
+                strokeWidth="2.5"
+                strokeDasharray="6 6"
+                opacity="0.85"
+              />
+            </svg>
+          </div>
 
-            {/* 3 Standalone Feature Cards with Equal Dimensions */}
-            <div className={styles.capabilitiesList}>
-              {/* timelineLine temporarily hidden */}
+          {/* Cards Grid */}
+          <div className={styles.cardsGrid}>
+            {cards.map((item) => {
+              const IconComp = item.icon;
+              return (
+                <div key={item.id} className={`${styles.pinnedCard} ${item.cardClass}`}>
+                  {/* Pushpin Image Asset at Top Center */}
+                  <div className={styles.pinWrapper}>
+                    <img src={pushpinImg} alt="Pin" className={styles.pushpinImg} />
+                  </div>
 
-              {capabilities.map((cap) => {
-                const IconComp = cap.icon;
-                return (
-                  <div key={cap.number} className={styles.capBlock}>
-                    <div className={styles.capHeaderBox}>
-                      <span className={styles.capNumber}>{cap.number}</span>
-                      <div className={styles.capIconWrapper}>
-                        <IconComp className={styles.capIcon} />
-                      </div>
-                    </div>
-
-                    <div className={styles.capBody}>
-                      <div className={styles.titleRow}>
-                        <h3 className={styles.capTitle}>{cap.title}</h3>
-                        {/* futureTag temporarily hidden */}
-                        {/* {cap.isFutureTag && (
-                          <span className={styles.futureTag}>FUTURE CONCEPT</span>
-                        )} */}
-                      </div>
-                      <p className={styles.capDescription}>{cap.description}</p>
+                  <div className={styles.cardHeaderBox}>
+                    <div className={styles.iconWrapper}>
+                      <IconComp className={styles.cardIcon} />
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            {/* progressionRibbon temporarily hidden */}
-            {/* <div className={styles.progressionRibbon}>
-              <span>Right people</span>
-              <span className={styles.ribbonArrow}>→</span>
-              <span>Relevant businesses</span>
-              <span className={styles.ribbonArrow}>→</span>
-              <span className={styles.highlightText}>Smarter recommendations</span>
-            </div> */}
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                  <p className={styles.cardDesc}>{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

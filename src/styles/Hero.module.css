@@ -5,36 +5,44 @@
 .heroWrapper {
   width: 100%;
   background: #F5F7FA;
+  position: relative;
+  overflow: visible;
 }
 
 .heroSection {
   width: 100%;
   max-width: 100%;
   margin: 0 auto 96px;
-  min-height: 600px;
+  min-height: 620px;
   border-radius: 0 0 40px 40px;
   position: relative;
-
-  .heroSection {
-    overflow: visible;
-  }
-
+  overflow: visible;
   display: flex;
   align-items: center;
   box-shadow: 0 20px 60px rgba(6, 21, 43, 0.3);
+  background-image: url('../assets/heromainimg.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 64px 60px;
+  z-index: 0;
 }
 
-/* ---- Dark Overlay ---- */
+/* ---- Dark Overlay (Left-Side Directional Gradient for Enhanced Readability) ---- */
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(353deg, rgb(0 8 30 / 55%) 89%, rgb(0 8 30) 35%, rgb(0 8 30 / 55%) 83%, #0b234500 100%);
-  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 16, 38, 0.78) 0%,
+    rgba(3, 16, 38, 0.58) 38%,
+    rgba(3, 16, 38, 0.22) 70%,
+    rgba(3, 16, 38, 0.05) 100%
+  ),
+  linear-gradient(180deg, rgba(3, 16, 38, 0.35) 0%, rgba(3, 16, 38, 0.1) 100%);
+  border-radius: 0 0 40px 40px;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* ---- Content Layout ---- */
@@ -92,10 +100,12 @@
 
 /* ---- Left Side ---- */
 .heroLeft {
-  flex: 0 0 58%;
-  max-width: 58%;
-  padding-right: 40px;
+  flex: 0 0 52%;
+  max-width: 52%;
+  padding-right: 30px;
   padding-left: 20px;
+  position: relative;
+  z-index: 10;
 }
 
 .heroTitle {
@@ -219,111 +229,61 @@
   margin-top: 4px;
 }
 
-/* ---- Right Side — Hero Image ---- */
-/* Single authoritative definition — NO duplicates */
+/* ---- Right Side — 3D Floating Foreground Hero Image (Position Upward Only) ---- */
 .heroRight {
   position: absolute;
-  right: 20px;
-  top: 130px;
+  right: 2.5%;
+  top: -10px;
+  bottom: -242px;
+  width: 44%;
+  max-width: 610px;
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   z-index: 20;
-}
-
-/* Increase width for larger screens */
-@media (min-width: 1400px) {
-  .imageCard {
-    width: 400px;
-  }
-}
-
-.imageCard {
-  position: relative;
-  width: 350px;
-  height: 438px;
-  border-radius: 32px;
-  background: linear-gradient(180deg, #062B63 0%, #041D45 100%);
-  border: 1px solid rgba(212, 175, 55, 0.20);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
   overflow: visible;
 }
 
-.imageCard img {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
+.imageWrapper {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* right side image tag */
-.imageCard {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   position: relative;
+  overflow: visible;
 }
 
-.communityBadge {
+/* Soft 3D cool blue/white ambient studio light glow behind the image */
+.imageWrapper::before {
+  content: "";
   position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 12px 22px;
-
-  background: linear-gradient(135deg,
-      rgba(200, 169, 81, 0.18),
-      rgba(200, 169, 81, 0.08));
-
-  border: 1px solid rgba(200, 169, 81, 0.45);
-  border-radius: 50px;
-
-  color: #D4AF37;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .3px;
-
-  backdrop-filter: blur(12px);
-
-  box-shadow:
-    0 8px 25px rgba(200, 169, 81, .18);
-}
-
-.communityBadge svg {
-  font-size: 16px;
-}
-
-
-.badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #06152B;
-  color: #D4AF37;
-  padding: 4px 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.glow {
-  position: absolute;
-  top: -30px;
-  left: -30px;
-  width: calc(100% + 60px);
-  height: calc(100% + 60px);
-  border-radius: 40px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  top: 10%;
+  right: 6%;
+  width: 78%;
+  height: 68%;
+  background: radial-gradient(
+    circle at center,
+    rgba(147, 197, 253, 0.38) 0%,
+    rgba(59, 130, 246, 0.2) 45%,
+    transparent 70%
+  );
+  filter: blur(50px);
   pointer-events: none;
-  z-index: -1;
+  z-index: 12;
 }
 
+.heroImage {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.32)) drop-shadow(0 10px 22px rgba(0, 0, 0, 0.18));
+  display: block;
+}
 
 /* ============================================
    PRE-SCROLL HERO CONTENT ADJUSTMENTS
@@ -337,52 +297,59 @@
   padding-left: 40px;
 }
 
-:global(.preScroll) .sectionLabel {
-  /* margin-bottom: 48px; */
-}
-
-:global(.preScroll) .heroTitle {
-  /* margin-bottom: 48px; */
-}
-
-
 /* ============================================
    RESPONSIVE BREAKPOINTS
-   Single clean set — no duplicates
    ============================================ */
 
-@media (max-width: 1400px) {
-  .imageCard {
-    width: 380px;
-    height: 580px;
+@media (min-width: 1400px) {
+  .heroRight {
+    right: 3%;
+    top: -15px;
+    bottom: -255px;
+    width: 44%;
+    max-width: 660px;
   }
 }
 
 @media (max-width: 1200px) {
   .heroSection {
-    padding: 50px 50px;
+    padding: 50px 40px;
   }
 
   .heroLeft {
-    flex: 0 0 65%;
-    max-width: 65%;
+    flex: 0 0 52%;
+    max-width: 52%;
+  }
+
+  .heroRight {
+    right: 2%;
+    top: -5px;
+    bottom: -210px;
+    width: 44%;
+    max-width: 520px;
   }
 
   .heroTitle {
     font-size: 2.8rem;
   }
+}
 
-  .imageCard {
-    width: 320px;
-    height: 520px;
+@media (max-width: 1024px) {
+  .heroRight {
+    right: 1.5%;
+    top: 0px;
+    bottom: -180px;
+    width: 44%;
+    max-width: 470px;
   }
 }
 
-/* ---- TABLET: stack layout (768px–991px) ---- */
+/* ---- TABLET: stack layout (≤991px) ---- */
 @media (max-width: 991px) {
   .heroSection {
     padding: 50px 40px 40px;
     min-height: auto;
+    overflow: hidden;
   }
 
   .heroContent {
@@ -401,27 +368,43 @@
     align-items: center;
   }
 
-  /* Remove absolute positioning — join the normal flow */
   .heroRight {
     position: relative;
     right: auto;
     top: auto;
     bottom: auto;
-    margin-top: 0;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    pointer-events: auto;
   }
 
-  .imageCard {
+  .imageWrapper {
     width: 100%;
-    max-width: 380px;
     height: auto;
-    aspect-ratio: 350 / 580;
+    max-width: 420px;
+    justify-content: center;
+  }
+
+  .imageWrapper::before {
+    top: 5%;
+    right: 8%;
+    width: 84%;
+    height: 80%;
+    filter: blur(35px);
+    opacity: 0.8;
   }
 
   .heroImage {
+    width: 100%;
     height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    object-position: center;
   }
 
   .heroTitle {
@@ -501,11 +484,11 @@
   }
 
   .imageWrapper {
-    max-width: 290px;
+    max-width: 340px;
   }
 
   .heroImage {
-    border-radius: 20px;
+    max-height: 340px;
   }
 
   :global(.preScroll) .heroSection {
@@ -550,7 +533,7 @@
   }
 
   .imageWrapper {
-    max-width: 260px;
+    max-width: 290px;
   }
 
   :global(.preScroll) .heroSection {
@@ -573,7 +556,7 @@
   }
 
   .imageWrapper {
-    max-width: 230px;
+    max-width: 250px;
   }
 
   :global(.preScroll) .heroSection {

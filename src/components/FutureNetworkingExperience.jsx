@@ -1,78 +1,87 @@
-import React from 'react';
-import { FiSliders, FiUsers, FiMessageCircle, FiCompass } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { FiActivity, FiStar, FiGift } from 'react-icons/fi';
 import styles from '../styles/FutureNetworkingExperience.module.css';
 
 const FutureNetworkingExperience = () => {
-  const capabilities = [
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const tabsData = [
     {
-      id: 'personalized',
-      title: 'Personalized Networking',
-      desc: 'Discover business connections and opportunities that are relevant to your business.',
-      icon: FiSliders,
+      id: 'participate',
+      title: 'Participate',
+      desc: 'Stay involved through meaningful business activities, conversations, updates, requirements, and community participation.',
+      icon: FiActivity,
     },
     {
-      id: 'connections',
-      title: 'Relevant Business Connections',
-      desc: 'Find the right business people based on category, location, expertise and requirements.',
-      icon: FiUsers,
+      id: 'earn-points',
+      title: 'Earn Points',
+      desc: 'Eligible activities and meaningful participation can help members earn points within the Trusted Network experience.',
+      icon: FiStar,
     },
     {
-      id: 'interactions',
-      title: 'Meaningful Interactions',
-      desc: 'Build stronger relationships through relevant conversations, referrals and business activities.',
-      icon: FiMessageCircle,
-    },
-    {
-      id: 'opportunities',
-      title: 'Smarter Opportunities',
-      desc: 'Discover new business opportunities based on your network, interests and business needs.',
-      icon: FiCompass,
+      id: 'redeem-benefits',
+      title: 'Redeem Benefits',
+      desc: 'Use eligible points to unlock selected experiences and benefits available across the platform.',
+      icon: FiGift,
     },
   ];
 
+  const currentTab = tabsData[activeTabIndex];
+  const ActiveIcon = currentTab.icon;
+
   return (
-    <section className={styles.experienceSection}>
+    <section className={styles.pointsSection}>
       <div className="container">
-        {/* SECTION HEADER */}
+        {/* Header Wrapper */}
         <div className={styles.headerWrapper}>
           <div className={styles.sectionBadge}>
             <div className={styles.badgeLine}></div>
-            <span>SMARTER NETWORKING EXPERIENCE</span>
+            <span>POINTS SECTION</span>
           </div>
 
           <h2 className={styles.sectionTitle}>
-            A Smarter Way to Build Business Connections
+            Participation & Value
           </h2>
 
           <p className={styles.sectionDescription}>
-            Trusted Network is evolving the way businesses connect. Discover relevant business owners, meaningful connections and new opportunities based on your business interests, needs and network.
+            Participate in the community, earn eligible points, and redeem rewards across the Trusted Network platform.
           </p>
         </div>
 
-        {/* 2x2 FEATURE CAPABILITY CARDS GRID */}
-        <div className={styles.cardsGrid}>
-          {capabilities.map((item) => {
-            const IconComp = item.icon;
-            return (
-              <div key={item.id} className={styles.capabilityCard}>
-                {/* Icon Wrapper on Left */}
-                <div className={styles.cardHeader}>
-                  <div className={styles.iconWrapper}>
-                    <IconComp className={styles.cardIcon} />
-                  </div>
-                </div>
+        {/* 3 Interactive Tabs Navigation */}
+        <div className={styles.tabContainer}>
+          <div className={styles.tabsRow} role="tablist">
+            {tabsData.map((tab, idx) => {
+              const TabIcon = tab.icon;
+              const isActive = activeTabIndex === idx;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`${styles.tabBtn} ${isActive ? styles.activeTabBtn : ''}`}
+                  onClick={() => setActiveTabIndex(idx)}
+                >
+                  <TabIcon className={styles.tabIcon} />
+                  <span>{tab.title}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-                {/* Card Content: Title & Description */}
-                <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>{item.title}</h3>
-                  <p className={styles.cardDesc}>{item.desc}</p>
-                </div>
+        {/* Large Premium Content Display Panel Below Tabs */}
+        <div className={styles.displayPanel}>
+          <div className={styles.panelBackdrop}></div>
+          <div className={styles.panelContent}>
+            <div className={styles.iconCircle}>
+              <ActiveIcon className={styles.largeIcon} />
+            </div>
 
-                {/* Gold Decorative Accent Line */}
-                <div className={styles.goldBarAccent}></div>
-              </div>
-            );
-          })}
+            <h3 className={styles.displayTitle}>{currentTab.title}</h3>
+            <p className={styles.displayDesc}>{currentTab.desc}</p>
+          </div>
         </div>
       </div>
     </section>

@@ -14,6 +14,7 @@ const BlogCard = ({ blog }) => {
       <Link to={blogLink} className={styles.cardLink} aria-label={blog.title}>
         {/* Full Image Card Wrapper */}
         <div className={styles.imageWrapper}>
+          {/* Background Image (Always Clear & Sharp, No Blur) */}
           <img
             src={blogImage}
             alt={blog.title}
@@ -33,12 +34,17 @@ const BlogCard = ({ blog }) => {
             <FiArrowUpRight className={styles.arrowIcon} />
           </div>
 
-          {/* Desktop Hover Overlay (Appears on Hover for Pointer Devices) */}
+          {/* Default Bottom Gradient & Title (Visible before hover) */}
+          <div className={styles.cardDefaultInfo}>
+            <h3 className={styles.defaultTitle}>{blog.title}</h3>
+          </div>
+
+          {/* Desktop Hover Reveal Layer (Transparent Navy Overlay + Content Reveal, NO BLUR) */}
           <div className={styles.hoverOverlay}>
             <div className={styles.overlayContent}>
               <div className={styles.overlayCategory}>{blog.category}</div>
               <h3 className={styles.overlayTitle}>{blog.title}</h3>
-              <p className={styles.overlayExcerpt}>{blog.excerpt}</p>
+              {blog.excerpt && <p className={styles.overlayExcerpt}>{blog.excerpt}</p>}
 
               <div className={styles.overlayMeta}>
                 {blog.publishedDate && <span>{blog.publishedDate}</span>}
@@ -57,6 +63,7 @@ const BlogCard = ({ blog }) => {
         {/* Mobile Touch Card Body (Visible only on mobile/touch screens) */}
         <div className={styles.mobileCardBody}>
           <h3 className={styles.mobileTitle}>{blog.title}</h3>
+          {blog.excerpt && <p className={styles.mobileExcerpt}>{blog.excerpt}</p>}
           <div className={styles.mobileMeta}>
             <span>{blog.publishedDate}</span>
             {blog.publishedDate && blog.readTime && <span className={styles.metaDivider}>•</span>}

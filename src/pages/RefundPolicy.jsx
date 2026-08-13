@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
+import SEO from '../components/SEO';
+import seoData from '../data/seoData';
 import styles from '../styles/RefundPolicy.module.css';
 
 const RefundPolicy = () => {
   const [activeSection, setActiveSection] = useState('subscription');
 
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Set up IntersectionObserver to update active sidebar link dynamically on scroll
   useEffect(() => {
     const sectionIds = [
       'subscription',
@@ -55,37 +55,13 @@ const RefundPolicy = () => {
     };
   }, []);
 
-  const handleSidebarClick = (e, targetId) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const navbarOffset = 110;
-      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(targetId);
-    }
-  };
-
-  const navItems = [
-    { label: '1. Subscription Payments', id: 'subscription' },
-    { label: '2. Non-Refundable Fees', id: 'non-refundable' },
-    { label: '3. Duplicate Transactions', id: 'duplicate' },
-    { label: '4. Failed Transactions', id: 'failed' },
-    { label: '5. Cancellation Policy', id: 'cancellation' },
-    { label: '6. Refund Eligibility', id: 'eligibility' },
-    { label: '7. Refund Processing', id: 'processing' },
-    { label: '8. GST', id: 'gst' },
-    { label: '9. Changes to Refund Policy', id: 'changes' },
-    { label: '10. Contact Information', id: 'contact' }
-  ];
-
   return (
     <div className={styles.page}>
+      <SEO
+        title={seoData.refundPolicy.title}
+        description={seoData.refundPolicy.description}
+        keywords={seoData.refundPolicy.keywords}
+      />
       {/* Hero Banner */}
       <section className={styles.hero}>
         <div className={styles.heroContainer}>
@@ -107,8 +83,6 @@ const RefundPolicy = () => {
       <section className={styles.mainContent}>
         <div className={styles.contentContainer}>
           <div className={styles.contentGrid}>
-
-
             {/* Content Card */}
             <main className={styles.contentCard}>
               <div className={styles.metaHeader}>

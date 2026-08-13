@@ -41,7 +41,7 @@
 }
 
 /* ==================================================
-   DESKTOP GRID STRUCTURE (550px Left, 2x 265px Right + 20px gap)
+   DESKTOP GRID STRUCTURE (Matching Blog Featured Grid)
    ================================================== */
 .editorialGrid {
   display: grid;
@@ -189,7 +189,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  padding-right: 44px; /* Room for bottom-right circular arrow */
+  padding-right: 44px;
 }
 
 .sideDefaultTitle {
@@ -210,7 +210,7 @@
 
 /* ==================================================
    HOVER OVERLAY (Clear Image + Dark Transparent Overlay + Revealed Content)
-   NO BLUR, NO BACKDROP-FILTER!
+   NO BLUR!
    ================================================== */
 .hoverOverlay {
   position: absolute;

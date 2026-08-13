@@ -13,6 +13,7 @@ import StubPage from './pages/StubPage';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
+import CommunityGuidelines from './pages/CommunityGuidelines';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -24,35 +25,22 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/about" element={<About />} />
-
         <Route path="/membership-plans" element={<MembershipPlans />} />
-
+        <Route path="/pricing" element={<MembershipPlans />} />
         <Route path="/future" element={<Future />} />
-
         <Route path="/contact" element={<Contact />} />
-
         <Route path="/blogs" element={<Blogs />} />
-
         <Route path="/blogs/:id" element={<BlogDetails />} />
-
         <Route path="/events" element={<Events />} />
-
         <Route path="/events/:id" element={<EventDetails />} />
-
         <Route path="/franchise" element={<Franchise />} />
-
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsAndConditions />} />
-
         <Route path="/refund" element={<RefundPolicy />} />
-
-        <Route path="/community-guidelines" element={<StubPage title="Community Guidelines" />} />
-
+        <Route path="/community-guidelines" element={<CommunityGuidelines />} />
         <Route path="/partner" element={<StubPage title="Partner With Us" />} />
-
         <Route path="/download" element={<StubPage title="Download App" />} />
       </Routes>
       <FloatingActions />

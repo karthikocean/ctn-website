@@ -39,17 +39,6 @@
   color: #ffffff !important;
 }
 
-/* .transparent .logoImg {
-  height: 120px !important;
-  background: rgba(6, 21, 43, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 14px;
-  padding: 4px 8px;
-  filter:
-    brightness(1.2) contrast(1.15) drop-shadow(0 4px 12px rgba(0, 0, 0, .35)) drop-shadow(0 0 15px rgba(255, 255, 255, .25));
-} */
-
 .transparent .logoLink {
   position: relative;
   display: flex;
@@ -102,9 +91,7 @@
 
 .transparent .navLinkAnchor {
   color: #ffffff !important;
-
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, .45);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .45);
 }
 
 .navLinkAnchor::after {
@@ -140,7 +127,6 @@
   color: #C8A951 !important;
   font-weight: 700;
 }
-
 
 /* ---- Right Section ---- */
 .navRight {
@@ -352,23 +338,19 @@
   }
 
   .navBar {
-    height: 72px;
+    height: 76px;
     padding: 0 24px;
   }
 
   .transparent {
     padding: 12px 24px 5px !important;
   }
-
-  .transparent .logoImg {
-    height: 52px !important;
-  }
 }
 
 /* Tablet (768px - 1024px) — Solid white navbar before & after scroll */
 @media (max-width: 1024px) and (min-width: 768px) {
   .navBar {
-    height: 80px;
+    height: 84px;
     padding: 0 32px;
     background: #ffffff !important;
     border-bottom: 1px solid #06152B !important;
@@ -381,7 +363,7 @@
     border-bottom: 1px solid #06152B !important;
     box-shadow: 0 2px 16px rgba(6, 21, 43, 0.06) !important;
     padding: 0 32px !important;
-    height: 80px !important;
+    height: 84px !important;
   }
 
   .transparent .navLinkAnchor {
@@ -389,25 +371,20 @@
     text-shadow: none !important;
   }
 
-  .transparent .logoImg {
-    filter: none !important;
-    height: 58px !important;
-    width: auto;
-    max-width: 230px;
-    object-fit: contain;
-  }
-
+  .transparent .logoImg,
   .logoImg {
-    height: 58px;
+    filter: none !important;
+    height: 100px !important;
     width: auto;
-    max-width: 230px;
+    max-width: 280px;
     object-fit: contain;
-  }
+  } 
 }
 
+/* Mobile (<= 767px) */
 @media (max-width: 767px) {
   .navBar {
-    height: 76px;
+    height: 80px;
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -420,21 +397,15 @@
     border-bottom: 1px solid #06152B !important;
     box-shadow: 0 2px 16px rgba(6, 21, 43, 0.06) !important;
     padding: 0 20px !important;
-    height: 76px !important;
+    height: 80px !important;
   }
 
-  .transparent .logoImg {
-    filter: none !important;
-    height: 56px !important;
-    width: auto;
-    max-width: 220px;
-    object-fit: contain;
-  }
-
+  .transparent .logoImg,
   .logoImg {
-    height: 56px;
+    filter: none !important;
+    height: 76px !important;
     width: auto;
-    max-width: 220px;
+    max-width: 265px;
     object-fit: contain;
   }
 
@@ -446,23 +417,19 @@
 
 @media (max-width: 480px) {
   .navBar {
-    height: 72px;
+    height: 74px;
     padding: 0 16px;
   }
 
   .transparent {
     padding: 0 16px !important;
-    height: 72px !important;
+    height: 74px !important;
   }
 
-  .transparent .logoImg {
-    height: 52px !important;
-    max-width: 200px;
-  }
-
+  .transparent .logoImg,
   .logoImg {
-    height: 52px;
-    max-width: 200px;
+    height: 90px !important;
+    max-width: 245px;
   }
 }
 
@@ -477,13 +444,9 @@
     height: 68px !important;
   }
 
-  .transparent .logoImg {
-    height: 46px !important;
-    max-width: 170px;
-  }
-
+  .transparent .logoImg,
   .logoImg {
-    height: 46px;
-    max-width: 170px;
+    height: 90px !important;
+    max-width: 220px;
   }
 }

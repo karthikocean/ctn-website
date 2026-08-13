@@ -1,51 +1,40 @@
-.experienceSection {
-  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
-  padding: 35px 0;
+.pointsSection {
+  background-color: #06152B;
+  background-image:
+    radial-gradient(rgba(200, 169, 81, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #06152B 0%, #0B2345 100%);
+  background-size: 24px 24px, 100% 100%;
+  padding: 85px 0;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   color: #ffffff;
 }
 
-.experienceSection::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(rgba(240, 165, 0, 0.08) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  pointer-events: none;
-}
-
-/* Header */
 .headerWrapper {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 50px;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 44px;
 }
 
 .sectionBadge {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 16px;
 }
 
 .sectionBadge::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #F0A500;
-  box-shadow: 0 0 10px rgba(240, 165, 0, 0.6);
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
   flex-shrink: 0;
 }
 
 .badgeLine {
-  width: 40px;
+  width: 48px;
   height: 1.5px;
   background: rgba(200, 169, 81, 0.7);
   flex-shrink: 0;
@@ -53,15 +42,16 @@
 
 .sectionBadge span {
   color: #C8A951;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
+  line-height: 1;
 }
 
 .sectionTitle {
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
@@ -70,265 +60,224 @@
 }
 
 .sectionDescription {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.82);
-  margin: 0;
-}
-
-/* 2x2 Capability Cards Grid - Equal Width & Height */
-.cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
-  max-width: 1080px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  align-items: stretch;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Standalone Premium Capability Card */
-.capabilityCard {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 30px 28px 24px;
-  box-shadow: 0 10px 28px rgba(6, 21, 43, 0.06);
-  border: 1px solid rgba(240, 165, 0, 0.35);
-  border-top: 3px solid #F0A500;
-  position: relative;
-  overflow: hidden;
+/* Centered Interactive Tabs Row (Desktop) */
+.tabContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  min-height: 220px;
-  box-sizing: border-box;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease 0.15s;
-  z-index: 1;
+  justify-content: center;
+  margin-bottom: 36px;
+  width: 100%;
 }
 
-/* Premium Curved / Circular Navy Expansion originating from top-right corner */
-.capabilityCard::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #06152B;
-  transform: scale(0);
-  transform-origin: top right;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.capabilityCard:hover::before {
-  transform: scale(32);
-}
-
-.capabilityCard:hover {
-  transform: translateY(-5px);
-  background-color: #06152B;
-  border-color: #F0A500;
-  box-shadow: 0 22px 48px rgba(6, 21, 43, 0.35);
-}
-
-/* Header Row: Left-Aligned Icon Box */
-.cardHeader {
-  display: flex;
+.tabsRow {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 18px;
-  position: relative;
-  z-index: 3;
+  justify-content: center;
+  gap: 14px;
+  background: #0A1C36;
+  padding: 8px;
+  border-radius: 40px;
+  border: 1px solid rgba(200, 169, 81, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-.iconWrapper {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  background: rgba(240, 165, 0, 0.12);
-  border: 1px solid rgba(240, 165, 0, 0.35);
+.tabBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(6, 21, 43, 0.04);
-  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  gap: 10px;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.cardIcon {
-  font-size: 24px;
-  color: #F0A500;
-  transition: color 0.4s ease;
+.tabIcon {
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
 }
 
-/* Card Body Typography */
-.cardBody {
+.tabBtn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.activeTabBtn {
+  background: linear-gradient(135deg, #F0A500 0%, #C8A951 100%);
+  color: #06152B;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(240, 165, 0, 0.3);
+}
+
+.activeTabBtn .tabIcon {
+  color: #06152B;
+}
+
+.activeTabBtn:hover {
+  background: linear-gradient(135deg, #F0A500 0%, #C8A951 100%);
+  color: #06152B;
+}
+
+/* Large Premium Content Display Panel */
+.displayPanel {
   position: relative;
-  z-index: 3;
-  flex: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  background: #0A1C36;
+  border: 1px solid rgba(200, 169, 81, 0.3);
+  border-top: 4px solid #F0A500;
+  border-radius: 24px;
+  padding: 52px 44px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
 }
 
-.cardTitle {
-  font-size: 20px;
+.panelBackdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(240, 165, 0, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.panelContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(240, 165, 0, 0.18) 0%, rgba(200, 169, 81, 0.08) 100%);
+  border: 2px solid rgba(240, 165, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 25px rgba(240, 165, 0, 0.15);
+}
+
+.largeIcon {
+  font-size: 38px;
+  color: #F0A500;
+}
+
+.displayTitle {
+  font-size: 28px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  color: #06152B;
-  margin: 0 0 10px 0;
-  line-height: 1.3;
-  transition: color 0.4s ease;
+  color: #ffffff;
+  margin: 0 0 14px 0;
 }
 
-.cardDesc {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: #4B5563;
-  margin: 0 0 20px 0;
-  transition: color 0.4s ease;
+.displayDesc {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  max-width: 660px;
 }
 
-/* Gold Decorative Accent Line (Bottom) */
-.goldBarAccent {
-  width: 45px;
-  height: 3px;
-  background: #F0A500;
-  border-radius: 2px;
-  position: relative;
-  z-index: 3;
-  transition: width 0.4s ease;
-}
-
-/* ON HOVER END STATES */
-.capabilityCard:hover .cardTitle {
-  color: #FFFFFF;
-}
-
-.capabilityCard:hover .cardDesc {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.capabilityCard:hover .iconWrapper {
-  background: #F0A500;
-  border-color: #F0A500;
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(240, 165, 0, 0.35);
-}
-
-.capabilityCard:hover .cardIcon {
-  color: #06152B;
-}
-
-.capabilityCard:hover .goldBarAccent {
-  width: 65px;
-}
-
-/* ==================================================
-   RESPONSIVE BREAKPOINTS
-   ================================================== */
-
-@media (max-width: 1200px) {
-  .experienceSection {
-    padding: 35px 0;
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .displayPanel {
+    padding: 40px 28px;
   }
 
-  .cardsGrid {
-    gap: 20px;
+  .displayTitle {
+    font-size: 24px;
   }
 
-  .capabilityCard {
-    padding: 26px 24px 22px;
+  .displayDesc {
+    font-size: 0.98rem;
   }
 }
 
-/* Tablet (769px - 1024px) - KEEP 2x2 GRID COMPRESSED */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .experienceSection {
-    padding: 35px 0;
+/* Mobile (<= 767px): Vertical 1-by-1 Stacked Tab Buttons */
+@media (max-width: 767px) {
+  .pointsSection {
+    padding: 60px 0;
+    margin-bottom: 0;
   }
 
   .sectionTitle {
     font-size: 28px;
   }
 
-  .cardsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+  .tabContainer {
+    margin-bottom: 20px;
+    width: 100%;
   }
 
-  .capabilityCard {
-    padding: 22px 20px 18px;
+  .tabsRow {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
   }
 
-  .iconWrapper {
-    width: 46px;
-    height: 46px;
+  .tabBtn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 0.94rem;
+    border-radius: 12px;
+    background: #0A1C36;
+    border: 1px solid rgba(200, 169, 81, 0.2);
+    min-height: 48px;
   }
 
-  .cardIcon {
-    font-size: 20px;
+  .activeTabBtn {
+    background: linear-gradient(135deg, #F0A500 0%, #C8A951 100%);
+    border-color: #F0A500;
   }
 
-  .cardTitle {
-    font-size: 17px;
+  .displayPanel {
+    padding: 32px 18px;
+    border-radius: 18px;
   }
 
-  .cardDesc {
-    font-size: 0.85rem;
-  }
-}
-
-/* Mobile (<= 768px): Single Column Stack (Left Aligned) */
-@media (max-width: 768px) {
-  .experienceSection {
-    padding: 35px 16px;
+  .iconCircle {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
   }
 
-  .headerWrapper {
-    text-align: left;
-    margin-left: 0;
-    margin-bottom: 30px;
+  .largeIcon {
+    font-size: 30px;
   }
 
-  .sectionBadge {
-    justify-content: flex-start;
-  }
-
-  .sectionTitle {
-    font-size: 24px;
-    text-align: left;
-  }
-
-  .sectionDescription {
-    text-align: left;
-  }
-
-  .cardsGrid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .capabilityCard {
-    padding: 22px 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .experienceSection {
-    padding: 30px 12px;
-  }
-
-  .sectionTitle {
+  .displayTitle {
     font-size: 22px;
   }
 
-  .cardTitle {
-    font-size: 17px;
-  }
-
-  .cardDesc {
-    font-size: 0.85rem;
+  .displayDesc {
+    font-size: 0.95rem;
   }
 }

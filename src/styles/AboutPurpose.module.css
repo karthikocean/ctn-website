@@ -58,6 +58,15 @@
   margin: 0;
 }
 
+.sectionSubTitle {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 680px;
+  margin: 14px auto 0;
+  font-family: 'Inter', sans-serif;
+}
+
 /* Pinboard Layout */
 .purposeBoard {
   display: grid;
@@ -216,6 +225,11 @@
     font-size: 32px;
   }
 
+  .sectionSubTitle {
+    font-size: 0.98rem;
+    max-width: 580px;
+  }
+
   .purposeBoard {
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
@@ -251,6 +265,11 @@
     font-size: 26px;
   }
 
+  .sectionSubTitle {
+    font-size: 0.92rem;
+    margin-top: 10px;
+  }
+
   .purposeBoard {
     grid-template-columns: 1fr;
     max-width: 480px;
@@ -284,5 +303,3 @@
     font-size: 0.88rem;
   }
 }
-
-

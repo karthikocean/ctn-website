@@ -41,6 +41,19 @@
   width: 100%;
 }
 
+/* Flex row for City & Company Name (Equal width) */
+.twoColRow {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.twoColRow .formGroup {
+  flex: 1 1 50%;
+  width: 50%;
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -123,6 +136,17 @@
   font-weight: 500;
 }
 
+.apiErrorBox {
+  padding: 12px 16px;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 /* Button Wrapper: Compact content-width button centered horizontally */
 .buttonWrapper {
   display: flex;
@@ -154,6 +178,12 @@
 .submitBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(240, 165, 0, 0.45);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 .btnIcon {
@@ -211,12 +241,13 @@
     padding: 36px 28px;
   }
 
-  .formRow {
+  .formRow,
+  .twoColRow {
     gap: 16px;
   }
 }
 
-/* Responsive Tablet (769px - 1024px): KEEP 2-COLUMN SIDE-BY-SIDE CARD & 2-COLUMN FORM FIELDS */
+/* Responsive Tablet (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .formCard {
     flex: 0 0 62%;
@@ -241,6 +272,11 @@
 
   .formRow {
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .twoColRow {
+    flex-direction: row;
     gap: 12px;
   }
 
@@ -292,6 +328,16 @@
     gap: 18px;
   }
 
+  .twoColRow {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .twoColRow .formGroup {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
   .buttonWrapper {
     justify-content: center;
   }
@@ -311,5 +357,3 @@
     font-size: 25px;
   }
 }
-
-

@@ -1,20 +1,36 @@
-.page {
-  background: var(--page-bg);
-  color: #041C45;
+.pageContainer {
+  background-color: #ffffff;
+  min-height: 100vh;
 }
 
-.pageNoButton {
-  padding-bottom: 90px; /* 80-100px space when button hidden */
+.archiveSection {
+  background-color: #F5F7FA;
+  padding: 28px 0 36px;
+  border-top: 1px solid rgba(6, 21, 43, 0.07);
 }
 
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
 
-.showMoreWrapper {
-  text-align: center;
-  margin: 32px 0 48px 0; /* top 32px, bottom 48px */
+@media (max-width: 768px) {
+  .archiveSection {
+    padding: 24px 0 32px;
+  }
+
+  .loadMoreContainer {
+    margin-top: 18px;
+  }
 }
 
 @media (max-width: 480px) {
-  .page {
-    overflow-x: hidden;
+  .archiveSection {
+    padding: 20px 0 28px;
+  }
+
+  .loadMoreContainer {
+    margin-top: 14px;
   }
 }

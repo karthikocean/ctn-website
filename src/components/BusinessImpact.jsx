@@ -7,7 +7,7 @@ import {
   FiMessageCircle,
   FiActivity
 } from 'react-icons/fi';
-
+import { getCommonStats } from '../apis/commonApi';
 import styles from '../styles/BusinessImpact.module.css';
 import backgroundImg from '../assets/BusinessImpact.png';
 
@@ -18,6 +18,11 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef(null);
+
+  useEffect(() => {
+    setCount(0);
+    setHasAnimated(false);
+  }, [target]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,7 +68,7 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
 
   return (
     <span ref={elementRef} className={styles.statNumber}>
-      {count.toLocaleString()}
+      {(count || 0).toLocaleString()}
       {suffix}
     </span>
   );
@@ -72,51 +77,113 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
 /* ==========================================
    MAIN COMPONENT
 ========================================== */
+const defaultStats = [
+  {
+    id: 1,
+    target: 10000,
+    suffix: '+',
+    label: 'Business Referrals',
+    Icon: FiRepeat,
+    key: 'recommendationCount',
+  },
+  {
+    id: 2,
+    target: 5000,
+    suffix: '+',
+    label: 'Lead Generation',
+    Icon: FiTrendingUp,
+    key: 'requirementsCount',
+  },
+  {
+    id: 3,
+    target: 2500,
+    suffix: '+',
+    label: 'Business Growth',
+    Icon: FiUsers,
+    key: 'businessDoneCount',
+  },
+  {
+    id: 4,
+    target: 866,
+    suffix: '+',
+    label: 'Cities Connected',
+    Icon: FiMapPin,
+    key: 'totalRegions',
+  },
+  {
+    id: 5,
+    target: 1000,
+    suffix: '+',
+    label: 'Business Talks',
+    Icon: FiMessageCircle,
+    key: 'directMeetCount',
+  },
+  {
+    id: 6,
+    target: 24,
+    suffix: '/7',
+    label: 'Active Network',
+    Icon: FiActivity,
+  },
+];
+
 const BusinessImpact = () => {
-  const statsData = [
-    {
-      id: 1,
-      target: 10000,
-      suffix: '+',
-      label: 'Business Referrals',
-      Icon: FiRepeat,
-    },
-    {
-      id: 2,
-      target: 5000,
-      suffix: '+',
-      label: 'Lead Generation',
-      Icon: FiTrendingUp,
-    },
-    {
-      id: 3,
-      target: 2500,
-      suffix: '+',
-      label: 'Business Growth',
-      Icon: FiUsers,
-    },
-    {
-      id: 4,
-      target: 50,
-      suffix: '+',
-      label: 'Cities Connected',
-      Icon: FiMapPin,
-    },
-    {
-      id: 5,
-      target: 1000,
-      suffix: '+',
-      label: 'Business Talks',
-      Icon: FiMessageCircle,
-    },
-    {
-      id: 6,
-      target: 24,
-      suffix: '/7',
-      label: 'Active Network',
-      Icon: FiActivity,
-    },
-  ];
+  const [statsData, setStatsData] = useState(defaultStats);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      const res = await getCommonStats();
+      if (res?.status && res.data) {
+        const d = res.data;
+        setStatsData([
+          {
+            id: 1,
+            target: d.recommendationCount > 0 ? d.recommendationCount : 10000,
+            suffix: '+',
+            label: 'Business Referrals',
+            Icon: FiRepeat,
+          },
+          {
+            id: 2,
+            target: d.requirementsCount > 0 ? d.requirementsCount : 5000,
+            suffix: '+',
+            label: 'Lead Generation',
+            Icon: FiTrendingUp,
+          },
+          {
+            id: 3,
+            target: d.businessDoneCount > 0 ? d.businessDoneCount : 2500,
+            suffix: '+',
+            label: 'Business Growth',
+            Icon: FiUsers,
+          },
+          {
+            id: 4,
+            target: d.totalRegions > 0 ? d.totalRegions : 50,
+            suffix: '+',
+            label: 'Cities Connected',
+            Icon: FiMapPin,
+          },
+          {
+            id: 5,
+            target: d.directMeetCount > 0 ? d.directMeetCount : 1000,
+            suffix: '+',
+            label: 'Business Talks',
+            Icon: FiMessageCircle,
+          },
+          {
+            id: 6,
+            target: 24,
+            suffix: '/7',
+            label: 'Active Network',
+            Icon: FiActivity,
+          },
+        ]);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   return (
     <section
@@ -134,16 +201,6 @@ const BusinessImpact = () => {
               <span>TRUSTED NETWORK IMPACT</span>
             </div>
           </div>
-
-          {/* <h2 className={styles.title}>
-            Real Business Results Through Trusted Networking
-          </h2>
-
-          <p className={styles.description}>
-            Trusted Network helps professionals generate referrals,
-            build collaborations, discover opportunities, and grow
-            meaningful business relationships.
-          </p> */}
         </div>
 
         {/* Stats */}

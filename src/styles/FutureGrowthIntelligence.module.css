@@ -1,53 +1,55 @@
-.intelligenceSection {
+.redemptionSection {
   background-color: #ffffff;
-  padding: 35px 0;
+  background-image: radial-gradient(rgba(6, 21, 43, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 80px 0 80px 0;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   color: #06152B;
 }
 
-/* Header */
 .headerWrapper {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 50px;
+  margin-bottom: 48px;
 }
 
 .sectionBadge {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 16px;
 }
 
 .sectionBadge::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #F0A500;
-  box-shadow: 0 0 10px rgba(240, 165, 0, 0.6);
+  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
   flex-shrink: 0;
 }
 
 .badgeLine {
-  width: 40px;
+  width: 48px;
   height: 1.5px;
-  background: rgba(200, 169, 81, 0.7);
+  background: #C8A951;
   flex-shrink: 0;
 }
 
 .sectionBadge span {
-  color: #C8A951;
-  font-size: 13px;
+  color: #06152B;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
+  line-height: 1;
 }
 
 .sectionTitle {
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
@@ -56,240 +58,137 @@
 }
 
 .sectionDescription {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   line-height: 1.65;
-  color: #334155;
-  margin: 0;
+  color: #4B5563;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
 }
 
-/* 3 LEFT + 3 RIGHT MIRRORED CARD GRID */
-.growthGridWrapper {
+/* 2-Column Horizontal Cards Grid */
+.cardsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  max-width: 1140px;
-  margin: 0 auto 50px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
   align-items: stretch;
 }
 
-.leftColumn,
-.rightColumn {
+/* Wide Horizontal Card Design (SaaS Pill / Card Style) */
+.redemptionCard {
+  background: #F8FAFC;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-radius: 20px;
+  padding: 28px 26px;
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
-}
-
-/* COMMON BASE CARD STYLING */
-.leftGrowthCard,
-.rightGrowthCard {
-  background: #F7F9FC;
-  border: 1px solid rgba(6, 21, 43, 0.09);
-  border-radius: 18px;
-  padding: 22px 26px;
   box-shadow: 0 8px 24px rgba(6, 21, 43, 0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  min-height: 105px;
-  box-sizing: border-box;
+  transition: all 0.35s ease;
 }
 
-.leftGrowthCard:hover,
-.rightGrowthCard:hover {
+.redemptionCard:hover {
   transform: translateY(-4px);
   border-color: #F0A500;
-  box-shadow: 0 16px 35px rgba(6, 21, 43, 0.1);
   background: #ffffff;
+  box-shadow: 0 16px 36px rgba(6, 21, 43, 0.08), 0 0 15px rgba(240, 165, 0, 0.1);
 }
 
-/* LEFT SIDE CARD: Text Right-Aligned, Icon on Right */
-.leftGrowthCard {
-  justify-content: flex-end;
-  text-align: right;
-  gap: 20px;
-  border-right: 3px solid #F0A500;
-}
-
-.leftGrowthCard .cardTextContent {
-  flex: 1;
-  text-align: right;
-}
-
-/* RIGHT SIDE CARD: Text Left-Aligned, Icon on Left */
-.rightGrowthCard {
-  justify-content: flex-start;
-  text-align: left;
-  gap: 20px;
-  border-left: 3px solid #F0A500;
-}
-
-.rightGrowthCard .cardTextContent {
-  flex: 1;
-  text-align: left;
-}
-
-/* ICON CONTAINER (54px x 54px) */
 .iconContainer {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid rgba(240, 165, 0, 0.35);
-  box-shadow: 0 6px 16px rgba(6, 21, 43, 0.06);
+  background: rgba(240, 165, 0, 0.12);
+  border: 1.5px solid rgba(240, 165, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-}
-
-.leftGrowthCard:hover .iconContainer,
-.rightGrowthCard:hover .iconContainer {
-  background: rgba(240, 165, 0, 0.15);
-  border-color: #F0A500;
-  box-shadow: 0 8px 20px rgba(240, 165, 0, 0.25);
 }
 
 .cardIcon {
-  font-size: 24px;
-  color: #F0A500;
-  transition: transform 0.35s ease;
-}
-
-.leftGrowthCard:hover .cardIcon,
-.rightGrowthCard:hover .cardIcon {
-  transform: scale(1.1);
-}
-
-/* CARD TYPOGRAPHY */
-.cardTitle {
-  font-size: 18px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  color: #06152B;
-  margin: 0 0 6px 0;
-  line-height: 1.3;
-}
-
-.cardDesc {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: #4b5563;
-  margin: 0;
-}
-
-/* CLOSING STATEMENT BANNER */
-.closingBanner {
-  max-width: 900px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
-  border-radius: 20px;
-  padding: 28px 36px;
-  border: 1px solid rgba(240, 165, 0, 0.3);
-  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.2);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.bannerGlow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #F0A500, transparent);
-}
-
-.bannerContent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.bannerIconWrapper {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(240, 165, 0, 0.15);
-  border: 1px solid rgba(240, 165, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.bannerIcon {
   font-size: 22px;
   color: #F0A500;
 }
 
-.bannerText {
-  font-size: 1.1rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: 0.5px;
-  line-height: 1.4;
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
 }
 
-/* ==================================================
-   RESPONSIVE BREAKPOINTS
-   ================================================== */
+.cardTitle {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #06152B;
+  margin: 0;
+  line-height: 1.3;
+}
 
-@media (max-width: 1200px) {
-  .intelligenceSection {
-    padding: 35px 0;
+.cardDesc {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #4B5563;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Tablet (768px - 1024px): 2-Column Horizontal Cards */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .redemptionSection {
+    padding: 60px 0 50px 0;
   }
 
-  .growthGridWrapper {
-    gap: 20px;
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
-  .leftGrowthCard,
-  .rightGrowthCard {
-    padding: 20px 22px;
+  .redemptionCard {
+    padding: 24px 20px;
+    gap: 16px;
   }
 
   .cardTitle {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .cardDesc {
-    font-size: 0.85rem;
-  }
-
-  .bannerText {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Tablet (769px - 1024px) - KEEP 2 COLUMNS COMPRESSED */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .intelligenceSection {
-    padding: 35px 0;
+/* Mobile (<= 767px): 1-Column Stack, Retain Side-Icon Horizontal Layout */
+@media (max-width: 767px) {
+  .redemptionSection {
+    padding: 50px 0 40px 0;
+    margin-bottom: 0;
   }
 
   .sectionTitle {
     font-size: 28px;
   }
 
-  .growthGridWrapper {
+  .cardsGrid {
+    grid-template-columns: 1fr;
     gap: 16px;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .leftGrowthCard,
-  .rightGrowthCard {
-    padding: 16px 18px;
-    gap: 14px;
+  .redemptionCard {
+    padding: 22px 18px;
+    gap: 16px;
+    align-items: flex-start;
   }
 
   .iconContainer {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
   }
 
   .cardIcon {
@@ -297,103 +196,10 @@
   }
 
   .cardTitle {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .cardDesc {
-    font-size: 0.8rem;
-  }
-
-  .closingBanner {
-    padding: 22px 28px;
-  }
-
-  .bannerText {
-    font-size: 0.95rem;
-  }
-}
-
-/* Mobile (<= 768px): Single Column Stack with Left Alignment */
-@media (max-width: 768px) {
-  .intelligenceSection {
-    padding: 35px 16px;
-  }
-
-  .headerWrapper {
-    text-align: left;
-    margin-left: 0;
-    margin-bottom: 30px;
-  }
-
-  .sectionBadge {
-    justify-content: flex-start;
-  }
-
-  .sectionTitle {
-    font-size: 24px;
-    text-align: left;
-  }
-
-  .sectionDescription {
-    text-align: left;
-  }
-
-  .growthGridWrapper {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 36px;
-  }
-
-  .leftGrowthCard {
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    text-align: left;
-    border-right: 1px solid rgba(6, 21, 43, 0.09);
-    border-left: 3px solid #F0A500;
-  }
-
-  .leftGrowthCard .cardTextContent {
-    text-align: left;
-  }
-
-  .leftGrowthCard,
-  .rightGrowthCard {
-    padding: 18px 16px;
-    gap: 14px;
-    height: auto;
-    min-height: auto;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .closingBanner {
-    padding: 20px 16px;
-  }
-
-  .bannerContent {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .bannerText {
-    font-size: 0.92rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .intelligenceSection {
-    padding: 30px 12px;
-  }
-
-  .sectionTitle {
-    font-size: 22px;
-  }
-
-  .cardTitle {
-    font-size: 16px;
-  }
-
-  .bannerText {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
 }
