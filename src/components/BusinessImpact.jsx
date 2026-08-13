@@ -80,7 +80,7 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
 const defaultStats = [
   {
     id: 1,
-    target: 10000,
+    target: 27,
     suffix: '+',
     label: 'Business Referrals',
     Icon: FiRepeat,
@@ -96,7 +96,7 @@ const defaultStats = [
   },
   {
     id: 3,
-    target: 2500,
+    target: 22,
     suffix: '+',
     label: 'Business Growth',
     Icon: FiUsers,
@@ -112,7 +112,7 @@ const defaultStats = [
   },
   {
     id: 5,
-    target: 1000,
+    target: 33,
     suffix: '+',
     label: 'Business Talks',
     Icon: FiMessageCircle,
@@ -138,38 +138,43 @@ const BusinessImpact = () => {
         setStatsData([
           {
             id: 1,
-            target: d.recommendationCount > 0 ? d.recommendationCount : 10000,
+            target: d.recommendationCount > 0 ? d.recommendationCount : 0,
             suffix: '+',
             label: 'Business Referrals',
             Icon: FiRepeat,
+            key: 'recommendationCount',
           },
           {
             id: 2,
-            target: d.requirementsCount > 0 ? d.requirementsCount : 5000,
+            target: d.requirementsCount > 0 ? d.requirementsCount : 0,
             suffix: '+',
-            label: 'Lead Generation',
+            label: 'Requirements',
             Icon: FiTrendingUp,
+            key: 'requirementsCount',
           },
           {
             id: 3,
-            target: d.businessDoneCount > 0 ? d.businessDoneCount : 2500,
+            target: d.businessDoneCount > 0 ? d.businessDoneCount : 0,
             suffix: '+',
-            label: 'Business Growth',
+            label: 'Thankyou Slip',
             Icon: FiUsers,
+            key: 'businessDoneCount',
           },
           {
             id: 4,
-            target: d.totalRegions > 0 ? d.totalRegions : 50,
+            target: d.businessDoneAmount > 0 ? d.businessDoneAmount : 0,
             suffix: '+',
-            label: 'Cities Connected',
+            label: ' Thankyou Slip Amount',
             Icon: FiMapPin,
+            key: 'businessDoneAmount',
           },
           {
             id: 5,
-            target: d.directMeetCount > 0 ? d.directMeetCount : 1000,
+            target: d.directMeetCount > 0 ? d.directMeetCount : 0,
             suffix: '+',
             label: 'Business Talks',
             Icon: FiMessageCircle,
+            key: 'directMeetCount',
           },
           {
             id: 6,

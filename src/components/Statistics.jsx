@@ -8,21 +8,21 @@ const defaultStatsData = [
   {
     key: 'activeMembersCount',
     icon: HiOutlineUserGroup,
-    end: 8000,
+    end: 0,
     suffix: '+',
     label: 'Active TN Members',
   },
   {
     key: 'gstVerified',
     icon: HiOutlineShieldCheck,
-    end: 100,
-    suffix: '%',
+    end: 0,
+    suffix: '+',
     label: 'GST Verified Network',
   },
   {
     key: 'categoryCount',
     icon: FiGrid,
-    end: 250,
+    end: 0,
     suffix: '+',
     label: 'Business Categories',
   },
@@ -40,27 +40,31 @@ const Statistics = () => {
       const res = await getCommonStats();
       if (res?.status && res.data) {
         const d = res.data;
+        const activeMembers = d.activeMembersCount > 0 ? d.activeMembersCount : 0;
+        const categories = d.categoryCount > 0 ? d.categoryCount : 0;
+        const regionCount = d.totalRegions > 0 ? d.totalRegions : 0;
+
         setStatsData([
           {
             key: 'activeMembersCount',
             icon: HiOutlineUserGroup,
-            end: d.activeMembersCount > 0 ? d.activeMembersCount : (d.totalRegions > 0 ? d.totalRegions : 8000),
+            end: activeMembers,
             suffix: '+',
             label: 'Active TN Members',
           },
           {
-            key: 'gstVerified',
+            key: 'categoryCount',
             icon: HiOutlineShieldCheck,
-            end: 100,
-            suffix: '%',
-            label: 'GST Verified Network',
+            end: categories,
+            suffix: '+',
+            label: 'Category Count',
           },
           {
-            key: 'categoryCount',
+            key: 'totalRegions',
             icon: FiGrid,
-            end: d.categoryCount > 0 ? d.categoryCount : 250,
+            end: regionCount,
             suffix: '+',
-            label: 'Business Categories',
+            label: 'Region Count',
           },
         ]);
       }
