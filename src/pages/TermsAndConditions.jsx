@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
+import SEO from '../components/SEO';
+import seoData from '../data/seoData';
 import styles from '../styles/TermsAndConditions.module.css';
 
 const TermsAndConditions = () => {
   const [activeSection, setActiveSection] = useState('acceptance');
 
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Set up IntersectionObserver to update active sidebar link dynamically on scroll
   useEffect(() => {
     const sectionIds = [
       'acceptance',
@@ -30,7 +30,7 @@ const TermsAndConditions = () => {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-120px 0px -60% 0px', // Adjusted to match sticky layout offsets
+      rootMargin: '-120px 0px -60% 0px',
       threshold: 0
     };
 
@@ -57,39 +57,13 @@ const TermsAndConditions = () => {
     };
   }, []);
 
-  const handleSidebarClick = (e, targetId) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const navbarOffset = 110; // offset for sticky main menu and header spacing
-      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(targetId);
-    }
-  };
-
-  const navItems = [
-    { label: '1. Acceptance of Terms', id: 'acceptance' },
-    { label: '2. Eligibility', id: 'eligibility' },
-    { label: '3. User Accounts', id: 'accounts' },
-    { label: '4. Platform Usage', id: 'usage' },
-    { label: '5. Business Verification', id: 'verification' },
-    { label: '6. Membership & Subscription', id: 'membership' },
-    { label: '7. Payments', id: 'payments' },
-    { label: '8. Intellectual Property', id: 'intellectual-property' },
-    { label: '9. Termination', id: 'termination' },
-    { label: '10. Limitation of Liability', id: 'liability' },
-    { label: '11. Changes to Terms', id: 'changes' },
-    { label: '12. Contact Information', id: 'contact' }
-  ];
-
   return (
     <div className={styles.page}>
+      <SEO
+        title={seoData.termsAndConditions.title}
+        description={seoData.termsAndConditions.description}
+        keywords={seoData.termsAndConditions.keywords}
+      />
       {/* Hero Banner */}
       <section className={styles.hero}>
         <div className={styles.heroContainer}>
@@ -126,7 +100,7 @@ const TermsAndConditions = () => {
                 <div className={styles.disclaimerContent}>
                   <h4>Important Legal Notice</h4>
                   <p>
-
+                    All payments, GST invoices, agreements, subscriptions, and compliance activities are managed and processed under <a href="https://oceansoftwares.com" target="_blank" rel="noopener noreferrer">Oceansoftwares Pvt. Ltd.</a>
                   </p>
                 </div>
               </div>

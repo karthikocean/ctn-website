@@ -1,22 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiUsers, FiDownload, FiArrowRight, FiStar } from 'react-icons/fi';
+import { FiUsers, FiArrowRight } from 'react-icons/fi';
 import styles from '../styles/Hero.module.css';
 import Statistics from './Statistics';
-import { FiShield } from "react-icons/fi";
 
-// Import images
-import heroBg from '../assets/heromainimg.svg';
-import womanImage from '../assets/ogherosection womenimage (1).svg';
+// Import hero image
+import standingHeroImage from '../assets/stantingherosection.png';
 
 const Hero = () => {
   return (
     <div className={styles.heroWrapper}>
-      <section
-        id="home"
-        className={styles.heroSection}
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
+      <section id="home" className={styles.heroSection}>
         {/* Dark Overlay */}
         <div className={styles.heroOverlay}></div>
 
@@ -41,7 +35,7 @@ const Hero = () => {
             >
               {/* Title */}
               <h1 className={styles.heroTitle}>
-                India&apos;s Trusted Business<br></br>
+                India&apos;s Trusted Business<br />
                 <span className={styles.heroHighlight}> Social Networking Platform</span>
               </h1>
 
@@ -56,9 +50,6 @@ const Hero = () => {
                 <button className={styles.ctaButton}>
                   <FiUsers /> Join TN
                 </button>
-                {/* <button className={styles.ctaButton}>
-                  <FiDownload /> Download App
-                </button> */}
                 <button className={styles.ctaButton}>
                   Start Free Trial <FiArrowRight />
                 </button>
@@ -78,27 +69,19 @@ const Hero = () => {
                 </div>
               </div>
 
-
             </motion.div>
           </div>
 
-          {/* RIGHT Side — Hero Image */}
+          {/* RIGHT Side — Overlapping Foreground Hero Image */}
           <div className={styles.heroRight}>
             <motion.div
-              className={styles.imageCard}
+              className={styles.imageWrapper}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-
-              {/* Floating Badge */}
-              {/* <div className={styles.communityBadge}>
-                <FiShield />
-                <span>India's Trusted Business Community</span>
-              </div> */}
-
               <img
-                src={womanImage}
+                src={standingHeroImage}
                 alt="Trusted Network Platform"
                 className={styles.heroImage}
               />

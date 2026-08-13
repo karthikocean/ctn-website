@@ -1,71 +1,55 @@
 .whoWeAreSection {
-  background-color: #ffffff;
-  padding: 100px 0;
+  background-color: #F8FAFC;
+  background-image: radial-gradient(rgba(6, 21, 43, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
   color: #06152B;
 }
 
-/* Desktop & Tablet: Grid Layout with Left Image and Right Header+Text */
-.whoWeAreLayout {
+/* ==================================================
+   DESKTOP GRID (Adjusted 42% / 58% Proportions for Single Line Heading)
+   ================================================== */
+.whoWeAreGrid {
   display: grid;
+  grid-template-columns: 42% 58%;
   grid-template-areas:
-    "image header"
-    "image text";
-  grid-template-columns: 48% 52%;
-  gap: 20px 60px;
-  align-items: center;
+    "image badge"
+    "image heading"
+    "image paragraphs";
+  grid-template-rows: auto auto 1fr;
+  gap: 0 clamp(24px, 3vw, 40px);
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
-.headerBlock {
-  grid-area: header;
-}
-
-.imageBlock {
+.imageWrapper {
   grid-area: image;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.textBlock {
-  grid-area: text;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.whoWeAreImageWrapper {
   position: relative;
-  padding: 24px;
-  display: inline-block;
+  padding: 14px;
   width: 100%;
-  max-width: 520px;
+  box-sizing: border-box;
+  align-self: center;
 }
 
-.whoWeAreImage {
+.featureImage {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 25px 60px rgba(6, 21, 43, 0.12);
+  border-radius: 20px;
   display: block;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.whoWeAreImageWrapper:hover .whoWeAreImage {
-  transform: scale(1.02);
-  box-shadow: 0 30px 70px rgba(6, 21, 43, 0.18);
 }
 
 .cornerTopLeft {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90px;
-  height: 90px;
-  border-top: 5px solid #F0A500;
-  border-left: 5px solid #F0A500;
+  width: 65px;
+  height: 65px;
+  border-top: 4px solid #F0A500;
+  border-left: 4px solid #F0A500;
   border-top-left-radius: 12px;
   z-index: 1;
 }
@@ -74,19 +58,20 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 90px;
-  height: 90px;
-  border-bottom: 5px solid #F0A500;
-  border-right: 5px solid #F0A500;
+  width: 65px;
+  height: 65px;
+  border-bottom: 4px solid #F0A500;
+  border-right: 4px solid #F0A500;
   border-bottom-right-radius: 12px;
   z-index: 1;
 }
 
 .sectionBadge {
+  grid-area: badge;
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .sectionBadge::before {
@@ -100,7 +85,7 @@
 }
 
 .badgeLine {
-  width: 48px;
+  width: 44px;
   height: 1.5px;
   background: rgba(200, 169, 81, 0.7);
   flex-shrink: 0;
@@ -108,136 +93,152 @@
 
 .sectionBadge span {
   color: #C8A951;
-  font-size: 14px;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
   line-height: 1;
 }
 
+/* Single line heading on desktop without clipping or overflow */
 .sectionTitle {
-  font-size: 36px;
+  grid-area: heading;
+  font-size: clamp(19px, 1.75vw, 27px);
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.3;
   color: #06152B;
+  margin: 0 0 24px 0;
+  text-align: left;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+.paragraphsList {
+  grid-area: paragraphs;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.paragraphItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dotAccent {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #F0A500;
+  margin-top: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(240, 165, 0, 0.4);
+}
+
+.paragraphText {
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: #4B5563;
+  font-family: 'Inter', sans-serif;
   margin: 0;
+  flex: 1;
 }
 
-.whoWeAreParagraph {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #4b5563;
-  padding-left: 22px;
-  border-left: 4px solid #F0A500;
-  margin: 0;
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.whoWeAreParagraph:hover {
-  color: #06152B;
-  border-color: #C8A951;
-}
-
-/* Responsive Laptop */
-@media (max-width: 1200px) {
-  .whoWeAreSection {
-    padding: 85px 0;
-  }
-
-  .whoWeAreLayout {
-    gap: 16px 40px;
-  }
-}
-
-/* Responsive Tablet: KEEP LEFT IMAGE | RIGHT CONTENT (Side-by-Side) */
+/* ==================================================
+   TABLET & MOBILE RESPONSIVE ORDER (<= 1024px)
+   Order: 1. Badge -> 2. Heading -> 3. Image -> 4. Content
+   ================================================== */
 @media (max-width: 1024px) {
-  .whoWeAreLayout {
-    grid-template-columns: 45% 55%;
-    gap: 16px 28px;
-  }
-
-  .sectionTitle {
-    font-size: 32px;
-  }
-
-  .whoWeAreParagraph {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    padding-left: 16px;
-  }
-
-  .whoWeAreImageWrapper {
-    padding: 16px;
-  }
-
-  .cornerTopLeft,
-  .cornerBottomRight {
-    width: 70px;
-    height: 70px;
-  }
-}
-
-/* Mobile (<= 767px): Stacked Order: 1. Badge & Heading -> 2. Image -> 3. Content */
-@media (max-width: 767px) {
   .whoWeAreSection {
-    padding: 60px 16px;
+    padding: 60px 0;
   }
 
-  .whoWeAreLayout {
+  .whoWeAreGrid {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
-  .headerBlock {
+  .sectionBadge {
     order: 1;
-    text-align: left;
-  }
-
-  .imageBlock {
-    order: 2;
-  }
-
-  .textBlock {
-    order: 3;
+    margin-bottom: 8px;
   }
 
   .sectionTitle {
-    font-size: 28px;
+    order: 2;
+    margin-bottom: 16px;
+    white-space: normal;
+    font-size: clamp(22px, 3.5vw, 30px);
+    letter-spacing: normal;
   }
 
-  .whoWeAreParagraph {
-    font-size: 0.98rem;
-    padding-left: 16px;
+  .imageWrapper {
+    order: 3;
+    max-width: 580px;
+    margin: 0 auto 12px auto;
   }
 
-  .whoWeAreImageWrapper {
-    padding: 12px;
-    max-width: 100%;
+  .paragraphsList {
+    order: 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .whoWeAreSection {
+    padding: 48px 0;
+  }
+
+  .sectionBadge {
+    margin-bottom: 6px;
+  }
+
+  .sectionTitle {
+    margin-bottom: 14px;
+    font-size: 24px;
+  }
+
+  .paragraphText {
+    font-size: 0.94rem;
+    line-height: 1.65;
   }
 
   .cornerTopLeft,
   .cornerBottomRight {
     width: 50px;
     height: 50px;
-    border-width: 3.5px;
+    border-width: 3px;
   }
 }
 
 @media (max-width: 480px) {
   .whoWeAreSection {
-    padding: 45px 12px;
+    padding: 38px 0;
+  }
+
+  .sectionBadge span {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
   }
 
   .sectionTitle {
-    font-size: 26px;
+    font-size: 21px;
   }
 
-  .whoWeAreParagraph {
-    font-size: 0.92rem;
+  .paragraphText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .imageWrapper {
+    padding: 10px;
   }
 }
 
-
+@media (max-width: 375px) {
+  .paragraphText {
+    font-size: 0.88rem;
+  }
+}

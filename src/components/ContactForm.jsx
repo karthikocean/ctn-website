@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FiSend, FiCheckCircle } from 'react-icons/fi';
+import { createEnquiry } from '../apis/enquiryApi';
 import styles from '../styles/ContactForm.module.css';
 
 const ContactForm = () => {
@@ -7,10 +8,14 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [enquiryType, setEnquiryType] = useState('');
+  const [city, setCity] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [comment, setComment] = useState('');
 
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation helper functions (Name, Email, Phone are MANDATORY)
@@ -51,7 +56,6 @@ const ContactForm = () => {
   // Field change handlers
   const handleNameChange = (e) => {
     const value = e.target.value;
-    // Allow typing ONLY letters and spaces
     if (value === '' || /^[A-Za-z\s]+$/.test(value)) {
       setName(value);
       if (touched.name) {
@@ -70,7 +74,6 @@ const ContactForm = () => {
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
-    // Allow typing ONLY numbers (up to 10 digits)
     if (value === '' || (/^\d+$/.test(value) && value.length <= 10)) {
       setPhone(value);
       if (touched.phone) {
@@ -81,6 +84,14 @@ const ContactForm = () => {
 
   const handleEnquiryTypeChange = (e) => {
     setEnquiryType(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleCompanyNameChange = (e) => {
+    setCompanyName(e.target.value);
   };
 
   const handleCommentChange = (e) => {
@@ -95,11 +106,12 @@ const ContactForm = () => {
     if (field === 'phone') setErrors((prev) => ({ ...prev, phone: validatePhone(phone) }));
   };
 
-  // Form Submission
-  const handleSubmit = (e) => {
+  // Form Submission using enquiryApi.createEnquiry
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setTouched({ name: true, email: true, phone: true });
+    setApiError('');
 
     const nameErr = validateName(name);
     const emailErr = validateEmail(email);
@@ -117,15 +129,41 @@ const ContactForm = () => {
       return;
     }
 
-    // Success state
-    setIsSubmitted(true);
-    setName('');
-    setEmail('');
-    setPhone('');
-    setEnquiryType('');
-    setComment('');
-    setTouched({});
-    setErrors({});
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        name,
+        email,
+        phoneNumber: phone,
+        enquiryType,
+        city,
+        companyName,
+        comment,
+      };
+
+      const result = await createEnquiry(payload);
+
+      if (result && result.status) {
+        setIsSubmitted(true);
+        setName('');
+        setEmail('');
+        setPhone('');
+        setEnquiryType('');
+        setCity('');
+        setCompanyName('');
+        setComment('');
+        setTouched({});
+        setErrors({});
+      } else {
+        setApiError(result?.message || 'Failed to submit enquiry. Please try again.');
+      }
+    } catch (err) {
+      console.error('Enquiry submission error:', err);
+      setApiError(err.message || 'Failed to submit enquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -151,9 +189,9 @@ const ContactForm = () => {
         </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          {/* Row 1: Name & Email side-by-side on desktop/tablet */}
+          {/* Row 1: Name & Email */}
           <div className={styles.formRow}>
-            {/* Name Field (Mandatory) */}
+            {/* Name Field */}
             <div className={styles.formGroup}>
               <label htmlFor="contact-name" className={styles.label}>
                 Name <span className={styles.required}>*</span>
@@ -168,6 +206,7 @@ const ContactForm = () => {
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? "name-error" : undefined}
                 className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
+                disabled={isSubmitting}
               />
               {errors.name && (
                 <span id="name-error" className={styles.errorText}>
@@ -176,7 +215,7 @@ const ContactForm = () => {
               )}
             </div>
 
-            {/* Email Field (Mandatory) */}
+            {/* Email Field */}
             <div className={styles.formGroup}>
               <label htmlFor="contact-email" className={styles.label}>
                 Email <span className={styles.required}>*</span>
@@ -191,6 +230,7 @@ const ContactForm = () => {
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? "email-error" : undefined}
                 className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
+                disabled={isSubmitting}
               />
               {errors.email && (
                 <span id="email-error" className={styles.errorText}>
@@ -200,12 +240,12 @@ const ContactForm = () => {
             </div>
           </div>
 
-          {/* Row 2: Phone & Enquiry Type side-by-side on desktop/tablet */}
+          {/* Row 2: Phone & Enquiry Type */}
           <div className={styles.formRow}>
-            {/* Phone Field (Mandatory) */}
+            {/* Phone Field */}
             <div className={styles.formGroup}>
               <label htmlFor="contact-phone" className={styles.label}>
-                Phone <span className={styles.required}>*</span>
+                Phone Number <span className={styles.required}>*</span>
               </label>
               <input
                 id="contact-phone"
@@ -217,6 +257,7 @@ const ContactForm = () => {
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? "phone-error" : undefined}
                 className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
+                disabled={isSubmitting}
               />
               {errors.phone && (
                 <span id="phone-error" className={styles.errorText}>
@@ -225,7 +266,7 @@ const ContactForm = () => {
               )}
             </div>
 
-            {/* Enquiry Type Field (Optional) */}
+            {/* Enquiry Type Field */}
             <div className={styles.formGroup}>
               <label htmlFor="contact-enquiry-type" className={styles.label}>
                 Enquiry Type
@@ -235,17 +276,57 @@ const ContactForm = () => {
                 value={enquiryType}
                 onChange={handleEnquiryTypeChange}
                 className={styles.selectInput}
+                disabled={isSubmitting}
               >
-                <option value="">Select an enquiry type</option>
+                <option value="">Select enquiry type</option>
+                <option value="General">General Enquiry</option>
                 <option value="Membership">Membership</option>
                 <option value="Partnership">Partnership</option>
-                <option value="Support">Support</option>
-                <option value="General Enquiry">General Enquiry</option>
+                <option value="Franchise">Franchise</option>
+                <option value="Business Networking">Business Networking</option>
+                <option value="Event Enquiry">Event Enquiry</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Other">Other</option>
               </select>
             </div>
           </div>
 
-          {/* Row 3: Write a Comment (Full width) */}
+          {/* Row 3: City & Company Name */}
+          <div className={styles.twoColRow}>
+            {/* City Field */}
+            <div className={styles.formGroup}>
+              <label htmlFor="contact-city" className={styles.label}>
+                City
+              </label>
+              <input
+                id="contact-city"
+                type="text"
+                value={city}
+                onChange={handleCityChange}
+                placeholder="Enter your city"
+                className={styles.input}
+                disabled={isSubmitting}
+              />
+            </div>
+
+            {/* Company Name Field */}
+            <div className={styles.formGroup}>
+              <label htmlFor="contact-company" className={styles.label}>
+                Company Name
+              </label>
+              <input
+                id="contact-company"
+                type="text"
+                value={companyName}
+                onChange={handleCompanyNameChange}
+                placeholder="Enter your company name"
+                className={styles.input}
+                disabled={isSubmitting}
+              />
+            </div>
+          </div>
+
+          {/* Row 4: Write a Comment */}
           <div className={styles.formGroupFull}>
             <label htmlFor="contact-comment" className={styles.label}>
               Write a Comment
@@ -257,13 +338,25 @@ const ContactForm = () => {
               onChange={handleCommentChange}
               placeholder="Write your message here..."
               className={styles.textarea}
+              disabled={isSubmitting}
             />
           </div>
 
-          {/* Row 4: Compact Send Message Button */}
+          {/* API Error Banner */}
+          {apiError && (
+            <div className={styles.apiErrorBox}>
+              {apiError}
+            </div>
+          )}
+
+          {/* Row 5: Send Message Button */}
           <div className={styles.buttonWrapper}>
-            <button type="submit" className={styles.submitBtn}>
-              <span>Send Message</span>
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={isSubmitting}
+            >
+              <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
               <FiSend className={styles.btnIcon} />
             </button>
           </div>

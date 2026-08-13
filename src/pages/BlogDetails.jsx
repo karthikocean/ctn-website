@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiAlertCircle } from 'react-icons/fi';
+import SEO from '../components/SEO';
+import seoData from '../data/seoData';
 import { blogs } from '../data/blogsData';
 import BlogDetailsHeader from '../components/BlogDetailsHeader';
 import BlogDetailsContent from '../components/BlogDetailsContent';
@@ -11,10 +13,8 @@ const BlogDetails = () => {
   const { id, slug } = useParams();
   const targetKey = slug || id;
 
-  // Find matching blog by slug or id
   const blog = blogs.find((b) => b.slug === targetKey || b.id === targetKey);
 
-  // Scroll to top whenever URL route changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [targetKey]);
@@ -22,6 +22,11 @@ const BlogDetails = () => {
   if (!blog) {
     return (
       <div className={styles.notFoundContainer}>
+        <SEO
+          title={seoData.blogs.title}
+          description={seoData.blogs.description}
+          keywords={seoData.blogs.keywords}
+        />
         <div className="container">
           <div className={styles.notFoundCard}>
             <FiAlertCircle className={styles.notFoundIcon} />
@@ -39,7 +44,6 @@ const BlogDetails = () => {
     );
   }
 
-  // Get related blogs by specified relatedIds or matching category
   const relatedBlogs = blogs.filter((b) => {
     if (b.id === blog.id || b.slug === blog.slug) return false;
     if (blog.relatedIds && blog.relatedIds.includes(b.id)) return true;
@@ -48,16 +52,13 @@ const BlogDetails = () => {
 
   return (
     <div className={styles.detailsPage}>
-      {/* Blog Details Header: Single Back Button, Breadcrumbs, Title, Meta & Hero Image */}
+      <SEO
+        title={`${blog.title} | Trusted Network`}
+        description={blog.excerpt || seoData.blogs.description}
+        keywords={`${blog.category || 'business'}, business blog, trusted network`}
+      />
       <BlogDetailsHeader blog={blog} />
-
-      {/* Article Content: Structured Headings, Quotes, Lists, Paragraphs */}
       <BlogDetailsContent content={blog.content} />
-
-      {/* Additional Article Visuals disabled per prompt requirement */}
-      {/* <BlogDetailsImages images={blog.additionalImages} title={blog.title} /> */}
-
-      {/* Related Blogs Carousel / Grid directly following Conclusion */}
       <RelatedBlogs currentBlogId={blog.id} relatedBlogs={relatedBlogs} />
     </div>
   );

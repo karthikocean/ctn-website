@@ -1,38 +1,81 @@
-import React from 'react';
-import { FiUsers, FiCpu, FiTrendingUp, FiGlobe } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { FiUserCheck, FiCompass, FiUsers, FiActivity, FiStar, FiGift } from 'react-icons/fi';
 import styles from '../styles/FutureDirection.module.css';
 
 const FutureDirection = () => {
-  const steps = [
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const tabsData = [
     {
-      step: '01',
-      title: 'CONNECTED',
-      desc: 'Building stronger connections between relevant businesses and professionals.',
+      id: 'register',
+      title: 'Register',
+      desc: 'Create your business profile and become part of a verified business network.',
+      icon: FiUserCheck,
+      bullets: [
+        'Verified business profile setup',
+        'Instant member directory listing',
+        'Access to community networking'
+      ]
+    },
+    {
+      id: 'get-started',
+      title: 'Get Started',
+      desc: 'Choose the right membership and begin exploring the opportunities available across your network.',
+      icon: FiCompass,
+      bullets: [
+        'Choose flexible membership plans',
+        'Explore business opportunities',
+        'Connect with active members'
+      ]
+    },
+    {
+      id: 'build-network',
+      title: 'Build Your Network',
+      desc: 'Discover relevant businesses, create meaningful connections, and start conversations with the right people.',
       icon: FiUsers,
-      cardClass: styles.cardStep1,
+      bullets: [
+        'Discover relevant industry peers',
+        'Initiate direct business conversations',
+        'Form trusted professional relationships'
+      ]
     },
     {
-      step: '02',
-      title: 'SMARTER',
-      desc: 'Moving towards intelligent recommendations and more relevant business discovery.',
-      icon: FiCpu,
-      cardClass: styles.cardStep2,
+      id: 'stay-active',
+      title: 'Stay Active',
+      desc: 'Share business updates, post requirements, celebrate milestones, explore opportunities, and participate in the community.',
+      icon: FiActivity,
+      bullets: [
+        'Post business requirements and updates',
+        'Share milestones and achievements',
+        'Participate in networking discussions'
+      ]
     },
     {
-      step: '03',
-      title: 'OPPORTUNITY',
-      desc: 'Creating more pathways for referrals, partnerships and cross-industry opportunities.',
-      icon: FiTrendingUp,
-      cardClass: styles.cardStep3,
+      id: 'earn-points',
+      title: 'Earn Points',
+      desc: 'Meaningful participation can help you earn points and unlock additional value across the Trusted Network experience.',
+      icon: FiStar,
+      bullets: [
+        'Earn points through active participation',
+        'Build trust score within community',
+        'Unlock higher platform visibility'
+      ]
     },
     {
-      step: '04',
-      title: 'ECOSYSTEM',
-      desc: 'Evolving towards a connected business ecosystem built around relationships, opportunities and insights.',
-      icon: FiGlobe,
-      cardClass: styles.cardStep4,
+      id: 'redeem-benefits',
+      title: 'Redeem Benefits',
+      desc: 'Use eligible points to access selected marketplace, event, learning, and other platform experiences.',
+      icon: FiGift,
+      bullets: [
+        'Access marketplace offers',
+        'Register for premium events',
+        'Unlock exclusive learning resources'
+      ]
     },
   ];
+
+  const currentTab = tabsData[activeTabIndex];
+  const ActiveIcon = currentTab.icon;
 
   return (
     <section className={styles.directionSection}>
@@ -41,61 +84,70 @@ const FutureDirection = () => {
         <div className={styles.headerWrapper}>
           <div className={styles.sectionBadge}>
             <div className={styles.badgeLine}></div>
-            <span>WHERE WE'RE HEADING</span>
+            <span>THE FUTURE OF BUSINESS NETWORKING</span>
           </div>
 
           <h2 className={styles.sectionTitle}>
-            From Networking to a Complete Business Ecosystem
+            Overall Journey
           </h2>
 
           <p className={styles.sectionDescription}>
-            Trusted Network is designed to evolve beyond basic business networking into a smarter, more connected ecosystem that helps businesses discover relationships, opportunities and meaningful growth.
+            A streamlined roadmap designed to help business owners connect, engage, and unlock value across the Trusted Network ecosystem.
           </p>
         </div>
 
-        {/* Pinned Note Roadmap Container */}
-        <div className={styles.roadmapCanvas}>
-          {/* Connector Path Line for Desktop & Tablet */}
-          <svg className={styles.svgConnector} viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none">
-            <path
-              d="M 210 110 L 790 190 L 210 390 L 790 470"
-              stroke="#F0A500"
-              strokeWidth="2"
-              strokeDasharray="6 6"
-              opacity="0.75"
-            />
-            <circle cx="210" cy="110" r="5" fill="#F0A500" />
-            <circle cx="790" cy="190" r="5" fill="#F0A500" />
-            <circle cx="210" cy="390" r="5" fill="#F0A500" />
-            <circle cx="790" cy="470" r="5" fill="#F0A500" />
-          </svg>
+        {/* Tab-Based Journey Layout */}
+        <div className={styles.journeyContainer}>
+          {/* Left Side (Desktop) / Top Row (Mobile): Tab Navigation */}
+          <div className={styles.tabSidebar}>
+            <div className={styles.tabList} role="tablist">
+              {tabsData.map((tab, idx) => {
+                const TabIcon = tab.icon;
+                const isActive = activeTabIndex === idx;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`${styles.tabBtn} ${isActive ? styles.activeTabBtn : ''}`}
+                    onClick={() => setActiveTabIndex(idx)}
+                  >
+                    <div className={styles.tabIndicator}></div>
+                    <div className={styles.tabIconWrapper}>
+                      <TabIcon className={styles.tabItemIcon} />
+                    </div>
+                    <span className={styles.tabText}>{tab.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-          {/* 4 Pinned Milestone Notes */}
-          <div className={styles.notesGrid}>
-            {steps.map((item) => {
-              const IconComp = item.icon;
-              return (
-                <div key={item.step} className={`${styles.pinnedNoteCard} ${item.cardClass}`}>
-                  {/* CSS Push Pin Assembly */}
-                  <div className={styles.pinWrapper}>
-                    <div className={styles.pinHead}></div>
-                    <div className={styles.pinStem}></div>
-                  </div>
-
-                  {/* Blue Number + Icon Badge Only */}
-                  <div className={styles.numberBlock}>
-                    <span className={styles.numberDigit}>{item.step}</span>
-                    <IconComp className={styles.stepIcon} />
-                  </div>
-
-                  {/* Note Content */}
-                  <div className={styles.noteContent}>
-                    <h3 className={styles.noteTitle}>{item.title}</h3>
-                    <p className={styles.noteDesc}>{item.desc}</p>
-                  </div>
+          {/* Right Side (Desktop) / Bottom Panel (Mobile): Active Content Display */}
+          <div className={styles.contentPanel}>
+            <div className={styles.panelInner}>
+              {/* Horizontal Icon + Title Row */}
+              <div className={styles.titleRow}>
+                <div className={styles.iconCircle}>
+                  <ActiveIcon className={styles.largeIcon} />
                 </div>
-              );
-            })}
+                <h3 className={styles.activeTitle}>{currentTab.title}</h3>
+              </div>
+
+              {/* Description */}
+              <p className={styles.activeDesc}>{currentTab.desc}</p>
+
+              {/* Bullet Points */}
+              <ul className={styles.bulletList}>
+                {currentTab.bullets.map((bullet, i) => (
+                  <li key={i} className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>•</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

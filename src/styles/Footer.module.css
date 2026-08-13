@@ -1,26 +1,39 @@
 .footer {
   background: #062a52;
   color: white;
-  padding: 40px 40px 5px 40px;
+  padding: 40px 40px 10px 40px;
   position: relative;
-  border-top: 4px solid var(--accent-gold);
+  border-top: 4px solid #C8A951;
   margin: 0;
 }
 
 .footerGrid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 60px;
-  align-items: stretch;
-  /* Critical for same height */
-  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Group 1 (Desktop: Brand + NavGroup) */
+.group1 {
+  display: flex;
+  flex: 1 1 65%;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.brandCol {
+  flex: 0 0 38%;
+  display: flex;
+  flex-direction: column;
 }
 
 .footerLogo {
   width: 200px;
   height: auto;
   display: block;
-  filter: brightness(0) invert(1);
   opacity: 0.95;
   transition: opacity 0.3s ease;
 }
@@ -34,49 +47,19 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  /* margin-bottom: 25px; */
-}
-
-.logoIcon {
-  width: 35px;
-  height: 35px;
-  background: white;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-dark-navy);
-  font-size: 1.2rem;
-}
-
-.logoText {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: white;
-}
-
-.logoText span {
-  color: var(--accent-gold);
 }
 
 .tagline {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  margin-top: 14px;
+  margin-bottom: 22px;
 }
 
 .socials {
   display: flex;
   gap: 15px;
-  padding-bottom: 25px;
 }
 
 .socials a {
@@ -93,20 +76,34 @@
 }
 
 .socials a:hover {
-  background: var(--accent-gold);
-  color: var(--primary-dark-navy);
+  background: #C8A951;
+  color: #06152B;
   transform: translateY(-3px);
+}
+
+.navGroup {
+  display: flex;
+  flex: 1 1 55%;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
 }
 
 .colTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 25px;
-  color: var(--accent-gold);
+  margin-bottom: 22px;
+  color: #C8A951;
 }
 
 .links {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .links li {
@@ -125,23 +122,44 @@
 
 .links a svg {
   font-size: 0.85rem;
-  color: var(--accent-gold);
+  color: #C8A951;
   transition: transform 0.3s ease;
 }
 
 .links a:hover {
-  color: var(--accent-gold);
+  color: #C8A951;
 }
 
 .links a:hover svg {
   transform: translateX(3px);
 }
 
+/* Group 2 (Desktop: Get the App & Contact Info) */
+.group2 {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 30%;
+  gap: 20px;
+}
+
+.appSection,
+.contactSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.appColTitle,
+.contactColTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #C8A951;
+}
+
 .getAppContent {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 10px;
 }
 
 .footerQr {
@@ -167,7 +185,7 @@
 .badge {
   background: rgba(255, 255, 255, 0.1);
   color: white;
-  padding: 6px 9px;
+  padding: 6px 12px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -181,12 +199,7 @@
 
 .badge:hover {
   background: white;
-  color: var(--primary-dark-navy);
-}
-
-.contactInfo {
-  /* margin-top: auto; */
-  /* Pushes contact info to bottom to match other columns */
+  color: #06152B;
 }
 
 .contactInfo p {
@@ -194,44 +207,25 @@
   font-size: 0.9rem;
   margin-bottom: 12px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 
 .contactIcon {
-  color: var(--accent-gold);
+  color: #C8A951;
   font-size: 1.1rem;
   flex-shrink: 0;
-  margin-top: 3px;
-}
-
-.address {
-  line-height: 1.5;
-}
-
-.address strong {
-  color: white;
-  font-weight: 600;
 }
 
 .bottomBar {
-  padding-top: 30px;
+  padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
-  /* Centered content */
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   text-align: center;
-}
-
-.madeInIndia {
-  font-weight: 600;
-}
-
-.navGroup {
-  display: contents;
 }
 
 .creditLink {
@@ -250,160 +244,182 @@
   opacity: 0.9;
 }
 
-/* ---- TABLET (768px - 1024px) ---- */
+/* ============================================
+   TABLET RESPONSIVE (768px - 1024px)
+   ============================================ */
 @media (max-width: 1024px) and (min-width: 768px) {
   .footer {
-    padding: 40px 32px 10px 32px;
+    padding: 36px 32px 10px 32px;
   }
 
   .footerGrid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.9fr 1fr 1.3fr;
-    gap: 24px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
   }
 
-  .navGroup {
-    display: contents;
+  /* GROUP 1 — Row 1 (Red Box): Brand Area + Company + Resources horizontally */
+  .group1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .brandCol {
+    flex: 1 1 40%;
   }
 
   .footerLogo {
-    width: 160px;
-  }
-
-  .colTitle {
-    font-size: 1.05rem;
-    margin-bottom: 18px;
-  }
-
-  .links a {
-    font-size: 0.88rem;
+    width: 170px;
   }
 
   .tagline {
     font-size: 0.88rem;
   }
 
-  .footerQr {
-    width: 60px;
-    height: 60px;
+  .navGroup {
+    flex: 1 1 55%;
+    justify-content: space-around;
+    gap: 24px;
   }
 
-  .badge {
-    padding: 5px 8px;
-    font-size: 0.75rem;
-    min-width: 110px;
+  /* GROUP 2 — Row 2 (Green Box): Get the App + Contact Info horizontally */
+  .group2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 28px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 24px;
+  }
+
+  .appSection {
+    flex: 1 1 48%;
+  }
+
+  .contactSection {
+    flex: 1 1 48%;
+  }
+
+  .colTitle,
+  .appColTitle,
+  .contactColTitle {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
   }
 }
 
-/* ---- MOBILE (< 768px) ---- */
+/* ============================================
+   MOBILE RESPONSIVE (<= 767px)
+   ============================================ */
 @media (max-width: 767px) {
   .footer {
-    padding: 40px 20px 10px 20px;
+    padding: 32px 20px 10px 20px;
   }
 
   .footerGrid {
-    display: flex;
     flex-direction: column;
-    gap: 32px;
-    align-items: stretch;
+    gap: 28px;
   }
 
-  /* Group 1: Logo + Tagline + Socials (Centered) */
-  .brandCol {
-    display: flex;
+  .group1 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 24px;
+    width: 100%;
   }
 
-  .brandCol .logo {
-    justify-content: center;
-    margin-bottom: 12px;
+  .brandCol {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .footerLogo {
     margin: 0 auto;
+    width: 170px;
   }
 
   .tagline {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
   }
 
   .socials {
     justify-content: center;
-    padding-bottom: 0;
   }
 
-  /* Group 2: Company + Resources (display: flex) */
+  /* Company & Resources flex columns on mobile */
   .navGroup {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     gap: 20px;
     width: 100%;
+    text-align: left;
   }
 
   .linksCol {
     text-align: left;
   }
 
-  /* Group 3: Get the App + Contact Info (display: flex) */
-  .appContactCol {
+  /* Get the App & Contact Info flex columns on mobile */
+  .group2 {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 24px;
+  }
+
+  .appSection,
+  .contactSection {
+    flex: 1 1 48%;
+    align-items: flex-start;
   }
 
   .getAppContent {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
-
-  .contactInfo {
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
   }
 
-  .contactInfo p {
-    justify-content: center;
-  }
-
-  .colTitle {
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-  }
-
-  .bottomBar {
-    padding-top: 24px;
-    font-size: 0.85rem;
+  .colTitle,
+  .appColTitle,
+  .contactColTitle {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
   .navGroup {
+    gap: 16px;
+  }
+
+  .group2 {
     flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
+  }
+
+  .appSection,
+  .contactSection {
+    width: 100%;
+  }
+
+  .getAppContent {
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-  }
-
-  .linksCol {
-    text-align: center;
-  }
-
-  .links a {
-    justify-content: center;
-  }
-
-  .badge {
-    font-size: 0.75rem;
-    min-width: 100px;
   }
 }

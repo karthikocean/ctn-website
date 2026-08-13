@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiX, FiCheckCircle, FiArrowRight } from 'react-icons/fi';
+import { createFranchiseApplication } from '../apis/franchiseApi';
 import styles from '../styles/FranchiseFormModal.module.css';
 
 const indianStates = [
@@ -75,6 +76,8 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Background Scroll Lock (Lock HTML and Body scrolling cleanly)
@@ -181,15 +184,53 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitted(true);
+    setApiError('');
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        fullName: formData.fullName,
+        phoneNumber: formData.mobileNumber,
+        email: formData.email,
+        state: formData.state,
+        city: formData.city,
+        companyName: formData.companyName,
+      };
+
+      const result = await createFranchiseApplication(payload);
+
+      if (result && result.status) {
+        setIsSubmitted(true);
+        setFormData({
+          fullName: '',
+          mobileNumber: '',
+          email: '',
+          state: '',
+          city: '',
+          companyName: ''
+        });
+        setErrors({});
+      } else {
+        setApiError(result?.message || 'Failed to submit franchise application. Please try again.');
+      }
+    } catch (err) {
+      console.error('Franchise application submission error:', err);
+      setApiError(err.message || 'Failed to submit franchise application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleResetAndClose = () => {
     setIsSubmitted(false);
+    setApiError('');
     setFormData({
       fullName: '',
       mobileNumber: '',
@@ -266,6 +307,7 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   onChange={handleNameChange}
                   placeholder="e.g. John Doe"
                   className={`${styles.inputField} ${errors.fullName ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 />
                 {errors.fullName && (
                   <span className={styles.errorText}>{errors.fullName}</span>
@@ -285,6 +327,7 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   placeholder="10-digit phone number"
                   maxLength={10}
                   className={`${styles.inputField} ${errors.mobileNumber ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 />
                 {errors.mobileNumber && (
                   <span className={styles.errorText}>{errors.mobileNumber}</span>
@@ -303,6 +346,7 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   placeholder="name@example.com"
                   className={`${styles.inputField} ${errors.email ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 />
                 {errors.email && (
                   <span className={styles.errorText}>{errors.email}</span>
@@ -318,6 +362,7 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   value={formData.state}
                   onChange={handleStateChange}
                   className={`${styles.selectField} ${errors.state ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 >
                   <option value="">Select State</option>
                   {indianStates.map((st) => (
@@ -341,6 +386,7 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   value={formData.city}
                   onChange={handleChange}
                   className={`${styles.selectField} ${errors.city ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 >
                   <option value="">Select City</option>
                   {availableCities.map((ct) => (
@@ -365,16 +411,28 @@ const FranchiseFormModal = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   placeholder="e.g. Apex Solutions Pvt Ltd"
                   className={`${styles.inputField} ${errors.companyName ? styles.inputError : ''}`}
+                  disabled={isSubmitting}
                 />
                 {errors.companyName && (
                   <span className={styles.errorText}>{errors.companyName}</span>
                 )}
               </div>
 
+              {/* API Error Banner */}
+              {apiError && (
+                <div className={styles.apiErrorBox}>
+                  {apiError}
+                </div>
+              )}
+
               {/* Compact Submit Button */}
               <div className={styles.submitWrapper}>
-                <button type="submit" className={styles.submitBtn}>
-                  <span>Submit Application</span>
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={isSubmitting}
+                >
+                  <span>{isSubmitting ? 'Submitting...' : 'Submit Application'}</span>
                   <FiArrowRight className={styles.submitArrow} />
                 </button>
               </div>

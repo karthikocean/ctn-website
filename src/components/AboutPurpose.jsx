@@ -13,8 +13,11 @@ const AboutPurpose = () => {
           </div>
 
           <h2 className={styles.sectionTitle}>
-            Connect. Collaborate. Grow.
+            Build Trust. Create Opportunities.
           </h2>
+          <p className={styles.sectionSubTitle}>
+            Build meaningful business relationships, discover trusted opportunities, and grow through a network built on verified connections.
+          </p>
         </div>
 
         <div className={styles.purposeBoard}>
@@ -72,5 +75,3 @@ const AboutPurpose = () => {
 };
 
 export default AboutPurpose;
-
-

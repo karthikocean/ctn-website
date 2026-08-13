@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
+import SEO from '../components/SEO';
+import seoData from '../data/seoData';
 import styles from '../styles/PrivacyPolicy.module.css';
 
 const PrivacyPolicy = () => {
   const [activeSection, setActiveSection] = useState('collect');
 
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Set up IntersectionObserver to update active sidebar link dynamically on scroll
   useEffect(() => {
     const sectionIds = [
       'collect',
@@ -56,38 +56,13 @@ const PrivacyPolicy = () => {
     };
   }, []);
 
-  const handleSidebarClick = (e, targetId) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const navbarOffset = 110;
-      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(targetId);
-    }
-  };
-
-  const navItems = [
-    { label: '1. Information We Collect', id: 'collect' },
-    { label: '2. How We Use Information', id: 'use-info' },
-    { label: '3. Cookies & Analytics', id: 'cookies' },
-    { label: '4. Data Sharing', id: 'sharing' },
-    { label: '5. Data Security', id: 'security' },
-    { label: '6. Data Retention', id: 'retention' },
-    { label: '7. User Rights', id: 'rights' },
-    { label: '8. Third-Party Links', id: 'links' },
-    { label: '9. Children\'s Privacy', id: 'children' },
-    { label: '10. Policy Updates', id: 'updates' },
-    { label: '11. Contact Information', id: 'contact' }
-  ];
-
   return (
     <div className={styles.page}>
+      <SEO
+        title={seoData.privacyPolicy.title}
+        description={seoData.privacyPolicy.description}
+        keywords={seoData.privacyPolicy.keywords}
+      />
       {/* Hero Banner */}
       <section className={styles.hero}>
         <div className={styles.heroContainer}>
@@ -302,8 +277,8 @@ const PrivacyPolicy = () => {
             </section>
           </main>
         </div>
-      </section >
-    </div >
+      </section>
+    </div>
   );
 };
 

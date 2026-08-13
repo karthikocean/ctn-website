@@ -1,6 +1,9 @@
 .directionSection {
   background-color: #ffffff;
-  padding: 35px 0;
+  background-image: radial-gradient(rgba(6, 21, 43, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 80px 0 70px 0;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   color: #06152B;
@@ -8,15 +11,14 @@
 
 .headerWrapper {
   text-align: center;
-  max-width: 820px;
-  margin: 0 auto 70px;
+  margin-bottom: 44px;
 }
 
 .sectionBadge {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .sectionBadge::before {
@@ -32,12 +34,12 @@
 .badgeLine {
   width: 48px;
   height: 1.5px;
-  background: rgba(200, 169, 81, 0.7);
+  background: #C8A951;
   flex-shrink: 0;
 }
 
 .sectionBadge span {
-  color: #C8A951;
+  color: #06152B;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -47,335 +49,301 @@
 }
 
 .sectionTitle {
-  font-size: 36px;
+  font-size: 38px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
   color: #06152B;
-  margin-bottom: 16px;
+  margin: 0 0 14px 0;
 }
 
 .sectionDescription {
   font-size: 1.05rem;
   line-height: 1.65;
-  color: #4b5563;
-  margin: 0;
-}
-
-/* Roadmap Canvas & Connector Path */
-.roadmapCanvas {
-  position: relative;
-  max-width: 1040px;
+  color: #4B5563;
+  max-width: 720px;
   margin: 0 auto;
-  min-height: 600px;
+  font-family: 'Inter', sans-serif;
 }
 
-.svgConnector {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Notes Grid (Staggered Layout) */
-.notesGrid {
+/* 2-Column Desktop Journey Layout */
+.journeyContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 50px;
-  column-gap: 60px;
-  position: relative;
-  z-index: 2;
+  grid-template-columns: 360px 1fr;
+  gap: 36px;
+  align-items: stretch;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-/* Staggered Vertical Offsets for Pinned Notes */
-.cardStep1 {
-  grid-column: 1;
-  margin-top: 0;
-}
-
-.cardStep2 {
-  grid-column: 2;
-  margin-top: 80px;
-}
-
-.cardStep3 {
-  grid-column: 1;
-  margin-top: 40px;
-}
-
-.cardStep4 {
-  grid-column: 2;
-  margin-top: 120px;
-}
-
-/* COMMON PINNED NOTE CARD CLASS — EXACT EQUAL SIZE FOR ALL 4 CARDS */
-.pinnedNoteCard {
+.tabSidebar {
   width: 100%;
-  max-width: 440px;
-  height: 220px;
-  min-height: 220px;
-  max-height: 220px;
-  background: #ffffff;
-  border: 1px solid rgba(6, 21, 43, 0.09);
-  border-top: 3px solid #F0A500;
-  border-radius: 18px;
-  padding: 30px 28px 24px;
-  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.06), 0 4px 10px rgba(0, 0, 0, 0.02);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  position: relative;
+}
+
+.tabList {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  overflow: visible;
-}
-
-.pinnedNoteCard:hover {
-  transform: translateY(-6px);
-  border-color: #F0A500;
-  box-shadow: 0 22px 50px rgba(6, 21, 43, 0.12);
-}
-
-/* CSS Push Pin Assembly */
-.pinWrapper {
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.pinHead {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #FFF0BA 0%, #F0A500 50%, #B37B00 100%);
-  box-shadow: 0 4px 8px rgba(6, 21, 43, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-  position: relative;
-  z-index: 2;
-}
-
-.pinStem {
-  width: 2px;
-  height: 14px;
-  background: linear-gradient(180deg, #C8A951 0%, #8A6818 100%);
-  margin-top: -3px;
-  z-index: 1;
-  box-shadow: 1px 0 2px rgba(6, 21, 43, 0.2);
-}
-
-/* Blue Number + Icon Badge (Navy #06152B, Gold Number #F0A500, White Icon) */
-.numberBlock {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
   gap: 12px;
-  background: linear-gradient(135deg, #06152B 0%, #0B2345 100%);
-  border: 1px solid rgba(240, 165, 0, 0.35);
-  padding: 6px 16px;
-  border-radius: 12px;
+  width: 100%;
+}
+
+.tabBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #F8FAFC;
+  border: 1px solid rgba(6, 21, 43, 0.1);
+  border-radius: 14px;
+  color: #06152B;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+}
+
+.tabIndicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: #F0A500;
+  transition: width 0.3s ease;
+}
+
+.tabIconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(6, 21, 43, 0.05);
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tabItemIcon {
+  font-size: 1.15rem;
+  color: #06152B;
+  transition: color 0.3s ease;
+}
+
+.tabText {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  background: #FFFDF5;
+  border-color: rgba(200, 169, 81, 0.4);
+  color: #06152B;
+  transform: translateX(4px);
+}
+
+.tabBtn:hover .tabItemIcon {
+  color: #F0A500;
+}
+
+.activeTabBtn {
+  background: #FFFDF5;
+  border-color: #F0A500;
+  color: #06152B;
+  box-shadow: 0 8px 24px rgba(6, 21, 43, 0.08);
+}
+
+.activeTabBtn .tabIndicator {
+  width: 4px;
+}
+
+.activeTabBtn .tabIconWrapper {
+  background: rgba(240, 165, 0, 0.15);
+  border-color: rgba(240, 165, 0, 0.4);
+}
+
+.activeTabBtn .tabItemIcon {
+  color: #F0A500;
+}
+
+/* Right Content Display Panel (Clean, Soft Shadow, No Glow) */
+.contentPanel {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  border-top: 3.5px solid #F0A500;
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 10px 30px rgba(6, 21, 43, 0.05);
+  overflow: hidden;
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Horizontal Icon + Title Row */
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 6px 16px rgba(6, 21, 43, 0.15);
-  height: 38px;
-  box-sizing: border-box;
+  width: 100%;
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(240, 165, 0, 0.12);
+  border: 1.5px solid rgba(240, 165, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.numberDigit {
-  font-size: 1.3rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
+.largeIcon {
+  font-size: 24px;
   color: #F0A500;
-  line-height: 1;
 }
 
-.stepIcon {
-  font-size: 17px;
-  color: #ffffff;
-}
-
-/* Note Content Alignment */
-.noteContent {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.noteTitle {
-  font-size: 21px;
+.activeTitle {
+  font-size: 26px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   color: #06152B;
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
+  margin: 0;
   line-height: 1.25;
 }
 
-.noteDesc {
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: #4b5563;
+.activeDesc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #4B5563;
+  margin: 0 0 20px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Bullet Points List */
+.bulletList {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
-/* Responsive Laptop (1025px - 1200px) */
-@media (max-width: 1200px) {
-  .directionSection {
-    padding: 35px 0;
-  }
-
-  .notesGrid {
-    column-gap: 40px;
-  }
-
-  .pinnedNoteCard {
-    height: 220px;
-    min-height: 220px;
-    max-height: 220px;
-    padding: 28px 24px 22px;
-  }
-
-  .cardStep2 { margin-top: 70px; }
-  .cardStep3 { margin-top: 30px; }
-  .cardStep4 { margin-top: 100px; }
+.bulletItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #06152B;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 }
 
-/* Responsive Tablet (769px - 1024px): Compressed 2-Column Staggered Layout with Connecting Lines */
-@media (min-width: 769px) and (max-width: 1024px) {
+.bulletDot {
+  color: #F0A500;
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
   .directionSection {
-    padding: 35px 0;
+    padding: 60px 0 50px 0;
+  }
+
+  .journeyContainer {
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+  }
+
+  .contentPanel {
+    padding: 32px 24px;
+  }
+
+  .activeTitle {
+    font-size: 22px;
+  }
+
+  .activeDesc {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (<= 767px): Vertical 1-by-1 Stacked Tabs + Panel Below */
+@media (max-width: 767px) {
+  .directionSection {
+    padding: 50px 0 40px 0;
   }
 
   .sectionTitle {
-    font-size: 30px;
+    font-size: 28px;
   }
 
-  .headerWrapper {
-    margin-bottom: 45px;
-  }
-
-  .roadmapCanvas {
-    min-height: 520px;
-  }
-
-  .notesGrid {
-    column-gap: 24px;
-    row-gap: 30px;
-  }
-
-  .cardStep1 { margin-top: 0; }
-  .cardStep2 { margin-top: 40px; }
-  .cardStep3 { margin-top: 20px; }
-  .cardStep4 { margin-top: 60px; }
-
-  .pinnedNoteCard {
-    width: 100%;
-    max-width: 100%;
-    height: 215px;
-    min-height: 215px;
-    max-height: 215px;
-    padding: 24px 20px 20px;
-  }
-
-  .noteTitle {
-    font-size: 19px;
-  }
-
-  .noteDesc {
-    font-size: 0.88rem;
-  }
-}
-
-/* Responsive Mobile (<= 768px): Clean Single-Column Stack (Left Aligned) */
-@media (max-width: 768px) {
-  .directionSection {
-    padding: 35px 16px;
-  }
-
-  .headerWrapper {
-    text-align: left;
-    margin-left: 0;
-    margin-bottom: 30px;
-  }
-
-  .sectionBadge {
-    justify-content: flex-start;
-  }
-
-  .sectionTitle {
-    font-size: 26px;
-    text-align: left;
-  }
-
-  .sectionDescription {
-    text-align: left;
-  }
-
-  .svgConnector {
-    display: none;
-  }
-
-  .roadmapCanvas {
-    min-height: auto;
-  }
-
-  .notesGrid {
-    display: flex;
-    flex-direction: column;
+  .journeyContainer {
+    grid-template-columns: 1fr;
     gap: 20px;
-    position: relative;
   }
 
-  .notesGrid::before {
-    display: none;
+  .tabList {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    overflow: visible;
   }
 
-  .cardStep1,
-  .cardStep2,
-  .cardStep3,
-  .cardStep4 {
-    margin: 0 !important;
-    width: 100% !important;
-    grid-column: auto;
+  .tabBtn {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 0.92rem;
   }
 
-  .pinnedNoteCard {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: 180px !important;
-    max-height: none !important;
-    padding: 22px 18px;
-    box-sizing: border-box;
-    z-index: 2;
-  }
-}
-
-@media (max-width: 480px) {
-  .directionSection {
-    padding: 30px 12px;
+  .tabBtn:hover {
+    transform: none;
   }
 
-  .sectionTitle {
-    font-size: 23px;
+  .contentPanel {
+    padding: 28px 20px;
   }
 
-  .pinnedNoteCard {
-    padding: 18px 16px;
-    min-height: 170px !important;
+  .titleRow {
+    gap: 12px;
   }
 
-  .noteTitle {
-    font-size: 17px;
+  .iconCircle {
+    width: 42px;
+    height: 42px;
   }
 
-  .noteDesc {
-    font-size: 0.86rem;
+  .largeIcon {
+    font-size: 20px;
+  }
+
+  .activeTitle {
+    font-size: 20px;
+  }
+
+  .activeDesc {
+    font-size: 0.92rem;
   }
 }

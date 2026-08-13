@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import mainlogo from '../assets/mainlogo.svg';
+import whiteLogo from '../assets/whitelogo.png';
 import styles from '../styles/Navbar.module.css';
 
 // Add effect to toggle a body class for pre-scroll styling on transparent home page
@@ -20,8 +21,18 @@ const Navbar = () => {
   const location = useLocation();
   const [isScrolledTop, setIsScrolledTop] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
 
   const isHomePage = location.pathname === '/';
+
+  // Handle window resize to enforce desktop-only transparent navbar
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Scroll listener for Home page transparency
   useEffect(() => {
@@ -33,8 +44,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
-  // Transparent ONLY on Home page when scrolled to top
-  const showTransparent = isHomePage && isScrolledTop;
+  // Transparent ONLY on Home page when scrolled to top AND on Desktop screens (>1024px)
+  const showTransparent = isHomePage && isScrolledTop && isDesktop;
 
   // Apply body class based on transparency
   usePreScrollClass(showTransparent);
@@ -64,7 +75,11 @@ const Navbar = () => {
     <nav className={`${styles.navBar} ${showTransparent ? styles.transparent : ''}`}>
       {/* LEFT — Logo */}
       <Link to="/" className={styles.logoLink} onClick={() => window.scrollTo(0, 0)}>
-        <img src={mainlogo} alt="Trusted Network" className={styles.logoImg} />
+        <img
+          src={showTransparent ? whiteLogo : mainlogo}
+          alt="Trusted Network"
+          className={styles.logoImg}
+        />
       </Link>
 
       {/* CENTER — Nav Links */}
@@ -176,5 +191,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

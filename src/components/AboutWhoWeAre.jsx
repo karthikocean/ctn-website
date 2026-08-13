@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from '../styles/AboutWhoWeAre.module.css';
 import whoWeAreImg from '../assets/about_img.png';
 
@@ -6,50 +7,76 @@ const AboutWhoWeAre = () => {
   return (
     <section className={styles.whoWeAreSection}>
       <div className="container">
-        <div className={styles.whoWeAreLayout}>
-          {/* Header Block (Badge + Heading) */}
-          <div className={styles.headerBlock}>
-            <div className={styles.sectionBadge}>
-              <div className={styles.badgeLine}></div>
-              <span>WHO WE ARE</span>
+        <motion.div
+          className={styles.whoWeAreGrid}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* 1. Section Badge / Eyebrow */}
+          <div className={styles.sectionBadge}>
+            <div className={styles.badgeLine}></div>
+            <span>ABOUT TRUSTED NETWORK</span>
+          </div>
+
+          {/* 2. Main Heading */}
+          <h2 className={styles.sectionTitle}>
+            Built Around People, Connections and Business Growth
+          </h2>
+
+          {/* 3. Image Container */}
+          <div className={styles.imageWrapper}>
+            <div className={styles.cornerTopLeft}></div>
+            <img
+              src={whoWeAreImg}
+              alt="About Trusted Network Business Community"
+              className={styles.featureImage}
+            />
+            <div className={styles.cornerBottomRight}></div>
+          </div>
+
+          {/* 4. Content Paragraphs */}
+          <div className={styles.paragraphsList}>
+            <div className={styles.paragraphItem}>
+              <div className={styles.dotAccent}></div>
+              <p className={styles.paragraphText}>
+                Trusted Network is a professional business community created to bring entrepreneurs, business owners, startups and professionals together through meaningful relationships and trusted business connections.
+              </p>
             </div>
 
-            <h2 className={styles.sectionTitle}>
-              Built for Professionals, Connected by Trust
-            </h2>
-          </div>
+            <div className={styles.paragraphItem}>
+              <div className={styles.dotAccent}></div>
+              <p className={styles.paragraphText}>
+                We believe that every business has the potential to grow when it has access to the right people, the right relationships and the right opportunities. Trusted Network was created to make those connections easier, more meaningful and accessible.
+              </p>
+            </div>
 
-          {/* Image Block */}
-          <div className={styles.imageBlock}>
-            <div className={styles.whoWeAreImageWrapper}>
-              <div className={styles.cornerTopLeft}></div>
-              <img
-                src={whoWeAreImg}
-                alt="Trusted Network professional business networking platform"
-                className={styles.whoWeAreImage}
-              />
-              <div className={styles.cornerBottomRight}></div>
+            <div className={styles.paragraphItem}>
+              <div className={styles.dotAccent}></div>
+              <p className={styles.paragraphText}>
+                Our entrepreneur network brings together professionals from different industries, locations and areas of expertise, creating opportunities to connect, collaborate and build valuable business relationships.
+              </p>
+            </div>
+
+            <div className={styles.paragraphItem}>
+              <div className={styles.dotAccent}></div>
+              <p className={styles.paragraphText}>
+                Trusted Network is more than a platform for finding contacts. It is a business community where members can exchange value, discover business opportunities, build trusted relationships and support each other on their business journey.
+              </p>
+            </div>
+
+            <div className={styles.paragraphItem}>
+              <div className={styles.dotAccent}></div>
+              <p className={styles.paragraphText}>
+                Our vision is to create a connected business ecosystem where meaningful relationships can lead to new opportunities and long term growth. Trusted Network is powered by Ocean Softwares, combining technology and business expertise to create a smarter way for professionals and businesses to connect.
+              </p>
             </div>
           </div>
-
-          {/* Paragraph Text Block */}
-          <div className={styles.textBlock}>
-            <p className={styles.whoWeAreParagraph}>
-              Trusted Network is a professional business networking platform designed to bring entrepreneurs, business owners, startups, and professionals together through meaningful business relationships.
-            </p>
-            <p className={styles.whoWeAreParagraph}>
-              We help members build valuable connections, exchange recommendations, discover opportunities, and grow through genuine business engagement.
-            </p>
-            <p className={styles.whoWeAreParagraph}>
-              More than simply collecting contacts, Trusted Network is built around meaningful conversations, trusted relationships, and opportunities that can lead to long-term business growth.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default AboutWhoWeAre;
-
-

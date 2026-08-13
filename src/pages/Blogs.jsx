@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
+import seoData from '../data/seoData';
 import { blogs } from '../data/blogsData';
 import CommonHero from '../components/CommonHero';
 import BlogFeatured from '../components/BlogFeatured';
@@ -14,10 +16,6 @@ const Blogs = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Sort / select blogs: 
-  // 1st blog = Main Large Featured (LEFT)
-  // 2nd & 3rd blogs = Smaller Stacked Featured (RIGHT)
-  // 4th blog onwards = Blog Archive Grid
   const featuredBlog = blogs[0];
   const recentBlogs = blogs.slice(1, 3);
   const archiveBlogs = blogs.slice(3);
@@ -33,15 +31,17 @@ const Blogs = () => {
 
   return (
     <main className={styles.pageContainer}>
-      {/* Existing CommonHero Component */}
+      <SEO
+        title={seoData.blogs.title}
+        description={seoData.blogs.description}
+        keywords={seoData.blogs.keywords}
+      />
       <CommonHero title="Blogs & Insights" />
 
-      {/* Asymmetrical Editorial Featured Section (Large Left + 2 Stacked Right) */}
       {featuredBlog && (
         <BlogFeatured featuredBlog={featuredBlog} recentBlogs={recentBlogs} />
       )}
 
-      {/* Blog Archive Section */}
       {archiveBlogs.length > 0 && (
         <section className={styles.archiveSection}>
           <BlogPreviousPosts blogs={visibleArchiveBlogs} />
