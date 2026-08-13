@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className="container-fluid">
         <div className={styles.footerGrid}>
-          <div className={styles.col}>
+          <div className={`${styles.col} ${styles.brandCol}`}>
             <Link to="/" className={styles.logo}>
               <img src={mainlogo} alt="Logo" className={styles.footerLogo} />
             </Link>
@@ -42,27 +42,29 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className={styles.col}>
-            <h4 className={styles.colTitle}>Company</h4>
-            <ul className={styles.links}>
-              <li><a href="#home"><FiArrowRight /> Contact</a></li>
-              <li><Link to="/franchise"><FiArrowRight /> Franchise</Link></li>
-              <li><Link to="/events"><FiArrowRight /> Events</Link></li>
-              <li><a href="/blogs"><FiArrowRight /> Blogs</a></li>
-            </ul>
+          <div className={styles.navGroup}>
+            <div className={`${styles.col} ${styles.linksCol}`}>
+              <h4 className={styles.colTitle}>Company</h4>
+              <ul className={styles.links}>
+                <li><a href="#home"><FiArrowRight /> Contact</a></li>
+                <li><Link to="/franchise"><FiArrowRight /> Franchise</Link></li>
+                <li><Link to="/events"><FiArrowRight /> Events</Link></li>
+                <li><a href="/blogs"><FiArrowRight /> Blogs</a></li>
+              </ul>
+            </div>
+
+            <div className={`${styles.col} ${styles.linksCol}`}>
+              <h4 className={styles.colTitle}>Resources</h4>
+              <ul className={styles.links}>
+                <li><Link to="/privacy-policy"><FiArrowRight /> Privacy Policy</Link></li>
+                <li><Link to="/terms"><FiArrowRight /> Terms & Conditions</Link></li>
+                <li><Link to="/refund"><FiArrowRight /> Refund Policy</Link></li>
+                <li><Link to="/community-guidelines"><FiArrowRight /> Community Guidelines</Link></li>
+              </ul>
+            </div>
           </div>
 
-          <div className={styles.col}>
-            <h4 className={styles.colTitle}>Resources</h4>
-            <ul className={styles.links}>
-              <li><Link to="/privacy-policy"><FiArrowRight /> Privacy Policy</Link></li>
-              <li><Link to="/terms"><FiArrowRight /> Terms & Conditions</Link></li>
-              <li><Link to="/refund"><FiArrowRight /> Refund Policy</Link></li>
-              <li><Link to="/community-guidelines"><FiArrowRight /> Community Guidelines</Link></li>
-            </ul>
-          </div>
-
-          <div className={styles.col}>
+          <div className={`${styles.col} ${styles.appContactCol}`}>
             <h4 className={styles.colTitle} style={{ marginBottom: '14px' }}>Get the App</h4>
             <div className={styles.getAppContent}>
               <div className={styles.footerQr}>
@@ -72,13 +74,18 @@ const Footer = () => {
                 <a href="#" className={styles.badge}>
                   <FaApple /> App Store
                 </a>
-                <a href="#" className={styles.badge}>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.badge}
+                >
                   <FaGooglePlay /> Google Play
                 </a>
               </div>
             </div>
 
-            <h4 className={styles.colTitle} style={{ marginBottom: '14px', marginTop: '10px' }}>Contact Info</h4>
+            <h4 className={styles.colTitle} style={{ marginBottom: '14px', marginTop: '16px' }}>Contact Info</h4>
             <div className={styles.contactInfo}>
               <p>
                 <FiMail className={styles.contactIcon} />
@@ -93,7 +100,17 @@ const Footer = () => {
         </div>
 
         <div className={styles.bottomBar}>
-          <p>© {currentYear} Trusted Network. All rights reserved.</p>
+          <p>
+            © {currentYear} Trusted Network. All rights reserved. Powered by{' '}
+            <a
+              href="https://www.oceansoftwares.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.creditLink}
+            >
+              Ocean Softwares Pvt. Ltd.
+            </a>
+          </p>
         </div>
       </div>
     </footer>

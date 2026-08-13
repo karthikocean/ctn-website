@@ -103,7 +103,12 @@ const Navbar = () => {
             <FaApple className={styles.storeIcon} />
             <span>App Store</span>
           </a>
-          <a href="#" className={styles.storeBtn}>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.storeBtn}
+          >
             <FaGooglePlay className={styles.storeIcon} />
             <span>Google Play</span>
           </a>
@@ -154,7 +159,12 @@ const Navbar = () => {
               <FaApple className={styles.storeIcon} />
               <span>App Store</span>
             </a>
-            <a href="#" className={styles.mobileStoreBtn}>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mobileStoreBtn}
+            >
               <FaGooglePlay className={styles.storeIcon} />
               <span>Google Play</span>
             </a>

@@ -230,36 +230,176 @@
   font-weight: 600;
 }
 
-@media (max-width: 1100px) {
-  .footerGrid {
-    grid-template-columns: 1fr 1fr;
-  }
+.navGroup {
+  display: contents;
 }
 
-@media (max-width: 900px) {
-  .footerGrid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .bottomBar {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
+.creditLink {
+  color: #C8A951;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 
-@media (max-width: 480px) {
+.creditLink:hover,
+.creditLink:focus,
+.creditLink:active {
+  text-decoration: none;
+  color: #C8A951;
+  opacity: 0.9;
+}
+
+/* ---- TABLET (768px - 1024px) ---- */
+@media (max-width: 1024px) and (min-width: 768px) {
   .footer {
-    padding: 30px 20px 5px 20px;
+    padding: 40px 32px 10px 32px;
+  }
+
+  .footerGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1fr 1.3fr;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .navGroup {
+    display: contents;
+  }
+
+  .footerLogo {
+    width: 160px;
   }
 
   .colTitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    margin-bottom: 18px;
   }
 
   .links a {
+    font-size: 0.88rem;
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+  }
+
+  .footerQr {
+    width: 60px;
+    height: 60px;
+  }
+
+  .badge {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    min-width: 110px;
+  }
+}
+
+/* ---- MOBILE (< 768px) ---- */
+@media (max-width: 767px) {
+  .footer {
+    padding: 40px 20px 10px 20px;
+  }
+
+  .footerGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  /* Group 1: Logo + Tagline + Socials (Centered) */
+  .brandCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .brandCol .logo {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .footerLogo {
+    margin: 0 auto;
+  }
+
+  .tagline {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .socials {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  /* Group 2: Company + Resources (display: flex) */
+  .navGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .linksCol {
+    text-align: left;
+  }
+
+  /* Group 3: Get the App + Contact Info (display: flex) */
+  .appContactCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .getAppContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactInfo p {
+    justify-content: center;
+  }
+
+  .colTitle {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .bottomBar {
+    padding-top: 24px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .navGroup {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .linksCol {
+    text-align: center;
+  }
+
+  .links a {
+    justify-content: center;
   }
 
   .badge {

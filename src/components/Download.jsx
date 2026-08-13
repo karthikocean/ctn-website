@@ -2,14 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Download.module.css';
-import appMockup from '../assets/originalmobile.svg';
+import appMockup from '../assets/tn app design .png';
 
 const Download = () => {
   return (
     <section id="download" className={styles.download}>
-
       <div className="container">
-
         <div className={styles.banner}>
           <div className={styles.content}>
             {/* Premium Label */}
@@ -41,7 +39,7 @@ const Download = () => {
             <div className={styles.storeButtons}>
               <motion.a
                 href="#"
-                className={styles.storeCard}
+                className={`${styles.storeCard} ${styles.appStoreCard}`}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -52,8 +50,10 @@ const Download = () => {
                 </div>
               </motion.a>
               <motion.a
-                href="#"
-                className={styles.storeCard}
+                href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.storeCard} ${styles.googlePlayCard}`}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.98 }}
               >

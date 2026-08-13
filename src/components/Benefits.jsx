@@ -54,19 +54,9 @@ const Benefits = () => (
       <p className={styles.subtitle}>
         Connect with trusted professionals and grow through meaningful business relationships.
       </p>
-      {/* First row: 4 cards */}
-      <div className={`${styles.cardsRow} ${styles.firstRow}`}>
-        {cards.slice(0, 4).map((card, i) => (
-          <div className={styles.card} key={i}>
-            <div className={styles.iconWrapper}>{card.icon}</div>
-            <h3 className={styles.cardTitle}>{card.title}</h3>
-            <p className={styles.cardDesc}>{card.description}</p>
-          </div>
-        ))}
-      </div>
-      {/* Second row: 3 cards */}
-      <div className={`${styles.cardsRow} ${styles.secondRow}`}>
-        {cards.slice(4).map((card, i) => (
+      {/* All 7 cards in a single responsive grid */}
+      <div className={styles.cardsGrid}>
+        {cards.map((card, i) => (
           <div className={styles.card} key={i}>
             <div className={styles.iconWrapper}>{card.icon}</div>
             <h3 className={styles.cardTitle}>{card.title}</h3>
