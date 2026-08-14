@@ -9,9 +9,8 @@
 
 .statsContainer {
   padding-top: 15px;
-  max-width: 1200px;
-  margin: 0;
-  padding-left: 101px;
+  max-width: 1300px;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -39,6 +38,7 @@
   color: #D4AF37;
   font-size: 32px;
   margin-bottom: 0;
+  flex-shrink: 0;
 }
 
 .number {
@@ -55,12 +55,27 @@
 }
 
 @media (max-width: 991px) {
+  .statsContainer {
+    padding-left: 24px;
+    padding-right: 24px;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   .statItem {
     flex: 1 1 45%;
   }
 }
 
 @media (max-width: 576px) {
+  .statsContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
   .statItem {
     flex: 1 1 100%;
   }

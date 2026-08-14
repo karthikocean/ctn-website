@@ -50,7 +50,7 @@ const Footer = () => {
               <div className={`${styles.col} ${styles.linksCol}`}>
                 <h4 className={styles.colTitle}>Company</h4>
                 <ul className={styles.links}>
-                  <li><a href="#home"><FiArrowRight /> Contact</a></li>
+                  <li><a href="/contact"><FiArrowRight /> Contact</a></li>
                   <li><Link to="/franchise"><FiArrowRight /> Franchise</Link></li>
                   <li><Link to="/events"><FiArrowRight /> Events</Link></li>
                   <li><a href="/blogs"><FiArrowRight /> Blogs</a></li>
@@ -61,8 +61,8 @@ const Footer = () => {
                 <h4 className={styles.colTitle}>Resources</h4>
                 <ul className={styles.links}>
                   <li><Link to="/privacy-policy"><FiArrowRight /> Privacy Policy</Link></li>
-                  <li><Link to="/terms"><FiArrowRight /> Terms & Conditions</Link></li>
-                  <li><Link to="/refund"><FiArrowRight /> Refund Policy</Link></li>
+                  <li><Link to="/terms-condition"><FiArrowRight /> Terms & Conditions</Link></li>
+                  <li><Link to="/refund-policy"><FiArrowRight /> Refund Policy</Link></li>
                   <li><Link to="/community-guidelines"><FiArrowRight /> Community Guidelines</Link></li>
                 </ul>
               </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import MembershipPlans from './pages/MembershipPlans';
@@ -37,8 +37,10 @@ function App() {
         <Route path="/franchise" element={<Franchise />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<TermsAndConditions />} />
-        <Route path="/refund" element={<RefundPolicy />} />
+        <Route path="/terms-condition" element={<TermsAndConditions />} />
+        <Route path="/terms" element={<Navigate to="/terms-condition" replace />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/refund" element={<Navigate to="/refund-policy" replace />} />
         <Route path="/community-guidelines" element={<CommunityGuidelines />} />
         <Route path="/partner" element={<StubPage title="Partner With Us" />} />
         <Route path="/download" element={<StubPage title="Download App" />} />

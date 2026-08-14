@@ -137,6 +137,7 @@
   height: 42px;
   display: block;
   margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .statNumber {

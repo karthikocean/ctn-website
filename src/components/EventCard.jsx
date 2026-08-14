@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiCalendar, FiMapPin } from 'react-icons/fi';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/EventCard.module.css';
 
 const EventCard = ({ event }) => {
   if (!event) return null;
 
   const eventLink = `/events/${event.id}`;
-  const eventImage = event.image;
+  const eventImage = event.image || event1;
 
   return (
     <article className={styles.cardContainer}>
@@ -20,12 +21,11 @@ const EventCard = ({ event }) => {
             alt={event.title}
             className={styles.cardImage}
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = event1;
+            }}
           />
-
-          {/* Category/Location Badge (Top-Left) */}
-          <div className={styles.topBadgeWrapper}>
-            <span className={styles.categoryBadge}>UPCOMING EVENT</span>
-          </div>
 
           {/* Circular Arrow Navigation Button (Bottom-Right) */}
           <div className={styles.circularArrowBtn} aria-hidden="true">
@@ -40,7 +40,6 @@ const EventCard = ({ event }) => {
           {/* Desktop Hover Reveal Layer (NO BLUR, Smooth Emerging Animation) */}
           <div className={styles.hoverOverlay}>
             <div className={styles.overlayContent}>
-              <div className={styles.overlayCategory}>UPCOMING EVENT</div>
               <h3 className={styles.overlayTitle}>{event.title}</h3>
               {event.description && <p className={styles.overlayExcerpt}>{event.description}</p>}
 

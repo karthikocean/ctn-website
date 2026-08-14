@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogCard.module.css';
 
 const BlogCard = ({ blog }) => {
   if (!blog) return null;
 
   const blogLink = `/blogs/${blog.slug || blog.id}`;
-  const blogImage = blog.featuredImage || blog.image;
+  const blogImage = blog.featuredImage || blog.image || event1;
 
   return (
     <article className={styles.cardContainer}>
@@ -20,6 +21,10 @@ const BlogCard = ({ blog }) => {
             alt={blog.title}
             className={styles.cardImage}
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = event1;
+            }}
           />
 
           {/* Category Badge (Top-Left) */}

@@ -256,8 +256,8 @@ const PrivacyPolicy = () => {
                   </div>
                   <div className={styles.contactDetails}>
                     <span className={styles.contactLabel}>Email</span>
-                    <a href="mailto:support@trustednetwork.in" className={styles.contactValue}>
-                      support@trustednetwork.in
+                    <a href="mailto:admin@trustednetwork.in" className={styles.contactValue}>
+                    admin@trustednetwork.in
                     </a>
                   </div>
                 </div>
@@ -268,8 +268,8 @@ const PrivacyPolicy = () => {
                   </div>
                   <div className={styles.contactDetails}>
                     <span className={styles.contactLabel}>Phone</span>
-                    <a href="tel:+919876543210" className={styles.contactValue}>
-                      +91 98765 43210
+                    <a href="tel:+919791152132" className={styles.contactValue}>
+                      +91 97911 52132
                     </a>
                   </div>
                 </div>
