@@ -69,7 +69,7 @@ const AboutWhoWeAre = () => {
             <div className={styles.paragraphItem}>
               <div className={styles.dotAccent}></div>
               <p className={styles.paragraphText}>
-                Our vision is to create a connected business ecosystem where meaningful relationships can lead to new opportunities and long term growth. Trusted Network is powered by Ocean Softwares, combining technology and business expertise to create a smarter way for professionals and businesses to connect.
+                Our vision is to create a connected business ecosystem where meaningful relationships can lead to new opportunities and long term growth. Trusted Network is powered by Ocean Softwares Pvt. Ltd., combining technology and business expertise to create a smarter way for professionals and businesses to connect.
               </p>
             </div>
           </div>

@@ -12,6 +12,11 @@ export const formatBlogImage = (imagePath) => {
   return `${SERVER_URL}/${imagePath}`;
 };
 
+const stripHtml = (html) => {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+};
+
 export const normalizeBlogItem = (item, index = 0) => {
   const id = item._id || item.id || String(index + 1);
   const title = item.title || 'Untitled Blog Article';
@@ -33,8 +38,20 @@ export const normalizeBlogItem = (item, index = 0) => {
     }
   }
 
-  const rawImage = item.featuredImage || item.image || item.banner;
+  // Handle the images array from the backend API
+  const rawImage = (item.images && item.images.length > 0) ? item.images[0] : (item.featuredImage || item.image || item.banner);
   const featuredImage = formatBlogImage(rawImage);
+
+  // Clean HTML text for card excerpts
+  const getExcerpt = () => {
+    if (item.excerpt && item.excerpt.trim()) return stripHtml(item.excerpt);
+    if (item.shortDescription && item.shortDescription.trim()) return stripHtml(item.shortDescription);
+    if (typeof item.description === 'string' && item.description.trim()) return stripHtml(item.description);
+    if (typeof item.content === 'string' && item.content.trim()) return stripHtml(item.content);
+    return 'Read our latest business insights.';
+  };
+  const rawExcerpt = getExcerpt();
+  const excerpt = rawExcerpt.length > 160 ? rawExcerpt.substring(0, 160) + '...' : rawExcerpt;
 
   let contentBlocks = [];
   if (Array.isArray(item.content)) {
@@ -50,7 +67,7 @@ export const normalizeBlogItem = (item, index = 0) => {
     slug,
     title,
     category: item.category || item.categoryName || item.announcementType || 'Business Insights',
-    excerpt: item.excerpt || item.description || (typeof item.content === 'string' ? item.content.substring(0, 160) + '...' : '') || 'Read our latest business insights.',
+    excerpt,
     author: item.author || (item.createdBy ? 'Trusted Network Team' : 'Trusted Network Editorial'),
     publishedDate: formattedDate,
     readTime: item.readTime || '5 min read',
@@ -93,6 +110,29 @@ class BlogApi {
   };
 
   getBlogByIdOrSlug = async (idOrSlug) => {
+    // 1. Fetch all blogs first to resolve slug/id parameter to database ID
+    const allRes = await this.getBlogs();
+    if (allRes.status && allRes.data.length > 0) {
+      const found = allRes.data.find((b) => b.slug === idOrSlug || b.id === idOrSlug);
+      if (found) {
+        try {
+          // Query backend detail API using actual database ID
+          const res = await api.get(`/blogs/${found.id}`);
+          if (res.status === 200 && res.data?.data) {
+            return {
+              status: true,
+              data: normalizeBlogItem(res.data.data),
+            };
+          }
+        } catch (e) {
+          // Fallback: if ID query fails, return list item directly
+          return { status: true, data: found };
+        }
+        return { status: true, data: found };
+      }
+    }
+
+    // 2. Direct API call fallback (if parameter is already a database ID)
     try {
       const res = await api.get(`/blogs/${idOrSlug}`);
       if (res.status === 200 && res.data?.data) {
@@ -102,16 +142,9 @@ class BlogApi {
         };
       }
     } catch (e) {
-      // API fallback
+      // Direct API query failed
     }
 
-    const allRes = await this.getBlogs();
-    if (allRes.status && allRes.data.length > 0) {
-      const found = allRes.data.find((b) => b.slug === idOrSlug || b.id === idOrSlug);
-      if (found) {
-        return { status: true, data: found };
-      }
-    }
     return { status: false, data: null, message: 'Blog article not found' };
   };
 }

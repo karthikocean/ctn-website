@@ -23,7 +23,7 @@ const ContactInformation = () => {
       icon: FiMapPin,
       label: 'LOCATION',
       value: 'Trusted Network',
-      subValue: 'Coimbatore, Tamil Nadu, India',
+      subValue: 'Chennai, Tamil Nadu, India',
       link: null,
     },
     {

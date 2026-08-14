@@ -61,9 +61,11 @@ const BlogDetailsContent = ({ content }) => {
               case 'paragraph':
               default:
                 return (
-                  <p key={idx} className={styles.paragraph}>
-                    {block.text}
-                  </p>
+                  <p
+                    key={idx}
+                    className={styles.paragraph}
+                    dangerouslySetInnerHTML={{ __html: block.text }}
+                  />
                 );
             }
           })}

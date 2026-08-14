@@ -1,17 +1,51 @@
 import React from 'react';
-import { FiTarget, FiCompass } from 'react-icons/fi';
+import { FiSearch, FiMessageSquare, FiTrendingUp, FiShield, FiShare2, FiUsers } from 'react-icons/fi';
 import styles from '../styles/AboutMissionVision.module.css';
-import bgImg from '../assets/hero_networking.png';
 
 const AboutMissionVision = () => {
-  return (
-    <section
-      className={styles.missionVisionSection}
-      style={{ backgroundImage: `url(${bgImg})` }}
-    >
-      <div className={styles.missionVisionOverlay}></div>
+  const cardsData = [
+    {
+      id: 'discover',
+      title: 'DISCOVER',
+      description: 'Find relevant businesses, professionals and new possibilities through your network.',
+      icon: FiSearch,
+    },
+    {
+      id: 'engage',
+      title: 'ENGAGE',
+      description: 'Exchange ideas, share value, participate in meaningful business conversations.',
+      icon: FiMessageSquare,
+    },
+    {
+      id: 'create-value',
+      title: 'CREATE VALUE',
+      description: 'Turn meaningful relationships into referrals, partnerships and business opportunities.',
+      icon: FiTrendingUp,
+    },
+    {
+      id: 'build-trust',
+      title: 'BUILD TRUST',
+      description: 'Build meaningful and trusted relationships with relevant business professionals.',
+      icon: FiShield,
+    },
+    {
+      id: 'share-opportunities',
+      title: 'SHARE OPPORTUNITIES',
+      description: 'Share business opportunities, recommendations and valuable experiences with your network.',
+      icon: FiShare2,
+    },
+    {
+      id: 'stay-connected',
+      title: 'STAY CONNECTED',
+      description: 'Stay connected with the business community and discover new possibilities over time.',
+      icon: FiUsers,
+    },
+  ];
 
+  return (
+    <section className={styles.missionVisionSection}>
       <div className={`container ${styles.relativeContainer}`}>
+        {/* Header Block */}
         <div className={styles.headerWrapper}>
           <div className={styles.sectionBadge}>
             <div className={styles.badgeLine}></div>
@@ -27,33 +61,22 @@ const AboutMissionVision = () => {
           </p>
         </div>
 
-        {/* Side-by-side Flex Row Panels */}
-        <div className={styles.panelsFlexRow}>
-          {/* Mission Panel - White Surface */}
-          <div className={styles.missionPanel}>
-            <div className={styles.panelHeader}>
-              <div className={styles.panelIconWrapper}>
-                <FiTarget className={styles.panelIcon} />
+        {/* 6-Card Layout Grid */}
+        <div className={styles.cardsGrid}>
+          {cardsData.map((card) => {
+            const IconComponent = card.icon;
+            return (
+              <div key={card.id} className={styles.card}>
+                <div className={styles.iconContainer}>
+                  <IconComponent className={styles.cardIcon} />
+                </div>
+                <div className={styles.cardContent}>
+                  <h3 className={styles.cardTitle}>{card.title}</h3>
+                  <p className={styles.cardDesc}>{card.description}</p>
+                </div>
               </div>
-              <h3 className={styles.panelTitle}>OUR MISSION</h3>
-            </div>
-            <p className={styles.panelText}>
-              To create a trusted professional networking environment where businesses can connect meaningfully, exchange value, and discover opportunities for sustainable growth.
-            </p>
-          </div>
-
-          {/* Vision Panel - White Surface */}
-          <div className={styles.visionPanel}>
-            <div className={styles.panelHeader}>
-              <div className={styles.panelIconWrapper}>
-                <FiCompass className={styles.panelIcon} />
-              </div>
-              <h3 className={styles.panelTitle}>OUR VISION</h3>
-            </div>
-            <p className={styles.panelText}>
-              To build a strong business networking ecosystem where trusted relationships become a foundation for collaboration, referrals, partnerships, and business growth across India.
-            </p>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -61,6 +84,3 @@ const AboutMissionVision = () => {
 };
 
 export default AboutMissionVision;
-
-
-

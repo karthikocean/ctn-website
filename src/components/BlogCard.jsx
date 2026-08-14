@@ -27,13 +27,6 @@ const BlogCard = ({ blog }) => {
             }}
           />
 
-          {/* Category Badge (Top-Left) */}
-          {blog.category && (
-            <div className={styles.topBadgeWrapper}>
-              <span className={styles.categoryBadge}>{blog.category}</span>
-            </div>
-          )}
-
           {/* Circular Arrow Navigation Button (Bottom-Right) */}
           <div className={styles.circularArrowBtn} aria-hidden="true">
             <FiArrowUpRight className={styles.arrowIcon} />
@@ -47,14 +40,11 @@ const BlogCard = ({ blog }) => {
           {/* Desktop Hover Reveal Layer (Transparent Navy Overlay + Content Reveal, NO BLUR) */}
           <div className={styles.hoverOverlay}>
             <div className={styles.overlayContent}>
-              <div className={styles.overlayCategory}>{blog.category}</div>
               <h3 className={styles.overlayTitle}>{blog.title}</h3>
               {blog.excerpt && <p className={styles.overlayExcerpt}>{blog.excerpt}</p>}
 
               <div className={styles.overlayMeta}>
                 {blog.publishedDate && <span>{blog.publishedDate}</span>}
-                {blog.publishedDate && blog.readTime && <span className={styles.metaDivider}>•</span>}
-                {blog.readTime && <span>{blog.readTime}</span>}
               </div>
 
               <div className={styles.readLink}>
@@ -71,8 +61,6 @@ const BlogCard = ({ blog }) => {
           {blog.excerpt && <p className={styles.mobileExcerpt}>{blog.excerpt}</p>}
           <div className={styles.mobileMeta}>
             <span>{blog.publishedDate}</span>
-            {blog.publishedDate && blog.readTime && <span className={styles.metaDivider}>•</span>}
-            <span>{blog.readTime}</span>
           </div>
         </div>
       </Link>

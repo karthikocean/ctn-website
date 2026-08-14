@@ -28,29 +28,14 @@ const BlogDetailsHeader = ({ blog }) => {
           <span className={styles.categoryBreadcrumb}>{blog.category}</span>
         </nav> */}
 
-        {/* Category Pill */}
-        <div className={styles.categoryBadgeWrapper}>
-          <span className={styles.categoryBadge}>{blog.category}</span>
-        </div>
-
         {/* Main Title */}
         <h1 className={styles.articleTitle}>{blog.title}</h1>
 
-        {/* Author & Meta Row */}
+        {/* Author & Meta Row (Date Only) */}
         <div className={styles.metaRow}>
-          <div className={styles.metaItem}>
-            <FiUser className={styles.metaIcon} />
-            <span>By {blog.author || 'Trusted Network'}</span>
-          </div>
-          <span className={styles.dotSeparator}>•</span>
           <div className={styles.metaItem}>
             <FiCalendar className={styles.metaIcon} />
             <span>{blog.publishedDate}</span>
-          </div>
-          <span className={styles.dotSeparator}>•</span>
-          <div className={styles.metaItem}>
-            <FiClock className={styles.metaIcon} />
-            <span>{blog.readTime}</span>
           </div>
         </div>
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
+import CommonHero from '../components/CommonHero';
 import styles from '../styles/TermsAndConditions.module.css';
 
 const TermsAndConditions = () => {
@@ -64,22 +65,7 @@ const TermsAndConditions = () => {
         description={seoData.termsAndConditions.description}
         keywords={seoData.termsAndConditions.keywords}
       />
-      {/* Hero Banner */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span>Legal</span>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span className={styles.breadcrumbActive}>Terms & Conditions</span>
-          </div>
-          <h1 className={styles.heroTitle}>Terms & Conditions</h1>
-          <p className={styles.heroSubtitle}>
-            Please read these Terms & Conditions carefully before using Trusted Network.
-          </p>
-        </div>
-      </section>
+      <CommonHero />
 
       {/* Main Content Grid */}
       <section className={styles.mainContent}>

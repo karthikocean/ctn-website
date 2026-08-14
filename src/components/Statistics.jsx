@@ -36,6 +36,7 @@ const defaultStatsData = [
   },
 ];
 
+// Premium Responsive Statistics component showing business metrics horizontally in one row
 const Statistics = () => {
   const [visible, setVisible] = useState(false);
   const [statsData, setStatsData] = useState(defaultStatsData);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
+import CommonHero from '../components/CommonHero';
 import styles from '../styles/RefundPolicy.module.css';
 
 const RefundPolicy = () => {
@@ -62,22 +63,7 @@ const RefundPolicy = () => {
         description={seoData.refundPolicy.description}
         keywords={seoData.refundPolicy.keywords}
       />
-      {/* Hero Banner */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span>Legal</span>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span className={styles.breadcrumbActive}>Refund Policy</span>
-          </div>
-          <h1 className={styles.heroTitle}>Refund Policy</h1>
-          <p className={styles.heroSubtitle}>
-            Please review our refund policy carefully before purchasing any membership or subscription.
-          </p>
-        </div>
-      </section>
+      <CommonHero />
 
       {/* Main Content Grid */}
       <section className={styles.mainContent}>

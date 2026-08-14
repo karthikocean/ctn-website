@@ -13,10 +13,10 @@ const AboutPurpose = () => {
           </div>
 
           <h2 className={styles.sectionTitle}>
-            Build Trust. Create Opportunities.
+            Turn Business Relationships Into Opportunities
           </h2>
           <p className={styles.sectionSubTitle}>
-            Build meaningful business relationships, discover trusted opportunities, and grow through a network built on verified connections.
+            Build meaningful relationships, engage with the right business community, and create valuable opportunities through a trusted professional network.
           </p>
         </div>
 
@@ -33,9 +33,9 @@ const AboutPurpose = () => {
                 <FiUsers className={styles.cardIcon} />
               </div>
             </div>
-            <h3 className={styles.cardTitle}>CONNECT</h3>
+            <h3 className={styles.cardTitle}>DISCOVER</h3>
             <p className={styles.cardText}>
-              Build meaningful relationships with verified business professionals and entrepreneurs.
+              Find relevant businesses, professionals and new possibilities through your network.
             </p>
           </div>
 
@@ -48,9 +48,9 @@ const AboutPurpose = () => {
                 <FiBriefcase className={styles.cardIcon} />
               </div>
             </div>
-            <h3 className={styles.cardTitle}>COLLABORATE</h3>
+            <h3 className={styles.cardTitle}>ENGAGE</h3>
             <p className={styles.cardText}>
-              Share knowledge, recommendations, opportunities, and business experiences with the right network.
+              Exchange ideas, share value, participate in meaningful business conversations.
             </p>
           </div>
 
@@ -63,9 +63,9 @@ const AboutPurpose = () => {
                 <FiTrendingUp className={styles.cardIcon} />
               </div>
             </div>
-            <h3 className={styles.cardTitle}>GROW</h3>
+            <h3 className={styles.cardTitle}>CREATE VALUE</h3>
             <p className={styles.cardText}>
-              Turn trusted relationships into referrals, partnerships, opportunities, and long-term business growth.
+              Turn meaningful relationships into referrals, partnerships and business opportunities.
             </p>
           </div>
         </div>

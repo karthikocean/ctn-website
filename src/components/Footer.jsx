@@ -21,7 +21,7 @@ const Footer = () => {
                 <img src={whiteLogo} alt="Trusted Network Logo" className={styles.footerLogo} />
               </Link>
               <p className={styles.tagline}>
-                India's GST-verified business social networking platform.
+                India's verified business social networking platform.
                 Connect, collaborate, and grow with confidence.
               </p>
               <div className={styles.socials}>
