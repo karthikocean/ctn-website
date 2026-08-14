@@ -1,21 +1,9 @@
 .missionVisionSection {
   position: relative;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #F8FAFC;
   padding: 100px 0;
   overflow: hidden;
-  color: #06152B;
-}
-
-.missionVisionOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.84);
-  z-index: 1;
+  color: #062B57;
 }
 
 .relativeContainer {
@@ -26,7 +14,7 @@
 .headerWrapper {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 55px;
+  margin: 0 auto 60px;
 }
 
 .sectionBadge {
@@ -41,20 +29,20 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #F0A500;
-  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  background: #D9A928;
+  box-shadow: 0 0 12px rgba(217, 169, 40, 0.5);
   flex-shrink: 0;
 }
 
 .badgeLine {
   width: 48px;
   height: 1.5px;
-  background: rgba(200, 169, 81, 0.7);
+  background: rgba(217, 169, 40, 0.7);
   flex-shrink: 0;
 }
 
 .sectionBadge span {
-  color: #C8A951;
+  color: #D9A928;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -64,195 +52,202 @@
 }
 
 .sectionTitle {
-  font-size: 36px;
+  font-size: 38px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
-  color: #06152B;
+  color: #062B57;
   margin-bottom: 16px;
 }
 
 .supportingText {
   font-size: 1.08rem;
   line-height: 1.65;
-  color: #334155;
+  color: #4B5563;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Desktop & Tablet: Flex Row side-by-side equal panels */
-.panelsFlexRow {
-  display: flex;
-  flex-direction: row;
-  gap: 36px;
-  align-items: stretch;
+/* 6-Card Grid Layout */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
   max-width: 1140px;
   margin: 0 auto;
+  padding: 0 32px; /* Prevent edge clipping of left-most overlapping icons */
 }
 
-/* White Panels standing apart from the translucent background overlay */
-.missionPanel,
-.visionPanel {
-  flex: 1;
+/* White Card Style with Overlapping Left Icon */
+.card {
+  position: relative;
   background: #ffffff;
-  border: 1px solid rgba(6, 21, 43, 0.08);
-  border-left: 5px solid #F0A500;
-  border-radius: 20px;
-  padding: 40px 34px;
-  box-shadow: 0 15px 35px rgba(6, 21, 43, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(6, 43, 87, 0.08);
+  border-radius: 16px;
+  padding: 30px 24px 30px 48px; /* Left padding space for overlapping icon */
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Vertically center content inside card */
+  align-items: flex-start;
+  box-shadow: 0 10px 30px rgba(6, 43, 87, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 150px; /* Reduced to avoid excessive height */
 }
 
-.visionPanel {
-  border-left-color: #C8A951;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(6, 43, 87, 0.08);
 }
 
-.missionPanel:hover,
-.visionPanel:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 50px rgba(6, 21, 43, 0.15);
+/* Circular notch cutout on the left edge */
+.card::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #F8FAFC; /* Matches section background to form a cutout */
+  border: 1px solid rgba(6, 43, 87, 0.08);
+  z-index: 1;
 }
 
-.panelHeader {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.panelIconWrapper {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  background: rgba(240, 165, 0, 0.12);
-  border: 1px solid rgba(240, 165, 0, 0.3);
+/* Circular Icon box overlapping/seated in the notch */
+.iconContainer {
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #062B57; /* Navy Blue background */
+  border: 2.5px solid #D9A928; /* Gold border */
+  box-shadow: 0 4px 12px rgba(6, 43, 87, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  z-index: 2;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.panelIcon {
-  font-size: 28px;
-  color: #F0A500;
+.card:hover .iconContainer {
+  background-color: #D9A928; /* Gold background on hover */
+  border-color: #062B57; /* Navy Blue border on hover */
 }
 
-.panelTitle {
-  font-size: 20px;
+.cardIcon {
+  font-size: 24px;
+  color: #ffffff; /* White icon inside */
+}
+
+.cardContent {
+  width: 100%;
+  position: relative;
+  z-index: 2; /* Sits above the notch background */
+}
+
+.cardTitle {
+  font-size: 1.15rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  color: #06152B;
-  margin: 0;
-  letter-spacing: 1px;
+  color: #062B57;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
-.panelText {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: #4b5563;
+.cardDesc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #4B5563;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Responsive Laptop */
+/* Laptop (max-width: 1200px) */
 @media (max-width: 1200px) {
   .missionVisionSection {
-    padding: 85px 0;
+    padding: 80px 0;
   }
-
-  .panelsFlexRow {
-    gap: 28px;
-  }
-
-  .missionPanel,
-  .visionPanel {
-    padding: 34px 28px;
+  
+  .cardsGrid {
+    gap: 30px;
+    padding: 0 32px;
   }
 }
 
-/* Responsive Tablet: KEEP SIDE-BY-SIDE (flex-direction: row) */
-@media (max-width: 1024px) {
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
   .sectionTitle {
     font-size: 32px;
   }
-
-  .panelsFlexRow {
-    flex-direction: row;
-    gap: 20px;
+  
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 32px;
   }
-
-  .missionPanel,
-  .visionPanel {
-    padding: 30px 22px;
-  }
-
-  .panelIconWrapper {
-    width: 48px;
-    height: 48px;
-  }
-
-  .panelIcon {
-    font-size: 26px;
-  }
-
-  .panelTitle {
-    font-size: 18px;
-  }
-
-  .panelText {
-    font-size: 0.95rem;
-    line-height: 1.6;
+  
+  .card {
+    min-height: 160px;
   }
 }
 
-/* Mobile (<= 767px): Stack vertically (flex-direction: column) */
-@media (max-width: 768px) {
+/* Mobile (<= 767px) */
+@media (max-width: 767px) {
   .missionVisionSection {
-    background-attachment: scroll;
-    padding: 60px 16px;
+    padding: 60px 0;
   }
-
-  .headerWrapper {
-    margin-bottom: 40px;
-  }
-
+  
   .sectionTitle {
     font-size: 28px;
   }
+  
+  .headerWrapper {
+    margin-bottom: 40px;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 20px;
+  }
+  
+  .card {
+    padding: 24px;
+    min-height: auto;
+  }
+  
+  /* Hide the notch on mobile view as layout stacks */
+  .card::before {
+    display: none;
+  }
+  
+  /* Position icon naturally on top on mobile */
+  .iconContainer {
+    position: static;
+    transform: none;
+    margin-bottom: 16px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .cardIcon {
+    font-size: 20px;
+  }
+}
 
+/* Small Mobile Screen Optimizations */
+@media (max-width: 390px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+  
   .supportingText {
     font-size: 0.98rem;
   }
-
-  .panelsFlexRow {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .missionPanel,
-  .visionPanel {
-    padding: 28px 22px;
-  }
 }
-
-@media (max-width: 480px) {
-  .missionVisionSection {
-    padding: 45px 12px;
-  }
-
-  .sectionTitle {
-    font-size: 26px;
-  }
-
-  .panelTitle {
-    font-size: 17px;
-  }
-
-  .panelText {
-    font-size: 0.92rem;
-  }
-}
-
-
-
-

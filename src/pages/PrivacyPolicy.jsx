@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
+import CommonHero from '../components/CommonHero';
 import styles from '../styles/PrivacyPolicy.module.css';
 
 const PrivacyPolicy = () => {
@@ -63,22 +64,7 @@ const PrivacyPolicy = () => {
         description={seoData.privacyPolicy.description}
         keywords={seoData.privacyPolicy.keywords}
       />
-      {/* Hero Banner */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span>Legal</span>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span className={styles.breadcrumbActive}>Privacy Policy</span>
-          </div>
-          <h1 className={styles.heroTitle}>Privacy Policy</h1>
-          <p className={styles.heroSubtitle}>
-            Your privacy is important to us. This Privacy Policy explains how Trusted Network collects, uses, and protects your information.
-          </p>
-        </div>
-      </section>
+      <CommonHero />
 
       {/* Main Content Grid */}
       <section className={styles.mainContent}>
@@ -256,8 +242,8 @@ const PrivacyPolicy = () => {
                   </div>
                   <div className={styles.contactDetails}>
                     <span className={styles.contactLabel}>Email</span>
-                    <a href="mailto:support@trustednetwork.in" className={styles.contactValue}>
-                      support@trustednetwork.in
+                    <a href="mailto:admin@trustednetwork.in" className={styles.contactValue}>
+                    admin@trustednetwork.in
                     </a>
                   </div>
                 </div>
@@ -268,8 +254,8 @@ const PrivacyPolicy = () => {
                   </div>
                   <div className={styles.contactDetails}>
                     <span className={styles.contactLabel}>Phone</span>
-                    <a href="tel:+919876543210" className={styles.contactValue}>
-                      +91 98765 43210
+                    <a href="tel:+919791152132" className={styles.contactValue}>
+                      +91 97911 52132
                     </a>
                   </div>
                 </div>

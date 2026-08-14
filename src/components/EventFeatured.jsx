@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowUpRight, FiCalendar, FiMapPin } from 'react-icons/fi';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/EventFeatured.module.css';
 
 const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
@@ -26,16 +27,14 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
             <Link to={`/events/${featuredEvent.id}`} className={styles.cardWrapper} aria-label={featuredEvent.title}>
               {/* Background Image (Always Clear & Sharp, No Blur) */}
               <img
-                src={featuredEvent.image}
+                src={featuredEvent.image || event1}
                 alt={featuredEvent.title}
                 className={styles.cardImage}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = event1;
+                }}
               />
-
-              {/* Before Hover Badges (Top Left) */}
-              <div className={styles.topBadgeWrapper}>
-                <span className={styles.badgeCategory}>UPCOMING EVENT</span>
-                <span className={styles.badgeTag}>LATEST EVENT</span>
-              </div>
 
               {/* Circular Navigation Arrow (Bottom Right) */}
               <div className={styles.circularArrowBtn} aria-hidden="true">
@@ -50,7 +49,6 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
               {/* Full Image Hover Reveal Layer (NO BLUR, Smooth Emerging Transition) */}
               <div className={styles.hoverOverlay}>
                 <div className={styles.overlayContent}>
-                  <div className={styles.overlayCategory}>UPCOMING EVENT</div>
                   <h3 className={styles.overlayTitle}>{featuredEvent.title}</h3>
                   <p className={styles.overlayExcerpt}>{featuredEvent.description}</p>
 
@@ -81,14 +79,14 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
               <div key={event.id} className={styles.sideCard}>
                 <Link to={`/events/${event.id}`} className={styles.cardWrapper} aria-label={event.title}>
                   <img
-                    src={event.image}
+                    src={event.image || event1}
                     alt={event.title}
                     className={styles.cardImage}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = event1;
+                    }}
                   />
-
-                  <div className={styles.topBadgeWrapper}>
-                    <span className={styles.badgeCategory}>UPCOMING EVENT</span>
-                  </div>
 
                   <div className={styles.circularArrowBtn} aria-hidden="true">
                     <FiArrowUpRight className={styles.arrowIcon} />
@@ -102,7 +100,6 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
                   {/* Full Image Hover Reveal Layer */}
                   <div className={styles.hoverOverlay}>
                     <div className={styles.overlayContent}>
-                      <div className={styles.overlayCategory}>UPCOMING EVENT</div>
                       <h3 className={styles.sideOverlayTitle}>{event.title}</h3>
                       <p className={styles.sideOverlayExcerpt}>{event.description}</p>
 

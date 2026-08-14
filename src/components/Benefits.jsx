@@ -6,7 +6,7 @@ const cards = [
   {
     icon: <FiShield className={styles.icon} />, // Verified Business Community
     title: "Verified Business Community",
-    description: "Only GST-verified business owners and professionals can access TN, creating a trusted and high-quality networking environment."
+    description: "Only verified business owners and professionals can access TN, creating a trusted and high-quality networking environment."
   },
   {
     icon: <FiMonitor className={styles.icon} />, // Business Social Media Platform

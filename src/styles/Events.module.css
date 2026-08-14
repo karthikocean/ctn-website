@@ -15,6 +15,12 @@
   margin-top: 24px;
 }
 
+.emptyContainer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
 @media (max-width: 768px) {
   .archiveSection {
     padding: 24px 0 32px;

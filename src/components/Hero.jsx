@@ -1,13 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { FiUsers, FiArrowRight } from 'react-icons/fi';
 import styles from '../styles/Hero.module.css';
 import Statistics from './Statistics';
 
 // Import hero image
-import standingHeroImage from '../assets/stantingherosection.png';
+import standingHeroImage from '../assets/mainherostandingimage.png';
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.heroWrapper}>
       <section id="home" className={styles.heroSection}>
@@ -47,10 +49,10 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className={styles.ctaButtonGroup}>
-                <button className={styles.ctaButton}>
+                <button className={styles.ctaButton} onClick={() => navigate('/contact')}>
                   <FiUsers /> Join TN
                 </button>
-                <button className={styles.ctaButton}>
+                <button className={styles.ctaButton} onClick={() => navigate('/contact')}>
                   Start Free Trial <FiArrowRight />
                 </button>
               </div>
@@ -65,7 +67,7 @@ const Hero = () => {
                 </div>
                 <div className={styles.trustText}>
                   <strong className={styles.trustMain}>Trusted by 10,000+ Business Owners Across India</strong>
-                  <span className={styles.trustSub}>100% GST-verified members • Zero fake profiles</span>
+                  <span className={styles.trustSub}>100% verified members • Zero fake profiles</span>
                 </div>
               </div>
 

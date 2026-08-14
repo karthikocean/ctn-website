@@ -1,7 +1,8 @@
 .download {
   width: 100%;
-  padding: 80px 0;
+  padding: 40px 0; /* Compacted padding */
   background: #051635;
+  scroll-margin-top: 100px;
 }
 
 .banner {
@@ -12,8 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
-  min-height: 500px;
+  min-height: auto; /* Removed fixed height to let content determine height */
   box-shadow: none;
   padding: 0 40px;
 }
@@ -24,9 +24,7 @@
 
 .sectionLabelWrapper {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto 40px;
-  padding: 0 40px;
+  margin-bottom: 14px; /* Badge -> heading gap: approx 10-18px */
   display: flex;
   justify-content: flex-start;
 }
@@ -40,7 +38,7 @@
 .line {
   width: 60px;
   height: 2px;
-  background: #D4AF37;
+  background: #C8A951;
   border-radius: 20px;
   position: relative;
 }
@@ -53,28 +51,41 @@
   transform: translateY(-50%);
   width: 10px;
   height: 10px;
-  background: #D4AF37;
+  background: #C8A951;
   border-radius: 50%;
 }
 
 .sectionLabel span {
-  color: #D4AF37;
+  color: #C8A951;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 6px;
   text-transform: uppercase;
 }
 
+/* On Desktop: 2-column flex layout container */
 .content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  z-index: 2;
+}
+
+/* Left content wrapper containing text and buttons */
+.leftCol {
   flex: 1;
   min-width: 0;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .title {
   font-size: 36px;
   color: white;
-  margin-bottom: 25px;
+  margin-bottom: 12px; /* Heading -> description gap: approx 10-16px */
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.02rem;
@@ -83,7 +94,7 @@
 .description {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 45px;
+  margin-bottom: 22px; /* Description -> buttons gap: approx 18-24px */
   line-height: 1.6;
   max-width: 500px;
 }
@@ -92,6 +103,8 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .storeCard {
@@ -103,12 +116,12 @@
   gap: 15px;
   text-decoration: none;
   transition: all 0.3s ease;
-  /* Removed min-width: 200px — was causing overflow on small screens */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: fit-content; /* Fit content, don't stretch */
 }
 
 .storeCard:hover {
-  background: #f4a623;
+  background: #C8A951;
   transform: translateY(-5px);
 }
 
@@ -137,14 +150,14 @@
   font-weight: 800;
 }
 
-/* KEY FIX: was flex: 0 0 500px — hard 500px width at all sizes */
 .mockupContainer {
-  flex: 0 0 auto;
   width: 420px;
   max-width: 420px;
   z-index: 2;
   display: flex;
   justify-content: center;
+  align-self: center;
+  flex-shrink: 0;
 }
 
 .appMockup {
@@ -154,66 +167,51 @@
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
 }
 
-/* ---- TABLET (768px - 1024px) ---- */
+/* ============================================
+   TABLET (768px - 1024px)
+   ============================================ */
 @media (max-width: 1024px) and (min-width: 768px) {
   .download {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .banner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     padding: 0 32px;
-    gap: 32px;
     min-height: auto;
   }
 
   .content {
+    gap: 32px;
+  }
+
+  .leftCol {
     flex: 1;
     min-width: 0;
-    text-align: left;
   }
 
   .sectionLabelWrapper {
-    padding: 0;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .title {
     font-size: 28px;
-    margin-bottom: 16px;
-    text-align: left;
+    margin-bottom: 10px;
   }
 
   .description {
     font-size: 0.98rem;
-    margin-bottom: 28px;
-    text-align: left;
+    margin-bottom: 18px;
     max-width: 100%;
   }
 
   .storeButtons {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
     gap: 14px;
-    flex-wrap: nowrap;
-    max-width: 440px;
+    flex-wrap: wrap; /* Wrap naturally if space is narrow */
   }
 
   .storeCard {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: fit-content; /* Keep content-width, do not stretch */
     padding: 10px 16px;
-    white-space: nowrap;
-    box-sizing: border-box;
     height: 48px;
   }
 
@@ -236,61 +234,95 @@
   }
 }
 
-/* ---- MOBILE (< 768px) ---- */
+/* ============================================
+   MOBILE (< 768px)
+   ============================================ */
 @media (max-width: 767px) {
   .download {
     padding: 48px 0;
+    scroll-margin-top: 80px;
   }
 
   .banner {
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    gap: 20px;
-    text-align: left;
+    padding: 0 16px;
+    min-height: auto;
   }
 
+  /* Reset layout to flex column */
   .content {
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: left;
+    gap: 0;
   }
 
-  /* Order 1: Badge */
+  /* Expose leftCol children to content flex parent */
+  .leftCol {
+    display: contents;
+  }
+
+  /* Order 1: Badge Label */
   .sectionLabelWrapper {
     order: 1;
-    padding: 0;
-    margin-bottom: 16px;
-    justify-content: flex-start;
+    margin-bottom: 10px; /* Reduced gap for mobile */
   }
 
-  /* Order 2: Heading */
+  .sectionLabel {
+    gap: 12px;
+  }
+
+  .line {
+    width: 40px;
+  }
+
+  .line::before {
+    left: -14px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .sectionLabel span {
+    font-size: 11px;
+    letter-spacing: 4px;
+  }
+
+  /* Order 2: Main Heading */
   .title {
     order: 2;
     font-size: 1.65rem;
-    margin-bottom: 14px;
-    text-align: left;
+    margin-bottom: 10px; /* Reduced gap for mobile */
+    line-height: 1.25;
   }
 
   /* Order 3: Description */
   .description {
     order: 3;
     font-size: 0.95rem;
-    margin-bottom: 24px;
-    text-align: left;
+    margin-bottom: 20px; /* Reduced gap for mobile */
     max-width: 100%;
+    line-height: 1.5;
   }
 
-  /* Order 4: App Mockup Image */
+  /* Order 4: Mockup Image (centered and aspect ratio contained) */
   .mockupContainer {
     order: 4;
     width: 100%;
-    max-width: 260px;
-    margin: 0 auto 16px auto;
+    max-width: 280px;
+    margin: 0 auto 24px auto;
+    display: flex;
+    justify-content: center;
+    align-self: center;
   }
 
-  /* Order 5: Store buttons wrapper */
+  .appMockup {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+  }
+
+  /* Order 5: Store Buttons wrapper (stretched full-width on mobile) */
   .storeButtons {
     order: 5;
     display: flex;
@@ -300,59 +332,57 @@
     align-items: stretch;
   }
 
-  /* Order 5 inside storeButtons: Google Play */
+  /* Order 1 inside wrapper: Google Play */
   .googlePlayCard {
     order: 1;
   }
 
-  /* Order 6 inside storeButtons: App Store */
+  /* Order 2 inside wrapper: App Store */
   .appStoreCard {
     order: 2;
   }
 
   .storeCard {
-    width: 100%;
-    height: 48px;
-    flex: 1;
-    justify-content: center;
+    width: 100%; /* Stretched on mobile */
+    height: 50px;
     box-sizing: border-box;
     padding: 10px 16px;
+    justify-content: center;
+    border-radius: 12px;
   }
 
   .cardIcon {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
   }
 
   .cardText span {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
   }
 
   .cardText strong {
-    font-size: 0.95rem;
-  }
-
-  .appMockup {
-    object-fit: contain;
-    max-height: 320px;
-    width: auto;
+    font-size: 1.05rem;
   }
 }
 
+/* Small mobile optimizations */
 @media (max-width: 480px) {
   .download {
     padding: 40px 0;
   }
 
-  .banner {
-    padding: 0 16px;
-    gap: 16px;
+  .title {
+    font-size: 1.45rem;
   }
 
-  .title {
-    font-size: 1.5rem;
+  .description {
+    font-size: 0.92rem;
   }
 
   .mockupContainer {
-    max-width: 220px;
+    max-width: 240px;
+  }
+
+  .appMockup {
+    max-height: 280px;
   }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
+import CommonHero from '../components/CommonHero';
 import styles from '../styles/RefundPolicy.module.css';
 
 const RefundPolicy = () => {
@@ -62,22 +63,7 @@ const RefundPolicy = () => {
         description={seoData.refundPolicy.description}
         keywords={seoData.refundPolicy.keywords}
       />
-      {/* Hero Banner */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span>Legal</span>
-            <FiChevronRight className={styles.breadcrumbSeparator} />
-            <span className={styles.breadcrumbActive}>Refund Policy</span>
-          </div>
-          <h1 className={styles.heroTitle}>Refund Policy</h1>
-          <p className={styles.heroSubtitle}>
-            Please review our refund policy carefully before purchasing any membership or subscription.
-          </p>
-        </div>
-      </section>
+      <CommonHero />
 
       {/* Main Content Grid */}
       <section className={styles.mainContent}>
@@ -224,8 +210,8 @@ const RefundPolicy = () => {
                     </div>
                     <div className={styles.contactDetails}>
                       <span className={styles.contactLabel}>Email</span>
-                      <a href="mailto:support@trustednetwork.in" className={styles.contactValue}>
-                        support@trustednetwork.in
+                      <a href="mailto:admin@trustednetwork.in" className={styles.contactValue}>
+                        admin@trustednetwork.in
                       </a>
                     </div>
                   </div>
@@ -236,8 +222,8 @@ const RefundPolicy = () => {
                     </div>
                     <div className={styles.contactDetails}>
                       <span className={styles.contactLabel}>Phone</span>
-                      <a href="tel:+919876543210" className={styles.contactValue}>
-                        +91 98765 43210
+                      <a href="tel:+919791152132" className={styles.contactValue}>
+                        +91 97911 52132
                       </a>
                     </div>
                   </div>

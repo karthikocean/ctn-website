@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FiUserCheck, FiCompass, FiUsers, FiActivity, FiStar, FiGift } from 'react-icons/fi';
 import styles from '../styles/FutureDirection.module.css';
 
+// Premium journey/roadmap component showing steps in the business networking ecosystem
 const FutureDirection = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 

@@ -1,15 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   FiRepeat,
-  FiTrendingUp,
-  FiUsers,
+  FiClipboard,
+  FiCheckCircle,
   FiMapPin,
   FiMessageCircle,
   FiActivity
 } from 'react-icons/fi';
+import { FaRupeeSign } from 'react-icons/fa';
 import { getCommonStats } from '../apis/commonApi';
 import styles from '../styles/BusinessImpact.module.css';
 import backgroundImg from '../assets/BusinessImpact.png';
+
+/* ==========================================
+   HELPER FUNCTIONS
+========================================== */
+const parseStatValue = (val) => {
+  if (val === null || val === undefined) return 0;
+  const num = typeof val === 'string' ? parseFloat(val.replace(/,/g, '')) : Number(val);
+  return isNaN(num) || num < 0 ? 0 : Math.floor(num);
+};
 
 /* ==========================================
    COUNTER COMPONENT
@@ -18,6 +28,8 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef(null);
+
+  const numTarget = parseStatValue(target);
 
   useEffect(() => {
     setCount(0);
@@ -40,12 +52,12 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
               1
             );
 
-            setCount(Math.floor(progress * target));
+            setCount(Math.floor(progress * numTarget));
 
             if (progress < 1) {
               window.requestAnimationFrame(step);
             } else {
-              setCount(target);
+              setCount(numTarget);
             }
           };
 
@@ -64,12 +76,14 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
         observer.unobserve(elementRef.current);
       }
     };
-  }, [target, duration, hasAnimated]);
+  }, [target, duration, hasAnimated, numTarget]);
+
+  const displaySuffix = suffix === '+' ? (numTarget > 0 ? '+' : '') : (suffix || '');
 
   return (
     <span ref={elementRef} className={styles.statNumber}>
       {(count || 0).toLocaleString()}
-      {suffix}
+      {displaySuffix}
     </span>
   );
 };
@@ -80,7 +94,7 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
 const defaultStats = [
   {
     id: 1,
-    target: 10000,
+    target: 27,
     suffix: '+',
     label: 'Business Referrals',
     Icon: FiRepeat,
@@ -91,15 +105,15 @@ const defaultStats = [
     target: 5000,
     suffix: '+',
     label: 'Lead Generation',
-    Icon: FiTrendingUp,
+    Icon: FiClipboard,
     key: 'requirementsCount',
   },
   {
     id: 3,
-    target: 2500,
+    target: 22,
     suffix: '+',
     label: 'Business Growth',
-    Icon: FiUsers,
+    Icon: FiCheckCircle,
     key: 'businessDoneCount',
   },
   {
@@ -112,7 +126,7 @@ const defaultStats = [
   },
   {
     id: 5,
-    target: 1000,
+    target: 33,
     suffix: '+',
     label: 'Business Talks',
     Icon: FiMessageCircle,
@@ -138,38 +152,43 @@ const BusinessImpact = () => {
         setStatsData([
           {
             id: 1,
-            target: d.recommendationCount > 0 ? d.recommendationCount : 10000,
+            target: parseStatValue(d.recommendationCount),
             suffix: '+',
-            label: 'Business Referrals',
+            label: 'Recommendation Count',
             Icon: FiRepeat,
+            key: 'recommendationCount',
           },
           {
             id: 2,
-            target: d.requirementsCount > 0 ? d.requirementsCount : 5000,
+            target: parseStatValue(d.requirementsCount),
             suffix: '+',
-            label: 'Lead Generation',
-            Icon: FiTrendingUp,
+            label: 'Requirements Count',
+            Icon: FiClipboard,
+            key: 'requirementsCount',
           },
           {
             id: 3,
-            target: d.businessDoneCount > 0 ? d.businessDoneCount : 2500,
+            target: parseStatValue(d.businessDoneCount),
             suffix: '+',
-            label: 'Business Growth',
-            Icon: FiUsers,
+            label: 'Business Done Count',
+            Icon: FiCheckCircle,
+            key: 'businessDoneCount',
           },
           {
             id: 4,
-            target: d.totalRegions > 0 ? d.totalRegions : 50,
+            target: parseStatValue(d.businessDoneAmount),
             suffix: '+',
-            label: 'Cities Connected',
-            Icon: FiMapPin,
+            label: 'Business Done Amount',
+            Icon: FaRupeeSign,
+            key: 'businessDoneAmount',
           },
           {
             id: 5,
-            target: d.directMeetCount > 0 ? d.directMeetCount : 1000,
+            target: parseStatValue(d.directMeetCount),
             suffix: '+',
-            label: 'Business Talks',
+            label: 'Direct Meet Count',
             Icon: FiMessageCircle,
+            key: 'directMeetCount',
           },
           {
             id: 6,

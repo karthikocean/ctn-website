@@ -26,8 +26,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #F0A500;
-  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  background: #C8A951;
+  box-shadow: 0 0 12px rgba(200, 169, 81, 0.4);
   flex-shrink: 0;
 }
 
@@ -71,7 +71,7 @@
   display: grid;
   grid-template-columns: 360px 1fr;
   gap: 36px;
-  align-items: stretch;
+  align-items: center;
   max-width: 1140px;
   margin: 0 auto;
 }
@@ -303,6 +303,7 @@
   .journeyContainer {
     grid-template-columns: 1fr;
     gap: 20px;
+    align-items: stretch;
   }
 
   .tabList {

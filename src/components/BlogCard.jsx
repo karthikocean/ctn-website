@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogCard.module.css';
 
 const BlogCard = ({ blog }) => {
   if (!blog) return null;
 
   const blogLink = `/blogs/${blog.slug || blog.id}`;
-  const blogImage = blog.featuredImage || blog.image;
+  const blogImage = blog.featuredImage || blog.image || event1;
 
   return (
     <article className={styles.cardContainer}>
@@ -20,14 +21,11 @@ const BlogCard = ({ blog }) => {
             alt={blog.title}
             className={styles.cardImage}
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = event1;
+            }}
           />
-
-          {/* Category Badge (Top-Left) */}
-          {blog.category && (
-            <div className={styles.topBadgeWrapper}>
-              <span className={styles.categoryBadge}>{blog.category}</span>
-            </div>
-          )}
 
           {/* Circular Arrow Navigation Button (Bottom-Right) */}
           <div className={styles.circularArrowBtn} aria-hidden="true">
@@ -42,14 +40,11 @@ const BlogCard = ({ blog }) => {
           {/* Desktop Hover Reveal Layer (Transparent Navy Overlay + Content Reveal, NO BLUR) */}
           <div className={styles.hoverOverlay}>
             <div className={styles.overlayContent}>
-              <div className={styles.overlayCategory}>{blog.category}</div>
               <h3 className={styles.overlayTitle}>{blog.title}</h3>
               {blog.excerpt && <p className={styles.overlayExcerpt}>{blog.excerpt}</p>}
 
               <div className={styles.overlayMeta}>
                 {blog.publishedDate && <span>{blog.publishedDate}</span>}
-                {blog.publishedDate && blog.readTime && <span className={styles.metaDivider}>•</span>}
-                {blog.readTime && <span>{blog.readTime}</span>}
               </div>
 
               <div className={styles.readLink}>
@@ -66,8 +61,6 @@ const BlogCard = ({ blog }) => {
           {blog.excerpt && <p className={styles.mobileExcerpt}>{blog.excerpt}</p>}
           <div className={styles.mobileMeta}>
             <span>{blog.publishedDate}</span>
-            {blog.publishedDate && blog.readTime && <span className={styles.metaDivider}>•</span>}
-            <span>{blog.readTime}</span>
           </div>
         </div>
       </Link>
