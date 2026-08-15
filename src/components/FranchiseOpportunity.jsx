@@ -35,9 +35,9 @@ const FranchiseOpportunity = ({ onApplyClick }) => {
                 alt="Trusted Network Franchise Partner"
                 className={styles.opportunityImg}
               />
-              <div className={styles.imageBadgeOverlay}>
+              {/* <div className={styles.imageBadgeOverlay}>
                 <span className={styles.overlayText}>Exclusive Territory Partner</span>
-              </div>
+              </div> */}
             </div>
           </div>
 

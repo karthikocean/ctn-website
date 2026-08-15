@@ -121,7 +121,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={styles.creditLink}
             >
-              Ocean Softwares Pvt. Ltd.
+              Oceansoftwares Pvt Ltd.
             </a>
           </p>
         </div>

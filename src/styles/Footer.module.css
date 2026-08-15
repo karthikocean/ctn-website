@@ -1,11 +1,47 @@
+/* ============================================
+   FOOTER BACKGROUND
+   Layer 1 — Dark navy base color (fallback)
+   Layer 2 — Business networking world-map image
+   Layer 3 — Dark navy overlay via ::before (readability)
+   Layer 4 — Footer content (z-index: 1 on .footerGrid)
+   ============================================ */
+
 .footer {
-  background: #062a52;
+  /* Fallback colour if image hasn't loaded yet */
+  background-color: #051635;
+  background-image: url('../assets/footerbgimg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   color: white;
   padding: 40px 40px 10px 40px;
   position: relative;
   border-top: 4px solid #C8A951;
   margin: 0;
+  overflow: hidden;
 }
+
+/* ── Dark navy overlay — keeps all text readable ── */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(5, 22, 53, 0.82) 0%,
+    rgba(4, 16, 40, 0.78) 50%,
+    rgba(5, 22, 53, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+/* ::after is intentionally left empty — image replaces the CSS pattern */
+.footer::after {
+  content: none;
+}
+
+
 
 .footerGrid {
   display: flex;
@@ -13,6 +49,8 @@
   gap: 40px;
   align-items: flex-start;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Group 1 (Desktop: Brand + NavGroup) */
@@ -226,6 +264,15 @@
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  /* Darker strip to visually separate copyright from main footer content */
+  margin-left: -40px;
+  margin-right: -40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  background: rgba(3, 12, 30, 0.45);
 }
 
 .creditLink {
@@ -250,6 +297,13 @@
 @media (max-width: 1024px) and (min-width: 768px) {
   .footer {
     padding: 36px 32px 10px 32px;
+  }
+
+  .bottomBar {
+    margin-left: -32px;
+    margin-right: -32px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   .footerGrid {
@@ -319,6 +373,13 @@
 @media (max-width: 767px) {
   .footer {
     padding: 32px 20px 10px 20px;
+  }
+
+  .bottomBar {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .footerGrid {

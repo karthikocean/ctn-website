@@ -1,21 +1,18 @@
 /* ==================================================
-   FUTURE DIRECTION (JOURNEY ROADMAP) STYLING
-   White background · Connected grid on desktop · Connected vertical timeline on mobile
+   FRANCHISE HOW IT WORKS STYLING
+   White background · Horizontal workflow desktop · Vertical mobile timeline
    ================================================== */
 
-.directionSection {
+.howItWorksSection {
   background-color: #ffffff;
-  background-image: radial-gradient(rgba(6, 21, 43, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
   padding: 35px 0;
   position: relative;
   overflow: hidden;
-  color: #06152B;
 }
 
 .headerWrapper {
   text-align: center;
-  margin-bottom: 55px;
+  margin-bottom: 60px;
 }
 
 /* Badge Style matching CTN Design System */
@@ -26,21 +23,10 @@
   margin-bottom: 16px;
 }
 
-.sectionBadge::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #C8A951;
-  box-shadow: 0 0 10px rgba(200, 169, 81, 0.5);
-  flex-shrink: 0;
-}
-
 .badgeLine {
   width: 36px;
   height: 1.5px;
   background-color: #C8A951;
-  flex-shrink: 0;
 }
 
 .badgeText {
@@ -70,8 +56,8 @@
   margin: 0 auto;
 }
 
-/* Timeline/Roadmap Wrapper */
-.roadmapWrapper {
+/* Timeline Wrapper */
+.timelineWrapper {
   position: relative;
   width: 100%;
   margin-top: 35px; /* 35px vertical gap constraint */
@@ -81,158 +67,124 @@
 .connectingLine {
   position: absolute;
   top: 32px; /* Half of 64px icon height */
-  left: 8%;
-  right: 8%;
+  left: 12%;
+  right: 12%;
   height: 0;
   border-top: 2.5px dashed rgba(200, 169, 81, 0.6);
   z-index: 1;
 }
 
-/* Roadmap Grid */
-.roadmapGrid {
+/* Steps Grid */
+.stepsGrid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
   position: relative;
   z-index: 2;
 }
 
-/* Roadmap Item */
-.roadmapItem {
+/* Step Card */
+.stepCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 0.3s ease;
 }
 
-.nodeWrapper {
-  margin-bottom: 20px;
+.iconNodeWrapper {
+  margin-bottom: 24px;
   position: relative;
   z-index: 2;
 }
 
-.nodeCircle {
+.iconCircle {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: #06152B;
+  background-color: #ffffff;
   border: 3px solid #C8A951;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(6, 21, 43, 0.1);
+  box-shadow: 0 8px 24px rgba(6, 21, 43, 0.08);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.roadmapItem:hover .nodeCircle {
-  background-color: #C8A951;
-  border-color: #06152B;
-  transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 10px 24px rgba(200, 169, 81, 0.35);
+.stepCard:hover .iconCircle {
+  background-color: #06152B;
+  border-color: #C8A951;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 21, 43, 0.15);
 }
 
-.nodeIcon {
+.iconCircle svg {
   color: #C8A951;
   font-size: 24px;
   transition: all 0.3s ease;
   stroke-width: 2;
 }
 
-.roadmapItem:hover .nodeIcon {
-  color: #06152B;
+.stepCard:hover .iconCircle svg {
+  color: #ffffff;
 }
 
-/* Info Card */
-.contentCard {
-  background-color: #ffffff;
-  border: 1px solid rgba(6, 21, 43, 0.08);
-  border-radius: 16px;
-  padding: 24px 16px;
-  box-shadow: 0 8px 24px rgba(6, 21, 43, 0.03);
+/* Content */
+.stepContent {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: all 0.4s ease;
-  width: 100%;
-  box-sizing: border-box;
+  align-items: center;
+  gap: 8px;
 }
 
-.roadmapItem:hover .contentCard {
-  border-color: #C8A951;
-  box-shadow: 0 12px 30px rgba(6, 21, 43, 0.08);
-}
-
-.itemTitle {
+.stepTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #06152B;
   margin: 0;
   line-height: 1.3;
 }
 
-.itemDesc {
+.goldAccent {
+  width: 24px;
+  height: 2.5px;
+  background-color: #C8A951;
+  border-radius: 2px;
+  margin: 2px 0;
+  opacity: 0.8;
+}
+
+.stepDesc {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: rgba(6, 21, 43, 0.75);
   margin: 0;
-}
-
-/* Bullet Points List */
-.bulletList {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-align: left;
-}
-
-.bulletItem {
-  font-family: 'Inter', sans-serif;
-  font-size: 11.5px;
-  color: rgba(6, 21, 43, 0.7);
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-  line-height: 1.4;
-}
-
-.bulletDot {
-  color: #C8A951;
-  font-weight: 700;
+  max-width: 240px;
 }
 
 /* ==================================================
    RESPONSIVE DESIGN
    ================================================== */
 
-@media (max-width: 1200px) {
-  .roadmapGrid {
-    gap: 16px;
-  }
-  
-  .contentCard {
-    padding: 20px 12px;
-  }
-}
-
 @media (max-width: 1024px) {
   .connectingLine {
     display: none;
   }
 
-  .roadmapGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px 24px;
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 32px;
+  }
+
+  .stepCard {
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 768px) {
-  .directionSection {
+@media (max-width: 767px) {
+  .howItWorksSection {
     padding: 60px 0;
   }
 
@@ -254,13 +206,13 @@
     z-index: 1;
   }
 
-  .roadmapGrid {
+  .stepsGrid {
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
 
-  .roadmapItem {
+  .stepCard {
     flex-direction: row;
     align-items: flex-start;
     text-align: left;
@@ -268,13 +220,17 @@
     gap: 20px;
   }
 
-  .nodeWrapper {
+  .iconNodeWrapper {
     margin-bottom: 0;
   }
 
-  .contentCard {
-    text-align: left;
-    padding: 20px;
+  .stepContent {
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+
+  .stepDesc {
+    max-width: 100%;
   }
 }
 
@@ -283,16 +239,16 @@
     left: 24px; /* Half of 48px icon */
   }
 
-  .nodeCircle {
+  .iconCircle {
     width: 48px;
     height: 48px;
   }
 
-  .nodeIcon {
+  .iconCircle svg {
     font-size: 20px;
   }
 
-  .roadmapItem {
+  .stepCard {
     gap: 16px;
   }
 }
