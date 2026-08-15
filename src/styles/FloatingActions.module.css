@@ -48,6 +48,44 @@
   transform: translateY(-4px);
 }
 
+/* --- WHATSAPP SUPPORT BUTTON --- */
+.whatsappBtn {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.whatsappBtn:hover {
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+.whatsappGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.whatsappIcon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+
 /* --- CHATBOT WIDGET SECTION --- */
 .chatWrapper {
   position: relative;
@@ -185,6 +223,12 @@
     width: 45px;
     height: 45px;
     border-radius: 14px;
+  }
+
+  .whatsappBtn {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
   }
 
   .hoverText {

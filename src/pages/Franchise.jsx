@@ -3,6 +3,8 @@ import SEO from '../components/SEO';
 import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import FranchiseOpportunity from '../components/FranchiseOpportunity';
+import FranchiseBenefits from '../components/FranchiseBenefits';
+import FranchiseHowItWorks from '../components/FranchiseHowItWorks';
 import FranchiseFAQ from '../components/FranchiseFAQ';
 import FranchiseFormModal from '../components/FranchiseFormModal';
 
@@ -25,6 +27,8 @@ const Franchise = () => {
       />
       <CommonHero title="Franchise" />
       <FranchiseOpportunity onApplyClick={handleOpenModal} />
+      <FranchiseBenefits />
+      <FranchiseHowItWorks />
       <FranchiseFAQ />
       <FranchiseFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </main>

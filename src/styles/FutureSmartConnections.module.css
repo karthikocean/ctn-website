@@ -1,10 +1,15 @@
+/* ==================================================
+   FUTURE SMART CONNECTIONS REDESIGN
+   Centered visual hierarchy · Navy background · Gold accents
+   ================================================= */
+
 .connectionsSection {
   background-color: #06152B;
   background-image:
     radial-gradient(rgba(200, 169, 81, 0.08) 1px, transparent 1px),
     linear-gradient(135deg, #06152B 0%, #0B2345 100%);
   background-size: 24px 24px, 100% 100%;
-  padding: 85px 0;
+  padding: 35px 0;
   margin-bottom: 0;
   position: relative;
   overflow: hidden;
@@ -16,231 +21,184 @@
   margin-bottom: 48px;
 }
 
+/* Badge Style matching CTN Design System */
 .sectionBadge {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
 .sectionBadge::before {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #F0A500;
-  box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
+  background-color: #C8A951;
+  box-shadow: 0 0 10px rgba(200, 169, 81, 0.5);
   flex-shrink: 0;
 }
 
 .badgeLine {
-  width: 48px;
+  width: 36px;
   height: 1.5px;
-  background: rgba(200, 169, 81, 0.7);
+  background-color: #C8A951;
   flex-shrink: 0;
 }
 
-.sectionBadge span {
+.badgeText {
   color: #C8A951;
-  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-  line-height: 1;
 }
 
 .sectionTitle {
-  font-size: 38px;
+  font-size: 34px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.25;
   color: #ffffff;
-  margin: 0 0 14px 0;
+  margin: 0 0 16px 0;
 }
 
 .sectionDesc {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 700px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 650px;
   margin: 0 auto;
   font-family: 'Inter', sans-serif;
 }
 
-.boardCanvas {
-  position: relative;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding-top: 16px;
-}
-
-/* Desktop Only Clean Connection Lines between Card Centers */
-.desktopConnectionLine {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 15%;
-  right: 15%;
-  height: 2px;
-  pointer-events: none;
-  z-index: 1;
-  display: block;
-}
-
-.svgLine {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.svgLine path {
-  stroke: #C8A951;
-  stroke-width: 2;
-  stroke-dasharray: 6 6;
-  opacity: 0.85;
-}
-
+/* Centered Grid Layout */
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  position: relative;
-  z-index: 2;
-  align-items: stretch;
+  margin-top: 35px; /* 35px vertical gap constraint */
 }
 
-.pinnedCard {
-  position: relative;
-  background: #ffffff;
-  border-radius: 18px;
-  border-top: 4px solid #F0A500;
-  padding: 44px 28px 36px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-  transition: all 0.35s ease;
+/* Centered Feature Card */
+.centeredCard {
+  background-color: #0B1F3A;
+  border: 1px solid rgba(200, 169, 81, 0.15);
+  border-radius: 20px;
+  padding: 45px 30px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transform: rotate(0deg) !important; /* All cards straight */
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-sizing: border-box;
 }
 
-/* Remove rotations for straight appearance */
-.cardRotateLeft,
-.cardRotateRight,
-.cardRotateCenter {
-  transform: rotate(0deg) !important;
+.centeredCard:hover {
+  transform: translateY(-8px);
+  border-color: #C8A951;
+  box-shadow: 0 20px 45px rgba(200, 169, 81, 0.12);
 }
 
-.pinnedCard:hover {
-  transform: translateY(-8px) rotate(0deg) !important;
-  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.38), 0 0 20px rgba(240, 165, 0, 0.2);
-}
-
-.pinWrapper {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.pushpinImg {
-  width: 38px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
-}
-
-.cardHeaderBox {
-  margin-bottom: 20px;
-}
-
+/* Centered Gold Icon Circle */
 .iconWrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(6, 21, 43, 0.06);
-  border: 1px solid rgba(6, 21, 43, 0.1);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: rgba(200, 169, 81, 0.1);
+  border: 2.5px solid #C8A951;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 20px rgba(200, 169, 81, 0.15);
+  transition: all 0.3s ease;
+}
+
+.centeredCard:hover .iconWrapper {
+  background-color: #C8A951;
+  transform: scale(1.05);
 }
 
 .cardIcon {
-  font-size: 24px;
+  font-size: 28px;
+  color: #C8A951;
+  transition: all 0.3s ease;
+}
+
+.centeredCard:hover .cardIcon {
   color: #06152B;
 }
 
+/* Content */
 .cardTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  color: #06152B;
+  color: #ffffff;
   margin: 0 0 12px 0;
+  line-height: 1.35;
 }
 
 .cardDesc {
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: #4B5563;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
+  max-width: 280px;
   font-family: 'Inter', sans-serif;
 }
 
-/* Tablet (768px - 1024px): Hide Connection Line, Keep Pushpins & Straight Cards */
+/* ==================================================
+   RESPONSIVE DESIGN
+   ================================================== */
+
 @media (max-width: 1024px) {
-  .desktopConnectionLine {
-    display: none;
-  }
-
   .cardsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
 
-  .pinnedCard {
-    padding: 38px 20px 28px;
-    transform: rotate(0deg) !important;
-  }
-
-  .cardTitle {
-    font-size: 18px;
-  }
-
-  .cardDesc {
-    font-size: 0.9rem;
+  .centeredCard {
+    padding: 35px 24px;
   }
 }
 
-/* Mobile (<= 767px): Stack Cards vertically, Keep Pushpins, Hide Connection Line */
 @media (max-width: 767px) {
   .connectionsSection {
     padding: 60px 0;
-    margin-bottom: 0;
   }
 
   .sectionTitle {
     font-size: 28px;
   }
 
-  .desktopConnectionLine {
-    display: none;
-  }
-
   .cardsGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
-    max-width: 480px;
-    margin: 0 auto;
+    gap: 28px;
+    max-width: 420px;
+    margin: 35px auto 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .centeredCard {
+    padding: 30px 16px;
   }
 
-  .pinnedCard {
-    transform: rotate(0deg) !important;
-    padding: 40px 24px 30px;
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
   }
 
-  .pinnedCard:hover {
-    transform: none !important;
+  .cardIcon {
+    font-size: 24px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
   }
 }
