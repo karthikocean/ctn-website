@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import styles from '../styles/PrivacyPolicy.module.css';
 
@@ -59,11 +58,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className={styles.page}>
-      <SEO
-        title={seoData.privacyPolicy.title}
-        description={seoData.privacyPolicy.description}
-        keywords={seoData.privacyPolicy.keywords}
-      />
+      <SEO />
       <CommonHero />
 
       {/* Main Content Grid */}

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import styles from '../styles/RefundPolicy.module.css';
 
@@ -58,11 +57,7 @@ const RefundPolicy = () => {
 
   return (
     <div className={styles.page}>
-      <SEO
-        title={seoData.refundPolicy.title}
-        description={seoData.refundPolicy.description}
-        keywords={seoData.refundPolicy.keywords}
-      />
+      <SEO />
       <CommonHero />
 
       {/* Main Content Grid */}

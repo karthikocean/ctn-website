@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import MemberSharing from '../components/MemberSharing';
@@ -12,16 +11,12 @@ import BusinessImpact from '../components/BusinessImpact';
 const Home = () => {
   return (
     <main>
-      <SEO
-        title={seoData.home.title}
-        description={seoData.home.description}
-        keywords={seoData.home.keywords}
-      />
+      <SEO />
       <Hero />
       <About />
       <MemberSharing />
       <Benefits />
-      <HowItWorks />
+      {/* <HowItWorks /> */}
       <BusinessImpact />
       <Download />
     </main>

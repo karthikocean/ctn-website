@@ -50,9 +50,9 @@ const BlogDetails = () => {
     return (
       <div className={styles.notFoundContainer}>
         <SEO
-          title={seoData.blogs.title}
-          description={seoData.blogs.description}
-          keywords={seoData.blogs.keywords}
+          title={seoData['/blogs']?.title}
+          description={seoData['/blogs']?.description}
+          keywords={seoData['/blogs']?.keywords}
         />
         <div className="container">
           <div className={styles.notFoundCard}>
@@ -81,7 +81,7 @@ const BlogDetails = () => {
     <div className={styles.detailsPage}>
       <SEO
         title={`${blog.title} | Trusted Network`}
-        description={blog.excerpt || seoData.blogs.description}
+        description={blog.excerpt || seoData['/blogs']?.description}
         keywords={`${blog.category || 'business'}, business blog, trusted network`}
       />
       <BlogDetailsHeader blog={blog} />
