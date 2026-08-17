@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiFileText } from 'react-icons/fi';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import BlogFeatured from '../components/BlogFeatured';
 import BlogPreviousPosts from '../components/BlogPreviousPosts';
@@ -56,11 +55,7 @@ const Blogs = () => {
 
   return (
     <main className={styles.pageContainer}>
-      <SEO
-        title={seoData.blogs.title}
-        description={seoData.blogs.description}
-        keywords={seoData.blogs.keywords}
-      />
+      <SEO />
       <CommonHero title="Blogs & Insights" />
 
       {loading && <LoadingState message="Fetching latest blogs..." />}

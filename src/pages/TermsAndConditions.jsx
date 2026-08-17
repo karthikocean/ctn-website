@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInfo, FiChevronRight, FiGlobe, FiMail, FiPhone } from 'react-icons/fi';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import styles from '../styles/TermsAndConditions.module.css';
 
@@ -60,11 +59,7 @@ const TermsAndConditions = () => {
 
   return (
     <div className={styles.page}>
-      <SEO
-        title={seoData.termsAndConditions.title}
-        description={seoData.termsAndConditions.description}
-        keywords={seoData.termsAndConditions.keywords}
-      />
+      <SEO />
       <CommonHero />
 
       {/* Main Content Grid */}

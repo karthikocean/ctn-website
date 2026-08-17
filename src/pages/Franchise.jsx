@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import FranchiseOpportunity from '../components/FranchiseOpportunity';
 import FranchiseBenefits from '../components/FranchiseBenefits';
@@ -20,11 +19,7 @@ const Franchise = () => {
 
   return (
     <main>
-      <SEO
-        title={seoData.franchise.title}
-        description={seoData.franchise.description}
-        keywords={seoData.franchise.keywords}
-      />
+      <SEO />
       <CommonHero title="Franchise" />
       <FranchiseOpportunity onApplyClick={handleOpenModal} />
       <FranchiseBenefits />

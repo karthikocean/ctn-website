@@ -46,9 +46,9 @@ const EventDetails = () => {
     return (
       <main className={styles.page}>
         <SEO
-          title={seoData.events.title}
-          description={seoData.events.description}
-          keywords={seoData.events.keywords}
+          title={seoData['/events']?.title}
+          description={seoData['/events']?.description}
+          keywords={seoData['/events']?.keywords}
         />
         <div className={styles.notFoundContainer}>
           <div className={styles.notFoundCard}>
@@ -73,7 +73,7 @@ const EventDetails = () => {
     <main className={styles.page}>
       <SEO
         title={`${event.title} | Trusted Network`}
-        description={event.description || seoData.events.description}
+        description={event.description || seoData['/events']?.description}
         keywords="business events, networking event, trusted network"
       />
 

@@ -9,19 +9,18 @@ const CommonHero = ({ title }) => {
   // Helper to map pathname to seoData key dynamically
   const getSeoKey = (path) => {
     const p = path.toLowerCase().replace(/\/$/, '');
-    if (p === '' || p === '/') return 'home';
-    if (p === '/about') return 'about';
-    if (p === '/future') return 'future';
-    if (p === '/membership-plans' || p === '/pricing') return 'membershipPlans';
-    if (p === '/contact') return 'contact';
-    if (p === '/franchise') return 'franchise';
-    if (p.startsWith('/events')) return 'events';
-    if (p.startsWith('/blogs')) return 'blogs';
-    if (p === '/privacy-policy' || p === '/privacy') return 'privacyPolicy';
-    if (p === '/terms-condition' || p === '/terms') return 'termsAndConditions';
-    if (p === '/refund-policy' || p === '/refund') return 'refundPolicy';
-    if (p === '/community-guidelines') return 'communityGuidelines';
-    return null;
+    const canonicalMap = {
+      '': '/',
+      '/': '/',
+      '/pricing': '/membership-plans',
+      '/privacy': '/privacy-policy',
+      '/terms': '/terms-condition',
+      '/refund': '/refund-policy'
+    };
+    if (canonicalMap[p]) return canonicalMap[p];
+    if (p.startsWith('/events')) return '/events';
+    if (p.startsWith('/blogs')) return '/blogs';
+    return p;
   };
 
   // Helper to generate human-readable route name for the breadcrumb

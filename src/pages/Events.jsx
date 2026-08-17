@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiCalendar } from 'react-icons/fi';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import EventFeatured from '../components/EventFeatured';
 import EventsGrid from '../components/EventsGrid';
@@ -56,11 +55,7 @@ const Events = () => {
 
   return (
     <main className={styles.pageContainer}>
-      <SEO
-        title={seoData.events.title}
-        description={seoData.events.description}
-        keywords={seoData.events.keywords}
-      />
+      <SEO />
       <CommonHero title="Events" />
 
       {loading && <LoadingState message="Fetching upcoming events..." />}

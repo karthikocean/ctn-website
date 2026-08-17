@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
-import seoData from '../data/seoData';
 import CommonHero from '../components/CommonHero';
 import styles from '../styles/CommunityGuidelines.module.css';
 
@@ -92,11 +91,7 @@ const CommunityGuidelines = () => {
 
   return (
     <main className={styles.pageWrapper}>
-      <SEO
-        title={seoData.communityGuidelines.title}
-        description={seoData.communityGuidelines.description}
-        keywords={seoData.communityGuidelines.keywords}
-      />
+      <SEO />
       <CommonHero title="Community Guidelines" />
 
       <section className={styles.faqSection} aria-label="Community Guidelines FAQ">
