@@ -25,14 +25,14 @@ const defaultStatsData = [
     icon: FiGrid,
     end: 0,
     suffix: '+',
-    label: 'Category Count',
+    label: 'Category',
   },
   {
     key: 'totalRegions',
     icon: FiMapPin,
     end: 0,
     suffix: '+',
-    label: 'Region Count',
+    label: 'Region',
   },
 ];
 
@@ -66,14 +66,14 @@ const Statistics = () => {
             icon: FiGrid,
             end: categories,
             suffix: '+',
-            label: 'Category Count',
+            label: 'Category',
           },
           {
             key: 'totalRegions',
             icon: FiMapPin,
             end: regionCount,
             suffix: '+',
-            label: 'Region Count',
+            label: 'Region',
           },
         ]);
       }
