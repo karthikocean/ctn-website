@@ -75,8 +75,8 @@
 
 .imageFrame {
   width: 100%;
-  max-width: 1240px;
-  aspect-ratio: 11 / 5;
+  max-width: 1320px;
+  aspect-ratio: 1320 / 600;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(6, 21, 43, 0.1);
