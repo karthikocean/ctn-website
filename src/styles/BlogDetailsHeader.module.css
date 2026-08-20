@@ -115,11 +115,11 @@
   color: #CBD5E1;
 }
 
-/* Hero Image Frame (1240px max width) */
+/* Hero Image Frame (1320px max width) */
 .heroImageFrame {
   width: 100%;
-  max-width: 1240px;
-  height: 440px;
+  max-width: 1320px;
+  aspect-ratio: 1320 / 600;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(6, 21, 43, 0.1);
@@ -131,14 +131,14 @@
 .heroImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
 
 /* ==================================================
    RESPONSIVE BREAKPOINTS
-   ================================================== */
+   ================================================= */
 
 @media (max-width: 1024px) {
   .headerSection {
@@ -147,10 +147,6 @@
 
   .articleTitle {
     font-size: 30px;
-  }
-
-  .heroImageFrame {
-    height: 340px;
   }
 
   .backBtnWrapper {
@@ -168,7 +164,6 @@
   }
 
   .heroImageFrame {
-    height: 240px;
     border-radius: 14px;
   }
 
@@ -190,9 +185,5 @@
 
   .articleTitle {
     font-size: 21px;
-  }
-
-  .heroImageFrame {
-    height: 190px;
   }
 }

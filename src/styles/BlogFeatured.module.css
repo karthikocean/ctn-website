@@ -47,8 +47,6 @@
   display: grid;
   grid-template-columns: 65% 35%;
   gap: 20px;
-  height: 550px;
-  min-height: 550px;
 }
 
 .mainFeatureCard {
@@ -57,25 +55,22 @@
   border-radius: 20px;
   box-shadow: 0 12px 28px rgba(6, 21, 43, 0.08);
   border: 1px solid rgba(6, 21, 43, 0.1);
-  height: 550px;
-  min-height: 550px;
+  aspect-ratio: 1320 / 600;
 }
 
 .sideColumn {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 550px;
 }
 
 .sideCard {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  height: 265px;
-  min-height: 265px;
   box-shadow: 0 8px 20px rgba(6, 21, 43, 0.07);
   border: 1px solid rgba(6, 21, 43, 0.1);
+  aspect-ratio: 1320 / 600;
 }
 
 .cardWrapper {
@@ -91,7 +86,7 @@
 .cardImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.45s ease;
   display: block;
@@ -380,23 +375,6 @@
   .editorialGrid {
     grid-template-columns: 60% 40%;
     gap: 20px;
-    height: 420px;
-    min-height: 420px;
-  }
-
-  .mainFeatureCard {
-    height: 420px;
-    min-height: 420px;
-  }
-
-  .sideColumn {
-    gap: 20px;
-    height: 420px;
-  }
-
-  .sideCard {
-    height: 200px;
-    min-height: 200px;
   }
 
   .defaultTitle,
@@ -433,19 +411,9 @@
     min-height: auto;
   }
 
-  .mainFeatureCard {
-    min-height: 360px;
-    height: 360px;
-  }
-
   .sideColumn {
     height: auto;
     gap: 18px;
-  }
-
-  .sideCard {
-    min-height: 260px;
-    height: 260px;
   }
 
   .hoverOverlay {
@@ -477,16 +445,6 @@
 
   .sectionHeading {
     font-size: 20px;
-  }
-
-  .mainFeatureCard {
-    height: 320px;
-    min-height: 320px;
-  }
-
-  .sideCard {
-    height: 240px;
-    min-height: 240px;
   }
 
   .circularArrowBtn {
