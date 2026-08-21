@@ -49,7 +49,7 @@ const AboutMissionVision = () => {
         <div className={styles.headerWrapper}>
           <div className={styles.sectionBadge}>
             <div className={styles.badgeLine}></div>
-            <span>OUR MISSION & VISION</span>
+            <span>OUR APPROACH</span>
           </div>
 
           <h2 className={styles.sectionTitle}>

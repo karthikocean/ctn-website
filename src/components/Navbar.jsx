@@ -53,7 +53,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Future', href: '/future' },
+    { name: 'Features', href: '/features' },
     { name: 'Membership Plans', href: '/membership-plans' },
     { name: 'Contact Us', href: '/contact' },
   ];
