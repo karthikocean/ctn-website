@@ -37,7 +37,7 @@ const CommonHero = ({ title }) => {
     if (p === '/franchise') return 'Franchise';
     if (p.startsWith('/events')) return 'Events';
     if (p.startsWith('/blogs')) return 'Blogs';
-    if (p === '/future') return 'Future';
+    if (p === '/features') return 'Features';
 
     // Fallback for any other/new page: capitalize words and replace dashes with spaces
     const segments = p.split('/').filter(Boolean);

@@ -28,7 +28,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/membership-plans" element={<MembershipPlans />} />
         <Route path="/pricing" element={<MembershipPlans />} />
-        <Route path="/future" element={<Future />} />
+        <Route path="/features" element={<Future />} />
+        <Route path="/future" element={<Navigate to="/features" replace />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetails />} />

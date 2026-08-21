@@ -51,7 +51,7 @@ const About = () => {
               More than simply collecting contacts, Trusted Network helps you build a network that creates real business value through meaningful connections, relevant opportunities and long term relationships.
             </p>
             <p className={styles.aboutParagraph}>
-              Trusted Network is built to help businesses connect with purpose, grow their network and discover new possibilities. The platform is powered by Ocean Softwares Pvt. Ltd., bringing technology and business networking together in one connected experience.
+              Trusted Network is built to help businesses connect with purpose, grow their network and discover new possibilities. The platform is powered by Oceansoftwares Pvt Ltd., bringing technology and business networking together in one connected experience.
             </p>
           </div>
         </motion.div>

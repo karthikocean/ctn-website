@@ -15,7 +15,7 @@ const seoData = {
       "business community, entrepreneur network, business opportunities"
   },
 
-  "/future": {
+  "/features": {
     title: "Smarter Business Networking | Trusted Network",
     description:
       "Discover smarter ways to build business connections, find relevant opportunities and create meaningful relationships with business professionals.",
