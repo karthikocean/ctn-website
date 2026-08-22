@@ -91,7 +91,6 @@ const Footer = () => {
                 */}
                 <div className={styles.appBadges}>
                   <a
-                    // href="https://apps.apple.com/in/app/trusted-network/id6786537784"
                     href={APP_STORE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
