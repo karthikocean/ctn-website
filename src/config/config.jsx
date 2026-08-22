@@ -52,6 +52,18 @@ apiClient.interceptors.response.use(
   }
 );
 
+export const APP_CONFIG = {
+  androidPackageName: "com.oceansoftware.ctn_business_app",
+  appStoreId: "6786537784",
+  appStoreUrl: "https://apps.apple.com/in/app/trusted-network/id6786537784",
+  getPlayStoreUrl: (code) =>
+    code
+      ? `https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&referrer=referralCode%3D${encodeURIComponent(code)}&pcampaignid=web_share`
+      : "https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&pcampaignid=web_share",
+  getDeepLink: (code) => (code ? `ctn://ref/${encodeURIComponent(code)}` : "ctn://"),
+  getReferralUrl: (code) => (code ? `https://trustednetwork.in/ref/${encodeURIComponent(code)}` : "https://trustednetwork.in"),
+};
+
 export { BASE_URL, SERVER_URL, apiClient, apiClient as api, apiClient as clientApi };
 
 export default apiClient;

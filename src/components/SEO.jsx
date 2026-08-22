@@ -14,47 +14,79 @@ const getCanonicalPath = (path) => {
   return p;
 };
 
-const SEO = ({ title, description, keywords }) => {
+const SEO = ({ title, description, keywords, image, url, type = 'website' }) => {
   const { pathname } = useLocation();
   const canonicalPath = getCanonicalPath(pathname);
   const currentSeo = seoData[canonicalPath] || {};
 
   // Direct props override default static metadata lookup
-  const displayTitle = title || currentSeo.title;
-  const displayDescription = description || currentSeo.description;
-  const displayKeywords = keywords || currentSeo.keywords;
+  const displayTitle = title || currentSeo.title || "Business Networking Platform | Trusted Network";
+  const displayDescription =
+    description ||
+    currentSeo.description ||
+    "Trusted Network is a business networking platform to connect with business owners, discover opportunities and grow your professional network across India.";
+  const displayKeywords =
+    keywords || currentSeo.keywords || "business networking, business network, business owners network";
+  const displayImage = image || "https://trustednetwork.in/banner.svg";
+  const displayUrl = url || (typeof window !== "undefined" ? window.location.href : `https://trustednetwork.in${pathname}`);
 
   useEffect(() => {
     if (displayTitle) {
       document.title = displayTitle;
     }
 
-    if (displayDescription) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
+    const setMetaTag = (selector, attrName, attrValue, content) => {
+      let element = document.querySelector(selector);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attrName, attrValue);
+        document.head.appendChild(element);
       }
-      metaDesc.setAttribute('content', displayDescription);
+      element.setAttribute('content', content);
+    };
+
+    if (displayDescription) {
+      setMetaTag('meta[name="description"]', 'name', 'description', displayDescription);
+      setMetaTag('meta[property="og:description"]', 'property', 'og:description', displayDescription);
+      setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', displayDescription);
     }
 
     if (displayKeywords) {
-      let metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta');
-        metaKeywords.setAttribute('name', 'keywords');
-        document.head.appendChild(metaKeywords);
-      }
-      metaKeywords.setAttribute('content', displayKeywords);
+      setMetaTag('meta[name="keywords"]', 'name', 'keywords', displayKeywords);
     }
-  }, [displayTitle, displayDescription, displayKeywords]);
+
+    if (displayTitle) {
+      setMetaTag('meta[property="og:title"]', 'property', 'og:title', displayTitle);
+      setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', displayTitle);
+    }
+
+    if (displayImage) {
+      setMetaTag('meta[property="og:image"]', 'property', 'og:image', displayImage);
+      setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', displayImage);
+    }
+
+    if (displayUrl) {
+      setMetaTag('meta[property="og:url"]', 'property', 'og:url', displayUrl);
+    }
+
+    setMetaTag('meta[property="og:type"]', 'property', 'og:type', type);
+    setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+  }, [displayTitle, displayDescription, displayKeywords, displayImage, displayUrl, type]);
 
   return (
     <Helmet>
       {displayTitle && <title>{displayTitle}</title>}
       {displayDescription && <meta name="description" content={displayDescription} />}
       {displayKeywords && <meta name="keywords" content={displayKeywords} />}
+      {displayTitle && <meta property="og:title" content={displayTitle} />}
+      {displayDescription && <meta property="og:description" content={displayDescription} />}
+      {displayImage && <meta property="og:image" content={displayImage} />}
+      {displayUrl && <meta property="og:url" content={displayUrl} />}
+      <meta property="og:type" content={type} />
+      <meta name="twitter:card" content="summary_large_image" />
+      {displayTitle && <meta name="twitter:title" content={displayTitle} />}
+      {displayDescription && <meta name="twitter:description" content={displayDescription} />}
+      {displayImage && <meta name="twitter:image" content={displayImage} />}
     </Helmet>
   );
 };
