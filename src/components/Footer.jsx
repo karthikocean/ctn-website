@@ -5,6 +5,7 @@ import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Footer.module.css';
 import qrCodeImg from '../assets/qr_code.png';
 import whiteLogo from '../assets/whitelogo.png';
+import { APP_STORE_LINK, PLAY_STORE_LINK, handleSmartAppDownload } from '../config/appLinks';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -75,12 +76,23 @@ const Footer = () => {
             <div className={styles.appSection}>
               <h4 className={styles.appColTitle}>Get the App</h4>
               <div className={styles.getAppContent}>
-                <div className={styles.footerQr}>
-                  <img src={qrCodeImg} alt="QR Code" />
-                </div>
+                {/* QR Code Section — Commented out as requested
+                <a
+                  href={PLAY_STORE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.footerQrLink}
+                  title="Scan to open Google Play Store"
+                >
+                  <div className={styles.footerQr}>
+                    <img src={qrCodeImg} alt="Trusted Network App QR Code" />
+                  </div>
+                </a>
+                */}
                 <div className={styles.appBadges}>
                   <a
-                    href="https://apps.apple.com/in/app/trusted-network/id6786537784"
+                    // href="https://apps.apple.com/in/app/trusted-network/id6786537784"
+                    href={APP_STORE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.badge}
@@ -88,7 +100,7 @@ const Footer = () => {
                     <FaApple /> App Store
                   </a>
                   <a
-                    href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+                    href={PLAY_STORE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.badge}
