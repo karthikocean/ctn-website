@@ -9,7 +9,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const routes = [
   { path: '/', key: '/' },
   { path: '/about', key: '/about' },
-  { path: '/future', key: '/future' },
+  { path: '/features', key: '/features' },
+  { path: '/future', key: '/features' },
   { path: '/membership-plans', key: '/membership-plans' },
   { path: '/pricing', key: '/membership-plans' },
   { path: '/contact', key: '/contact' },

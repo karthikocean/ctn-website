@@ -39,7 +39,9 @@ const Download = () => {
 
               <div className={styles.storeButtons}>
                 <motion.a
-                  href="#"
+                  href="https://apps.apple.com/in/app/trusted-network/id6786537784"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`${styles.storeCard} ${styles.appStoreCard}`}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.98 }}

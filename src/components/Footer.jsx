@@ -79,7 +79,12 @@ const Footer = () => {
                   <img src={qrCodeImg} alt="QR Code" />
                 </div>
                 <div className={styles.appBadges}>
-                  <a href="#" className={styles.badge}>
+                  <a
+                    href="https://apps.apple.com/in/app/trusted-network/id6786537784"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.badge}
+                  >
                     <FaApple /> App Store
                   </a>
                   <a

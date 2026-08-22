@@ -14,6 +14,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import CommunityGuidelines from './pages/CommunityGuidelines';
+import ReferralLanding from './pages/ReferralLanding';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -36,6 +37,8 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/franchise" element={<Franchise />} />
+        <Route path="/ref/:code" element={<ReferralLanding />} />
+        <Route path="/ref" element={<ReferralLanding />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms-condition" element={<TermsAndConditions />} />
