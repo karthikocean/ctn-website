@@ -14,6 +14,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import CommunityGuidelines from './pages/CommunityGuidelines';
+import DownloadRedirect from './pages/DownloadRedirect';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -44,7 +45,8 @@ function App() {
         <Route path="/refund" element={<Navigate to="/refund-policy" replace />} />
         <Route path="/community-guidelines" element={<CommunityGuidelines />} />
         <Route path="/partner" element={<StubPage title="Partner With Us" />} />
-        <Route path="/download" element={<StubPage title="Download App" />} />
+        <Route path="/download" element={<DownloadRedirect />} />
+        <Route path="/app-download" element={<DownloadRedirect />} />
       </Routes>
       <FloatingActions />
       <Footer />
