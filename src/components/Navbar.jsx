@@ -4,6 +4,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import mainlogo from '../assets/mainlogo.svg';
 import whiteLogo from '../assets/whitelogo.png';
+import { APP_STORE_LINK, PLAY_STORE_LINK } from '../config/appLinks';
 import styles from '../styles/Navbar.module.css';
 
 // Add effect to toggle a body class for pre-scroll styling on transparent home page
@@ -114,12 +115,17 @@ const Navbar = () => {
       {/* RIGHT — Store Buttons + Hamburger */}
       <div className={styles.navRight}>
         <div className={styles.storeButtons}>
-          <a href="#" className={styles.storeBtn}>
+          <a
+            href={APP_STORE_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.storeBtn}
+          >
             <FaApple className={styles.storeIcon} />
             <span>App Store</span>
           </a>
           <a
-            href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+            href={PLAY_STORE_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.storeBtn}
@@ -170,15 +176,22 @@ const Navbar = () => {
             })}
           </ul>
           <div className={styles.mobileStoreButtons}>
-            <a href="#" className={styles.mobileStoreBtn}>
+            <a
+              href={APP_STORE_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mobileStoreBtn}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <FaApple className={styles.storeIcon} />
               <span>App Store</span>
             </a>
             <a
-              href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+              href={PLAY_STORE_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.mobileStoreBtn}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               <FaGooglePlay className={styles.storeIcon} />
               <span>Google Play</span>

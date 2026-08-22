@@ -200,12 +200,26 @@
   gap: 15px;
 }
 
+.footerQrLink {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.footerQrLink:hover {
+  transform: scale(1.05);
+}
+
 .footerQr {
   width: 70px;
   height: 70px;
   background: white;
   padding: 5px;
   border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease;
 }
 
 .footerQr img {

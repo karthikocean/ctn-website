@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Download.module.css';
 import appMockup from '../assets/tn app design .png';
+import { APP_STORE_LINK, PLAY_STORE_LINK } from '../config/appLinks';
 
 const Download = () => {
   return (
@@ -39,7 +40,9 @@ const Download = () => {
 
               <div className={styles.storeButtons}>
                 <motion.a
-                  href="#"
+                  href={APP_STORE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`${styles.storeCard} ${styles.appStoreCard}`}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.98 }}
@@ -51,7 +54,7 @@ const Download = () => {
                   </div>
                 </motion.a>
                 <motion.a
-                  href="https://play.google.com/store/apps/details?id=com.oceansoftware.ctn_business_app&hl=en_IN"
+                  href={PLAY_STORE_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${styles.storeCard} ${styles.googlePlayCard}`}
