@@ -226,14 +226,78 @@
 }
 
 @media (max-width: 767px) {
+  .sectionLabel {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel .line {
+    width: 24px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .statItem {
+    padding: 6px 4px;
+    box-sizing: border-box;
+  }
+
+  .statIcon {
+    font-size: 34px;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 8px;
+  }
+
+  .statNumber {
+    font-size: 1.65rem;
+    margin-bottom: 6px;
+  }
+
+  .statLabel {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 479px) {
+  .sectionLabel .line {
+    width: 18px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
   .statsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 12px;
+  }
+
+  .statIcon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
+  }
+
+  .statNumber {
+    font-size: 1.45rem;
+    margin-bottom: 4px;
+  }
+
+  .statLabel {
+    font-size: 0.78rem;
   }
 }
 

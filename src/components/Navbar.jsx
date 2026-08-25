@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
@@ -23,6 +23,7 @@ const Navbar = () => {
   const [isScrolledTop, setIsScrolledTop] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+  const navRef = useRef(null);
 
   const isHomePage = location.pathname === '/';
 
@@ -51,6 +52,45 @@ const Navbar = () => {
   // Apply body class based on transparency
   usePreScrollClass(showTransparent);
 
+  // Background Scroll Lock on Mobile & Tablet when Navbar Menu is OPEN
+  useEffect(() => {
+    if (isMobileMenuOpen && !isDesktop) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-menu-open');
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-menu-open');
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-menu-open');
+    };
+  }, [isMobileMenuOpen, isDesktop]);
+
+  // Outside click detection to close mobile/tablet navigation menu
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (isMobileMenuOpen && navRef.current) {
+        if (!navRef.current.contains(e.target)) {
+          setIsMobileMenuOpen(false);
+        }
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('touchstart', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
@@ -73,7 +113,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`${styles.navBar} ${showTransparent ? styles.transparent : ''}`}>
+    <nav ref={navRef} className={`${styles.navBar} ${showTransparent ? styles.transparent : ''}`}>
       {/* LEFT — Logo */}
       <Link to="/" className={styles.logoLink} onClick={() => window.scrollTo(0, 0)}>
         <img

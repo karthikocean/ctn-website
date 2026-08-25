@@ -392,6 +392,11 @@
   }
 }
 
+/* Desktop default: mobileCardBody is hidden */
+.mobileCardBody {
+  display: none;
+}
+
 /* ==================================================
    MOBILE BREAKPOINT (<= 768px)
    ================================================== */
@@ -411,30 +416,72 @@
     min-height: auto;
   }
 
+  .mainFeatureCard,
+  .sideCard {
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(6, 21, 43, 0.09);
+    box-shadow: 0 8px 22px rgba(6, 21, 43, 0.06);
+    overflow: hidden;
+    aspect-ratio: auto;
+  }
+
+  .cardWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1320 / 600;
+    overflow: hidden;
+  }
+
   .sideColumn {
     height: auto;
     gap: 18px;
   }
 
   .hoverOverlay {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    background: linear-gradient(
-      to top,
-      rgba(6, 21, 43, 0.92) 0%,
-      rgba(6, 21, 43, 0.6) 60%,
-      transparent 100%
-    );
-    padding: 18px;
-  }
-
-  .overlayContent {
-    transform: translateY(0);
+    display: none !important;
   }
 
   .cardDefaultInfo {
-    display: none;
+    display: none !important;
+  }
+
+  .mobileCardBody {
+    display: block;
+    padding: 16px;
+    background: #ffffff;
+    border-top: 1px solid rgba(6, 21, 43, 0.08);
+  }
+
+  .mobileTitle {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #06152B;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+  }
+
+  .mobileMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: #64748B;
+    font-weight: 500;
+  }
+
+  .metaIcon {
+    color: #C8A951;
+  }
+
+  .metaDivider {
+    color: rgba(6, 21, 43, 0.3);
   }
 }
 

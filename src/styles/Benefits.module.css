@@ -202,6 +202,21 @@
     padding: 48px 0;
   }
 
+  .sectionLabel {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel .line {
+    width: 24px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
   .cardsGrid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -242,6 +257,16 @@
 @media (max-width: 480px) {
   .benefits {
     padding: 40px 0;
+  }
+
+  .sectionLabel .line {
+    width: 18px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
   }
 
   .title {

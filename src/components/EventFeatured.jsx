@@ -25,49 +25,72 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
           {/* LEFT: Large Main Featured Event Card */}
           <div className={styles.mainFeatureCard}>
             <Link to={`/events/${featuredEvent.id}`} className={styles.cardWrapper} aria-label={featuredEvent.title}>
-              {/* Background Image (Always Clear & Sharp, No Blur) */}
-              <img
-                src={featuredEvent.image || event1}
-                alt={featuredEvent.title}
-                className={styles.cardImage}
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = event1;
-                }}
-              />
+              {/* Image Wrapper */}
+              <div className={styles.imageWrapper}>
+                {/* Background Image (Always Clear & Sharp, No Blur) */}
+                <img
+                  src={featuredEvent.image || event1}
+                  alt={featuredEvent.title}
+                  className={styles.cardImage}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = event1;
+                  }}
+                />
 
-              {/* Circular Navigation Arrow (Bottom Right) */}
-              <div className={styles.circularArrowBtn} aria-hidden="true">
-                <FiArrowUpRight className={styles.arrowIcon} />
+                {/* Circular Navigation Arrow (Bottom Right) */}
+                <div className={styles.circularArrowBtn} aria-hidden="true">
+                  <FiArrowUpRight className={styles.arrowIcon} />
+                </div>
+
+                {/* Default Bottom Info (Title visible before hover) */}
+                <div className={styles.cardDefaultInfo}>
+                  <h3 className={styles.defaultTitle}>{featuredEvent.title}</h3>
+                </div>
+
+                {/* Full Image Hover Reveal Layer (NO BLUR, Smooth Emerging Transition) */}
+                <div className={styles.hoverOverlay}>
+                  <div className={styles.overlayContent}>
+                    <h3 className={styles.overlayTitle}>{featuredEvent.title}</h3>
+                    <p className={styles.overlayExcerpt}>{featuredEvent.description}</p>
+
+                    <div className={styles.overlayMeta}>
+                      <span>
+                        <FiCalendar className={styles.metaIcon} />
+                        {featuredEvent.date}
+                      </span>
+                      <span className={styles.metaDivider}>•</span>
+                      <span>
+                        <FiMapPin className={styles.metaIcon} />
+                        {featuredEvent.location}
+                      </span>
+                    </div>
+
+                    <div className={styles.readLink}>
+                      <span>View Event</span>
+                      <FiArrowUpRight className={styles.linkArrow} />
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Default Bottom Info (Title visible before hover) */}
-              <div className={styles.cardDefaultInfo}>
-                <h3 className={styles.defaultTitle}>{featuredEvent.title}</h3>
-              </div>
-
-              {/* Full Image Hover Reveal Layer (NO BLUR, Smooth Emerging Transition) */}
-              <div className={styles.hoverOverlay}>
-                <div className={styles.overlayContent}>
-                  <h3 className={styles.overlayTitle}>{featuredEvent.title}</h3>
-                  <p className={styles.overlayExcerpt}>{featuredEvent.description}</p>
-
-                  <div className={styles.overlayMeta}>
+              {/* Mobile Card Body (Text Below Image) */}
+              <div className={styles.mobileCardBody}>
+                <h3 className={styles.mobileTitle}>{featuredEvent.title}</h3>
+                <div className={styles.mobileMeta}>
+                  {featuredEvent.date && (
                     <span>
                       <FiCalendar className={styles.metaIcon} />
                       {featuredEvent.date}
                     </span>
-                    <span className={styles.metaDivider}>•</span>
+                  )}
+                  {featuredEvent.date && featuredEvent.location && <span className={styles.metaDivider}>•</span>}
+                  {featuredEvent.location && (
                     <span>
                       <FiMapPin className={styles.metaIcon} />
                       {featuredEvent.location}
                     </span>
-                  </div>
-
-                  <div className={styles.readLink}>
-                    <span>View Event</span>
-                    <FiArrowUpRight className={styles.linkArrow} />
-                  </div>
+                  )}
                 </div>
               </div>
             </Link>
@@ -78,47 +101,69 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
             {recentEvents.slice(0, 2).map((event) => (
               <div key={event.id} className={styles.sideCard}>
                 <Link to={`/events/${event.id}`} className={styles.cardWrapper} aria-label={event.title}>
-                  <img
-                    src={event.image || event1}
-                    alt={event.title}
-                    className={styles.cardImage}
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = event1;
-                    }}
-                  />
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src={event.image || event1}
+                      alt={event.title}
+                      className={styles.cardImage}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = event1;
+                      }}
+                    />
 
-                  <div className={styles.circularArrowBtn} aria-hidden="true">
-                    <FiArrowUpRight className={styles.arrowIcon} />
+                    <div className={styles.circularArrowBtn} aria-hidden="true">
+                      <FiArrowUpRight className={styles.arrowIcon} />
+                    </div>
+
+                    {/* Default Bottom Info */}
+                    <div className={styles.cardDefaultInfo}>
+                      <h3 className={styles.sideDefaultTitle}>{event.title}</h3>
+                    </div>
+
+                    {/* Full Image Hover Reveal Layer */}
+                    <div className={styles.hoverOverlay}>
+                      <div className={styles.overlayContent}>
+                        <h3 className={styles.sideOverlayTitle}>{event.title}</h3>
+                        <p className={styles.sideOverlayExcerpt}>{event.description}</p>
+
+                        <div className={styles.overlayMeta}>
+                          <span>
+                            <FiCalendar className={styles.metaIcon} />
+                            {event.date}
+                          </span>
+                          <span className={styles.metaDivider}>•</span>
+                          <span>
+                            <FiMapPin className={styles.metaIcon} />
+                            {event.location}
+                          </span>
+                        </div>
+
+                        <div className={styles.readLink}>
+                          <span>View Event</span>
+                          <FiArrowUpRight className={styles.linkArrow} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Default Bottom Info */}
-                  <div className={styles.cardDefaultInfo}>
-                    <h3 className={styles.sideDefaultTitle}>{event.title}</h3>
-                  </div>
-
-                  {/* Full Image Hover Reveal Layer */}
-                  <div className={styles.hoverOverlay}>
-                    <div className={styles.overlayContent}>
-                      <h3 className={styles.sideOverlayTitle}>{event.title}</h3>
-                      <p className={styles.sideOverlayExcerpt}>{event.description}</p>
-
-                      <div className={styles.overlayMeta}>
+                  {/* Mobile Card Body */}
+                  <div className={styles.mobileCardBody}>
+                    <h3 className={styles.mobileTitle}>{event.title}</h3>
+                    <div className={styles.mobileMeta}>
+                      {event.date && (
                         <span>
                           <FiCalendar className={styles.metaIcon} />
                           {event.date}
                         </span>
-                        <span className={styles.metaDivider}>•</span>
+                      )}
+                      {event.date && event.location && <span className={styles.metaDivider}>•</span>}
+                      {event.location && (
                         <span>
                           <FiMapPin className={styles.metaIcon} />
                           {event.location}
                         </span>
-                      </div>
-
-                      <div className={styles.readLink}>
-                        <span>View Event</span>
-                        <FiArrowUpRight className={styles.linkArrow} />
-                      </div>
+                      )}
                     </div>
                   </div>
                 </Link>

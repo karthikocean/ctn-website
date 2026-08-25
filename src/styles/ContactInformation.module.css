@@ -228,46 +228,55 @@
 
 @media (max-width: 768px) {
   .contactSection {
-    padding: 50px 16px;
+    padding: 28px 0;
   }
 
   .contactLayout {
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
   }
 
   .infoCard {
     flex: none;
     max-width: 100%;
     width: 100%;
-    padding: 28px 20px;
+    padding: 24px 18px;
     border-radius: 20px;
+    box-sizing: border-box;
   }
 
   .infoTitle {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .infoDesc {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .detailsList {
-    gap: 18px;
+    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .contactSection {
-    padding: 40px 12px;
+    padding: 20px 0;
+  }
+
+  .contactLayout {
+    padding: 0 10px;
   }
 
   .infoCard {
-    padding: 24px 16px;
+    padding: 20px 14px;
   }
 
   .infoTitle {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .itemLink,

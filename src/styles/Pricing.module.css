@@ -237,10 +237,28 @@
   }
 }
 
-/* 19. Responsive Tablet */
-@media (max-width: 1100px) {
+/* 19. Responsive Tablet (769px - 1100px) */
+@media (max-width: 1100px) and (min-width: 769px) {
   .pricing {
     padding: 60px 0;
+  }
+
+  .sectionLabelWrapper {
+    justify-content: center;
+  }
+
+  .sectionLabel {
+    justify-content: center;
+  }
+
+  .pricingTitle {
+    text-align: center;
+  }
+
+  .pricingDescription {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .plansGrid {
@@ -249,9 +267,17 @@
     margin: 0 auto;
     gap: 32px;
   }
+
+  .planCard {
+    border: 1px solid rgba(6, 21, 43, 0.12);
+  }
+
+  .featured {
+    border: 1px solid rgba(240, 165, 0, 0.4);
+  }
 }
 
-/* 20. Responsive Mobile */
+/* 20. Responsive Mobile (<= 768px) */
 @media (max-width: 768px) {
   .sectionLabelWrapper {
     justify-content: flex-start;
@@ -259,6 +285,23 @@
 
   .sectionLabel {
     justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 14px;
+    white-space: nowrap;
+  }
+
+  .pricingTitle {
+    text-align: left;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .pricingDescription {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 40px;
+    max-width: 100%;
   }
 
   .plansGrid {
@@ -270,6 +313,11 @@
   .planCard {
     padding: 36px 24px;
     border-radius: 24px;
+    border: 1px solid rgba(6, 21, 43, 0.12);
+  }
+
+  .featured {
+    border: 1px solid rgba(240, 165, 0, 0.4);
   }
 
   .planName {
@@ -283,16 +331,22 @@
   .featureItem {
     font-size: 0.93rem;
   }
-
-  .pricingDescription {
-    margin-bottom: 40px;
-  }
 }
 
 /* 21. Responsive Small Mobile */
 @media (max-width: 480px) {
   .pricing {
     padding: 40px 0;
+  }
+
+  .labelLine {
+    width: 18px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
   }
 
   .planCard {

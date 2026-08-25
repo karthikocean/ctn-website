@@ -26,7 +26,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #F0A500;
+  background: #C8A951;
   box-shadow: 0 0 12px rgba(240, 165, 0, 0.5);
   flex-shrink: 0;
 }
@@ -39,7 +39,7 @@
 }
 
 .sectionBadge span {
-  color: #06152B;
+  color: #C8A951;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;

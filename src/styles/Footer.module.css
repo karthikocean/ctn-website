@@ -46,24 +46,27 @@
 .footerGrid {
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 50px;
   align-items: flex-start;
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
+  max-width: 1450px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Group 1 (Desktop: Brand + NavGroup) */
 .group1 {
   display: flex;
-  flex: 1 1 65%;
-  gap: 40px;
+  flex: 1 1 62%;
+  gap: 50px;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .brandCol {
-  flex: 0 0 38%;
+  flex: 0 0 36%;
   display: flex;
   flex-direction: column;
 }
@@ -121,9 +124,9 @@
 
 .navGroup {
   display: flex;
-  flex: 1 1 55%;
-  justify-content: space-around;
-  gap: 30px;
+  flex: 1 1 58%;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .col {
@@ -176,7 +179,7 @@
 .group2 {
   display: flex;
   flex-direction: column;
-  flex: 0 0 30%;
+  flex: 0 0 28%;
   gap: 20px;
 }
 
@@ -323,6 +326,9 @@
   .footerGrid {
     flex-direction: column;
     gap: 32px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /* GROUP 1 — Row 1 (Red Box): Brand Area + Company + Resources horizontally */
@@ -394,48 +400,53 @@
     margin-right: -20px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .footerGrid {
     flex-direction: column;
     gap: 28px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .group1 {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 24px;
     width: 100%;
   }
 
   .brandCol {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     width: 100%;
   }
 
   .footerLogo {
-    margin: 0 auto;
+    margin: 0;
     width: 170px;
   }
 
   .tagline {
-    text-align: center;
+    text-align: left;
     margin-top: 12px;
     margin-bottom: 18px;
     font-size: 0.9rem;
   }
 
   .socials {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   /* Company & Resources flex columns on mobile */
   .navGroup {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 20px;
     width: 100%;
     text-align: left;
@@ -445,13 +456,11 @@
     text-align: left;
   }
 
-  /* Get the App & Contact Info flex columns on mobile */
+  /* Get the App & Contact Info stacked vertically on mobile, buttons side-by-side */
   .group2 {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 20px;
+    flex-direction: column;
+    gap: 24px;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding-top: 24px;
@@ -459,14 +468,38 @@
 
   .appSection,
   .contactSection {
-    flex: 1 1 48%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
   }
 
   .getAppContent {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    width: 100%;
+  }
+
+  .appBadges {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .badge {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .contactInfo p {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    font-size: 0.85rem;
   }
 
   .colTitle,
@@ -482,19 +515,13 @@
     gap: 16px;
   }
 
-  .group2 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+  .appBadges {
+    gap: 8px;
   }
 
-  .appSection,
-  .contactSection {
-    width: 100%;
-  }
-
-  .getAppContent {
-    flex-direction: row;
-    align-items: center;
+  .badge {
+    padding: 8px 6px;
+    font-size: 0.74rem;
+    gap: 6px;
   }
 }

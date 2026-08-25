@@ -30,6 +30,14 @@
   padding: 36px 32px 32px;
   box-sizing: border-box;
   animation: modalScaleIn 0.3s ease;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modalCard::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 @keyframes modalScaleIn {
@@ -287,10 +295,22 @@
    MOBILE BREAKPOINT (<= 640px)
    ================================================== */
 @media (max-width: 640px) {
+  .modalOverlay {
+    padding: 12px;
+  }
+
   .modalCard {
-    width: calc(100% - 32px);
-    padding: 28px 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 16px;
     border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .successState {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 12px 12px;
   }
 
   .formGrid {
