@@ -201,11 +201,22 @@
 }
 
 /* --- Responsive --- */
+@media (max-width: 1024px) {
+  :global(body.modal-open) .fabContainer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .fabContainer {
     bottom: 20px;
     right: 20px;
     gap: 15px;
+    transition: bottom 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .fabContainer.footerVisible {
+    bottom: 95px;
   }
 
   .chatBtn {

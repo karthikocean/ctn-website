@@ -23,10 +23,21 @@
   margin-bottom: 16px;
 }
 
+.sectionBadge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #C8A951;
+  box-shadow: 0 0 10px rgba(200, 169, 81, 0.5);
+  flex-shrink: 0;
+}
+
 .badgeLine {
   width: 36px;
   height: 1.5px;
   background-color: #C8A951;
+  flex-shrink: 0;
 }
 
 .badgeText {
@@ -186,6 +197,22 @@
 @media (max-width: 767px) {
   .howItWorksSection {
     padding: 60px 0;
+  }
+
+  .sectionBadge {
+    gap: 8px;
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
+
+  .badgeLine {
+    width: 20px;
+  }
+
+  .badgeText {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    white-space: nowrap;
   }
 
   .sectionTitle {

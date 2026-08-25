@@ -7,6 +7,7 @@ import styles from '../styles/FloatingActions.module.css';
 
 const FloatingActions = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
 
@@ -24,6 +25,25 @@ const FloatingActions = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Detect when footer enters viewport to adjust floating controls position on mobile
+  useEffect(() => {
+    const footerElement = document.querySelector('footer');
+    if (!footerElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.05,
+      }
+    );
+
+    observer.observe(footerElement);
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -32,7 +52,7 @@ const FloatingActions = () => {
   };
 
   return (
-    <div className={styles.fabContainer}>
+    <div className={`${styles.fabContainer} ${isFooterVisible ? styles.footerVisible : ''}`}>
       {/* Scroll to Top Button */}
       <AnimatePresence>
         {showBackToTop && (

@@ -210,9 +210,12 @@
   }
 
   .storeCard {
-    width: fit-content; /* Keep content-width, do not stretch */
-    padding: 10px 16px;
+    width: 185px;
+    min-width: 185px;
     height: 48px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    justify-content: center;
   }
 
   .cardIcon {
@@ -269,22 +272,23 @@
   }
 
   .sectionLabel {
-    gap: 12px;
+    gap: 8px;
   }
 
   .line {
-    width: 40px;
+    width: 24px;
   }
 
   .line::before {
-    left: -14px;
-    width: 8px;
-    height: 8px;
+    left: -12px;
+    width: 7px;
+    height: 7px;
   }
 
   .sectionLabel span {
-    font-size: 11px;
-    letter-spacing: 4px;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
   }
 
   /* Order 2: Main Heading */
@@ -368,6 +372,16 @@
 @media (max-width: 480px) {
   .download {
     padding: 40px 0;
+  }
+
+  .line {
+    width: 18px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
   }
 
   .title {

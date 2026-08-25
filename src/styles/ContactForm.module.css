@@ -309,28 +309,34 @@
     flex: 1 1 100%;
     width: 100%;
     max-width: 100%;
-    padding: 28px 18px;
+    padding: 24px 18px;
     border-radius: 20px;
     box-sizing: border-box;
   }
 
+  .successBox {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 32px 18px;
+  }
+
   .formTitle {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .formDesc {
-    font-size: 0.96rem;
-    margin-bottom: 24px;
+    font-size: 0.94rem;
+    margin-bottom: 20px;
   }
 
   .formRow {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
 
   .twoColRow {
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
   }
 
   .twoColRow .formGroup {
@@ -350,10 +356,14 @@
 
 @media (max-width: 480px) {
   .formCard {
+    padding: 20px 14px;
+  }
+
+  .successBox {
     padding: 24px 14px;
   }
 
   .formTitle {
-    font-size: 25px;
+    font-size: 24px;
   }
 }

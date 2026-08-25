@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { FiArrowUpRight, FiCalendar } from 'react-icons/fi';
 import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogCard.module.css';
 
@@ -9,6 +9,7 @@ const BlogCard = ({ blog }) => {
 
   const blogLink = `/blogs/${blog.slug || blog.id}`;
   const blogImage = blog.featuredImage || blog.image || event1;
+  const blogDate = blog.publishedDate || blog.date;
 
   return (
     <article className={styles.cardContainer}>
@@ -44,7 +45,12 @@ const BlogCard = ({ blog }) => {
               {blog.excerpt && <p className={styles.overlayExcerpt}>{blog.excerpt}</p>}
 
               <div className={styles.overlayMeta}>
-                {blog.publishedDate && <span>{blog.publishedDate}</span>}
+                {blogDate && (
+                  <span>
+                    <FiCalendar className={styles.metaIcon} />
+                    {blogDate}
+                  </span>
+                )}
               </div>
 
               <div className={styles.readLink}>
@@ -60,7 +66,12 @@ const BlogCard = ({ blog }) => {
           <h3 className={styles.mobileTitle}>{blog.title}</h3>
           {blog.excerpt && <p className={styles.mobileExcerpt}>{blog.excerpt}</p>}
           <div className={styles.mobileMeta}>
-            <span>{blog.publishedDate}</span>
+            {blogDate && (
+              <span>
+                <FiCalendar className={styles.metaIcon} />
+                {blogDate}
+              </span>
+            )}
           </div>
         </div>
       </Link>

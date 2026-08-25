@@ -23,44 +23,60 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
           {/* LEFT: Large Main Featured Blog Card */}
           <div className={styles.mainFeatureCard}>
             <Link to={`/blogs/${featuredBlog.slug}`} className={styles.cardWrapper} aria-label={featuredBlog.title}>
-              {/* Background Image (Always Clear & Sharp, No Blur) */}
-              <img
-                src={featuredBlog.featuredImage || featuredBlog.image || event1}
-                alt={featuredBlog.title}
-                className={styles.cardImage}
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = event1;
-                }}
-              />
+              {/* Image Container */}
+              <div className={styles.imageWrapper}>
+                {/* Background Image (Always Clear & Sharp, No Blur) */}
+                <img
+                  src={featuredBlog.featuredImage || featuredBlog.image || event1}
+                  alt={featuredBlog.title}
+                  className={styles.cardImage}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = event1;
+                  }}
+                />
 
-              {/* Circular Navigation Arrow (Bottom Right) */}
-              <div className={styles.circularArrowBtn} aria-hidden="true">
-                <FiArrowUpRight className={styles.arrowIcon} />
+                {/* Circular Navigation Arrow (Bottom Right) */}
+                <div className={styles.circularArrowBtn} aria-hidden="true">
+                  <FiArrowUpRight className={styles.arrowIcon} />
+                </div>
+
+                {/* Default Bottom Info (Title visible before hover) */}
+                <div className={styles.cardDefaultInfo}>
+                  <h3 className={styles.defaultTitle}>{featuredBlog.title}</h3>
+                </div>
+
+                {/* Full Image Hover Reveal Layer (NO BLUR, Smooth Emerging Transition) */}
+                <div className={styles.hoverOverlay}>
+                  <div className={styles.overlayContent}>
+                    <h3 className={styles.overlayTitle}>{featuredBlog.title}</h3>
+                    <p className={styles.overlayExcerpt}>{featuredBlog.excerpt}</p>
+
+                    <div className={styles.overlayMeta}>
+                      <span>
+                        <FiCalendar className={styles.metaIcon} />
+                        {featuredBlog.publishedDate}
+                      </span>
+                    </div>
+
+                    <div className={styles.readLink}>
+                      <span>Read Blog</span>
+                      <FiArrowUpRight className={styles.linkArrow} />
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Default Bottom Info (Title visible before hover) */}
-              <div className={styles.cardDefaultInfo}>
-                <h3 className={styles.defaultTitle}>{featuredBlog.title}</h3>
-              </div>
-
-              {/* Full Image Hover Reveal Layer (NO BLUR, Smooth Emerging Transition) */}
-              <div className={styles.hoverOverlay}>
-                <div className={styles.overlayContent}>
-                  <h3 className={styles.overlayTitle}>{featuredBlog.title}</h3>
-                  <p className={styles.overlayExcerpt}>{featuredBlog.excerpt}</p>
-
-                  <div className={styles.overlayMeta}>
+              {/* Mobile Card Body (Text Below Image) */}
+              <div className={styles.mobileCardBody}>
+                <h3 className={styles.mobileTitle}>{featuredBlog.title}</h3>
+                <div className={styles.mobileMeta}>
+                  {featuredBlog.publishedDate && (
                     <span>
                       <FiCalendar className={styles.metaIcon} />
                       {featuredBlog.publishedDate}
                     </span>
-                  </div>
-
-                  <div className={styles.readLink}>
-                    <span>Read Blog</span>
-                    <FiArrowUpRight className={styles.linkArrow} />
-                  </div>
+                  )}
                 </div>
               </div>
             </Link>
@@ -71,39 +87,59 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
             {recentBlogs.slice(0, 2).map((blog) => (
               <div key={blog.id} className={styles.sideCard}>
                 <Link to={`/blogs/${blog.slug}`} className={styles.cardWrapper} aria-label={blog.title}>
-                  <img
-                    src={blog.featuredImage || blog.image || event1}
-                    alt={blog.title}
-                    className={styles.cardImage}
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = event1;
-                    }}
-                  />
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src={blog.featuredImage || blog.image || event1}
+                      alt={blog.title}
+                      className={styles.cardImage}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = event1;
+                      }}
+                    />
 
-                  <div className={styles.circularArrowBtn} aria-hidden="true">
-                    <FiArrowUpRight className={styles.arrowIcon} />
+                    <div className={styles.circularArrowBtn} aria-hidden="true">
+                      <FiArrowUpRight className={styles.arrowIcon} />
+                    </div>
+
+                    {/* Default Bottom Info */}
+                    <div className={styles.cardDefaultInfo}>
+                      <h3 className={styles.sideDefaultTitle}>{blog.title}</h3>
+                    </div>
+
+                    {/* Full Image Hover Reveal Layer */}
+                    <div className={styles.hoverOverlay}>
+                      <div className={styles.overlayContent}>
+                        <h3 className={styles.sideOverlayTitle}>{blog.title}</h3>
+                        <p className={styles.sideOverlayExcerpt}>{blog.excerpt}</p>
+
+                        <div className={styles.overlayMeta}>
+                          {blog.publishedDate && (
+                            <span>
+                              <FiCalendar className={styles.metaIcon} />
+                              {blog.publishedDate}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className={styles.readLink}>
+                          <span>Read Blog</span>
+                          <FiArrowUpRight className={styles.linkArrow} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Default Bottom Info */}
-                  <div className={styles.cardDefaultInfo}>
-                    <h3 className={styles.sideDefaultTitle}>{blog.title}</h3>
-                  </div>
-
-                  {/* Full Image Hover Reveal Layer */}
-                  <div className={styles.hoverOverlay}>
-                    <div className={styles.overlayContent}>
-                      <h3 className={styles.sideOverlayTitle}>{blog.title}</h3>
-                      <p className={styles.sideOverlayExcerpt}>{blog.excerpt}</p>
-
-                      <div className={styles.overlayMeta}>
-                        <span>{blog.publishedDate}</span>
-                      </div>
-
-                      <div className={styles.readLink}>
-                        <span>Read Blog</span>
-                        <FiArrowUpRight className={styles.linkArrow} />
-                      </div>
+                  {/* Mobile Card Body */}
+                  <div className={styles.mobileCardBody}>
+                    <h3 className={styles.mobileTitle}>{blog.title}</h3>
+                    <div className={styles.mobileMeta}>
+                      {blog.publishedDate && (
+                        <span>
+                          <FiCalendar className={styles.metaIcon} />
+                          {blog.publishedDate}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </Link>

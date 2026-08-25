@@ -3,7 +3,6 @@ import {
   FiRepeat,
   FiClipboard,
   FiCheckCircle,
-  FiMapPin,
   FiMessageCircle,
   FiActivity
 } from 'react-icons/fi';
@@ -16,69 +15,95 @@ import backgroundImg from '../assets/BusinessImpact.png';
    HELPER FUNCTIONS
 ========================================== */
 const parseStatValue = (val) => {
-  if (val === null || val === undefined) return 0;
+  if (val === null || val === undefined || val === '') return 0;
   const num = typeof val === 'string' ? parseFloat(val.replace(/,/g, '')) : Number(val);
   return isNaN(num) || num < 0 ? 0 : Math.floor(num);
+};
+
+const formatBusinessAmount = (val) => {
+  if (val === null || val === undefined || val === '') return '0';
+  const raw = typeof val === 'string' ? val.replace(/,/g, '') : String(val);
+  const num = Number(raw);
+
+  // If string contains non-numeric chars (e.g. "200Q"), return string directly
+  if (isNaN(num)) {
+    return String(val);
+  }
+
+  if (num <= 0) return '0';
+
+  if (num >= 1000000) {
+    // Millions (M) - 1,000,000+
+    const m = num / 1000000;
+    const mFixed = parseFloat(m.toFixed(2));
+    return `${mFixed}M`;
+  } else if (num >= 1000) {
+    // Thousands (K) - 1,000+
+    const k = num / 1000;
+    const kFixed = parseFloat(k.toFixed(2));
+    return `${kFixed}K`;
+  } else {
+    return `${num}`;
+  }
 };
 
 /* ==========================================
    COUNTER COMPONENT
 ========================================== */
-const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
+const AnimatedCounter = ({ target, suffix, duration = 1200 }) => {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef(null);
-
   const numTarget = parseStatValue(target);
 
   useEffect(() => {
-    setCount(0);
-    setHasAnimated(false);
-  }, [target]);
+    let animationFrameId = null;
+    let observer = null;
+    let isMounted = true;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-
-          let startTimestamp = null;
-
-          const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-
-            const progress = Math.min(
-              (timestamp - startTimestamp) / duration,
-              1
-            );
-
-            setCount(Math.floor(progress * numTarget));
-
-            if (progress < 1) {
-              window.requestAnimationFrame(step);
-            } else {
-              setCount(numTarget);
-            }
-          };
-
-          window.requestAnimationFrame(step);
+    const startAnimation = () => {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        if (isMounted) {
+          setCount(Math.floor(progress * numTarget));
         }
-      },
-      { threshold: 0.1 }
-    );
+        if (progress < 1) {
+          animationFrameId = window.requestAnimationFrame(step);
+        } else if (isMounted) {
+          setCount(numTarget);
+        }
+      };
+      animationFrameId = window.requestAnimationFrame(step);
+    };
+
+    if (numTarget === 0) {
+      setCount(0);
+      return;
+    }
 
     if (elementRef.current) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            startAnimation();
+          }
+        },
+        { threshold: 0.1 }
+      );
       observer.observe(elementRef.current);
     }
 
     return () => {
-      if (elementRef.current) {
+      isMounted = false;
+      if (animationFrameId) window.cancelAnimationFrame(animationFrameId);
+      if (observer && elementRef.current) {
         observer.unobserve(elementRef.current);
       }
     };
-  }, [target, duration, hasAnimated, numTarget]);
+  }, [numTarget, duration]);
 
-  const displaySuffix = suffix === '+' ? (numTarget > 0 ? '+' : '') : (suffix || '');
+  const displaySuffix = suffix || '';
 
   return (
     <span ref={elementRef} className={styles.statNumber}>
@@ -91,10 +116,10 @@ const AnimatedCounter = ({ target, suffix, duration = 1500 }) => {
 /* ==========================================
    MAIN COMPONENT
 ========================================== */
-const defaultStats = [
+const initialStats = [
   {
     id: 1,
-    target: 27,
+    target: 0,
     suffix: '+',
     label: 'Business Referrals',
     Icon: FiRepeat,
@@ -102,7 +127,7 @@ const defaultStats = [
   },
   {
     id: 2,
-    target: 5000,
+    target: 0,
     suffix: '+',
     label: 'Lead Generation',
     Icon: FiClipboard,
@@ -110,23 +135,23 @@ const defaultStats = [
   },
   {
     id: 3,
-    target: 22,
+    target: 0,
     suffix: '+',
-    label: 'Business Growth',
+    label: 'Business Done',
     Icon: FiCheckCircle,
     key: 'businessDoneCount',
   },
   {
     id: 4,
-    target: 866,
-    suffix: '+',
-    label: 'Cities Connected',
-    Icon: FiMapPin,
-    key: 'totalRegions',
+    target: 0,
+    formattedValue: '0',
+    label: 'Business Done Amount',
+    Icon: FaRupeeSign,
+    key: 'businessDoneAmount',
   },
   {
     id: 5,
-    target: 33,
+    target: 0,
     suffix: '+',
     label: 'Business Talks',
     Icon: FiMessageCircle,
@@ -142,62 +167,66 @@ const defaultStats = [
 ];
 
 const BusinessImpact = () => {
-  const [statsData, setStatsData] = useState(defaultStats);
+  const [statsData, setStatsData] = useState(initialStats);
 
   useEffect(() => {
     const fetchStats = async () => {
-      const res = await getCommonStats();
-      if (res?.status && res.data) {
-        const d = res.data;
-        setStatsData([
-          {
-            id: 1,
-            target: parseStatValue(d.recommendationCount),
-            suffix: '+',
-            label: 'Recommendation',
-            Icon: FiRepeat,
-            key: 'recommendationCount',
-          },
-          {
-            id: 2,
-            target: parseStatValue(d.requirementsCount),
-            suffix: '+',
-            label: 'Requirements',
-            Icon: FiClipboard,
-            key: 'requirementsCount',
-          },
-          {
-            id: 3,
-            target: parseStatValue(d.businessDoneCount),
-            suffix: '+',
-            label: 'Business Done',
-            Icon: FiCheckCircle,
-            key: 'businessDoneCount',
-          },
-          {
-            id: 5,
-            target: parseStatValue(d.directMeetCount),
-            suffix: '+',
-            label: 'Direct Meets',
-            Icon: FiMessageCircle,
-            key: 'directMeetCount',
-          },
-          {
-            id: 6,
-            target: 24,
-            suffix: '/7',
-            label: 'Active Network',
-            Icon: FiActivity,
-          },
+      try {
+        const res = await getCommonStats();
+        if (res?.status && res.data) {
+          const d = res.data;
+          setStatsData([
             {
-            id: 4,
-            target: parseStatValue(d.businessDoneAmount),
-            suffix: '+',
-            label: 'Business Done Amount',
-            Icon: FaRupeeSign,
-            key: 'businessDoneAmount',
-          },
-        ]);
+              id: 1,
+              target: parseStatValue(d.recommendationCount),
+              suffix: '+',
+              label: 'Business Referrals',
+              Icon: FiRepeat,
+              key: 'recommendationCount',
+            },
+            {
+              id: 2,
+              target: parseStatValue(d.requirementsCount),
+              suffix: '+',
+              label: 'Lead Generation',
+              Icon: FiClipboard,
+              key: 'requirementsCount',
+            },
+            {
+              id: 3,
+              target: parseStatValue(d.businessDoneCount),
+              suffix: '+',
+              label: 'Business Done',
+              Icon: FiCheckCircle,
+              key: 'businessDoneCount',
+            },
+            {
+              id: 4,
+              target: parseStatValue(d.businessDoneAmount || d.businessAmount),
+              formattedValue: formatBusinessAmount(d.businessDoneAmount || d.businessAmount),
+              label: 'Business Done Amount',
+              Icon: FaRupeeSign,
+              key: 'businessDoneAmount',
+            },
+            {
+              id: 5,
+              target: parseStatValue(d.directMeetCount),
+              suffix: '+',
+              label: 'Business Talks',
+              Icon: FiMessageCircle,
+              key: 'directMeetCount',
+            },
+            {
+              id: 6,
+              target: 24,
+              suffix: '/7',
+              label: 'Active Network',
+              Icon: FiActivity,
+            },
+          ]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch common stats:', error);
       }
     };
 
@@ -226,14 +255,18 @@ const BusinessImpact = () => {
         <div className={styles.statsContainer}>
           <div className={styles.statsGrid}>
             {statsData.map(
-              ({ id, target, suffix, label, Icon }) => (
+              ({ id, target, suffix, formattedValue, label, Icon }) => (
                 <div key={id} className={styles.statItem}>
                   <Icon className={styles.statIcon} />
 
-                  <AnimatedCounter
-                    target={target}
-                    suffix={suffix}
-                  />
+                  {formattedValue ? (
+                    <span className={styles.statNumber}>{formattedValue}</span>
+                  ) : (
+                    <AnimatedCounter
+                      target={target}
+                      suffix={suffix}
+                    />
+                  )}
 
                   <p className={styles.statLabel}>
                     {label}

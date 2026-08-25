@@ -318,6 +318,23 @@
     display: block;
   }
 
+  .mobileExcerpt {
+    display: none !important;
+  }
+
+  .mobileMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: #64748B;
+    font-weight: 500;
+  }
+
+  .metaIcon {
+    color: #C8A951;
+  }
+
   .imageWrapper {
     aspect-ratio: 1320 / 600;
     border-radius: 16px 16px 0 0;

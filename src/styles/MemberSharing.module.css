@@ -224,6 +224,20 @@
     padding: 44px 14px 60px;
   }
 
+  .sectionLabel {
+    gap: 8px;
+  }
+
+  .sectionLabel .line {
+    width: 24px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
   .shareTitle {
     font-size: 1.5rem;
   }
@@ -269,6 +283,16 @@
    ============================================ */
 /* ≤ 480px — mid-mobile */
 @media (max-width: 480px) {
+  .sectionLabel .line {
+    width: 20px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
   .cardsGrid {
     padding-left: 30px;
   }
@@ -293,6 +317,16 @@
 @media (max-width: 380px) {
   .shareSection {
     padding: 40px 12px 52px;
+  }
+
+  .sectionLabel .line {
+    width: 16px;
+  }
+
+  .sectionLabel span {
+    font-size: 0.58rem;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
   }
 
   .shareTitle {

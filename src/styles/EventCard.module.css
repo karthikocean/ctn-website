@@ -323,6 +323,27 @@
     display: block;
   }
 
+  .mobileExcerpt {
+    display: none !important;
+  }
+
+  .mobileMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: #64748B;
+    font-weight: 500;
+  }
+
+  .metaIcon {
+    color: #C8A951;
+  }
+
+  .metaDivider {
+    color: rgba(6, 21, 43, 0.3);
+  }
+
   .imageWrapper {
     aspect-ratio: 1320 / 600;
     border-radius: 16px 16px 0 0;
