@@ -6,6 +6,8 @@ import seoData from '../data/seoData';
 import { events as staticEvents } from '../data/eventsData';
 import { getEventById } from '../apis/eventApi';
 import LoadingState from '../components/LoadingState';
+import PrivateImage from '../components/Common/PrivateImage';
+import PrivateVideo from '../components/Common/PrivateVideo';
 import event1 from '../assets/event1.jpg';
 import styles from '../styles/EventDetails.module.css';
 
@@ -113,14 +115,11 @@ const EventDetails = () => {
           {/* Featured Image Frame */}
           {eventImage && (
             <div className={styles.imageFrame}>
-              <img
+              <PrivateImage
                 src={eventImage}
+                fallback={event1}
                 alt={event.title}
                 className={styles.image}
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = event1;
-                }}
               />
             </div>
           )}
@@ -139,9 +138,11 @@ const EventDetails = () => {
             {/* Video content if provided by API */}
             {event.videos && event.videos.length > 0 && (
               <div className={styles.videoWrapper}>
-                <video controls className={styles.video} src={event.videos[0]}>
-                  Your browser does not support the video tag.
-                </video>
+                <PrivateVideo
+                  src={event.videos[0]}
+                  controls
+                  className={styles.video}
+                />
               </div>
             )}
           </div>

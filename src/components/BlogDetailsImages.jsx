@@ -1,4 +1,6 @@
 import React from 'react';
+import PrivateImage from './Common/PrivateImage';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogDetailsImages.module.css';
 
 const BlogDetailsImages = ({ images, title }) => {
@@ -11,8 +13,9 @@ const BlogDetailsImages = ({ images, title }) => {
           <div className={`${styles.imageGrid} ${images.length === 1 ? styles.singleGrid : ''}`}>
             {images.map((imgSrc, index) => (
               <div key={index} className={styles.imageFrame}>
-                <img
+                <PrivateImage
                   src={imgSrc}
+                  fallback={event1}
                   alt={`${title || 'Blog article image'} - visual ${index + 1}`}
                   className={styles.articleImg}
                 />

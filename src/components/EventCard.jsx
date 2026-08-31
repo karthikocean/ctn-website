@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiCalendar, FiMapPin } from 'react-icons/fi';
 import event1 from '../assets/event1.jpg';
+import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/EventCard.module.css';
 
 const EventCard = ({ event }) => {
@@ -16,15 +17,12 @@ const EventCard = ({ event }) => {
         {/* Full Image Card Wrapper */}
         <div className={styles.imageWrapper}>
           {/* Background Image (Always Clear & Sharp, No Blur) */}
-          <img
+          <PrivateImage
             src={eventImage}
+            fallback={event1}
             alt={event.title}
             className={styles.cardImage}
             loading="lazy"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = event1;
-            }}
           />
 
           {/* Circular Arrow Navigation Button (Bottom-Right) */}

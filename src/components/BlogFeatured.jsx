@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiClock, FiCalendar } from 'react-icons/fi';
 import event1 from '../assets/event1.jpg';
+import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/BlogFeatured.module.css';
 
 const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
@@ -26,14 +27,11 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
               {/* Image Container */}
               <div className={styles.imageWrapper}>
                 {/* Background Image (Always Clear & Sharp, No Blur) */}
-                <img
+                <PrivateImage
                   src={featuredBlog.featuredImage || featuredBlog.image || event1}
+                  fallback={event1}
                   alt={featuredBlog.title}
                   className={styles.cardImage}
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = event1;
-                  }}
                 />
 
                 {/* Circular Navigation Arrow (Bottom Right) */}
@@ -88,14 +86,11 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
               <div key={blog.id} className={styles.sideCard}>
                 <Link to={`/blogs/${blog.slug}`} className={styles.cardWrapper} aria-label={blog.title}>
                   <div className={styles.imageWrapper}>
-                    <img
+                    <PrivateImage
                       src={blog.featuredImage || blog.image || event1}
+                      fallback={event1}
                       alt={blog.title}
                       className={styles.cardImage}
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = event1;
-                      }}
                     />
 
                     <div className={styles.circularArrowBtn} aria-hidden="true">

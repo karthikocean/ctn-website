@@ -2,15 +2,18 @@ import axios from "axios";
 
 const APP_ENV = import.meta.env.VITE_APP_ENV || "local";
 
-let BASE_URL = "http://localhost:5001/website-api";
-let SERVER_URL = "http://localhost:5001";
-
+let BASE_URL;
+let SERVER_URL;
+console.log(APP_ENV, 'APP_ENV')
 switch (APP_ENV) {
   case "production":
     BASE_URL = "https://api.trustednetwork.in/website-api";
     SERVER_URL = "https://api.trustednetwork.in";
     break;
   case "local":
+    BASE_URL = "http://localhost:5001/website-api";
+    SERVER_URL = "http://localhost:5001";
+    break;
   default:
     BASE_URL = "http://api.trustednetwork.in/website-api";
     SERVER_URL = "http://api.trustednetwork.in";

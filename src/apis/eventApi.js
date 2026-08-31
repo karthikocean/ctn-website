@@ -1,15 +1,20 @@
-import { api, SERVER_URL } from '../config/config';
+import { api } from '../config/config';
 import event1 from '../assets/event1.jpg';
 
 export const formatEventImage = (imagePath) => {
   if (!imagePath) return event1;
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('data:')) {
-    return imagePath;
+  if (typeof imagePath !== 'string') return event1;
+  const trimmed = imagePath.trim();
+  if (!trimmed) return event1;
+  if (
+    trimmed.startsWith('http://') ||
+    trimmed.startsWith('https://') ||
+    trimmed.startsWith('data:') ||
+    trimmed.startsWith('blob:')
+  ) {
+    return trimmed;
   }
-  if (imagePath.startsWith('/')) {
-    return `${SERVER_URL}${imagePath}`;
-  }
-  return `${SERVER_URL}/${imagePath}`;
+  return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
 };
 
 export const normalizeEventItem = (item, index = 0) => {
@@ -28,7 +33,7 @@ export const normalizeEventItem = (item, index = 0) => {
           day: 'numeric',
         });
       }
-    } catch (e) {
+    } catch {
       formattedDate = String(item.fromDate || item.date || item.createdAt);
     }
   }
@@ -38,7 +43,7 @@ export const normalizeEventItem = (item, index = 0) => {
   const videoUrl = item.video ? formatEventImage(item.video) : null;
   const videos = videoUrl ? [videoUrl] : [];
 
-  let highlights = [];
+  let highlights;
   if (Array.isArray(item.stallConfig?.stalls) && item.stallConfig.stalls.length > 0) {
     highlights = item.stallConfig.stalls.map((s) => `${s.name} (${s.size || 'Standard'})`);
   } else {
@@ -99,7 +104,7 @@ class EventApi {
           data: normalizeEventItem(res.data.data),
         };
       }
-    } catch (e) {
+    } catch {
       // API fallback
     }
 

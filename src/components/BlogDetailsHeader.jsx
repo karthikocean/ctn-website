@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight, FiUser, FiCalendar, FiClock, FiArrowLeft } from 'react-icons/fi';
+import PrivateImage from './Common/PrivateImage';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogDetailsHeader.module.css';
 
 const BlogDetailsHeader = ({ blog }) => {
@@ -41,8 +43,9 @@ const BlogDetailsHeader = ({ blog }) => {
 
         {/* Large Featured Article Image */}
         <div className={styles.heroImageFrame}>
-          <img
+          <PrivateImage
             src={featuredImg}
+            fallback={event1}
             alt={blog.title}
             className={styles.heroImage}
           />
