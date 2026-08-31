@@ -1,4 +1,6 @@
 import React from 'react';
+import PrivateImage from './Common/PrivateImage';
+import event1 from '../assets/event1.jpg';
 import styles from '../styles/PhotosTab.module.css';
 import { FiImage } from 'react-icons/fi';
 import EmptyState from './EmptyState';
@@ -7,9 +9,10 @@ const PhotosTab = ({ photos }) => (
   <div className={styles.gallery}>
     {photos && photos.length > 0 ? (
       photos.map((src, idx) => (
-        <img 
+        <PrivateImage 
           key={idx} 
           src={src} 
+          fallback={event1}
           alt={`Photo ${idx + 1}`} 
           className={`${styles.photosImage} ${styles.fadeIn}`} 
         />

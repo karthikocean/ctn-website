@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowUpRight, FiCalendar, FiMapPin } from 'react-icons/fi';
 import event1 from '../assets/event1.jpg';
+import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/EventFeatured.module.css';
 
 const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
@@ -28,14 +29,11 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
               {/* Image Wrapper */}
               <div className={styles.imageWrapper}>
                 {/* Background Image (Always Clear & Sharp, No Blur) */}
-                <img
+                <PrivateImage
                   src={featuredEvent.image || event1}
+                  fallback={event1}
                   alt={featuredEvent.title}
                   className={styles.cardImage}
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = event1;
-                  }}
                 />
 
                 {/* Circular Navigation Arrow (Bottom Right) */}
@@ -102,14 +100,11 @@ const EventFeatured = ({ featuredEvent, recentEvents = [] }) => {
               <div key={event.id} className={styles.sideCard}>
                 <Link to={`/events/${event.id}`} className={styles.cardWrapper} aria-label={event.title}>
                   <div className={styles.imageWrapper}>
-                    <img
+                    <PrivateImage
                       src={event.image || event1}
+                      fallback={event1}
                       alt={event.title}
                       className={styles.cardImage}
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = event1;
-                      }}
                     />
 
                     <div className={styles.circularArrowBtn} aria-hidden="true">

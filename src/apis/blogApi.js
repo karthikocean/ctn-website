@@ -1,15 +1,20 @@
-import { api, SERVER_URL } from '../config/config';
+import { api } from '../config/config';
 import event1 from '../assets/event1.jpg';
 
 export const formatBlogImage = (imagePath) => {
   if (!imagePath) return event1;
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('data:')) {
-    return imagePath;
+  if (typeof imagePath !== 'string') return event1;
+  const trimmed = imagePath.trim();
+  if (!trimmed) return event1;
+  if (
+    trimmed.startsWith('http://') ||
+    trimmed.startsWith('https://') ||
+    trimmed.startsWith('data:') ||
+    trimmed.startsWith('blob:')
+  ) {
+    return trimmed;
   }
-  if (imagePath.startsWith('/')) {
-    return `${SERVER_URL}${imagePath}`;
-  }
-  return `${SERVER_URL}/${imagePath}`;
+  return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
 };
 
 const stripHtml = (html) => {
@@ -33,7 +38,7 @@ export const normalizeBlogItem = (item, index = 0) => {
           day: 'numeric',
         });
       }
-    } catch (e) {
+    } catch {
       formattedDate = String(item.publishedDate || item.date || item.createdAt);
     }
   }
@@ -124,7 +129,7 @@ class BlogApi {
               data: normalizeBlogItem(res.data.data),
             };
           }
-        } catch (e) {
+        } catch {
           // Fallback: if ID query fails, return list item directly
           return { status: true, data: found };
         }
@@ -141,7 +146,7 @@ class BlogApi {
           data: normalizeBlogItem(res.data.data),
         };
       }
-    } catch (e) {
+    } catch {
       // Direct API query failed
     }
 
