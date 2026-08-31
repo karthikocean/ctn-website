@@ -163,11 +163,19 @@ const PrivacyPolicy = () => {
 
             <section id="retention" className={styles.clauseSection}>
               <h2 className={styles.clauseTitle}>
-                <span className={styles.clauseNumber}>6.</span> Data Retention
+                <span className={styles.clauseNumber}>6.</span> Data Retention & Account Status
               </h2>
               <p className={styles.clauseText}>
                 Information will be retained only as long as necessary for active business operations, community security audits, and tax/legal compliance purposes under Oceansoftwares Pvt. Ltd.
               </p>
+              <ul className={styles.clauseList}>
+                <li className={styles.clauseListItem}>
+                  <strong>Data Storage:</strong> We store your actual data for 1 year.
+                </li>
+                <li className={styles.clauseListItem}>
+                  <strong>Inactive Accounts:</strong> If an account is not used for 15 days, the account will automatically become idle.
+                </li>
+              </ul>
             </section>
 
             <section id="rights" className={styles.clauseSection}>

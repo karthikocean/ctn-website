@@ -163,8 +163,7 @@
 .featureList {
   list-style: none;
   padding: 0;
-  margin: 0 0 40px 0;
-  flex-grow: 1;
+  margin: 0 0 12px 0;
 }
 
 /* 13. Feature Item */
@@ -172,8 +171,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
-  font-size: 0.95rem;
+  margin-bottom: 8px;
+  font-size: 0.93rem;
 }
 
 /* 14. Check Icon */
@@ -371,3 +370,126 @@
     padding: 32px 0;
   }
 }
+
+/* 22. Additional Details & Module Styling */
+.discountTopBadge {
+  display: inline-block;
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.originalPriceWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.originalPrice {
+  font-size: 1.1rem;
+  color: #94A3B8;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.featured .originalPrice {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.discountBadge {
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.sectionDividerTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #C8A951;
+  margin: 14px 0 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed rgba(200, 169, 81, 0.3);
+}
+
+.featured .sectionDividerTitle {
+  color: #F0A500;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.crossIcon {
+  color: #94A3B8;
+  flex-shrink: 0;
+}
+
+.disabledFeature {
+  color: #94A3B8;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.moduleGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.moduleBadge {
+  background: #F1F5F9;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.featured .moduleBadge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #E2E8F0;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.moduleLimit {
+  color: #C8A951;
+  font-weight: 700;
+}
+
+.featured .moduleLimit {
+  color: #F0A500;
+}
+
+.loadingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  color: #C8A951;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

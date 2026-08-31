@@ -39,10 +39,10 @@ const About = () => {
           {/* Existing Content Paragraphs */}
           <div className={styles.paragraphsList}>
             <p className={styles.aboutParagraph}>
-              Trusted Network is a professional business networking platform built to help business owners, entrepreneurs and professionals connect, collaborate and grow through meaningful business relationships.
+              Trusted Network is a professional platform built to help business owners, entrepreneurs and professionals connect, collaborate and grow through meaningful business relationships.
             </p>
             <p className={styles.aboutParagraph}>
-              Your next client, referral, partnership or business opportunity can start with the right connection. Trusted Network brings business owners and professionals together in one connected business network where you can discover relevant people, share your business and build valuable relationships.
+              Your next client, referral, partnership or business opportunity can start with the right connection. Trusted Network brings business owners and professionals together in one connected business community where you can discover relevant people, share your business and build valuable relationships.
             </p>
             <p className={styles.aboutParagraph}>
               Business networking is no longer limited to meetings and events. Stay connected with the business community, discover new opportunities and build relationships that can support your business growth wherever you are.
@@ -51,7 +51,7 @@ const About = () => {
               More than simply collecting contacts, Trusted Network helps you build a network that creates real business value through meaningful connections, relevant opportunities and long term relationships.
             </p>
             <p className={styles.aboutParagraph}>
-              Trusted Network is built to help businesses connect with purpose, grow their network and discover new possibilities. The platform is powered by Oceansoftwares Pvt Ltd., bringing technology and business networking together in one connected experience.
+              Trusted Network is built to help businesses connect with purpose, grow their network and discover new possibilities. The platform is powered by Oceansoftwares Pvt Ltd., bringing technology and business relationships together in one connected experience.
             </p>
           </div>
         </motion.div>

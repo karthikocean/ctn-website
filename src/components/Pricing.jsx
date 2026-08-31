@@ -1,70 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { FiCheck } from 'react-icons/fi';
+import { FiCheck, FiX } from 'react-icons/fi';
 import { getPlans, getPlanById } from '../apis/plansApi';
 import styles from '../styles/Pricing.module.css';
 
 const Pricing = () => {
   const [plans, setPlans] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [selectedPlanDetails, setSelectedPlanDetails] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchPlans = async () => {
       setLoading(true);
       try {
         const res = await getPlans();
-        if (res?.status && Array.isArray(res.data) && res.data.length > 0) {
-          const mappedPlans = res.data.map((planItem, idx) => {
-            // Extract features from backend response object or array
-            let featureList = [];
-
-            if (Array.isArray(planItem.features)) {
-              featureList = [...planItem.features];
-            } else if (planItem.features && typeof planItem.features === 'object') {
-              if (planItem.features.monthlyMeeting) featureList.push("Monthly network meetings");
-              if (planItem.features.eventVisitor) featureList.push("Event visitor access");
-              if (planItem.features.eventStall) featureList.push("Event stall access");
-              if (planItem.features.spotlights) featureList.push("Spotlight visibility");
-            }
-
-            if (planItem.benefits && typeof planItem.benefits === 'object') {
-              if (planItem.benefits.pointMultiplier) {
-                featureList.push(`${planItem.benefits.pointMultiplier}x point multiplier`);
-              }
-              if (planItem.benefits.trainingDiscountPercentage) {
-                featureList.push(`${planItem.benefits.trainingDiscountPercentage}% training discount`);
-              }
-            }
-
-            return {
-              _id: planItem._id || `plan-${idx}`,
-              name: planItem.title || planItem.name || '',
-              tagline: planItem.description || planItem.tagline || '',
-              price: planItem.amount !== undefined && planItem.amount !== null ? planItem.amount.toLocaleString() : '',
-              period: planItem.billingCycle === 'yearly' ? '/yr' : (planItem.billingCycle ? `/${planItem.billingCycle}` : '/yr'),
-              features: featureList,
-              featured: planItem.featured === true || planItem.sort === 1,
-              rawPlan: planItem
-            };
-          });
-
-          setPlans(mappedPlans);
-        } else {
-          setPlans([]);
+        if (isMounted) {
+          if (res?.status && Array.isArray(res.data)) {
+            setPlans(res.data);
+          } else {
+            setPlans([]);
+          }
         }
       } catch (error) {
         console.error("Error fetching pricing plans:", error);
-        setPlans([]);
+        if (isMounted) setPlans([]);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchPlans();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handlePlanClick = async (planId) => {
-    if (planId && !planId.startsWith('plan-')) {
+    if (planId) {
       try {
         const res = await getPlanById(planId);
         if (res?.status && res.data) {
@@ -92,36 +67,171 @@ const Pricing = () => {
           Simple, transparent pricing for every business stage.
         </p>
 
-        <div className={styles.plansGrid}>
-          {plans.map((plan) => (
-            <div
-              key={plan._id}
-              className={`${styles.planCard} ${plan.featured ? styles.featured : ''}`}
-              onClick={() => handlePlanClick(plan._id)}
-            >
-              <div className={styles.cardHeader}>
-                <h3 className={styles.planName}>{plan.name}</h3>
-                {plan.tagline && <p className={styles.planTagline}>{plan.tagline}</p>}
-                <div className={styles.price}>
-                  <span className={styles.currency}>₹</span>
-                  <span className={styles.amount}>{plan.price}</span>
-                  <span className={styles.period}>{plan.period}</span>
-                </div>
-              </div>
+        {loading ? (
+          <div className={styles.loadingWrapper}>
+            <span>Loading subscription plans...</span>
+          </div>
+        ) : (
+          <div className={styles.plansGrid}>
+            {plans.map((plan) => {
+              const isFeatured = plan.featured === true || plan.sort === 1 || plan.billingType === 'standard';
 
-              {plan.features && plan.features.length > 0 && (
-                <ul className={styles.featureList}>
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className={styles.featureItem}>
-                      <FiCheck className={styles.checkIcon} />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+              return (
+                <div
+                  key={plan._id}
+                  className={`${styles.planCard} ${isFeatured ? styles.featured : ''}`}
+                  onClick={() => handlePlanClick(plan._id)}
+                >
+                  <div className={styles.cardHeader}>
+                    <h3 className={styles.planName}>{plan.title || plan.name}</h3>
+                    {plan.description && <p className={styles.planTagline}>{plan.description}</p>}
+                    
+                    <div className={styles.priceContainer}>
+                      {plan.offerPrice !== undefined && plan.offerPrice !== null && plan.offerPrice < plan.amount ? (
+                        <>
+                          <div className={styles.originalPriceWrapper}>
+                            <span className={styles.originalPrice}>
+                              ₹{Number(plan.amount).toLocaleString('en-IN')}
+                            </span>
+                            {plan.percentage ? (
+                              <span className={styles.discountBadge}>{plan.percentage}% OFF</span>
+                            ) : null}
+                          </div>
+                          <div className={styles.price}>
+                            <span className={styles.currency}>₹</span>
+                            <span className={styles.amount}>
+                              {Number(plan.offerPrice).toLocaleString('en-IN')}
+                            </span>
+                            <span className={styles.period}>
+                              {plan.billingCycle === 'yearly' ? '/yr' : (plan.billingCycle ? `/${plan.billingCycle}` : '/yr')}
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <div className={styles.price}>
+                          <span className={styles.currency}>₹</span>
+                          <span className={styles.amount}>
+                            {plan.amount !== undefined && plan.amount !== null
+                              ? Number(plan.amount).toLocaleString('en-IN')
+                              : '0'}
+                          </span>
+                          <span className={styles.period}>
+                            {plan.billingCycle === 'yearly' ? '/yr' : (plan.billingCycle ? `/${plan.billingCycle}` : '/yr')}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Core Features Section */}
+                  {plan.features && typeof plan.features === 'object' && (
+                    <>
+                      <div className={styles.sectionDividerTitle}>Features</div>
+                      <ul className={styles.featureList}>
+                        <li className={styles.featureItem}>
+                          {plan.features.monthlyMeeting ? (
+                            <FiCheck className={styles.checkIcon} />
+                          ) : (
+                            <FiX className={styles.crossIcon} />
+                          )}
+                          <span className={!plan.features.monthlyMeeting ? styles.disabledFeature : ''}>
+                            Monthly network meetings
+                          </span>
+                        </li>
+                        <li className={styles.featureItem}>
+                          {plan.features.eventVisitor ? (
+                            <FiCheck className={styles.checkIcon} />
+                          ) : (
+                            <FiX className={styles.crossIcon} />
+                          )}
+                          <span className={!plan.features.eventVisitor ? styles.disabledFeature : ''}>
+                            Event visitor access
+                          </span>
+                        </li>
+                        <li className={styles.featureItem}>
+                          {plan.features.eventStall ? (
+                            <FiCheck className={styles.checkIcon} />
+                          ) : (
+                            <FiX className={styles.crossIcon} />
+                          )}
+                          <span className={!plan.features.eventStall ? styles.disabledFeature : ''}>
+                            Event stall access
+                          </span>
+                        </li>
+                        <li className={styles.featureItem}>
+                          {plan.features.spotlights ? (
+                            <FiCheck className={styles.checkIcon} />
+                          ) : (
+                            <FiX className={styles.crossIcon} />
+                          )}
+                          <span className={!plan.features.spotlights ? styles.disabledFeature : ''}>
+                            Spotlight visibility
+                          </span>
+                        </li>
+                      </ul>
+                    </>
+                  )}
+
+                  {/* Benefits Section */}
+                  {plan.benefits && typeof plan.benefits === 'object' && (
+                    <>
+                      <div className={styles.sectionDividerTitle}>Key Benefits</div>
+                      <ul className={styles.featureList}>
+                        {plan.benefits.requirementResponseLimit !== undefined && (
+                          <li className={styles.featureItem}>
+                            <FiCheck className={styles.checkIcon} />
+                            <span>
+                              Requirement Response Limit: <strong>{plan.benefits.requirementResponseLimit}</strong>
+                            </span>
+                          </li>
+                        )}
+                        {plan.benefits.pointMultiplier !== undefined && (
+                          <li className={styles.featureItem}>
+                            <FiCheck className={styles.checkIcon} />
+                            <span>
+                              Point Multiplier: <strong>{plan.benefits.pointMultiplier}x</strong>
+                            </span>
+                          </li>
+                        )}
+                        {plan.benefits.trainingDiscountPercentage !== undefined && (
+                          <li className={styles.featureItem}>
+                            <FiCheck className={styles.checkIcon} />
+                            <span>
+                              Training Discount: <strong>{plan.benefits.trainingDiscountPercentage}%</strong>
+                            </span>
+                          </li>
+                        )}
+                        {plan.benefits.referralBonusMonths !== undefined && (
+                          <li className={styles.featureItem}>
+                            <FiCheck className={styles.checkIcon} />
+                            <span>
+                              Referral Bonus: <strong>{plan.benefits.referralBonusMonths} {plan.benefits.referralBonusMonths === 1 ? 'Month' : 'Months'}</strong>
+                            </span>
+                          </li>
+                        )}
+                      </ul>
+                    </>
+                  )}
+
+                  {/* Modules Section */}
+                  {Array.isArray(plan.modules) && plan.modules.length > 0 && (
+                    <>
+                      <div className={styles.sectionDividerTitle}>Module Usage Limits</div>
+                      <div className={styles.moduleGrid}>
+                        {plan.modules.map((mod, idx) => (
+                          <span key={idx} className={styles.moduleBadge}>
+                            {mod.moduleName}: <span className={styles.moduleLimit}>{mod.countLimit}/{mod.frequency}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
