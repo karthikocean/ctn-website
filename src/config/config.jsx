@@ -11,8 +11,8 @@ switch (APP_ENV) {
     SERVER_URL = "https://api.trustednetwork.in";
     break;
   case "local":
-    BASE_URL = "http://localhost:5001/website-api";
-    SERVER_URL = "http://localhost:5001";
+    BASE_URL = "http://192.168.1.14:5001/website-api";
+    SERVER_URL = "http://192.168.1.14:5001";
     break;
   default:
     BASE_URL = "http://api.trustednetwork.in/website-api";
