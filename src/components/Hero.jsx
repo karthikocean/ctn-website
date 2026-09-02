@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { FiUsers, FiArrowRight } from 'react-icons/fi';
+import { FaGooglePlay, FaApple } from 'react-icons/fa';
 import styles from '../styles/Hero.module.css';
 import Statistics from './Statistics';
+import { PLAY_STORE_LINK, APP_STORE_LINK } from '../config/appLinks';
 
 // Import hero image
-import standingHeroImage from '../assets/mainherostandingimage.png';
+import heroImage from '../assets/heroimagechange.png';
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -49,11 +50,17 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className={styles.ctaButtonGroup}>
-                <button className={styles.ctaButton} onClick={() => navigate('/contact')}>
-                  <FiUsers /> Join TN
+                <button
+                  className={styles.ctaButton}
+                  onClick={() => window.open(PLAY_STORE_LINK, '_blank', 'noopener,noreferrer')}
+                >
+                  <FaGooglePlay /> Google Play
                 </button>
-                <button className={styles.ctaButton} onClick={() => navigate('/contact')}>
-                  Start Free Trial <FiArrowRight />
+                <button
+                  className={styles.ctaButton}
+                  onClick={() => window.open(APP_STORE_LINK, '_blank', 'noopener,noreferrer')}
+                >
+                  <FaApple /> App Store
                 </button>
               </div>
 
@@ -83,7 +90,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <img
-                src={standingHeroImage}
+                src={heroImage}
                 alt="Trusted Network Platform"
                 className={styles.heroImage}
               />

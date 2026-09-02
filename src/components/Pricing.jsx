@@ -3,6 +3,32 @@ import { FiCheck, FiX } from 'react-icons/fi';
 import { getPlans, getPlanById } from '../apis/plansApi';
 import styles from '../styles/Pricing.module.css';
 
+const getFormattedDiscount = (plan) => {
+  let pct = null;
+  const rawPct = plan.percentage ?? plan.discountPercentage ?? plan.discount;
+  if (rawPct !== undefined && rawPct !== null && rawPct !== '') {
+    const num = parseFloat(String(rawPct).replace('%', '').trim());
+    if (!isNaN(num) && num > 0) {
+      pct = num;
+    }
+  }
+
+  if (pct === null && plan.offerPrice !== undefined && plan.offerPrice !== null && plan.amount) {
+    const amount = Number(plan.amount);
+    const offerPrice = Number(plan.offerPrice);
+    if (amount > 0 && offerPrice < amount) {
+      pct = ((amount - offerPrice) / amount) * 100;
+    }
+  }
+
+  if (pct === null || isNaN(pct) || pct <= 0) {
+    return null;
+  }
+
+  const formattedPct = Number(pct.toFixed(1)).toString();
+  return `${formattedPct}% OFF`;
+};
+
 const Pricing = () => {
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,6 +101,7 @@ const Pricing = () => {
           <div className={styles.plansGrid}>
             {plans.map((plan) => {
               const isFeatured = plan.featured === true || plan.sort === 1 || plan.billingType === 'standard';
+              const discountLabel = getFormattedDiscount(plan);
 
               return (
                 <div
@@ -93,8 +120,8 @@ const Pricing = () => {
                             <span className={styles.originalPrice}>
                               ₹{Number(plan.amount).toLocaleString('en-IN')}
                             </span>
-                            {plan.percentage ? (
-                              <span className={styles.discountBadge}>{plan.percentage}% OFF</span>
+                            {discountLabel ? (
+                              <span className={styles.discountBadge}>{discountLabel}</span>
                             ) : null}
                           </div>
                           <div className={styles.price}>

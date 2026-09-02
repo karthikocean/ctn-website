@@ -157,6 +157,8 @@
   line-height: 1.4;
   margin: 0;
   font-weight: 550;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Sticky Image Side */

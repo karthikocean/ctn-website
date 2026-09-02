@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Download.module.css';
-import appMockup from '../assets/tn app design .png';
+import downloadImage from '../assets/playstoreappstoresection.png';
 import { APP_STORE_LINK, PLAY_STORE_LINK } from '../config/appLinks';
 
 const Download = () => {
@@ -77,7 +77,7 @@ const Download = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img src={appMockup} alt="TN Mobile App" className={styles.appMockup} />
+              <img src={downloadImage} alt="TN Mobile App" className={styles.appMockup} />
             </motion.div>
           </div>
         </div>
