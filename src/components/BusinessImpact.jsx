@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   FiRepeat,
   FiClipboard,
-  FiCheckCircle,
   FiMessageCircle,
-  FiActivity
+  FiActivity,
+  FiUsers,
 } from 'react-icons/fi';
 import { FaRupeeSign } from 'react-icons/fa';
 import { getCommonStats } from '../apis/commonApi';
@@ -25,26 +25,58 @@ const formatBusinessAmount = (val) => {
   const raw = typeof val === 'string' ? val.replace(/,/g, '') : String(val);
   const num = Number(raw);
 
-  // If string contains non-numeric chars (e.g. "200Q"), return string directly
   if (isNaN(num)) {
     return String(val);
   }
 
   if (num <= 0) return '0';
 
-  if (num >= 1000000) {
-    // Millions (M) - 1,000,000+
+  if (num >= 1000000000) {
+    // Billions (B)
+    const b = num / 1000000000;
+    const bFixed = parseFloat(b.toFixed(2));
+    return `${bFixed} Billion`;
+  } else if (num >= 1000000) {
+    // Millions (M)
     const m = num / 1000000;
     const mFixed = parseFloat(m.toFixed(2));
-    return `${mFixed}M`;
+    return `${mFixed} Million`;
+  } else if (num >= 100000) {
+    // Lakhs (L)
+    const l = num / 100000;
+    const lFixed = parseFloat(l.toFixed(2));
+    return `${lFixed} Lakh`;
   } else if (num >= 1000) {
-    // Thousands (K) - 1,000+
+    // Thousands (K)
     const k = num / 1000;
     const kFixed = parseFloat(k.toFixed(2));
-    return `${kFixed}K`;
+    return `${kFixed} Thousand`;
   } else {
     return `${num}`;
   }
+};
+
+const formatBusinessValue = (val) => {
+  if (val === null || val === undefined || val === '') return '0';
+  const strVal = String(val).trim();
+
+  // Match pattern like "1B", "25L", "750K", "5M"
+  const match = strVal.match(/^([\d.,]+)\s*([a-zA-Z]+)?$/);
+  if (match) {
+    const numPart = match[1];
+    const unitPart = match[2] ? match[2].toUpperCase() : '';
+
+    if (unitPart === 'B') return `${numPart} Billion`;
+    if (unitPart === 'M') return `${numPart} Million`;
+    if (unitPart === 'L') return `${numPart} Lakh`;
+    if (unitPart === 'K') return `${numPart} Thousand`;
+    if (unitPart === 'CR' || unitPart === 'CRORE') return `${numPart} Crore`;
+    if (!unitPart) {
+      return formatBusinessAmount(strVal);
+    }
+  }
+
+  return formatBusinessAmount(strVal);
 };
 
 /* ==========================================
@@ -121,46 +153,44 @@ const initialStats = [
     id: 1,
     target: 0,
     suffix: '+',
-    label: 'Business Referrals',
-    Icon: FiRepeat,
-    key: 'recommendationCount',
+    label: 'Business Talk',
+    Icon: FiMessageCircle,
+    key: 'directMeetCount',
   },
   {
     id: 2,
     target: 0,
     suffix: '+',
-    label: 'Lead Generation',
-    Icon: FiClipboard,
-    key: 'requirementsCount',
+    label: 'Business Recommendation',
+    Icon: FiRepeat,
+    key: 'recommendationCount',
   },
   {
     id: 3,
-    target: 0,
-    suffix: '+',
-    label: 'Business Done',
-    Icon: FiCheckCircle,
-    key: 'businessDoneCount',
+    formattedValue: '0',
+    label: 'Business Value',
+    Icon: FaRupeeSign,
+    key: 'businessDoneAmount',
   },
   {
     id: 4,
     target: 0,
-    formattedValue: '0',
-    label: 'Business Done Amount',
-    Icon: FaRupeeSign,
-    key: 'businessDoneAmount',
+    suffix: '+',
+    label: 'Business Exchange',
+    Icon: FiClipboard,
+    key: 'requirementsCount',
   },
   {
     id: 5,
     target: 0,
     suffix: '+',
-    label: 'Business Talks',
-    Icon: FiMessageCircle,
-    key: 'directMeetCount',
+    label: 'Connections Established',
+    Icon: FiUsers,
+    key: 'followingCountFormatted',
   },
   {
     id: 6,
-    target: 24,
-    suffix: '/7',
+    formattedValue: '24/7',
     label: 'Active Network',
     Icon: FiActivity,
   },
@@ -170,56 +200,55 @@ const BusinessImpact = () => {
   const [statsData, setStatsData] = useState(initialStats);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchStats = async () => {
       try {
         const res = await getCommonStats();
-        if (res?.status && res.data) {
+        if (isMounted && res?.status && res.data) {
           const d = res.data;
           setStatsData([
             {
               id: 1,
-              target: parseStatValue(d.recommendationCount),
-              suffix: '+',
-              label: 'Business Referrals',
-              Icon: FiRepeat,
-              key: 'recommendationCount',
-            },
-            {
-              id: 2,
-              target: parseStatValue(d.requirementsCount),
-              suffix: '+',
-              label: 'Lead Generation',
-              Icon: FiClipboard,
-              key: 'requirementsCount',
-            },
-            {
-              id: 3,
-              target: parseStatValue(d.businessDoneCount),
-              suffix: '+',
-              label: 'Business Done',
-              Icon: FiCheckCircle,
-              key: 'businessDoneCount',
-            },
-            {
-              id: 4,
-              target: parseStatValue(d.businessDoneAmount || d.businessAmount),
-              formattedValue: formatBusinessAmount(d.businessDoneAmount || d.businessAmount),
-              label: 'Business Done Amount',
-              Icon: FaRupeeSign,
-              key: 'businessDoneAmount',
-            },
-            {
-              id: 5,
               target: parseStatValue(d.directMeetCount),
               suffix: '+',
-              label: 'Business Talks',
+              label: 'Business Talk',
               Icon: FiMessageCircle,
               key: 'directMeetCount',
             },
             {
+              id: 2,
+              target: parseStatValue(d.recommendationCount),
+              suffix: '+',
+              label: 'Business Recommendation',
+              Icon: FiRepeat,
+              key: 'recommendationCount',
+            },
+            {
+              id: 3,
+              formattedValue: formatBusinessValue(d.businessDoneAmount || d.businessAmount),
+              label: 'Business Value',
+              Icon: FaRupeeSign,
+              key: 'businessDoneAmount',
+            },
+            {
+              id: 4,
+              target: parseStatValue(d.requirementsCount),
+              suffix: '+',
+              label: 'Business Exchange',
+              Icon: FiClipboard,
+              key: 'requirementsCount',
+            },
+            {
+              id: 5,
+              target: parseStatValue(d.followingCountFormatted),
+              suffix: '+',
+              label: 'Connections Established',
+              Icon: FiUsers,
+              key: 'followingCountFormatted',
+            },
+            {
               id: 6,
-              target: 24,
-              suffix: '/7',
+              formattedValue: '24/7',
               label: 'Active Network',
               Icon: FiActivity,
             },
@@ -231,6 +260,10 @@ const BusinessImpact = () => {
     };
 
     fetchStats();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
@@ -259,7 +292,7 @@ const BusinessImpact = () => {
                 <div key={id} className={styles.statItem}>
                   <Icon className={styles.statIcon} />
 
-                  {formattedValue ? (
+                  {formattedValue !== undefined && formattedValue !== null ? (
                     <span className={styles.statNumber}>{formattedValue}</span>
                   ) : (
                     <AnimatedCounter

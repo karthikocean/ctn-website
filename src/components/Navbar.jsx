@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { FaApple, FaGooglePlay } from 'react-icons/fa';
+import { FiMenu, FiX, FiUsers } from 'react-icons/fi';
 import mainlogo from '../assets/mainlogo.svg';
 import whiteLogo from '../assets/whitelogo.png';
-import { APP_STORE_LINK, PLAY_STORE_LINK } from '../config/appLinks';
 import styles from '../styles/Navbar.module.css';
 
 // Add effect to toggle a body class for pre-scroll styling on transparent home page
@@ -152,27 +150,17 @@ const Navbar = () => {
         })}
       </ul>
 
-      {/* RIGHT — Store Buttons + Hamburger */}
+      {/* RIGHT — CTA Button + Hamburger */}
       <div className={styles.navRight}>
         <div className={styles.storeButtons}>
-          <a
-            href={APP_STORE_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/franchise"
             className={styles.storeBtn}
+            onClick={() => window.scrollTo(0, 0)}
           >
-            <FaApple className={styles.storeIcon} />
-            <span>App Store</span>
-          </a>
-          <a
-            href={PLAY_STORE_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.storeBtn}
-          >
-            <FaGooglePlay className={styles.storeIcon} />
-            <span>Google Play</span>
-          </a>
+            <FiUsers className={styles.storeIcon} />
+            <span>GET TN FRANCHISE</span>
+          </Link>
         </div>
 
         <button
@@ -216,26 +204,17 @@ const Navbar = () => {
             })}
           </ul>
           <div className={styles.mobileStoreButtons}>
-            <a
-              href={APP_STORE_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/franchise"
               className={styles.mobileStoreBtn}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                window.scrollTo(0, 0);
+              }}
             >
-              <FaApple className={styles.storeIcon} />
-              <span>App Store</span>
-            </a>
-            <a
-              href={PLAY_STORE_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.mobileStoreBtn}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FaGooglePlay className={styles.storeIcon} />
-              <span>Google Play</span>
-            </a>
+              <FiUsers className={styles.storeIcon} />
+              <span>GET TN FRANCHISE</span>
+            </Link>
           </div>
         </div>
       )}
