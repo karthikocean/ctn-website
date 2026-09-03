@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiCalendar } from 'react-icons/fi';
-import event1 from '../assets/event1.jpg';
 import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/BlogCard.module.css';
 
 const BlogCard = ({ blog }) => {
   if (!blog) return null;
+  console.log(blog, "bbbbbbb");
 
   const blogLink = `/blogs/${blog.slug || blog.id}`;
-  const blogImage = blog.featuredImage || blog.image || event1;
+  const blogImage = blog.featuredImage || blog.image || '';
   const blogDate = blog.publishedDate || blog.date;
 
   return (
@@ -20,7 +20,6 @@ const BlogCard = ({ blog }) => {
           {/* Background Image (Always Clear & Sharp, No Blur) */}
           <PrivateImage
             src={blogImage}
-            fallback={event1}
             alt={blog.title}
             className={styles.cardImage}
             loading="lazy"

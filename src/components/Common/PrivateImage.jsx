@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import usePrivateMedia from '../../hooks/usePrivateMedia';
-import defaultFallback from '../../assets/event1.jpg';
 
 /**
- * Reusable PrivateImage component that fetches and renders temporary S3 signed URLs
- * for private media assets with caching, fallback, and error handling.
+ * Reusable PrivateImage component that fetches and renders URLs
+ * for media assets with caching, fallback, and error handling.
  */
 const PrivateImage = ({
   src,
-  fallback = defaultFallback,
+  fallback = '',
   alt = 'Image',
   className = '',
   style = {},
@@ -27,7 +26,11 @@ const PrivateImage = ({
     }
   };
 
-  const imageToDisplay = hasError ? fallback : (mediaUrl || fallback);
+  const imageToDisplay = hasError ? fallback : (mediaUrl || fallback || src);
+
+  if (!imageToDisplay) {
+    return null;
+  }
 
   return (
     <img

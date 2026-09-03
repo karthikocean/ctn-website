@@ -1,11 +1,10 @@
-import { api } from '../config/config';
-import event1 from '../assets/event1.jpg';
+import { api, SERVER_URL } from '../config/config';
 
 export const formatBlogImage = (imagePath) => {
-  if (!imagePath) return event1;
-  if (typeof imagePath !== 'string') return event1;
+  if (!imagePath) return '';
+  if (typeof imagePath !== 'string') return '';
   const trimmed = imagePath.trim();
-  if (!trimmed) return event1;
+  if (!trimmed) return '';
   if (
     trimmed.startsWith('http://') ||
     trimmed.startsWith('https://') ||
@@ -28,9 +27,10 @@ export const normalizeBlogItem = (item, index = 0) => {
   const slug = item.slug || title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-') || id;
   
   let formattedDate = 'Recent Post';
-  if (item.publishedDate || item.date || item.createdAt) {
+  const dateVal = item.publishDate || item.publishedDate || item.date || item.createdAt;
+  if (dateVal) {
     try {
-      const d = new Date(item.publishedDate || item.date || item.createdAt);
+      const d = new Date(dateVal);
       if (!isNaN(d.getTime())) {
         formattedDate = d.toLocaleDateString('en-US', {
           year: 'numeric',
@@ -39,7 +39,7 @@ export const normalizeBlogItem = (item, index = 0) => {
         });
       }
     } catch {
-      formattedDate = String(item.publishedDate || item.date || item.createdAt);
+      formattedDate = String(dateVal);
     }
   }
 
@@ -58,13 +58,19 @@ export const normalizeBlogItem = (item, index = 0) => {
   const rawExcerpt = getExcerpt();
   const excerpt = rawExcerpt.length > 160 ? rawExcerpt.substring(0, 160) + '...' : rawExcerpt;
 
-  let contentBlocks = [];
-  if (Array.isArray(item.content)) {
-    contentBlocks = item.content;
-  } else if (typeof item.content === 'string' && item.content.trim()) {
-    contentBlocks = [{ type: 'paragraph', text: item.content }];
-  } else if (typeof item.description === 'string' && item.description.trim()) {
-    contentBlocks = [{ type: 'paragraph', text: item.description }];
+  let contentBlocks = item.content || item.description || item.details || item.body || [];
+  if (typeof contentBlocks === 'string') {
+    const trimmed = contentBlocks.trim();
+    if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        contentBlocks = parsed;
+      } catch {
+        contentBlocks = trimmed;
+      }
+    } else {
+      contentBlocks = trimmed;
+    }
   }
 
   return {

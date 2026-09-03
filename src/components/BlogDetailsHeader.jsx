@@ -2,13 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight, FiUser, FiCalendar, FiClock, FiArrowLeft } from 'react-icons/fi';
 import PrivateImage from './Common/PrivateImage';
-import event1 from '../assets/event1.jpg';
 import styles from '../styles/BlogDetailsHeader.module.css';
 
 const BlogDetailsHeader = ({ blog }) => {
   if (!blog) return null;
 
-  const featuredImg = blog.featuredImage || blog.image;
+  const featuredImg =
+    blog.featuredImage ||
+    blog.image ||
+    (Array.isArray(blog.images) && blog.images.length > 0 ? blog.images[0] : null) ||
+    (Array.isArray(blog.raw?.images) && blog.raw.images.length > 0 ? blog.raw.images[0] : null);
 
   return (
     <header className={styles.headerSection}>
@@ -20,15 +23,6 @@ const BlogDetailsHeader = ({ blog }) => {
             <span>Back to Blogs</span>
           </Link>
         </div>
-
-        {/* Breadcrumb Navigation */}
-        {/* <nav className={styles.breadcrumbNav} aria-label="Breadcrumb">
-          <Link to="/">Home</Link>
-          <FiChevronRight className={styles.breadcrumbArrow} />
-          <Link to="/blogs">Blogs</Link>
-          <FiChevronRight className={styles.breadcrumbArrow} />
-          <span className={styles.categoryBreadcrumb}>{blog.category}</span>
-        </nav> */}
 
         {/* Main Title */}
         <h1 className={styles.articleTitle}>{blog.title}</h1>
@@ -42,14 +36,15 @@ const BlogDetailsHeader = ({ blog }) => {
         </div>
 
         {/* Large Featured Article Image */}
-        <div className={styles.heroImageFrame}>
-          <PrivateImage
-            src={featuredImg}
-            fallback={event1}
-            alt={blog.title}
-            className={styles.heroImage}
-          />
-        </div>
+        {featuredImg && (
+          <div className={styles.heroImageFrame}>
+            <PrivateImage
+              src={featuredImg}
+              alt={blog.title}
+              className={styles.heroImage}
+            />
+          </div>
+        )}
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getPrivateMediaUrl, isRelativeMediaPath } from '../apis/mediaApi';
+import { getPrivateMediaUrl, isRelativeMediaPath, normalizeMediaPath } from '../apis/mediaApi';
+import { SERVER_URL } from '../config/config';
 
 /**
  * Custom React hook to resolve a temporary private AWS S3 URL.
@@ -39,9 +40,10 @@ export const usePrivateMedia = (src, fallback = '') => {
       .catch((err) => {
         if (!isCancelled) {
           console.warn(`[usePrivateMedia] Failed to load private media "${src}":`, err?.message || err);
+          const directUrl = isRelativeMediaPath(src) ? `${SERVER_URL}${normalizeMediaPath(src)}` : (fallback || '');
           setResolvedState({
             src,
-            url: fallback,
+            url: directUrl,
             loading: false,
             error: err,
           });
