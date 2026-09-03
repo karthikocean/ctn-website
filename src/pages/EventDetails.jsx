@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar, FiMapPin, FiAlertCircle } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
-import { events as staticEvents } from '../data/eventsData';
 import { getEventById } from '../apis/eventApi';
 import LoadingState from '../components/LoadingState';
 import PrivateImage from '../components/Common/PrivateImage';
@@ -25,8 +24,7 @@ const EventDetails = () => {
       if (res?.status && res.data) {
         setEvent(res.data);
       } else {
-        const foundLocal = staticEvents.find((ev) => ev.id === id);
-        setEvent(foundLocal || null);
+        setEvent(null);
       }
       setLoading(false);
     };

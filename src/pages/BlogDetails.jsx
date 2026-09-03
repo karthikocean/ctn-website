@@ -3,8 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiAlertCircle } from 'react-icons/fi';
 import SEO from '../components/SEO';
 import seoData from '../data/seoData';
-import { blogs as staticBlogs } from '../data/blogsData';
-import { getBlogByIdOrSlug } from '../apis/blogApi';
+import { getBlogByIdOrSlug, getBlogs } from '../apis/blogApi';
 import BlogDetailsHeader from '../components/BlogDetailsHeader';
 import BlogDetailsContent from '../components/BlogDetailsContent';
 import RelatedBlogs from '../components/RelatedBlogs';
@@ -16,25 +15,36 @@ const BlogDetails = () => {
   const targetKey = slug || id;
 
   const [blog, setBlog] = useState(null);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    const fetchBlog = async () => {
+    const fetchBlogData = async () => {
       setLoading(true);
+      
+      // Fetch current blog from backend API
       const res = await getBlogByIdOrSlug(targetKey);
       if (res?.status && res.data) {
         setBlog(res.data);
       } else {
-        const foundLocal = staticBlogs.find((b) => b.slug === targetKey || b.id === targetKey);
-        setBlog(foundLocal || null);
+        setBlog(null);
       }
+
+      // Fetch all blogs from backend API for related articles
+      const allRes = await getBlogs();
+      if (allRes?.status && Array.isArray(allRes.data)) {
+        setAllBlogs(allRes.data);
+      } else {
+        setAllBlogs([]);
+      }
+
       setLoading(false);
     };
 
     if (targetKey) {
-      fetchBlog();
+      fetchBlogData();
     }
   }, [targetKey]);
 
@@ -71,7 +81,8 @@ const BlogDetails = () => {
     );
   }
 
-  const relatedBlogs = staticBlogs.filter((b) => {
+  // Filter related blogs dynamically from API data
+  const relatedBlogs = allBlogs.filter((b) => {
     if (b.id === blog.id || b.slug === blog.slug) return false;
     if (blog.relatedIds && blog.relatedIds.includes(b.id)) return true;
     return b.category === blog.category;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiClock, FiCalendar } from 'react-icons/fi';
-import event1 from '../assets/event1.jpg';
 import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/BlogFeatured.module.css';
 
@@ -28,8 +27,7 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
               <div className={styles.imageWrapper}>
                 {/* Background Image (Always Clear & Sharp, No Blur) */}
                 <PrivateImage
-                  src={featuredBlog.featuredImage || featuredBlog.image || event1}
-                  fallback={event1}
+                  src={featuredBlog.featuredImage || featuredBlog.image || ''}
                   alt={featuredBlog.title}
                   className={styles.cardImage}
                 />
@@ -87,8 +85,7 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
                 <Link to={`/blogs/${blog.slug}`} className={styles.cardWrapper} aria-label={blog.title}>
                   <div className={styles.imageWrapper}>
                     <PrivateImage
-                      src={blog.featuredImage || blog.image || event1}
-                      fallback={event1}
+                      src={blog.featuredImage || blog.image || ''}
                       alt={blog.title}
                       className={styles.cardImage}
                     />
