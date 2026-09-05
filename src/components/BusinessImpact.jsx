@@ -20,63 +20,75 @@ const parseStatValue = (val) => {
   return isNaN(num) || num < 0 ? 0 : Math.floor(num);
 };
 
-const formatBusinessAmount = (val) => {
-  if (val === null || val === undefined || val === '') return '0';
-  const raw = typeof val === 'string' ? val.replace(/,/g, '') : String(val);
-  const num = Number(raw);
+const formatCompactNumber = (num) => {
+  if (typeof num !== 'number' || isNaN(num) || num <= 0) return '0';
 
-  if (isNaN(num)) {
-    return String(val);
-  }
+  let value = num;
+  let unit = '';
 
-  if (num <= 0) return '0';
-
-  if (num >= 1000000000) {
-    // Billions (B)
-    const b = num / 1000000000;
-    const bFixed = parseFloat(b.toFixed(2));
-    return `${bFixed} Billion`;
-  } else if (num >= 1000000) {
-    // Millions (M)
-    const m = num / 1000000;
-    const mFixed = parseFloat(m.toFixed(2));
-    return `${mFixed} Million`;
-  } else if (num >= 100000) {
-    // Lakhs (L)
-    const l = num / 100000;
-    const lFixed = parseFloat(l.toFixed(2));
-    return `${lFixed} Lakh`;
-  } else if (num >= 1000) {
-    // Thousands (K)
-    const k = num / 1000;
-    const kFixed = parseFloat(k.toFixed(2));
-    return `${kFixed} Thousand`;
+  if (num >= 1e12) {
+    value = num / 1e12;
+    unit = 'T';
+  } else if (num >= 1e9) {
+    value = num / 1e9;
+    unit = 'B';
+  } else if (num >= 1e7) {
+    value = num / 1e7;
+    unit = 'Cr';
+  } else if (num >= 1e5) {
+    value = num / 1e5;
+    unit = 'L';
+  } else if (num >= 1e3) {
+    value = num / 1e3;
+    unit = 'K';
   } else {
-    return `${num}`;
+    return Number(num.toFixed(2)).toString();
   }
+
+  const formattedNum = Number(value.toFixed(2)).toString();
+  return `${formattedNum}${unit}`;
 };
 
-const formatBusinessValue = (val) => {
-  if (val === null || val === undefined || val === '') return '0';
-  const strVal = String(val).trim();
-
-  // Match pattern like "1B", "25L", "750K", "5M"
-  const match = strVal.match(/^([\d.,]+)\s*([a-zA-Z]+)?$/);
-  if (match) {
-    const numPart = match[1];
-    const unitPart = match[2] ? match[2].toUpperCase() : '';
-
-    if (unitPart === 'B') return `${numPart} Billion`;
-    if (unitPart === 'M') return `${numPart} Million`;
-    if (unitPart === 'L') return `${numPart} Lakh`;
-    if (unitPart === 'K') return `${numPart} Thousand`;
-    if (unitPart === 'CR' || unitPart === 'CRORE') return `${numPart} Crore`;
-    if (!unitPart) {
-      return formatBusinessAmount(strVal);
+const formatBusinessValue = (rawVal, strVal) => {
+  if (rawVal !== null && rawVal !== undefined && rawVal !== '') {
+    const rawNum = typeof rawVal === 'number' ? rawVal : Number(String(rawVal).replace(/,/g, ''));
+    if (!isNaN(rawNum) && rawNum >= 0) {
+      return formatCompactNumber(rawNum);
     }
   }
 
-  return formatBusinessAmount(strVal);
+  const valToUse = strVal !== null && strVal !== undefined && strVal !== '' ? strVal : rawVal;
+  if (valToUse === null || valToUse === undefined || valToUse === '') return '0';
+
+  if (typeof valToUse === 'number') {
+    return formatCompactNumber(valToUse);
+  }
+
+  const str = String(valToUse).trim();
+  if (!str) return '0';
+
+  const match = str.match(/^([\d.,]+)\s*([a-zA-Z]+)?$/);
+  if (match) {
+    const numStr = match[1].replace(/,/g, '');
+    const unitPart = match[2] ? match[2].toUpperCase() : '';
+    const numPart = Number(numStr);
+
+    if (!isNaN(numPart)) {
+      const cleanNum = Number(numPart.toFixed(2)).toString();
+      if (unitPart === 'K' || unitPart === 'THOUSAND' || unitPart === 'THOUSANDS') return `${cleanNum}K`;
+      if (unitPart === 'L' || unitPart === 'LAKH' || unitPart === 'LAKHS') return `${cleanNum}L`;
+      if (unitPart === 'CR' || unitPart === 'CRORE' || unitPart === 'CRORES') return `${cleanNum}Cr`;
+      if (unitPart === 'M' || unitPart === 'MILLION' || unitPart === 'MILLIONS') return `${cleanNum}M`;
+      if (unitPart === 'B' || unitPart === 'BILLION' || unitPart === 'BILLIONS') return `${cleanNum}B`;
+      if (unitPart === 'T' || unitPart === 'TRILLION' || unitPart === 'TRILLIONS') return `${cleanNum}T`;
+
+      if (!unitPart) {
+        return formatCompactNumber(numPart);
+      }
+    }
+  }
+
+  return str;
 };
 
 /* ==========================================
@@ -225,7 +237,14 @@ const BusinessImpact = () => {
             },
             {
               id: 3,
-              formattedValue: formatBusinessValue(d.businessDoneAmount || d.businessAmount),
+              formattedValue: formatBusinessValue(
+                d.businessDoneAmountRaw !== undefined && d.businessDoneAmountRaw !== null && d.businessDoneAmountRaw !== ''
+                  ? d.businessDoneAmountRaw
+                  : d.businessAmountRaw,
+                d.businessDoneAmount !== undefined && d.businessDoneAmount !== null
+                  ? d.businessDoneAmount
+                  : d.businessAmount
+              ),
               label: 'Business Value',
               Icon: FaRupeeSign,
               key: 'businessDoneAmount',
