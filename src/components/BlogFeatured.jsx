@@ -4,6 +4,16 @@ import { FiArrowUpRight, FiClock, FiCalendar } from 'react-icons/fi';
 import PrivateImage from './Common/PrivateImage';
 import styles from '../styles/BlogFeatured.module.css';
 
+const getBlogImage = (blog) => {
+  if (!blog) return '';
+  return (
+    blog.featuredImage ||
+    blog.image ||
+    (Array.isArray(blog.images) && blog.images.length > 0 ? blog.images[0] : '') ||
+    (Array.isArray(blog.raw?.images) && blog.raw.images.length > 0 ? blog.raw.images[0] : '')
+  );
+};
+
 const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
   if (!featuredBlog) return null;
 
@@ -27,7 +37,7 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
               <div className={styles.imageWrapper}>
                 {/* Background Image (Always Clear & Sharp, No Blur) */}
                 <PrivateImage
-                  src={featuredBlog.featuredImage || featuredBlog.image || ''}
+                  src={getBlogImage(featuredBlog)}
                   alt={featuredBlog.title}
                   className={styles.cardImage}
                 />
@@ -80,12 +90,12 @@ const BlogFeatured = ({ featuredBlog, recentBlogs = [] }) => {
 
           {/* RIGHT: Column with 2 Smaller Stacked Cards */}
           <div className={styles.sideColumn}>
-            {recentBlogs.slice(0, 2).map((blog) => (
-              <div key={blog.id} className={styles.sideCard}>
+            {recentBlogs.slice(0, 2).map((blog, idx) => (
+              <div key={blog.id || blog.slug || idx} className={styles.sideCard}>
                 <Link to={`/blogs/${blog.slug}`} className={styles.cardWrapper} aria-label={blog.title}>
                   <div className={styles.imageWrapper}>
                     <PrivateImage
-                      src={blog.featuredImage || blog.image || ''}
+                      src={getBlogImage(blog)}
                       alt={blog.title}
                       className={styles.cardImage}
                     />

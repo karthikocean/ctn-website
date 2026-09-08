@@ -28,7 +28,7 @@
 /* PARAGRAPH SPACING - Matches Admin Rich Text Editor Spacing */
 .rawContent p,
 .paragraph p {
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   line-height: 1.7;
   color: #334155;
 }
@@ -41,11 +41,10 @@
 /* PRESERVE EMPTY PARAGRAPHS SUCH AS <p></p> OR <p><br></p> */
 .rawContent p:empty,
 .paragraph p:empty {
-  margin: 0;
+  margin: 0 0 16px 0;
   padding: 0;
-  height: 1em;
-  min-height: 1em;
-  line-height: 1;
+  min-height: 1.5em;
+  line-height: 1.7;
 }
 
 .rawContent p:empty::before,
@@ -138,19 +137,28 @@
 
 /* LISTS */
 .bulletList,
+.rawContent ul {
+  list-style: disc outside;
+  list-style-type: disc;
+  margin: 0 0 16px 24px;
+  padding-left: 20px;
+}
+
 .numberedList,
-.rawContent ul,
 .rawContent ol {
-  margin: 0 0 14px 24px;
-  padding-left: 0;
+  list-style: decimal outside;
+  list-style-type: decimal;
+  margin: 0 0 16px 24px;
+  padding-left: 20px;
 }
 
 .listItem,
 .rawContent li {
+  display: list-item;
   font-size: 1.02rem;
   line-height: 1.7;
   color: #334155;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 /* BLOCKQUOTES */

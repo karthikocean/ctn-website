@@ -9,7 +9,11 @@ const BlogCard = ({ blog }) => {
   console.log(blog, "bbbbbbb");
 
   const blogLink = `/blogs/${blog.slug || blog.id}`;
-  const blogImage = blog.featuredImage || blog.image || '';
+  const blogImage =
+    blog.featuredImage ||
+    blog.image ||
+    (Array.isArray(blog.images) && blog.images.length > 0 ? blog.images[0] : '') ||
+    (Array.isArray(blog.raw?.images) && blog.raw.images.length > 0 ? blog.raw.images[0] : '');
   const blogDate = blog.publishedDate || blog.date;
 
   return (

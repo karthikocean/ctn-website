@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import usePrivateMedia from '../../hooks/usePrivateMedia';
+import { isRelativeMediaPath, normalizeMediaPath } from '../../apis/mediaApi';
+import { SERVER_URL } from '../../config/config';
 
 /**
  * Reusable PrivateImage component that fetches and renders URLs
@@ -19,6 +21,11 @@ const PrivateImage = ({
   const { mediaUrl } = usePrivateMedia(src, fallback);
   const [hasError, setHasError] = useState(false);
 
+  // Reset error state whenever src or resolved mediaUrl changes
+  useEffect(() => {
+    setHasError(false);
+  }, [src, mediaUrl]);
+
   const handleImageError = (e) => {
     setHasError(true);
     if (onError) {
@@ -26,7 +33,8 @@ const PrivateImage = ({
     }
   };
 
-  const imageToDisplay = hasError ? fallback : (mediaUrl || fallback || src);
+  const directBackendUrl = (src && isRelativeMediaPath(src)) ? `${SERVER_URL}${normalizeMediaPath(src)}` : '';
+  const imageToDisplay = hasError ? fallback : (mediaUrl || directBackendUrl || fallback || src);
 
   if (!imageToDisplay) {
     return null;
