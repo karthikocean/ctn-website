@@ -196,6 +196,19 @@
   font-weight: 500;
 }
 
+.overlayMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaIcon {
+  color: #C8A951;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
 .metaDivider {
   color: rgba(255, 255, 255, 0.4);
 }
@@ -249,6 +262,17 @@
   overflow: hidden;
 }
 
+.overlayExcerpt p,
+.mobileExcerpt p {
+  margin: 0 0 8px 0;
+  line-height: 1.45;
+}
+
+.overlayExcerpt p:last-child,
+.mobileExcerpt p:last-child {
+  margin-bottom: 0;
+}
+
 .mobileMeta {
   display: flex;
   align-items: center;
@@ -256,6 +280,12 @@
   font-size: 0.76rem;
   color: #64748B;
   font-weight: 500;
+}
+
+.mobileMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ==================================================

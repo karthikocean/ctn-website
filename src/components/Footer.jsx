@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiLinkedin, FiTwitter, FiInstagram, FiFacebook, FiArrowRight, FiMail, FiPhone } from 'react-icons/fi';
-import { FaApple, FaGooglePlay } from 'react-icons/fa';
+import { FaApple, FaGooglePlay, FaWhatsapp } from 'react-icons/fa';
 import styles from '../styles/Footer.module.css';
 import qrCodeImg from '../assets/qr_code.png';
 import whiteLogo from '../assets/whitelogo.png';
@@ -26,6 +26,15 @@ const Footer = () => {
                 Connect, collaborate, and grow with confidence.
               </p>
               <div className={styles.socials}>
+                <a
+                  href="https://whatsapp.com/channel/0029VbDJWDJ35fLrB3jehO2R"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp Community"
+                >
+                  <FaWhatsapp />
+                </a>
+
                 <a
                   href="https://www.instagram.com/trustednetwork.in/"
                   target="_blank"

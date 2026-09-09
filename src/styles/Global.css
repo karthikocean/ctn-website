@@ -65,6 +65,32 @@ ul {
   list-style: none;
 }
 
+/* Preserve bullet list rendering and paragraph spacing for backend HTML content */
+.rawContent ul,
+ul.bulletList {
+  list-style: disc outside;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.rawContent ol,
+ol.numberedList {
+  list-style: decimal outside;
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.rawContent li,
+li.listItem {
+  display: list-item;
+}
+
+.rawContent p {
+  margin-bottom: 1rem;
+}
+
 button {
   cursor: pointer;
   border: none;

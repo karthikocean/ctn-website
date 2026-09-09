@@ -12,15 +12,28 @@ import { SERVER_URL } from '../config/config';
  */
 export const usePrivateMedia = (src, fallback = '') => {
   const isRelative = isRelativeMediaPath(src);
+
+  const getInitialUrl = (mediaSrc) => {
+    if (!mediaSrc) return fallback;
+    if (!isRelativeMediaPath(mediaSrc)) return mediaSrc;
+    return `${SERVER_URL}${normalizeMediaPath(mediaSrc)}`;
+  };
+
   const [resolvedState, setResolvedState] = useState({
     src,
-    url: !src ? fallback : (!isRelative ? src : ''),
+    url: getInitialUrl(src),
     loading: Boolean(src && isRelative),
     error: null,
   });
 
   useEffect(() => {
     if (!src || !isRelativeMediaPath(src)) {
+      setResolvedState({
+        src,
+        url: !src ? fallback : src,
+        loading: false,
+        error: null,
+      });
       return;
     }
 
@@ -31,7 +44,7 @@ export const usePrivateMedia = (src, fallback = '') => {
         if (!isCancelled) {
           setResolvedState({
             src,
-            url: signedUrl || fallback,
+            url: signedUrl || `${SERVER_URL}${normalizeMediaPath(src)}` || fallback,
             loading: false,
             error: null,
           });
@@ -40,10 +53,10 @@ export const usePrivateMedia = (src, fallback = '') => {
       .catch((err) => {
         if (!isCancelled) {
           console.warn(`[usePrivateMedia] Failed to load private media "${src}":`, err?.message || err);
-          const directUrl = isRelativeMediaPath(src) ? `${SERVER_URL}${normalizeMediaPath(src)}` : (fallback || '');
+          const directUrl = `${SERVER_URL}${normalizeMediaPath(src)}`;
           setResolvedState({
             src,
-            url: directUrl,
+            url: directUrl || fallback,
             loading: false,
             error: err,
           });
@@ -56,8 +69,8 @@ export const usePrivateMedia = (src, fallback = '') => {
   }, [src, fallback]);
 
   const currentUrl = resolvedState.src === src
-    ? (resolvedState.url || fallback)
-    : (!src ? fallback : (!isRelative ? src : fallback));
+    ? (resolvedState.url || getInitialUrl(src))
+    : getInitialUrl(src);
 
   const currentLoading = resolvedState.src === src ? resolvedState.loading : Boolean(src && isRelative);
   const currentError = resolvedState.src === src ? resolvedState.error : null;

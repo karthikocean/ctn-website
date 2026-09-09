@@ -20,8 +20,8 @@ const BlogPreviousPosts = ({ blogs }) => {
         </div>
 
         <div className={styles.postsGrid}>
-          {blogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+          {blogs.map((blog, idx) => (
+            <BlogCard key={blog.id || blog.slug || idx} blog={blog} />
           ))}
         </div>
       </div>

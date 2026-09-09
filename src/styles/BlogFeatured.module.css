@@ -297,6 +297,17 @@
   overflow: hidden;
 }
 
+.overlayExcerpt p,
+.sideOverlayExcerpt p {
+  margin: 0 0 8px 0;
+  line-height: 1.45;
+}
+
+.overlayExcerpt p:last-child,
+.sideOverlayExcerpt p:last-child {
+  margin-bottom: 0;
+}
+
 .overlayMeta {
   display: flex;
   align-items: center;
@@ -307,9 +318,18 @@
   font-weight: 500;
 }
 
+.overlayMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .metaIcon {
   color: #F0A500;
-  margin-right: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  margin-right: 0;
 }
 
 .metaDivider {
@@ -476,8 +496,17 @@
     font-weight: 500;
   }
 
+  .mobileMeta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
   .metaIcon {
     color: #C8A951;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
   }
 }
 
