@@ -16,6 +16,7 @@ import RefundPolicy from './pages/RefundPolicy';
 import CommunityGuidelines from './pages/CommunityGuidelines';
 import ReferralLanding from './pages/ReferralLanding';
 import DownloadRedirect from './pages/DownloadRedirect';
+import AdCampaignLandingPage from './pages/AdCampaignLandingPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/partner" element={<StubPage title="Partner With Us" />} />
         <Route path="/download" element={<DownloadRedirect />} />
         <Route path="/app-download" element={<DownloadRedirect />} />
+        <Route path="/download-app" element={<AdCampaignLandingPage />} />
       </Routes>
       <FloatingActions />
       <Footer />
