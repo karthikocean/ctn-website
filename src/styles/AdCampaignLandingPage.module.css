@@ -1,0 +1,1489 @@
+/* ==========================================================================
+   TRUSTED NETWORK AD CAMPAIGN LANDING PAGE STYLES
+   Full Navy Banner + 5 Streamlined Sections
+   ========================================================================== */
+
+/* Page Wrapper */
+.landingPageWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #06152b;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+/* Common Section Container */
+.sectionContainer {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Dedicated Hero / Banner Container — Perfectly aligned with Navbar horizontal grid */
+.bannerContainer {
+  width: 100%;
+  max-width: 100%;
+  padding-left: calc(90px + 14px);
+  padding-right: 90px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ==========================================================================
+   SECTION BADGE DESIGN (GOLD DOT + GOLD HORIZONTAL LINE + GOLD TEXT)
+   ========================================================================== */
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+}
+
+.sectionBadgeCenter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+}
+
+.sectionBadgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #c8a951;
+  box-shadow: 0 0 6px rgba(200, 169, 81, 0.45);
+  flex-shrink: 0;
+}
+
+.sectionBadgeLine {
+  width: 32px;
+  height: 2px;
+  background-color: #c8a951;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sectionBadgeText {
+  font-size: 14px;
+  font-weight: 700;
+  color: #c8a951;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Section Header Styles */
+.sectionHeaderCenter {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #06152b;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.sectionSubtitle {
+  font-size: 1.0625rem;
+  color: #535f73;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   1. HERO / BANNER SECTION (DESKTOP & TABLET: 2-COLUMNS, PREMIUM FULL NAVY)
+   ========================================================================== */
+.bannerSection {
+  background: radial-gradient(circle at 65% 35%, #0f305c 0%, #06152b 55%, #030c18 100%);
+  color: #ffffff;
+  /* Tight, controlled top padding clearing the 90px transparent Navbar with 12px breathing room */
+  padding-top: calc(90px + 0.75rem);
+  padding-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bannerSection::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  right: -5%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(200, 169, 81, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Banner Top Area — Compact relative container for left content and absolutely anchored visual */
+.bannerTopArea {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 380px;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.bannerContentCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  max-width: 660px;
+  padding: 0;
+}
+
+.bannerHeadline {
+  font-size: clamp(38px, 3.2vw, 46px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.16;
+  margin-bottom: 0.875rem;
+  letter-spacing: -0.025em;
+}
+
+.headlineHighlight {
+  color: #dfbd69;
+}
+
+.bannerDescription {
+  font-size: 1.05rem;
+  color: #d1deef;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  max-width: 520px;
+}
+
+/* 3 App Buttons (Google Play, App Store, WhatsApp Community) — Single Horizontal Row on Desktop */
+.bannerButtonsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+}
+
+.bannerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0.95rem;
+  width: 175px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+/* App Store button with custom width to accommodate "DOWNLOAD ON THE" without wrapping */
+.bannerBtnAppStore {
+  width: 185px;
+}
+
+/* WhatsApp button with wider width for comfortable text fit */
+.bannerBtnWhatsapp {
+  width: 230px;
+}
+
+.bannerBtn:hover {
+  background: rgba(200, 169, 81, 0.2);
+  border-color: rgba(200, 169, 81, 0.65);
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bannerBtnIcon {
+  font-size: 1.55rem;
+  color: #dfbd69;
+  flex-shrink: 0;
+}
+
+.bannerBtnTextStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.15;
+}
+
+.bannerBtnSubtext {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #c4d1e2;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.bannerBtnMaintext {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* Banner Right Visual: Dominant Large Hand + Mobile Mockup Anchored Cleanly to Bottom-Right */
+.bannerVisualCol {
+  position: absolute;
+  right: -94px;
+  bottom: -136px;
+  width: clamp(520px, 48vw, 700px);
+  height: 135%;
+  max-height: 580px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bannerMainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  display: block;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.75));
+  user-select: none;
+  pointer-events: none;
+  transform: none;
+}
+
+/* Bottom Stats Bar (Glassmorphic Container) */
+.heroStatsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 40px;
+  padding: 0.95rem 2.25rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+  margin-top: 0;
+}
+
+.heroStatItem {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.heroStatIconWrap {
+  font-size: 1.65rem;
+  color: #dfbd69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.heroStatTextWrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.heroStatNumber {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.heroStatLabel {
+  font-size: 0.825rem;
+  color: #c4d1e2;
+  font-weight: 500;
+}
+
+.heroStatDivider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   2. WHY TRUSTED NETWORK? (7 VALUE POINTS)
+   ========================================================================== */
+/* ==========================================================================
+   2. WHY TRUSTED NETWORK? (CENTERED VALUE CARDS)
+   ========================================================================== */
+.whySection {
+  padding: 2.75rem 0;
+  background-color: #ffffff;
+}
+
+.whyGrid7 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.whyCard {
+  flex: 0 0 calc((100% - 3.75rem) / 4);
+  width: calc((100% - 3.75rem) / 4);
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem 1.625rem;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  box-shadow: 0 10px 28px -6px rgba(6, 21, 43, 0.05);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.whyCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 169, 81, 0.45);
+  box-shadow: 0 18px 36px -6px rgba(6, 21, 43, 0.1);
+}
+
+.whyCardFull {
+  grid-column: 1 / -1;
+  max-width: 580px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.whyCardIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #06152b 0%, #0b2345 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dfbd69;
+  font-size: 1.4rem;
+  margin: 0 auto 1.125rem auto;
+  box-shadow: 0 8px 18px -4px rgba(6, 21, 43, 0.25);
+  border: 1px solid rgba(200, 169, 81, 0.3);
+  flex-shrink: 0;
+}
+
+.whyCardTitle {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #06152b;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.whyCardDescription {
+  font-size: 0.925rem;
+  color: #55637a;
+  line-height: 1.55;
+  margin: 0;
+  text-align: center;
+}
+
+/* ==========================================================================
+   3. WHAT YOU GET (COMPACT FEATURE CARDS)
+   ========================================================================== */
+.whatYouGetSection {
+  padding: 2.75rem 0;
+  background-color: #f4f7fc;
+  border-top: 1px solid rgba(6, 21, 43, 0.06);
+  border-bottom: 1px solid rgba(6, 21, 43, 0.06);
+}
+
+.getGrid10 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.getCard {
+  flex: 0 0 calc((100% - 3.75rem) / 4);
+  width: calc((100% - 3.75rem) / 4);
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid rgba(6, 21, 43, 0.08);
+  box-shadow: 0 10px 26px -6px rgba(6, 21, 43, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  text-align: left;
+}
+
+.getCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 169, 81, 0.45);
+  box-shadow: 0 16px 32px -6px rgba(6, 21, 43, 0.1);
+}
+
+.getCardCentered {
+  grid-column: 1 / -1;
+  max-width: 380px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.getCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.625rem;
+}
+
+.getCardIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(200, 169, 81, 0.16) 0%, rgba(200, 169, 81, 0.04) 100%);
+  border: 1px solid rgba(200, 169, 81, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9f7d24;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.getCardTitle {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #06152b;
+  margin: 0;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.getCardDescription {
+  font-size: 0.9rem;
+  color: #55637a;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
+}
+
+/* ==========================================================================
+   4. HOW IT WORKS (MIRRORED PROCESS CARDS: LEFT & RIGHT COLUMNS)
+   ========================================================================== */
+.howSection {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fc 100%);
+  position: relative;
+}
+
+.workGrid8 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.workCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.35rem 1.625rem;
+  border: 1px solid rgba(6, 21, 43, 0.09);
+  box-shadow: 0 10px 26px -6px rgba(6, 21, 43, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  transition: all 0.25s ease;
+}
+
+.workCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 169, 81, 0.45);
+  box-shadow: 0 16px 32px -6px rgba(6, 21, 43, 0.1);
+}
+
+/* Left-Side Cards: Right-Aligned Text, Icon on Right */
+.workCardLeft {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.workCardLeft .workCardContent {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.workCardLeft .workCardTitle {
+  text-align: right;
+}
+
+.workCardLeft .workCardDescription {
+  text-align: right;
+}
+
+/* Right-Side Cards: Left-Aligned Text, Icon on Left */
+.workCardRight {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.workCardRight .workCardContent {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.workCardRight .workCardTitle {
+  text-align: left;
+}
+
+.workCardRight .workCardDescription {
+  text-align: left;
+}
+
+.workCardIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #06152b 0%, #0b2345 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dfbd69;
+  font-size: 1.3rem;
+  box-shadow: 0 6px 16px -3px rgba(6, 21, 43, 0.2);
+  border: 1px solid rgba(200, 169, 81, 0.35);
+  flex-shrink: 0;
+}
+
+.workCardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.workCardTitle {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #06152b;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.3;
+}
+
+.workCardDescription {
+  font-size: 0.885rem;
+  color: #55637a;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   5. CONTACT US FORM SECTION (DESKTOP/TABLET TWO-COLUMN COMPOSITION)
+   ========================================================================== */
+.contactSection {
+  padding: 3.5rem 0;
+  background: linear-gradient(135deg, #06152b 0%, #0b2345 60%, #041427 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contactSection::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(200, 169, 81, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contactContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.contactLeftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contactTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.contactSubtitle {
+  font-size: 1.05rem;
+  color: #d1deef;
+  line-height: 1.65;
+  margin: 0;
+  text-align: left;
+}
+
+.contactRightCol {
+  width: 100%;
+}
+
+.contactFormCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(200, 169, 81, 0.35);
+}
+
+.contactFormGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* Explicit Grid Cell Positions for Desktop & Tablet */
+/* ROW 1: Name | Phone | Email */
+.fieldName {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.fieldPhone {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.fieldEmail {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* ROW 2: Company Name | Message */
+.fieldCompany {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.fieldMessage {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+/* ROW 3: Send Message */
+.fieldSubmit {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 0.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #06152b;
+}
+
+.requiredAsterisk {
+  color: #e53e3e;
+}
+
+.formInput {
+  width: 100%;
+  height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d2d8e4;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: #06152b;
+  background-color: #fcfdfe;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.formTextarea {
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d2d8e4;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: #06152b;
+  background-color: #fcfdfe;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #c8a951;
+  box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.2);
+  background-color: #ffffff;
+}
+
+.formInputError {
+  border-color: #e53e3e !important;
+}
+
+.fieldErrorText {
+  font-size: 0.785rem;
+  color: #e53e3e;
+  font-weight: 500;
+}
+
+.apiErrorBox {
+  padding: 0.75rem 1rem;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 8px;
+  color: #c53030;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.formButtonWrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.submitBtn {
+  width: min(220px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #c8a951 0%, #dfbd69 100%);
+  color: #06152b;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(200, 169, 81, 0.35);
+  transition: all 0.25s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(200, 169, 81, 0.45);
+  background: linear-gradient(135deg, #dfbd69 0%, #c8a951 100%);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.submitIcon {
+  font-size: 1.1rem;
+}
+
+.successBox {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successIcon {
+  font-size: 3rem;
+  color: #38a169;
+  margin-bottom: 1rem;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #06152b;
+  margin-bottom: 0.5rem;
+}
+
+.successText {
+  font-size: 1rem;
+  color: #55637a;
+  margin-bottom: 1.5rem;
+}
+
+.resetBtn {
+  padding: 0.65rem 1.5rem;
+  background: #06152b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+  background: #0b2345;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS
+   ========================================================================== */
+
+/* Large Desktop (<= 1400px) — Matches Navbar padding: 0 48px */
+@media (max-width: 1400px) {
+  .bannerContainer {
+    padding-left: calc(48px + 14px);
+    padding-right: 48px;
+  }
+
+  .bannerVisualCol {
+    width: clamp(500px, 46vw, 640px);
+    max-height: 540px;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
+  .contactFormGrid {
+    gap: 1rem;
+  }
+}
+
+/* Medium Desktop (<= 1200px) — Matches Navbar padding: 0 36px */
+@media (max-width: 1200px) {
+  .bannerContainer {
+    padding-left: calc(36px + 14px);
+    padding-right: 36px;
+  }
+
+  .bannerHeadline {
+    font-size: 38px;
+  }
+
+  .bannerContentCol {
+    max-width: 580px;
+  }
+
+  .bannerButtonsRow {
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+  }
+
+  .bannerBtn {
+    width: 160px;
+    height: 50px;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .bannerBtnAppStore {
+    width: 172px;
+  }
+
+  .bannerBtnWhatsapp {
+    width: 210px;
+  }
+
+  .bannerBtnMaintext {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .bannerBtnSubtext {
+    font-size: 0.58rem;
+    white-space: nowrap;
+  }
+
+  .bannerVisualCol {
+    width: clamp(420px, 42vw, 500px);
+    max-height: 480px;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
+  .howGrid6 {
+    gap: 1.25rem;
+  }
+
+  .contactFormGrid {
+    gap: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TABLET DEVICES (768px to 1199px) — Matches Navbar padding: 0 32px
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Banner: 2-COLUMN STRUCTURE */
+  .bannerContainer {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .bannerSection {
+    padding-top: calc(84px + 0.75rem);
+    padding-bottom: 1.5rem;
+  }
+
+  .bannerTopArea {
+    min-height: 440px;
+    margin-bottom: 1.5rem;
+  }
+
+  .bannerContentCol {
+    max-width: 440px;
+    padding: 0;
+  }
+
+  .bannerHeadline {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .bannerDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* App Buttons Vertical Stack on Tablet */
+  .bannerButtonsRow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .bannerBtn,
+  .bannerBtnAppStore,
+  .bannerBtnWhatsapp {
+    width: 230px;
+    height: 52px;
+    padding: 0.55rem 0.95rem;
+    justify-content: flex-start;
+  }
+
+  .bannerBtnMaintext {
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .bannerBtnSubtext {
+    font-size: 0.62rem;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  /* Tablet Hero Image Positioning & Size */
+  .bannerVisualCol {
+    width: clamp(440px, 46vw, 490px);
+    max-height: 520px;
+    right: -38px;
+    bottom: -113px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  /* Stats Bar on Tablet */
+  .heroStatsBar {
+    padding: 0.85rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  .heroStatNumber {
+    font-size: 1.25rem;
+  }
+
+  .heroStatLabel {
+    font-size: 0.75rem;
+  }
+
+  .heroStatIconWrap {
+    font-size: 1.45rem;
+  }
+
+  /* Why Trusted Network on Tablet: 2-column, 7th card centered */
+  .whyGrid7 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .whyCard {
+    flex: 0 0 calc((100% - 1rem) / 2);
+    width: calc((100% - 1rem) / 2);
+  }
+
+  .whyCardFull {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  /* What You Get on Tablet: 2-column */
+  .getGrid10 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .getCard {
+    flex: 0 0 calc((100% - 1rem) / 2);
+    width: calc((100% - 1rem) / 2);
+  }
+
+  .getCardCentered {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  /* How It Works on Tablet: Mirrored 2 Columns */
+  .workGrid8 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .workCard {
+    padding: 1.25rem 1.35rem;
+  }
+
+  /* Contact Us on Tablet: Single Vertical Centered Layout */
+  .contactContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .contactLeftCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .contactLeftCol .sectionBadge {
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .contactTitle {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .contactSubtitle {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 640px;
+  }
+
+  .contactRightCol {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .contactFormCard {
+    padding: 2rem 2.25rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contactFormGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE DEVICES (767px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Banner: Mobile Clean Stacked Order */
+  .bannerContainer {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bannerSection {
+    padding-top: calc(80px + 0.75rem);
+    padding-bottom: 1.75rem;
+  }
+
+  .bannerTopArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .bannerContentCol {
+    position: static;
+    order: 1;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .sectionBadge {
+    justify-content: center;
+  }
+
+  .bannerHeadline {
+    font-size: 30px;
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .bannerDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Centered Mobile App Buttons Group */
+  .bannerButtonsRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 0.75rem;
+  }
+
+  .bannerBtn,
+  .bannerBtnAppStore,
+  .bannerBtnWhatsapp {
+    margin-left: auto;
+    margin-right: auto;
+    width: 220px;
+    max-width: 85%;
+    height: 50px;
+    justify-content: flex-start;
+    padding: 0.45rem 0.85rem;
+    box-sizing: border-box;
+  }
+
+  .bannerBtnMaintext {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .bannerBtnSubtext {
+    font-size: 0.6rem;
+    white-space: nowrap;
+  }
+
+  .bannerVisualCol {
+    position: static;
+    order: 2;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    max-height: none;
+    margin: 1.25rem auto 0;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+  }
+
+  .bannerMainImage {
+    width: 100%;
+    max-width: min(100%, 320px);
+    max-height: 360px;
+    object-position: center;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  /* Stats Bar on Mobile: 2x2 Grid */
+  .heroStatsBar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+    border-radius: 20px;
+    padding: 1rem 0.875rem;
+  }
+
+  .heroStatDivider {
+    display: none;
+  }
+
+  .heroStatItem {
+    gap: 0.625rem;
+  }
+
+  .heroStatNumber {
+    font-size: 1.2rem;
+  }
+
+  .heroStatLabel {
+    font-size: 0.72rem;
+  }
+
+  .heroStatIconWrap {
+    font-size: 1.35rem;
+  }
+
+  .sectionTitle,
+  .contactTitle {
+    font-size: 26px;
+  }
+
+  .sectionSubtitle,
+  .contactSubtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Why Trusted Network: 1 Column Centered */
+  .whyGrid7 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .whyCard {
+    width: 100%;
+    flex: 1 1 100%;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .whyCardFull {
+    grid-column: auto;
+    max-width: 100%;
+  }
+
+  /* What You Get: 1 Column Feature Cards */
+  .getGrid10 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .getCard {
+    width: 100%;
+    flex: 1 1 100%;
+    padding: 1.25rem 1.15rem;
+  }
+
+  .getCardCentered {
+    grid-column: auto;
+    max-width: 100%;
+  }
+
+  /* How It Works on Mobile: Single Column 1-by-1 Order (Icon Left, Text Left) */
+  .workGrid8 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .workCard,
+  .workCardLeft,
+  .workCardRight {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem;
+  }
+
+  .workCardLeft .workCardIcon,
+  .workCardRight .workCardIcon {
+    order: 1;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
+  .workCardLeft .workCardContent,
+  .workCardRight .workCardContent {
+    order: 2;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .workCardLeft .workCardTitle,
+  .workCardRight .workCardTitle {
+    text-align: left;
+  }
+
+  .workCardLeft .workCardDescription,
+  .workCardRight .workCardDescription {
+    text-align: left;
+  }
+
+  /* Contact Us on Mobile: Single Column Stacked */
+  .contactContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contactLeftCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactTitle {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .contactSubtitle {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .contactFormCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .contactFormGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fieldName,
+  .fieldPhone,
+  .fieldEmail,
+  .fieldCompany,
+  .fieldMessage,
+  .fieldSubmit {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .formButtonWrap {
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+
+  .submitBtn {
+    width: min(220px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Small Mobile (400px) */
+@media (max-width: 400px) {
+  .bannerSection {
+    padding-top: calc(74px + 1.5rem);
+  }
+
+  .bannerHeadline {
+    font-size: 28px;
+  }
+
+  .bannerBtn,
+  .bannerBtnAppStore,
+  .bannerBtnWhatsapp {
+    width: 210px;
+    max-width: 85%;
+    height: 48px;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .bannerBtnMaintext {
+    font-size: 0.82rem;
+  }
+
+  .bannerBtnSubtext {
+    font-size: 0.58rem;
+  }
+
+  .heroStatsBar {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -23,7 +23,7 @@ const Navbar = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
   const navRef = useRef(null);
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/' || location.pathname === '/download-app';
 
   // Handle window resize to enforce desktop-only transparent navbar
   useEffect(() => {
