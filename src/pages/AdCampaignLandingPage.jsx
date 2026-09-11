@@ -399,7 +399,7 @@ const AdCampaignLandingPage = () => {
               </div>
 
               {/* Point 7 */}
-              <div className={`${styles.whyCard} ${styles.whyCardFull}`}>
+              <div className={styles.whyCard}>
                 <div className={styles.whyCardIcon}>
                   <FaShieldAlt />
                 </div>
@@ -545,7 +545,7 @@ const AdCampaignLandingPage = () => {
               </div>
 
               {/* 10 */}
-              <div className={`${styles.getCard} ${styles.getCardCentered}`}>
+              <div className={styles.getCard}>
                 <div className={styles.getCardHeader}>
                   <div className={styles.getCardIcon}>
                     <FaIdCard />
@@ -561,7 +561,7 @@ const AdCampaignLandingPage = () => {
         </section>
 
         {/* ==========================================================================
-            4. HOW IT WORKS (HORIZONTAL PROCESS CARDS)
+            4. HOW IT WORKS (HORIZONTAL PROCESS CARDS: LEFT CARD, RIGHT TEXT)
             ========================================================================== */}
         <section className={styles.howSection}>
           <div className={styles.sectionContainer}>
@@ -571,29 +571,29 @@ const AdCampaignLandingPage = () => {
                 <span className={styles.sectionBadgeLine}></span>
                 <span className={styles.sectionBadgeText}>HOW IT WORKS</span>
               </div>
-              <h2 className={styles.sectionTitle}>How It Works</h2>
-              <p className={styles.sectionSubtitle}>
+              <h2 className={styles.sectionTitle}>Your Journey with Trusted Network</h2>
+              {/* <p className={styles.sectionSubtitle}>
                 Trusted Network is simple:
-              </p>
+              </p> */}
             </div>
 
-            {/* 8 Horizontal Process Cards in 2 Columns */}
+            {/* 8 Process Steps with Left Process Column and Right Process Column */}
             <div className={styles.workGrid8}>
-              {/* Step 1 */}
-              <div className={styles.workCard}>
-                <div className={styles.workCardIcon}>
-                  <FaIdCard />
-                </div>
+              {/* Step 1: Join (Left Side: Content -> Icon) */}
+              <div className={`${styles.workCard} ${styles.workCardLeft}`}>
                 <div className={styles.workCardContent}>
                   <h3 className={styles.workCardTitle}>Join</h3>
                   <p className={styles.workCardDescription}>
                     Create your business profile and introduce your business to the network.
                   </p>
                 </div>
+                <div className={styles.workCardIcon}>
+                  <FaIdCard />
+                </div>
               </div>
 
-              {/* Step 2 */}
-              <div className={styles.workCard}>
+              {/* Step 2: Discover (Right Side: Icon -> Content) */}
+              <div className={`${styles.workCard} ${styles.workCardRight}`}>
                 <div className={styles.workCardIcon}>
                   <FaSearch />
                 </div>
@@ -605,21 +605,21 @@ const AdCampaignLandingPage = () => {
                 </div>
               </div>
 
-              {/* Step 3 */}
-              <div className={styles.workCard}>
-                <div className={styles.workCardIcon}>
-                  <FaUsers />
-                </div>
+              {/* Step 3: Connect (Left Side: Content -> Icon) */}
+              <div className={`${styles.workCard} ${styles.workCardLeft}`}>
                 <div className={styles.workCardContent}>
                   <h3 className={styles.workCardTitle}>Connect</h3>
                   <p className={styles.workCardDescription}>
                     Follow and connect with business owners you want to build a relationship with.
                   </p>
                 </div>
+                <div className={styles.workCardIcon}>
+                  <FaUsers />
+                </div>
               </div>
 
-              {/* Step 4 */}
-              <div className={styles.workCard}>
+              {/* Step 4: Build Trust (Right Side: Icon -> Content) */}
+              <div className={`${styles.workCard} ${styles.workCardRight}`}>
                 <div className={styles.workCardIcon}>
                   <FaShieldAlt />
                 </div>
@@ -631,21 +631,21 @@ const AdCampaignLandingPage = () => {
                 </div>
               </div>
 
-              {/* Step 5 */}
-              <div className={styles.workCard}>
-                <div className={styles.workCardIcon}>
-                  <FaShareAlt />
-                </div>
+              {/* Step 5: Give (Left Side: Content -> Icon) */}
+              <div className={`${styles.workCard} ${styles.workCardLeft}`}>
                 <div className={styles.workCardContent}>
                   <h3 className={styles.workCardTitle}>Give</h3>
                   <p className={styles.workCardDescription}>
                     Help your network by sharing referrals, introductions, contacts, knowledge, and opportunities.
                   </p>
                 </div>
+                <div className={styles.workCardIcon}>
+                  <FaShareAlt />
+                </div>
               </div>
 
-              {/* Step 6 */}
-              <div className={styles.workCard}>
+              {/* Step 6: Ask (Right Side: Icon -> Content) */}
+              <div className={`${styles.workCard} ${styles.workCardRight}`}>
                 <div className={styles.workCardIcon}>
                   <FaComments />
                 </div>
@@ -657,21 +657,21 @@ const AdCampaignLandingPage = () => {
                 </div>
               </div>
 
-              {/* Step 7 */}
-              <div className={styles.workCard}>
-                <div className={styles.workCardIcon}>
-                  <FaHandshake />
-                </div>
+              {/* Step 7: Create Opportunities (Left Side: Content -> Icon) */}
+              <div className={`${styles.workCard} ${styles.workCardLeft}`}>
                 <div className={styles.workCardContent}>
                   <h3 className={styles.workCardTitle}>Create Opportunities</h3>
                   <p className={styles.workCardDescription}>
                     When the right people connect, business opportunities naturally happen.
                   </p>
                 </div>
+                <div className={styles.workCardIcon}>
+                  <FaHandshake />
+                </div>
               </div>
 
-              {/* Step 8 */}
-              <div className={styles.workCard}>
+              {/* Step 8: Grow (Right Side: Icon -> Content) */}
+              <div className={`${styles.workCard} ${styles.workCardRight}`}>
                 <div className={styles.workCardIcon}>
                   <FaChartLine />
                 </div>
@@ -685,7 +685,7 @@ const AdCampaignLandingPage = () => {
             </div>
 
             {/* Dedicated Journey Strip */}
-            <div className={styles.journeyCardStrip}>
+            {/* <div className={styles.journeyCardStrip}>
               <h3 className={styles.journeyTitle}>The Trusted Network Journey</h3>
               <div className={styles.journeyFlow}>
                 <span className={styles.journeyStep}>JOIN</span>
@@ -704,21 +704,21 @@ const AdCampaignLandingPage = () => {
                 <span className={styles.journeyArrow}>→</span>
                 <span className={styles.journeyStep}>GROW</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
         {/* ==========================================================================
-            5. CONTACT US FORM (3x2 GRID LAYOUT)
+            5. CONTACT US FORM (TWO-COLUMN DESKTOP/TABLET COMPOSITION)
             ========================================================================== */}
         <section className={styles.contactSection}>
           <div className={styles.sectionContainer}>
             <div className={styles.contactContainer}>
-              <div className={styles.contactHeaderCenter}>
-                <div className={styles.sectionBadgeCenter}>
+              <div className={styles.contactLeftCol}>
+                <div className={styles.sectionBadge}>
                   <span className={styles.sectionBadgeDot}></span>
                   <span className={styles.sectionBadgeLine}></span>
-                  <span className={styles.sectionBadgeText}>CONTACT US</span>
+                  <span className={styles.sectionBadgeText}>GET IN TOUCH</span>
                 </div>
                 <h2 className={styles.contactTitle}>Contact Us</h2>
                 <p className={styles.contactSubtitle}>
@@ -726,155 +726,157 @@ const AdCampaignLandingPage = () => {
                 </p>
               </div>
 
-              <div className={styles.contactFormCard}>
-                {isSubmitted ? (
-                  <div className={styles.successBox}>
-                    <FiCheckCircle className={styles.successIcon} />
-                    <h3 className={styles.successTitle}>Thank You!</h3>
-                    <p className={styles.successText}>
-                      Your message has been submitted successfully. Our team will get back to you shortly.
-                    </p>
-                    <button
-                      type="button"
-                      className={styles.resetBtn}
-                      onClick={() => setIsSubmitted(false)}
-                    >
-                      Send Another Message
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate>
-                    {/* Form Grid Layout */}
-                    <div className={styles.contactFormGrid}>
-                      {/* 1. Name */}
-                      <div className={`${styles.formGroup} ${styles.fieldName}`}>
-                        <label htmlFor="contact-name" className={styles.formLabel}>
-                          Name <span className={styles.requiredAsterisk}>*</span>
-                        </label>
-                        <input
-                          id="contact-name"
-                          type="text"
-                          value={name}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            if (val === '' || /^[A-Za-z\s]+$/.test(val)) {
-                              setName(val);
-                              if (touched.name) setErrors((prev) => ({ ...prev, name: validateName(val) }));
-                            }
-                          }}
-                          onBlur={() => handleBlur('name')}
-                          placeholder="Enter your name"
-                          className={`${styles.formInput} ${errors.name && touched.name ? styles.formInputError : ''}`}
-                          disabled={isSubmitting}
-                        />
-                        {errors.name && touched.name && (
-                          <span className={styles.fieldErrorText}>{errors.name}</span>
-                        )}
-                      </div>
-
-                      {/* 2. Email */}
-                      <div className={`${styles.formGroup} ${styles.fieldEmail}`}>
-                        <label htmlFor="contact-email" className={styles.formLabel}>
-                          Email <span className={styles.requiredAsterisk}>*</span>
-                        </label>
-                        <input
-                          id="contact-email"
-                          type="email"
-                          value={email}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            setEmail(val);
-                            if (touched.email) setErrors((prev) => ({ ...prev, email: validateEmail(val) }));
-                          }}
-                          onBlur={() => handleBlur('email')}
-                          placeholder="Enter your email address"
-                          className={`${styles.formInput} ${errors.email && touched.email ? styles.formInputError : ''}`}
-                          disabled={isSubmitting}
-                        />
-                        {errors.email && touched.email && (
-                          <span className={styles.fieldErrorText}>{errors.email}</span>
-                        )}
-                      </div>
-
-                      {/* 3. Phone Number */}
-                      <div className={`${styles.formGroup} ${styles.fieldPhone}`}>
-                        <label htmlFor="contact-phone" className={styles.formLabel}>
-                          Phone Number <span className={styles.requiredAsterisk}>*</span>
-                        </label>
-                        <input
-                          id="contact-phone"
-                          type="tel"
-                          value={phone}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            if (val === '' || (/^\d+$/.test(val) && val.length <= 10)) {
-                              setPhone(val);
-                              if (touched.phone) setErrors((prev) => ({ ...prev, phone: validatePhone(val) }));
-                            }
-                          }}
-                          onBlur={() => handleBlur('phone')}
-                          placeholder="Enter 10-digit phone number"
-                          className={`${styles.formInput} ${errors.phone && touched.phone ? styles.formInputError : ''}`}
-                          disabled={isSubmitting}
-                        />
-                        {errors.phone && touched.phone && (
-                          <span className={styles.fieldErrorText}>{errors.phone}</span>
-                        )}
-                      </div>
-
-                      {/* 4. Company Name */}
-                      <div className={`${styles.formGroup} ${styles.fieldCompany}`}>
-                        <label htmlFor="contact-company" className={styles.formLabel}>
-                          Company Name
-                        </label>
-                        <input
-                          id="contact-company"
-                          type="text"
-                          value={companyName}
-                          onChange={(e) => setCompanyName(e.target.value)}
-                          placeholder="Enter your company name"
-                          className={styles.formInput}
-                          disabled={isSubmitting}
-                        />
-                      </div>
-
-                      {/* 5. Message Textarea */}
-                      <div className={`${styles.formGroup} ${styles.fieldMessage}`}>
-                        <label htmlFor="contact-message" className={styles.formLabel}>
-                          Message
-                        </label>
-                        <textarea
-                          id="contact-message"
-                          rows={2}
-                          value={message}
-                          onChange={(e) => setMessage(e.target.value)}
-                          placeholder="Tell us about your requirements..."
-                          className={styles.formTextarea}
-                          disabled={isSubmitting}
-                        />
-                      </div>
-
-                      {/* 6. Submit Button */}
-                      <div className={`${styles.formButtonWrap} ${styles.fieldSubmit}`}>
-                        <button
-                          type="submit"
-                          className={styles.submitBtn}
-                          disabled={isSubmitting}
-                        >
-                          <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                          <FiSend className={styles.submitIcon} />
-                        </button>
-                      </div>
+              <div className={styles.contactRightCol}>
+                <div className={styles.contactFormCard}>
+                  {isSubmitted ? (
+                    <div className={styles.successBox}>
+                      <FiCheckCircle className={styles.successIcon} />
+                      <h3 className={styles.successTitle}>Thank You!</h3>
+                      <p className={styles.successText}>
+                        Your message has been submitted successfully. Our team will get back to you shortly.
+                      </p>
+                      <button
+                        type="button"
+                        className={styles.resetBtn}
+                        onClick={() => setIsSubmitted(false)}
+                      >
+                        Send Another Message
+                      </button>
                     </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} noValidate>
+                      {/* Form Grid Layout */}
+                      <div className={styles.contactFormGrid}>
+                        {/* 1. Name */}
+                        <div className={`${styles.formGroup} ${styles.fieldName}`}>
+                          <label htmlFor="contact-name" className={styles.formLabel}>
+                            Name <span className={styles.requiredAsterisk}>*</span>
+                          </label>
+                          <input
+                            id="contact-name"
+                            type="text"
+                            value={name}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              if (val === '' || /^[A-Za-z\s]+$/.test(val)) {
+                                setName(val);
+                                if (touched.name) setErrors((prev) => ({ ...prev, name: validateName(val) }));
+                              }
+                            }}
+                            onBlur={() => handleBlur('name')}
+                            placeholder="Enter your name"
+                            className={`${styles.formInput} ${errors.name && touched.name ? styles.formInputError : ''}`}
+                            disabled={isSubmitting}
+                          />
+                          {errors.name && touched.name && (
+                            <span className={styles.fieldErrorText}>{errors.name}</span>
+                          )}
+                        </div>
 
-                    {/* API Error Box */}
-                    {apiError && (
-                      <div className={styles.apiErrorBox}>
-                        {apiError}
+                        {/* 2. Phone Number */}
+                        <div className={`${styles.formGroup} ${styles.fieldPhone}`}>
+                          <label htmlFor="contact-phone" className={styles.formLabel}>
+                            Phone Number <span className={styles.requiredAsterisk}>*</span>
+                          </label>
+                          <input
+                            id="contact-phone"
+                            type="tel"
+                            value={phone}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              if (val === '' || (/^\d+$/.test(val) && val.length <= 10)) {
+                                setPhone(val);
+                                if (touched.phone) setErrors((prev) => ({ ...prev, phone: validatePhone(val) }));
+                              }
+                            }}
+                            onBlur={() => handleBlur('phone')}
+                            placeholder="Enter phone number"
+                            className={`${styles.formInput} ${errors.phone && touched.phone ? styles.formInputError : ''}`}
+                            disabled={isSubmitting}
+                          />
+                          {errors.phone && touched.phone && (
+                            <span className={styles.fieldErrorText}>{errors.phone}</span>
+                          )}
+                        </div>
+
+                        {/* 3. Email */}
+                        <div className={`${styles.formGroup} ${styles.fieldEmail}`}>
+                          <label htmlFor="contact-email" className={styles.formLabel}>
+                            Email <span className={styles.requiredAsterisk}>*</span>
+                          </label>
+                          <input
+                            id="contact-email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setEmail(val);
+                              if (touched.email) setErrors((prev) => ({ ...prev, email: validateEmail(val) }));
+                            }}
+                            onBlur={() => handleBlur('email')}
+                            placeholder="Enter email address"
+                            className={`${styles.formInput} ${errors.email && touched.email ? styles.formInputError : ''}`}
+                            disabled={isSubmitting}
+                          />
+                          {errors.email && touched.email && (
+                            <span className={styles.fieldErrorText}>{errors.email}</span>
+                          )}
+                        </div>
+
+                        {/* 4. Company Name */}
+                        <div className={`${styles.formGroup} ${styles.fieldCompany}`}>
+                          <label htmlFor="contact-company" className={styles.formLabel}>
+                            Company Name
+                          </label>
+                          <input
+                            id="contact-company"
+                            type="text"
+                            value={companyName}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            placeholder="Enter company name"
+                            className={styles.formInput}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+
+                        {/* 5. Message Textarea */}
+                        <div className={`${styles.formGroup} ${styles.fieldMessage}`}>
+                          <label htmlFor="contact-message" className={styles.formLabel}>
+                            Message
+                          </label>
+                          <textarea
+                            id="contact-message"
+                            rows={2}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Tell us how we can help"
+                            className={styles.formTextarea}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+
+                        {/* 6. Submit Button */}
+                        <div className={`${styles.formButtonWrap} ${styles.fieldSubmit}`}>
+                          <button
+                            type="submit"
+                            className={styles.submitBtn}
+                            disabled={isSubmitting}
+                          >
+                            <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                            <FiSend className={styles.submitIcon} />
+                          </button>
+                        </div>
                       </div>
-                    )}
-                  </form>
-                )}
+
+                      {/* API Error Box */}
+                      {apiError && (
+                        <div className={styles.apiErrorBox}>
+                          {apiError}
+                        </div>
+                      )}
+                    </form>
+                  )}
+                </div>
               </div>
             </div>
           </div>
