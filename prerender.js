@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import seoData from './src/data/seoData.js';
+import {
+  getPrivacyPolicyPrerenderStyles,
+  getPrivacyPolicyPrerenderHtml
+} from './src/prerender/privacyPolicyContent.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -46,16 +50,27 @@ routes.forEach((route) => {
   }
 
   // Generate the SEO elements with data-rh="true" to play nicely with react-helmet-async client-side
-  const seoTags = `
+  let seoTags = `
   <title data-rh="true">${seo.title}</title>
   <meta name="description" content="${seo.description}" data-rh="true">
   <meta name="keywords" content="${seo.keywords}" data-rh="true">`;
+
+  // Inject dedicated scoped styles for routes that have prerendered body content
+  if (route.key === '/privacy-policy') {
+    seoTags += getPrivacyPolicyPrerenderStyles();
+  }
 
   let html = template;
   if (html.includes('<head>')) {
     html = html.replace('<head>', `<head>${seoTags}`);
   } else {
     html = html.replace('<html>', `<html><head>${seoTags}</head>`);
+  }
+
+  // Inject prerendered body content into #root for automated validators / non-JS crawlers
+  if (route.key === '/privacy-policy') {
+    const policyBody = getPrivacyPolicyPrerenderHtml();
+    html = html.replace(/<div id="root">\s*<\/div>/, `<div id="root">${policyBody}</div>`);
   }
 
   if (route.path === '/') {
@@ -71,6 +86,10 @@ routes.forEach((route) => {
     const routeFilePath = path.join(routeDir, 'index.html');
     fs.writeFileSync(routeFilePath, html, 'utf-8');
     console.log(`✓ Generated: ${route.path} -> dist${route.path}/index.html`);
+
+    // Also write companion flat html file (e.g. dist/privacy-policy.html) for web servers checking $uri.html
+    const flatHtmlPath = path.join(distDir, `${route.path.slice(1)}.html`);
+    fs.writeFileSync(flatHtmlPath, html, 'utf-8');
   }
 });
 
