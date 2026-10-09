@@ -4,6 +4,10 @@ import path from 'path'
 import fs from 'fs'
 
 import seoData from './src/data/seoData.js'
+import {
+  getPrivacyPolicyPrerenderStyles,
+  getPrivacyPolicyPrerenderHtml
+} from './src/prerender/privacyPolicyContent.js'
 
 console.error('SEO DATA KEYS:', Object.keys(seoData || {}));
 
@@ -38,13 +42,22 @@ const seoPlugin = () => {
           html = await server.transformIndexHtml(url, html);
 
           // Inject route-specific SEO metadata
-          const seoTags = `
+          let seoTags = `
   <title data-rh="true">${seo.title}</title>
   <meta name="description" content="${seo.description}" data-rh="true">
   <meta name="keywords" content="${seo.keywords}" data-rh="true">`;
 
+          if (canonicalPath === '/privacy-policy') {
+            seoTags += getPrivacyPolicyPrerenderStyles();
+          }
+
           if (html.includes('<head>')) {
             html = html.replace('<head>', `<head>${seoTags}`);
+          }
+
+          if (canonicalPath === '/privacy-policy') {
+            const policyBody = getPrivacyPolicyPrerenderHtml();
+            html = html.replace(/<div id="root">\s*<\/div>/, `<div id="root">${policyBody}</div>`);
           }
 
           res.statusCode = 200;
